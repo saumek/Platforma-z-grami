@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  displayName  String?
+  bio          String?
+  avatarPath   String?
+  currentRoomCode String?
+  sessions     Session[]
+  friends      Friendship[] @relation("UserFriends")
+  friendedBy   Friendship[] @relation("FriendOf")
+  battleshipGamesAsPlayerOne BattleshipGame[] @relation("BattleshipPlayerOne")
+  battleshipGamesAsPlayerTwo BattleshipGame[] @relation("BattleshipPlayerTwo")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([currentRoomCode])
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Friendship {
+  id        String   @id @default(cuid())
+  userId    String
+  friendId  String
+  createdAt DateTime @default(now())
+  user      User     @relation("UserFriends", fields: [userId], references: [id], onDelete: Cascade)
+  friend    User     @relation("FriendOf", fields: [friendId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, friendId])
+  @@index([friendId])
+}
+
+model BattleshipGame {
+  id             String   @id @default(cuid())
+  roomCode       String   @unique
+  status         String
+  playerOneId    String?
+  playerTwoId    String?
+  playerOneScore Int      @default(0)
+  playerTwoScore Int      @default(0)
+  playerOneWins  Int      @default(0)
+  playerTwoWins  Int      @default(0)
+  playerOneReady Boolean  @default(false)
+  playerTwoReady Boolean  @default(false)
+  playerOneBoard String?
+  playerTwoBoard String?
+  playerOneShots String   @default("[]")
+  playerTwoShots String   @default("[]")
+  currentTurnUserId String?
+  winnerId       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  playerOne      User?    @relation("BattleshipPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
+  playerTwo      User?    @relation("BattleshipPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
+
+  @@index([playerOneId])
+  @@index([playerTwoId])
+}
