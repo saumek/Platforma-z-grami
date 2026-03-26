@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
+import { getRoomScoreTotals } from "@/lib/couple-qa";
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
 import type { AuthResponse } from "@/types/auth";
@@ -71,13 +72,7 @@ export async function GET() {
     const labels = roomUsers.map((user) => user.displayName ?? defaultDisplayName(user.email));
     const fallbackCurrentName =
       currentUser.displayName ?? defaultDisplayName(currentUser.email);
-    const battleshipGame = await prisma.battleshipGame.findUnique({
-      where: { roomCode: currentUser.currentRoomCode },
-      select: {
-        playerOneWins: true,
-        playerTwoWins: true,
-      },
-    });
+    const roomScores = await getRoomScoreTotals(currentUser.currentRoomCode);
 
     return NextResponse.json<RoomStateResponse>({
       success: true,
@@ -86,8 +81,8 @@ export async function GET() {
       activeUsersCount: roomUsers.length,
       userOne: labels[0] ?? fallbackCurrentName,
       userTwo: labels[1] ?? "Oczekiwanie...",
-      userOneWins: battleshipGame?.playerOneWins ?? 0,
-      userTwoWins: battleshipGame?.playerTwoWins ?? 0,
+      userOneWins: roomScores.userOnePoints,
+      userTwoWins: roomScores.userTwoPoints,
     });
   } catch {
     return NextResponse.json<RoomStateResponse>(

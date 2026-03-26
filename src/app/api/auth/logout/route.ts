@@ -7,6 +7,7 @@ import {
   invalidateSession,
 } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { resetRoomIfEmpty } from "@/lib/room-cleanup";
 import type { AuthResponse } from "@/types/auth";
 
 export async function POST() {
@@ -15,12 +16,20 @@ export async function POST() {
     const session = await getCurrentSession();
 
     if (session) {
+      const currentUser = await prisma.user.findUnique({
+        where: { id: session.user.id },
+        select: { currentRoomCode: true },
+      });
+      const previousRoomCode = currentUser?.currentRoomCode ?? null;
+
       await prisma.user.update({
         where: { id: session.user.id },
         data: {
           currentRoomCode: null,
         },
       });
+
+      await resetRoomIfEmpty(previousRoomCode);
     }
 
     if (sessionId) {

@@ -121,6 +121,18 @@ button {
   animation-delay: 320ms;
 }
 
+.compat-heart-beat {
+  animation: compat-heart-beat 1800ms ease-in-out infinite;
+}
+
+.compat-float {
+  animation: compat-float 2400ms ease-in-out infinite;
+}
+
+.compat-bounce {
+  animation: compat-bounce 760ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
 @keyframes result-bounce-in {
   0% {
     opacity: 0;
@@ -147,6 +159,53 @@ button {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes compat-heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  18% {
+    transform: scale(1.06);
+  }
+
+  36% {
+    transform: scale(0.98);
+  }
+
+  52% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes compat-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes compat-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.84);
+  }
+
+  62% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
-import { formatRoomCode } from "@/lib/room";
+import { formatRoomCode } from "@/lib/room-code";
 
 type GamesScreenProps = {
   roomCode: string;
@@ -196,7 +196,11 @@ export function GamesScreen({
                     Romantic &amp; fun trivia for two
                   </p>
                 </div>
-                <button className="bg-error-dim hover:bg-error text-white p-3 rounded-full active:scale-90 duration-200 shadow-lg shadow-error/20">
+                <button
+                  className="bg-error-dim hover:bg-error text-white p-3 rounded-full active:scale-90 duration-200 shadow-lg shadow-error/20"
+                  type="button"
+                  onClick={() => router.push("/games/couple-qa")}
+                >
                   <span className="material-symbols-outlined">favorite</span>
                 </button>
               </div>

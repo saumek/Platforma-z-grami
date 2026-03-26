@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
-import { formatRoomCode } from "@/lib/room";
+import { formatRoomCode } from "@/lib/room-code";
 import type { AuthResponse } from "@/types/auth";
 
 type Roommate = {

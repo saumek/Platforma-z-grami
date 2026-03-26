@@ -1,12 +1,5 @@
 import { prisma } from "@/lib/prisma";
-
-export function normalizeRoomCode(code: string) {
-  return code.trim().replace(/^#/, "").toUpperCase();
-}
-
-export function formatRoomCode(code: string | null | undefined) {
-  return code ? `#${code}` : "";
-}
+import { normalizeRoomCode } from "@/lib/room-code";
 
 export async function roomHasCapacity(roomCode: string, userId?: string) {
   const normalizedRoomCode = normalizeRoomCode(roomCode);

@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 
 import { GamesScreen } from "@/components/games-screen";
 import { getCurrentSession } from "@/lib/auth";
+import { getRoomScoreTotals } from "@/lib/couple-qa";
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
 
@@ -37,15 +38,7 @@ export default async function GamesPage() {
 
   const labels = roomUsers.map((user) => user.displayName ?? defaultDisplayName(user.email));
   const fallbackCurrentName = currentUser.displayName ?? defaultDisplayName(currentUser.email);
-  const battleshipGame = await prisma.battleshipGame.findUnique({
-    where: { roomCode: currentUser.currentRoomCode },
-    select: {
-      playerOneId: true,
-      playerTwoId: true,
-      playerOneWins: true,
-      playerTwoWins: true,
-    },
-  });
+  const roomScores = await getRoomScoreTotals(currentUser.currentRoomCode);
 
   return (
     <GamesScreen
@@ -53,8 +46,8 @@ export default async function GamesPage() {
       activeUsersCount={roomUsers.length}
       userOne={labels[0] ?? fallbackCurrentName}
       userTwo={labels[1] ?? "Oczekiwanie..."}
-      userOneWins={battleshipGame?.playerOneWins ?? 0}
-      userTwoWins={battleshipGame?.playerTwoWins ?? 0}
+      userOneWins={roomScores.userOnePoints}
+      userTwoWins={roomScores.userTwoPoints}
     />
   );
 }

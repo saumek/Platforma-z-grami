@@ -7,7 +7,8 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
 const SESSION_COOKIE = "gamely_session";
-const SESSION_DURATION_MS = 1000 * 60 * 60 * 24 * 7;
+const SESSION_DURATION_MS = 1000 * 60 * 60;
+const SESSION_REFRESH_WINDOW_MS = 1000 * 60 * 5;
 
 export async function hashPassword(password: string) {
   return bcrypt.hash(password, 12);
@@ -20,6 +21,10 @@ export async function verifyPassword(password: string, passwordHash: string) {
 export async function createSession(userId: string) {
   const sessionId = randomUUID();
   const expiresAt = new Date(Date.now() + SESSION_DURATION_MS);
+
+  await prisma.session.deleteMany({
+    where: { userId },
+  });
 
   await prisma.session.create({
     data: {
@@ -39,6 +44,24 @@ export async function createSession(userId: string) {
   });
 
   return { sessionId, expiresAt };
+}
+
+async function refreshSession(sessionId: string, nextExpiresAt: Date) {
+  await prisma.session.update({
+    where: { id: sessionId },
+    data: {
+      expiresAt: nextExpiresAt,
+    },
+  });
+
+  const cookieStore = await cookies();
+  cookieStore.set(SESSION_COOKIE, sessionId, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    expires: nextExpiresAt,
+    path: "/",
+  });
 }
 
 export async function clearSessionCookie() {
@@ -93,6 +116,12 @@ export async function getCurrentSession() {
   if (session.expiresAt <= new Date()) {
     await invalidateSession(session.id);
     return null;
+  }
+
+  if (session.expiresAt.getTime() - Date.now() <= SESSION_DURATION_MS - SESSION_REFRESH_WINDOW_MS) {
+    const nextExpiresAt = new Date(Date.now() + SESSION_DURATION_MS);
+    await refreshSession(session.id, nextExpiresAt);
+    session.expiresAt = nextExpiresAt;
   }
 
   return session;

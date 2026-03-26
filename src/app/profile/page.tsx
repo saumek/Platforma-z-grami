@@ -32,6 +32,7 @@ export default async function ProfilePage() {
       displayName={user.displayName ?? defaultDisplayName(user.email)}
       bio={user.bio?.trim() ? user.bio : defaultBio()}
       avatarPath={user.avatarPath}
+      currentRoomCode={user.currentRoomCode}
       hasJoinedRoom={Boolean(user.currentRoomCode)}
     />
   );

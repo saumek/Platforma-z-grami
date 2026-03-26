@@ -7,7 +7,9 @@ import {
   verifyPassword,
 } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { normalizeRoomCode, roomHasCapacity } from "@/lib/room";
+import { resetRoomIfEmpty } from "@/lib/room-cleanup";
+import { roomHasCapacity } from "@/lib/room";
+import { normalizeRoomCode } from "@/lib/room-code";
 import { loginSchema } from "@/lib/validations";
 import type { AuthResponse, LoginRequest } from "@/types/auth";
 
@@ -33,6 +35,7 @@ export async function POST(request: Request) {
       select: {
         id: true,
         passwordHash: true,
+        currentRoomCode: true,
       },
     });
 
@@ -77,12 +80,18 @@ export async function POST(request: Request) {
         );
       }
 
+      const previousRoomCode = user.currentRoomCode;
+
       await prisma.user.update({
         where: { id: user.id },
         data: {
           currentRoomCode: roomCode,
         },
       });
+
+      if (previousRoomCode !== roomCode) {
+        await resetRoomIfEmpty(previousRoomCode);
+      }
     }
 
     await createSession(user.id);

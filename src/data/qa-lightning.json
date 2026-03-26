@@ -1,0 +1,1202 @@
+[
+  {
+    "text": "Po wyjątkowo męczącym dniu co najszybciej stawia cię na nogi?",
+    "options": ["Krótki spacer", "Cisza w domu", "Dobry posiłek", "Film lub serial"]
+  },
+  {
+    "text": "Jaki początek wieczoru najbardziej poprawia ci nastrój po pracy?",
+    "options": ["Szybki prysznic", "Herbata i spokój", "Rozmowa", "Wyjście z domu"]
+  },
+  {
+    "text": "Kiedy wreszcie masz wolny wieczór, na co masz największą ochotę?",
+    "options": ["Nic nie planować", "Zrobić coś razem", "Nadrobić hobby", "Zobaczyć miasto"]
+  },
+  {
+    "text": "Co daje ci poczucie, że dzień zakończył się dobrze?",
+    "options": ["Spokojna rozmowa", "Porządek wokół", "Śmiech", "Plan na jutro"]
+  },
+  {
+    "text": "Który rodzaj odpoczynku wybierasz częściej, gdy jesteś przebodźcowany?",
+    "options": ["Samotność", "Bliskość", "Ruch", "Sen"]
+  },
+  {
+    "text": "Gdybyś miał wybrać idealny piątkowy wieczór, co by wygrało?",
+    "options": ["Kolacja we dwoje", "Kanapa i serial", "Spotkanie ze znajomymi", "Spontaniczny wypad"]
+  },
+  {
+    "text": "Co najbardziej sprawia, że dom wydaje ci się przytulny?",
+    "options": ["Ciepłe światło", "Zapach jedzenia", "Porządek", "Obecność bliskiej osoby"]
+  },
+  {
+    "text": "Na co najchętniej przeznaczasz pierwszą wolną godzinę w weekend?",
+    "options": ["Dłuższe śniadanie", "Wyjście na zewnątrz", "Zaległy odpoczynek", "Mały plan dnia"]
+  },
+  {
+    "text": "Jaki plan na sobotni poranek brzmi dla ciebie najlepiej?",
+    "options": ["Kawa poza domem", "Spacer bez celu", "Powolny rozruch", "Załatwienie spraw od razu"]
+  },
+  {
+    "text": "Jeśli pogoda nagle się poprawia, co najczęściej przychodzi ci do głowy?",
+    "options": ["Wyjść na spacer", "Pojechać gdzieś dalej", "Zjeść coś na mieście", "Przewietrzyć głowę w ruchu"]
+  },
+  {
+    "text": "Jakiego rodzaju randkę lubisz bardziej bez specjalnej okazji?",
+    "options": ["Luźną i prostą", "Trochę elegantszą", "Aktywną", "Nietypową"]
+  },
+  {
+    "text": "Co zwykle wygrywa, kiedy macie spontanicznie zdecydować, co robić razem?",
+    "options": ["Jedzenie", "Spacer", "Domowy relaks", "Mała przygoda"]
+  },
+  {
+    "text": "W nowym miejscu co najbardziej przyciąga twoją uwagę?",
+    "options": ["Jedzenie", "Klimat ulic", "Ludzie", "Widoki"]
+  },
+  {
+    "text": "Który typ wspólnego wyjścia męczy cię najmniej?",
+    "options": ["Krótka kawa", "Spokojna kolacja", "Aktywny plan", "Domówka u znajomych"]
+  },
+  {
+    "text": "Co częściej wybierzesz na mały reset w środku tygodnia?",
+    "options": ["Krótki spacer", "Coś słodkiego", "Wieczór offline", "Wspólne gotowanie"]
+  },
+  {
+    "text": "Gdyby można było dziś odpuścić jedną rzecz, z czego zrezygnowałbyś najchętniej?",
+    "options": ["Obowiązki domowe", "Odpisywanie ludziom", "Wczesne wstawanie", "Planowanie"]
+  },
+  {
+    "text": "Co najbardziej pomaga ci wrócić do dobrego humoru po drobnej sprzeczce?",
+    "options": ["Wyjaśnienie od razu", "Chwila przerwy", "Przytulenie", "Żart"]
+  },
+  {
+    "text": "Jak najlepiej rozmawia ci się o ważnych sprawach?",
+    "options": ["Na spokojnie w domu", "Na spacerze", "Wprost i krótko", "Po czasie do namysłu"]
+  },
+  {
+    "text": "Kiedy coś cię irytuje, czego najbardziej oczekujesz od drugiej osoby?",
+    "options": ["Uważnego słuchania", "Konkretnego działania", "Spokoju", "Odrobiny czułości"]
+  },
+  {
+    "text": "Który styl rozmowy najbardziej do ciebie trafia w trudnym momencie?",
+    "options": ["Delikatny", "Bardzo konkretny", "Pełen humoru", "Rzeczowy, ale ciepły"]
+  },
+  {
+    "text": "Co częściej odbierasz jako oznakę troski?",
+    "options": ["Pytanie, jak się czuję", "Pomoc bez proszenia", "Wspólny czas", "Mały gest"]
+  },
+  {
+    "text": "Jak zwykle pokazujesz, że jesteś po stronie drugiej osoby?",
+    "options": ["Słucham do końca", "Pomagam praktycznie", "Przytulam", "Odciążam z obowiązków"]
+  },
+  {
+    "text": "Gdy rozmowa robi się napięta, co najbardziej obniża ci ciśnienie?",
+    "options": ["Zmiana tonu", "Krótsze zdania", "Pauza", "Odrobina humoru"]
+  },
+  {
+    "text": "O czym najłatwiej rozmawia ci się wieczorem?",
+    "options": ["O planach", "O emocjach", "O drobiazgach dnia", "O marzeniach"]
+  },
+  {
+    "text": "Co częściej wybierasz, gdy trzeba coś szybko ustalić?",
+    "options": ["Krótki telefon", "Wiadomość", "Szybką decyzję na żywo", "Odkładam do wieczora"]
+  },
+  {
+    "text": "W jakiej atmosferze podejmuje ci się najlepsze wspólne decyzje?",
+    "options": ["Bez pośpiechu", "Przy konkretnym planie", "W lekkim nastroju", "Po zebraniu argumentów"]
+  },
+  {
+    "text": "Kiedy czujesz się najbardziej wysłuchany?",
+    "options": ["Gdy nikt nie przerywa", "Gdy ktoś dopytuje", "Gdy ktoś pamięta szczegóły", "Gdy widzę zmianę w działaniu"]
+  },
+  {
+    "text": "Jakiego rodzaju przeprosiny brzmią dla ciebie najbardziej szczerze?",
+    "options": ["Krótkie i proste", "Z wyjaśnieniem", "Połączone z naprawą", "Powiedziane twarzą w twarz"]
+  },
+  {
+    "text": "Co łatwiej ci przychodzi w relacji na co dzień?",
+    "options": ["Okazywanie czułości", "Rozwiązywanie problemów", "Organizowanie", "Podnoszenie na duchu"]
+  },
+  {
+    "text": "Który mały rytuał najchętniej wprowadziłbyś do zwykłego tygodnia?",
+    "options": ["Wspólna kawa", "Wieczorny spacer", "Kolacja bez telefonów", "Niedzielne planowanie"]
+  },
+  {
+    "text": "Co najczęściej sprawia, że poranek jest dla ciebie udany?",
+    "options": ["Spokój", "Dobra kawa", "Brak pośpiechu", "Miłe pierwsze słowa"]
+  },
+  {
+    "text": "Która domowa czynność najbardziej cię uspokaja?",
+    "options": ["Gotowanie", "Sprzątanie", "Podlewanie roślin", "Układanie rzeczy"]
+  },
+  {
+    "text": "Jak wygląda idealne wspólne śniadanie bez pośpiechu?",
+    "options": ["Długie i leniwe", "Krótko, ale razem", "Na mieście", "Przy czymś pysznym"]
+  },
+  {
+    "text": "Co wolisz mieć zaplanowane wcześniej w domu?",
+    "options": ["Zakupy", "Posiłki", "Porządki", "Wspólny czas"]
+  },
+  {
+    "text": "Który sposób organizacji życia codziennego jest ci najbliższy?",
+    "options": ["Lista zadań", "Plan minimum", "Elastyczny szkic", "Improwizacja"]
+  },
+  {
+    "text": "Co szybciej zauważasz po wejściu do mieszkania?",
+    "options": ["Zapach", "Nastrój", "Bałagan", "Światło"]
+  },
+  {
+    "text": "Jaki wieczorny zwyczaj najbardziej pomaga ci zasnąć spokojnie?",
+    "options": ["Odkładam telefon", "Krótka rozmowa", "Herbata", "Cisza i półmrok"]
+  },
+  {
+    "text": "Jeżeli macie tylko pół godziny dla siebie w domu, co wybierasz?",
+    "options": ["Rozmowę", "Wspólny serial", "Przytulenie i spokój", "Zrobienie czegoś razem"]
+  },
+  {
+    "text": "Który typ porządku najbardziej wpływa na twój komfort?",
+    "options": ["Czysta kuchnia", "Ogarniana sypialnia", "Wolny blat", "Schowane rzeczy"]
+  },
+  {
+    "text": "Co daje ci większe poczucie, że dzień jest pod kontrolą?",
+    "options": ["Plan w głowie", "Plan zapisany", "Jedna ważna rzecz zrobiona", "Spokojny start"]
+  },
+  {
+    "text": "Na co najłatwiej wydajesz drobną kwotę bez żalu?",
+    "options": ["Dobre jedzenie", "Wygodę", "Małą przyjemność", "Coś praktycznego"]
+  },
+  {
+    "text": "Gdy planujesz większy wydatek, co liczy się dla ciebie najbardziej?",
+    "options": ["Jakość", "Spokój na przyszłość", "Realna użyteczność", "Przyjemność z zakupu"]
+  },
+  {
+    "text": "Który sposób oszczędzania brzmi dla ciebie najbardziej realnie?",
+    "options": ["Stała kwota co miesiąc", "Reszta po wydatkach", "Ograniczenie drobiazgów", "Cel na konkretną rzecz"]
+  },
+  {
+    "text": "Co chętniej finansujesz wspólnie, jeśli budżet jest napięty?",
+    "options": ["Doświadczenia", "Komfort codzienny", "Bezpieczeństwo", "Rozwój"]
+  },
+  {
+    "text": "Jak podchodzisz do planowania wakacyjnego budżetu?",
+    "options": ["Wolę policzyć wszystko", "Zostawiam margines", "Liczy się wygoda", "Liczy się sam wyjazd"]
+  },
+  {
+    "text": "Co częściej uznajesz za dobry prezent?",
+    "options": ["Coś praktycznego", "Coś osobistego", "Wspólne wyjście", "Małą niespodziankę"]
+  },
+  {
+    "text": "Na czym najłatwiej oszczędzasz, gdy chcesz przyciąć wydatki?",
+    "options": ["Jedzenie na mieście", "Impulsywne zakupy", "Transport", "Subskrypcje"]
+  },
+  {
+    "text": "Co bardziej cię cieszy w planowaniu przyszłości?",
+    "options": ["Bezpieczeństwo", "Możliwości", "Spokój", "Ekscytacja"]
+  },
+  {
+    "text": "Gdybyście mieli odłożyć na jeden wspólny cel, co by wygrało?",
+    "options": ["Wyjazd", "Poduszka finansowa", "Mieszkanie lub dom", "Coś ułatwiającego codzienność"]
+  },
+  {
+    "text": "Który wydatek najłatwiej usprawiedliwiasz sam przed sobą?",
+    "options": ["Na zdrowie", "Na wygodę", "Na jedzenie", "Na wspomnienia"]
+  },
+  {
+    "text": "Jaką formę wspólnego wyjazdu lubisz najbardziej?",
+    "options": ["Miasto na weekend", "Natura i spokój", "Pełny plan zwiedzania", "Totalny luz"]
+  },
+  {
+    "text": "Co najczęściej decyduje, czy jakieś miejsce ci się podoba?",
+    "options": ["Atmosfera", "Ludzie", "Jedzenie", "Poczucie swobody"]
+  },
+  {
+    "text": "Na spotkaniu ze znajomymi wolisz bardziej?",
+    "options": ["Mniejsze grono", "Większą ekipę", "Krótszy czas", "Domowy klimat"]
+  },
+  {
+    "text": "Jak wygląda dla ciebie najlepsza spontaniczna decyzja wyjazdowa?",
+    "options": ["Krótki wypad autem", "Pociąg bez wielkiego planu", "Jedna noc poza domem", "Cały dzień w nowym miejscu"]
+  },
+  {
+    "text": "Co najbardziej liczy się dla ciebie w restauracji lub kawiarni?",
+    "options": ["Smak", "Klimat", "Spokój", "Obsługa"]
+  },
+  {
+    "text": "Który rodzaj towarzystwa ładuje ci baterie?",
+    "options": ["Jedna bliska osoba", "Dwie-trzy osoby", "Duża grupa", "Naprzemiennie cisza i ludzie"]
+  },
+  {
+    "text": "Co bardziej zachęca cię do wyjścia z domu?",
+    "options": ["Dobre towarzystwo", "Ciekawe miejsce", "Ładna pogoda", "Potrzeba zmiany otoczenia"]
+  },
+  {
+    "text": "W podróży najbardziej przeszkadza ci zwykle co?",
+    "options": ["Pośpiech", "Tłok", "Brak planu", "Zbyt dużo rzeczy"]
+  },
+  {
+    "text": "Jeśli macie nieoczekiwanie wolny dzień, co robisz najchętniej?",
+    "options": ["Wyjeżdżam choćby blisko", "Zostaję i odpoczywam", "Łączę jedno z drugim", "Daję sobie pełną dowolność"]
+  },
+  {
+    "text": "Co jest ważniejsze w urlopie, kiedy naprawdę chcesz odpocząć?",
+    "options": ["Mniej bodźców", "Nowe widoki", "Dobra baza", "Brak obowiązków"]
+  },
+  {
+    "text": "Jaki rodzaj wsparcia najlepiej działa na ciebie w stresującym tygodniu?",
+    "options": ["Ktoś mnie wysłucha", "Ktoś mnie odciąży", "Ktoś mnie rozśmieszy", "Ktoś mnie zmobilizuje"]
+  },
+  {
+    "text": "Co najczęściej pomaga ci uporządkować głowę, gdy jest za dużo spraw?",
+    "options": ["Spisanie wszystkiego", "Rozmowa", "Spacer", "Zajęcie się jedną rzeczą naraz"]
+  },
+  {
+    "text": "Jakiej reakcji najbardziej potrzebujesz, gdy coś ci nie wychodzi?",
+    "options": ["Otuchy", "Konkretnych sugestii", "Chwili spokoju", "Przypomnienia, że to minie"]
+  },
+  {
+    "text": "Który sygnał stresu pojawia się u ciebie najczęściej?",
+    "options": ["Milknę", "Wchodzę w zadania", "Szybko się irytuję", "Szukam bliskości"]
+  },
+  {
+    "text": "Co daje ci większą ulgę po napiętym dniu zawodowym?",
+    "options": ["Wyłączenie powiadomień", "Rozmowa o czymś lekkim", "Ruch", "Spokojny posiłek"]
+  },
+  {
+    "text": "Kiedy jesteś przeciążony, co zwykle odkładasz jako pierwsze?",
+    "options": ["Sprzątanie", "Odpisywanie", "Plany towarzyskie", "Własne hobby"]
+  },
+  {
+    "text": "Jak najlepiej motywować cię do rzeczy, na które nie masz ochoty?",
+    "options": ["Łagodnie przypominać", "Ustalić plan", "Zrobić to razem", "Dać mi chwilę i wrócić do tematu"]
+  },
+  {
+    "text": "Co sprawia, że szybciej odzyskujesz energię po trudnym tygodniu?",
+    "options": ["Sen", "Zmiana otoczenia", "Śmiech", "Spokój od ludzi"]
+  },
+  {
+    "text": "Które zdanie najbardziej pomaga ci złapać dystans?",
+    "options": ["To nie musi być idealne", "Zrobimy to krok po kroku", "Masz prawo być zmęczony", "To tylko gorszy moment"]
+  },
+  {
+    "text": "Po czym najłatwiej poznajesz, że jesteś już naprawdę wyczerpany?",
+    "options": ["Wszystko mnie drażni", "Nie mogę się skupić", "Zamykam się", "Przestaję mieć ochotę na plany"]
+  },
+  {
+    "text": "Co najczęściej poprawia nastrój między wami po ciężkim dniu?",
+    "options": ["Mały żart", "Przytulenie", "Wspólny posiłek", "Nieciągnięcie trudnych tematów"]
+  },
+  {
+    "text": "Jaki rodzaj humoru bawi cię najbardziej na co dzień?",
+    "options": ["Sytuacyjny", "Sarkastyczny", "Absurdalny", "Ciepły i prosty"]
+  },
+  {
+    "text": "Co częściej robisz, gdy chcesz komuś poprawić humor?",
+    "options": ["Mówię coś śmiesznego", "Przynoszę coś dobrego", "Wyciągam z domu", "Daję poczucie spokoju"]
+  },
+  {
+    "text": "Który mały gest czułości najwięcej dla ciebie znaczy bez okazji?",
+    "options": ["Przytulenie od tyłu", "Złapanie za rękę", "Miła wiadomość", "Zrobienie czegoś za mnie"]
+  },
+  {
+    "text": "Jak lubisz świętować drobny sukces?",
+    "options": ["Wspólnym wyjściem", "Dobrym jedzeniem", "Miłym wieczorem w domu", "Małą nagrodą"]
+  },
+  {
+    "text": "Co najbardziej buduje ci poczucie bycia blisko z drugą osobą?",
+    "options": ["Rozmowy", "Codzienne drobiazgi", "Dotyk", "Wspólne plany"]
+  },
+  {
+    "text": "Który rodzaj komplementu trafia do ciebie najmocniej?",
+    "options": ["O charakterze", "O tym, co robię", "O wyglądzie", "O naszej relacji"]
+  },
+  {
+    "text": "Co częściej zapamiętujesz po dobrym wspólnym dniu?",
+    "options": ["Atmosferę", "Jedną konkretną scenę", "Rozmowę", "To, jak się czułem"]
+  },
+  {
+    "text": "Jaki sposób okazywania sympatii wydaje ci się najbardziej naturalny?",
+    "options": ["Słowa", "Gesty", "Czas", "Pomoc"]
+  },
+  {
+    "text": "Co sprawia, że zwykły dzień wydaje się bardziej wyjątkowy?",
+    "options": ["Spontaniczny plan", "Miły drobiazg", "Dobry humor", "Więcej czasu razem"]
+  },
+  {
+    "text": "Jaką niespodziankę lubisz bardziej od dużych prezentów?",
+    "options": ["Ulubione jedzenie", "Nieplanowany spacer", "Małą wiadomość", "Jedną wolną godzinę razem"]
+  },
+  {
+    "text": "Na jaki rodzaj jedzenia masz największą słabość w gorszy dzień?",
+    "options": ["Coś domowego", "Coś słodkiego", "Coś konkretnego i sycącego", "Coś zamówionego bez wysiłku"]
+  },
+  {
+    "text": "Który posiłek najchętniej jesz bez pośpiechu we dwoje?",
+    "options": ["Śniadanie", "Lunch", "Kolację", "Późną przekąskę"]
+  },
+  {
+    "text": "Co bardziej poprawia ci komfort wieczorem?",
+    "options": ["Ciepły napój", "Coś dobrego do zjedzenia", "Świeże powietrze", "Miękki koc i spokój"]
+  },
+  {
+    "text": "Jak wygląda dla ciebie najlepsza domowa kolacja w zwykły dzień?",
+    "options": ["Prosto i smacznie", "Trochę bardziej odświętnie", "Na szybko, ale razem", "Przy dłuższej rozmowie"]
+  },
+  {
+    "text": "Co częściej wybierzesz, gdy naprawdę nie chce ci się gotować?",
+    "options": ["Zamówić coś", "Zrobić coś bardzo prostego", "Podjadać drobiazgi", "Wyjść na miasto"]
+  },
+  {
+    "text": "Który smak kojarzy ci się najbardziej z pocieszeniem?",
+    "options": ["Słodki", "Wytrawny", "Lekko pikantny", "Ciepły, domowy"]
+  },
+  {
+    "text": "Co pomaga ci zasnąć szybciej, kiedy głowa jeszcze pracuje?",
+    "options": ["Cisza", "Krótka rozmowa", "Zmęczenie fizyczne", "Odkładam telefon"]
+  },
+  {
+    "text": "Jakiego rytmu snu potrzebujesz, żeby czuć się naprawdę sobą?",
+    "options": ["Stałego", "Luźniejszego", "Dłuższego w weekend", "Krótko, ale spokojnie"]
+  },
+  {
+    "text": "Co częściej wybierasz rano, kiedy możesz decydować tylko pod siebie?",
+    "options": ["Powolny start", "Szybkie działanie", "Najpierw kawa", "Najpierw prysznic i ruch"]
+  },
+  {
+    "text": "Jaki rodzaj aktywności najbardziej oczyszcza ci głowę?",
+    "options": ["Spacer", "Trening", "Porządki", "Jazda autem lub rowerem"]
+  },
+  {
+    "text": "Co bardziej cię regeneruje po intensywnym dniu?",
+    "options": ["Ruch", "Bezruch", "Dobra rozmowa", "Brak ludzi i bodźców"]
+  },
+  {
+    "text": "Który element wspólnego życia jest dla ciebie najważniejszy na dłuższą metę?",
+    "options": ["Spokój", "Poczucie zespołu", "Rozwój", "Radość z codzienności"]
+  },
+  {
+    "text": "Co daje ci większe poczucie bezpieczeństwa w relacji?",
+    "options": ["Przewidywalność", "Szczerość", "Czułość", "Wspólne decyzje"]
+  },
+  {
+    "text": "Jeśli trzeba wybrać jedną rzecz do poprawy w codzienności, od czego zaczynasz?",
+    "options": ["Komunikacja", "Organizacja czasu", "Odpoczynek", "Mniej stresu w domu"]
+  },
+  {
+    "text": "Jakie tempo wspólnego życia wydaje ci się najbardziej zdrowe?",
+    "options": ["Spokojne", "Zbalansowane", "Dość dynamiczne", "Zależne od okresu"]
+  },
+  {
+    "text": "Co wolisz budować razem w pierwszej kolejności?",
+    "options": ["Dobrą codzienność", "Stabilność finansową", "Wspomnienia", "Wspólne cele"]
+  },
+  {
+    "text": "Która cecha najbardziej pomaga ci wierzyć, że z kimś da się iść dalej?",
+    "options": ["Uczciwość", "Dojrzałość", "Poczucie humoru", "Gotowość do rozmowy"]
+  },
+  {
+    "text": "Co bardziej cenisz u bliskiej osoby na lata?",
+    "options": ["Stałość", "Ciekawość świata", "Spokój", "Zaangażowanie"]
+  },
+  {
+    "text": "Jaki typ planów daje ci najwięcej radości, gdy myślisz o przyszłości?",
+    "options": ["Małe, realne kroki", "Jeden duży cel", "Marzenia bez ciśnienia", "Po trochu wszystkiego"]
+  },
+  {
+    "text": "W czym najchętniej widzisz sens wspólnoty na co dzień?",
+    "options": ["W drobiazgach", "W kryzysach", "W planowaniu", "W świętowaniu"]
+  },
+  {
+    "text": "Co twoim zdaniem najbardziej psuje zwykły dzień między dwojgiem ludzi?",
+    "options": ["Pośpiech", "Niedopowiedzenia", "Zmęczenie", "Rozjechane oczekiwania"]
+  },
+  {
+    "text": "Która rzecz najlepiej pokazuje, że ktoś naprawdę zna twoje potrzeby?",
+    "options": ["Nie musi pytać o oczywistości", "Pamięta szczegóły", "Wie, kiedy odpuścić", "Wie, kiedy podejść bliżej"]
+  },
+  {
+    "text": "Co jest dla ciebie bardziej romantyczne w praktyce?",
+    "options": ["Uważność", "Czas bez rozproszeń", "Niespodzianki", "Wspólny wysiłek"]
+  },
+  {
+    "text": "Gdybyś miał opisać idealne tempo niedzieli jednym wyborem, co zaznaczysz?",
+    "options": ["Powoli i miękko", "Trochę planów, trochę luzu", "Aktywnie", "Bez zegarka"]
+  },
+  {
+    "text": "Jak najchętniej zaczynasz dzień poza domem, gdy macie wolne?",
+    "options": ["Od kawy", "Od spaceru", "Od śniadania na mieście", "Od krótkiego planu"]
+  },
+  {
+    "text": "Która forma wspólnej ciszy jest dla ciebie najprzyjemniejsza?",
+    "options": ["Spacer bez gadania", "Czytanie obok siebie", "Leżenie bez planu", "Wspólne oglądanie czegoś"]
+  },
+  {
+    "text": "Co sprawia, że zwykła kolacja zamienia się w dobry wieczór?",
+    "options": ["Brak pośpiechu", "Dobra rozmowa", "Światło i klimat", "Poczucie, że nigdzie nie trzeba iść"]
+  },
+  {
+    "text": "Kiedy czujesz większą lekkość w relacji?",
+    "options": ["Gdy można się pośmiać", "Gdy wszystko jest domówione", "Gdy nikt niczego nie wymusza", "Gdy jest dużo ciepła"]
+  },
+  {
+    "text": "Wolisz, żeby ważne rzeczy były załatwiane jak?",
+    "options": ["Od razu", "Po spokojnym namyśle", "Etapami", "Po krótkiej przerwie emocji"]
+  },
+  {
+    "text": "Na co częściej mówi ci serce „tak”, gdy macie wolny wieczór?",
+    "options": ["Zostać blisko domu", "Wyjść gdzieś bez planu", "Zjeść coś dobrego", "Zrobić coś tylko we dwoje"]
+  },
+  {
+    "text": "Jaki typ wspólnego śmiechu najbardziej cię rozbraja?",
+    "options": ["Z codziennych absurdów", "Z własnych wpadek", "Z żartów sytuacyjnych", "Z głupotek bez sensu"]
+  },
+  {
+    "text": "Co daje ci poczucie, że weekend naprawdę się zaczął?",
+    "options": ["Wyłączenie obowiązków", "Inne tempo dnia", "Dobre jedzenie", "Bliskość i luz"]
+  },
+  {
+    "text": "Jakim gestem najłatwiej okazujesz wdzięczność na co dzień?",
+    "options": ["Mówię to wprost", "Robię coś miłego", "Przytulam", "Odciążam drugą osobę"]
+  },
+  {
+    "text": "Który sposób spędzania czasu najbardziej wzmacnia twoje poczucie „my”?",
+    "options": ["Wspólne rytuały", "Rozmowy o ważnych sprawach", "Małe przygody", "Wspólna zwyczajność"]
+  },
+  {
+    "text": "Gdyby dziś można było skreślić jeden stresor z życia, co wybrałbyś najchętniej?",
+    "options": ["Pośpiech", "Niepewność", "Za dużo ludzi", "Za dużo drobnych obowiązków"]
+  },
+  {
+    "text": "W czym najłatwiej łapiesz z kimś prawdziwe porozumienie?",
+    "options": ["W humorze", "W codziennych wyborach", "W sposobie rozmowy", "W podejściu do trudności"]
+  },
+  {
+    "text": "Co częściej wybierasz, kiedy potrzebujesz czuć, że żyjesz trochę bardziej?",
+    "options": ["Zmianę miejsca", "Nowe doświadczenie", "Odważną decyzję", "Dobry kontakt z kimś bliskim"]
+  },
+  {
+    "text": "Która rzecz sprawia, że łatwiej wybaczasz drobne potknięcia?",
+    "options": ["Szczerość", "Poczucie winy po drugiej stronie", "Próba naprawy", "Ciepły ton rozmowy"]
+  },
+  {
+    "text": "Jaką formę wspólnego relaksu uznajesz za najbardziej niedocenianą?",
+    "options": ["Spacer po kolacji", "Wspólne milczenie", "Krótki wyjazd bez okazji", "Powolne śniadanie"]
+  },
+  {
+    "text": "Co najczęściej daje ci myśl: „to był dobry dzień we dwoje”?",
+    "options": ["Było lekko", "Było blisko", "Było spokojnie", "Było prawdziwie"]
+  },
+  {
+    "text": "W którą stronę częściej ciągnie cię, kiedy chcesz zrobić coś miłego dla siebie?",
+    "options": ["W stronę spokoju", "W stronę smaku", "W stronę ruchu", "W stronę ludzi"]
+  },
+  {
+    "text": "Jakiego rodzaju decyzje wolisz podejmować wspólnie od początku?",
+    "options": ["Finansowe", "Wyjazdowe", "Codzienne", "Te bardziej życiowe"]
+  },
+  {
+    "text": "Który zwykły moment dnia ma największy potencjał, żeby stać się waszym rytuałem?",
+    "options": ["Poranek", "Powrót do domu", "Kolacja", "Chwila przed snem"]
+  },
+  {
+    "text": "Co mocniej wpływa na twoje samopoczucie niż czasem przyznajesz?",
+    "options": ["Ton rozmowy", "Bałagan", "Brak odpoczynku", "Pogoda"]
+  },
+  {
+    "text": "Jak wygląda dla ciebie najbardziej udany plan minimum na dzień wolny?",
+    "options": ["Jedna przyjemność", "Trochę ruchu", "Dobre jedzenie", "Brak presji"]
+  },
+  {
+    "text": "Co częściej wybierzesz na szybkie poprawienie atmosfery między wami?",
+    "options": ["Żart", "Dotyk", "Ciepłe słowo", "Zmianę otoczenia"]
+  },
+  {
+    "text": "Który rodzaj wspólnego planu wydaje ci się najbardziej realistyczny na dłużej?",
+    "options": ["Stały rytuał", "Jedna rzecz tygodniowo", "Luźna zasada", "Plan tylko na ważne momenty"]
+  },
+  {
+    "text": "Jaka drobna rzecz najczęściej sprawia, że czujesz się zauważony?",
+    "options": ["Pytanie o mój dzień", "Zapamiętany szczegół", "Pomoc bez proszenia", "Miły dotyk"]
+  },
+  {
+    "text": "Co najczęściej wybierasz, gdy chcesz wrócić do równowagi po chaosie?",
+    "options": ["Porządek", "Ciszę", "Bliskość", "Ruch"]
+  },
+  {
+    "text": "Jaką energię najchętniej wnosiłbyś do wspólnego domu?",
+    "options": ["Spokój", "Życzliwość", "Humor", "Poczucie ładu"]
+  },
+  {
+    "text": "Który rodzaj wspólnego wspomnienia zostaje z tobą najdłużej?",
+    "options": ["Niespodziewanie dobry zwykły dzień", "Wyjazd", "Szczera rozmowa", "Moment śmiechu"]
+  },
+  {
+    "text": "Co jest ci bliższe, gdy myślisz o dobrym życiu razem?",
+    "options": ["Stabilność", "Ciekawość", "Spokój", "Przygoda"]
+  },
+  {
+    "text": "Gdy w planie pojawia się wolny wieczór bez obowiązków, co najczęściej wygrywa u ciebie?",
+    "options": ["Relaks w domu", "Wyjście na zewnątrz", "Dobre jedzenie", "Zrobienie czegoś odkładanego"]
+  },
+  {
+    "text": "Z czego najłatwiej zrezygnujesz, jeśli w zamian masz więcej czasu dla siebie?",
+    "options": ["Odwlekanie", "Media społecznościowe", "Drobne obowiązki", "Niepotrzebne wyjścia"]
+  },
+  {
+    "text": "Który rodzaj wieczoru daje ci najwięcej poczucia bliskości?",
+    "options": ["Z rozmową", "Z humorem", "Z dotykiem", "Ze spokojem"]
+  },
+  {
+    "text": "Co najbardziej pomaga ci poczuć, że ktoś gra z tobą do jednej bramki?",
+    "options": ["Wsparcie w praktyce", "Jasne komunikaty", "Spokój w sporze", "Wspólne decyzje"]
+  },
+  {
+    "text": "Które wspólne przyzwyczajenie wydaje ci się warte pielęgnowania najbardziej?",
+    "options": ["Jedzenie razem", "Wieczorna checklista dnia", "Regularny spacer", "Weekendowy rytuał"]
+  },
+  {
+    "text": "Jak wygląda twoja ulubiona wersja wspólnego odpoczywania bez planu?",
+    "options": ["Każde robi swoje obok", "Leżenie i gadanie", "Spacer bez celu", "Jedzenie i serial"]
+  },
+  {
+    "text": "Gdy mówisz „potrzebuję chwili dla siebie”, co najczęściej masz na myśli?",
+    "options": ["Ciszę", "Brak obowiązków", "Samotny spacer", "Oderwanie od rozmów"]
+  },
+  {
+    "text": "Co lepiej buduje twoje zaufanie do kogoś na co dzień?",
+    "options": ["Spójność słów i czynów", "Otwartość", "Cierpliwość", "Poczucie bezpieczeństwa przy tej osobie"]
+  },
+  {
+    "text": "Co najbardziej lubisz w zwykłej codzienności, kiedy jest po prostu dobra?",
+    "options": ["Brak napięcia", "Naturalną bliskość", "Poczucie rytmu", "Drobne przyjemności"]
+  },
+  {
+    "text": "Jaką zmianę najłatwiej zaakceptujesz we wspólnych planach w ostatniej chwili?",
+    "options": ["Miejsce", "Godzinę", "Tempo", "Cały kierunek dnia"]
+  },
+  {
+    "text": "Który sygnał mówi ci, że pora trochę zwolnić?",
+    "options": ["Rozdrażnienie", "Zmęczenie ciała", "Trudność ze skupieniem", "Brak ochoty na ludzi"]
+  },
+  {
+    "text": "Co ułatwia ci być cierpliwym dla drugiej osoby?",
+    "options": ["Poczucie, że mnie rozumie", "Spokojny ton", "Krótka przerwa", "Świadomość, że też miewam gorsze dni"]
+  },
+  {
+    "text": "Który typ wspólnego planowania jest dla ciebie najmniej męczący?",
+    "options": ["Kilka prostych punktów", "Jeden główny cel", "Spontaniczna decyzja na miejscu", "Plan z marginesem luzu"]
+  },
+  {
+    "text": "Na co najłatwiej się zgadzasz, gdy chcesz poprawić komuś dzień?",
+    "options": ["Wyjść gdzieś", "Zostać i pobyć razem", "Coś zorganizować", "Przynieść drobną przyjemność"]
+  },
+  {
+    "text": "Jaki rodzaj uwagi od bliskiej osoby robi ci największą różnicę po cichu?",
+    "options": ["Ktoś zauważa zmęczenie", "Ktoś pyta o szczegóły", "Ktoś reaguje zanim poproszę", "Ktoś daje mi przestrzeń"]
+  },
+  {
+    "text": "Który moment dnia najchętniej kończyłbyś wspólnie każdego dnia, gdyby się dało?",
+    "options": ["Poranek", "Popołudnie", "Kolację", "Chwilę przed snem"]
+  },
+  {
+    "text": "Co najczęściej podpowiada ci intuicja, gdy trzeba szybko wybrać między komfortem a przygodą?",
+    "options": ["Najpierw komfort", "Najpierw przygoda", "To zależy od nastroju", "Szukam środka"]
+  },
+  {
+    "text": "Jakiego rodzaju wsparcie najtrudniej ci przyjąć, choć bywa potrzebne?",
+    "options": ["Praktyczną pomoc", "Pocieszanie", "Rady", "Zatrzymanie mnie i zmuszenie do odpoczynku"]
+  },
+  {
+    "text": "Która forma wspólnego bycia razem wydaje ci się najbardziej dojrzała i zdrowa?",
+    "options": ["Bliskość bez presji", "Szczerość nawet w trudnych tematach", "Wspólne decyzje z szacunkiem", "Dawanie sobie przestrzeni"]
+  },
+  {
+    "text": "Co bardziej skłania cię do powiedzenia „zostańmy dziś w domu”?",
+    "options": ["Zmęczenie", "Pogoda", "Ochota na spokój", "Poczucie, że dom dziś wygrywa"]
+  },
+  {
+    "text": "Gdy masz dzień, w którym wszystko cię mierzi, co najczęściej jeszcze da się uratować?",
+    "options": ["Wieczór", "Nastrój przy jedzeniu", "Humor dzięki komuś bliskiemu", "Jedna dobra rozmowa"]
+  },
+  {
+    "text": "Jaki rodzaj wspólnego planu częściej cię ekscytuje niż stresuje?",
+    "options": ["Mały weekendowy wyjazd", "Zmiana codziennego rytuału", "Wspólny projekt w domu", "Nowe miejsce do sprawdzenia"]
+  },
+  {
+    "text": "Co najbardziej sprawia, że czujesz się u siebie obok drugiej osoby?",
+    "options": ["Naturalność", "Bezpieczeństwo", "Humor", "Spokój"]
+  },
+  {
+    "text": "Jakiej decyzji najchętniej nie odkładałbyś nigdy na ostatni moment?",
+    "options": ["Dotyczącej wyjazdu", "Dotyczącej pieniędzy", "Dotyczącej trudnej rozmowy", "Dotyczącej zdrowia lub odpoczynku"]
+  },
+  {
+    "text": "Który zwykły element dnia ma największą moc poprawiania relacji, jeśli jest zadbany?",
+    "options": ["Sposób mówienia", "Wspólny czas bez ekranów", "Podział obowiązków", "Życzliwość w drobiazgach"]
+  },
+  {
+    "text": "Co najczęściej decyduje, że mówisz: „dobra, dziś odpuszczam ambicję”?",
+    "options": ["Brak energii", "Potrzeba spokoju", "Przeciążenie głowy", "Chęć zadbania o relację"]
+  },
+  {
+    "text": "Która mała decyzja daje ci zaskakująco dużo satysfakcji w zwykły dzień?",
+    "options": ["Wybrać spacer", "Usiąść razem do posiłku", "Odłożyć telefon", "Nie gonić bez sensu"]
+  },
+  {
+    "text": "W jakim rodzaju wspólnej codzienności widzisz najwięcej szczęścia?",
+    "options": ["Spokojnej", "Ciepłej", "Pełnej śmiechu", "Dobrze poukładanej"]
+  },
+  {
+    "text": "Co częściej wybierzesz, kiedy czujesz, że trzeba odzyskać balans między wami?",
+    "options": ["Więcej rozmowy", "Więcej luzu", "Więcej czasu razem", "Mniej presji na wszystko"]
+  },
+  {
+    "text": "Który rodzaj wspólnego milczenia jest dla ciebie sygnałem komfortu, a nie dystansu?",
+    "options": ["W samochodzie", "Podczas spaceru", "Wieczorem na kanapie", "Przy porannej kawie"]
+  },
+  {
+    "text": "Co najbardziej pomaga ci zostać „tu i teraz”, gdy dzień pędzi za szybko?",
+    "options": ["Dotyk", "Oddech i cisza", "Zmiana miejsca", "Jedna szczera rozmowa"]
+  },
+  {
+    "text": "Której rzeczy najłatwiej się uczysz w dobrej relacji?",
+    "options": ["Cierpliwości", "Szczerości", "Odpuszczania", "Lepszej organizacji"]
+  },
+  {
+    "text": "Co bardziej uruchamia w tobie czułość niż spektakularność?",
+    "options": ["Zwykła troska", "Pamięć o drobiazgach", "Wspólne rytuały", "Spokojna obecność"]
+  },
+  {
+    "text": "Na jaki typ wspólnego celu najłatwiej się nakręcasz?",
+    "options": ["Coś praktycznego", "Coś przyjemnego", "Coś rozwojowego", "Coś, co odciąża codzienność"]
+  },
+  {
+    "text": "Co twoim zdaniem najczęściej ratuje relację przed niepotrzebnym napięciem?",
+    "options": ["Dobra wola", "Komunikacja", "Poczucie humoru", "Umiejętność odpuszczenia"]
+  },
+  {
+    "text": "Która forma bliskości jest dla ciebie najmocniej codzienna, a nie tylko od święta?",
+    "options": ["Uważne pytania", "Małe gesty", "Przytulenie", "Robienie rzeczy razem"]
+  },
+  {
+    "text": "Jak najchętniej kończysz dzień, gdy chcesz zasnąć z poczuciem spokoju?",
+    "options": ["Po rozmowie", "Po chwili ciszy", "Po śmiechu", "Po uporządkowaniu jutra"]
+  },
+  {
+    "text": "Co sprawia, że łatwiej wraca ci się z życiem do prostoty, kiedy robi się za dużo wszystkiego?",
+    "options": ["Jeden plan na raz", "Mniej ekranów", "Więcej ruchu", "Bycie blisko ważnej osoby"]
+  },
+  {
+    "text": "Który detal wspólnej codzienności wydaje ci się najbardziej niedoceniany?",
+    "options": ["Ton pierwszych słów po powrocie", "To, czy jemy razem", "Drobna czułość bez okazji", "To, czy umiemy zwolnić"]
+  },
+  {
+    "text": "Kiedy myślisz o dobrym wspólnym życiu, co pojawia się w głowie jako pierwsze?",
+    "options": ["Spokój", "Partnerstwo", "Radość", "Poczucie domu"]
+  },
+  {
+    "text": "Który wybór najlepiej opisuje twoje podejście do wolnego czasu z bliską osobą?",
+    "options": ["Liczę bardziej na jakość niż ilość", "Wolę częściej, ale krócej", "Lubię różnorodność", "Najbardziej cenię prostotę"]
+  },
+  {
+    "text": "Co najłatwiej przywraca ci wiarę, że zwykła codzienność też może być fajna?",
+    "options": ["Dobry nastrój w domu", "Jedna wspólna chwila bez pośpiechu", "Mały spontaniczny plan", "Świadomość, że nie trzeba niczego udowadniać"]
+  },
+  {
+    "text": "Co twoim zdaniem najczęściej daje dwojgu ludziom miękki ląd po trudnym dniu?",
+    "options": ["Spokój", "Jedzenie", "Czułość", "Uważna rozmowa"]
+  },
+  {
+    "text": "Z czym najłatwiej kojarzy ci się dojrzała czułość?",
+    "options": ["Z obecnością", "Z troską", "Z cierpliwością", "Z prostotą"]
+  },
+  {
+    "text": "Co chętniej wybierasz, kiedy możesz zrobić coś dobrego dla relacji jeszcze dziś?",
+    "options": ["Dać więcej uwagi", "Dać więcej spokoju", "Zaplanować coś razem", "Odłożyć telefon"]
+  },
+  {
+    "text": "Który rodzaj wspólnej zwyczajności wydaje ci się najbardziej wartościowy?",
+    "options": ["Spokojne wieczory", "Wspólne posiłki", "Krótka codzienna rozmowa", "Drobne rytuały"]
+  },
+  {
+    "text": "Jak najłatwiej rozpoznajesz, że z kimś dobrze ci się idzie przez życie?",
+    "options": ["Jest lekko nawet w trudniejszym czasie", "Można się nie zgadzać bez wojny", "Nie trzeba niczego grać", "Codzienność nie męczy bardziej, niż powinna"]
+  },
+  {
+    "text": "Co najczęściej daje ci poczucie, że jesteś naprawdę ważny dla drugiej osoby?",
+    "options": ["Konsekwencja", "Czułość", "Uważność", "Obecność wtedy, gdy potrzeba"]
+  },
+  {
+    "text": "Który rodzaj bliskości cenisz najbardziej wtedy, gdy życie staje się zwyczajne?",
+    "options": ["Spokojną", "Pewną", "Radosną", "Ciepłą"]
+  },
+  {
+    "text": "Co najchętniej robisz, kiedy pada plan na cały wieczór i nagle macie pusty kalendarz?",
+    "options": ["Zostaję w domu", "Szukam czegoś spontanicznego", "Idę coś zjeść", "Odpoczywam bez planu"]
+  },
+  {
+    "text": "Jaki rodzaj komforu najbardziej poprawia ci codzienność?",
+    "options": ["Spokój w mieszkaniu", "Miękki rytm dnia", "Dobre jedzenie", "Mało pośpiechu"]
+  },
+  {
+    "text": "Kiedy w tle leci muzyka, jaki klimat wybierasz najczęściej w domu?",
+    "options": ["Spokojny", "Wesoły", "Delikatnie taneczny", "Prawie bez muzyki"]
+  },
+  {
+    "text": "Co jest dla ciebie większym luksusem w tygodniu niż powinno?",
+    "options": ["Wolne popołudnie", "Długi sen", "Brak obowiązków", "Posiłek bez pośpiechu"]
+  },
+  {
+    "text": "Które wspólne zajęcie najłatwiej zamienia zwykły dzień w lepszy?",
+    "options": ["Gotowanie", "Spacer", "Gadanie przy herbacie", "Krótki wypad po coś dobrego"]
+  },
+  {
+    "text": "Jak reagujesz częściej, gdy ktoś bliski ma słabszy dzień?",
+    "options": ["Próbuję rozluźnić atmosferę", "Daję przestrzeń", "Pytam, co mogę zrobić", "Po prostu jestem obok"]
+  },
+  {
+    "text": "Na co masz większą cierpliwość w relacji niż w innych sytuacjach?",
+    "options": ["Na cudzy gorszy humor", "Na dłuższe tłumaczenie", "Na zmiany planu", "Na drobne wpadki"]
+  },
+  {
+    "text": "Który rodzaj drobnych wiadomości w ciągu dnia lubisz najbardziej dostawać?",
+    "options": ["Ciepłe", "Śmieszne", "Konkretne", "Całkiem niepotrzebne, ale miłe"]
+  },
+  {
+    "text": "Kiedy trzeba szybko zdecydować o wieczorze, co najczęściej proponujesz jako pierwsze?",
+    "options": ["Coś zjeść", "Wyjść się przewietrzyć", "Odpocząć w domu", "Zrobić coś małego, ale razem"]
+  },
+  {
+    "text": "Jakiego rodzaju obecność najbardziej cię uspokaja, gdy jesteś zmęczony?",
+    "options": ["Cichą", "Ciepłą", "Wesołą", "Konkretną i ogarniającą"]
+  },
+  {
+    "text": "Co częściej robi ci dzień, który pamiętasz potem jako naprawdę dobry?",
+    "options": ["Jedna fajna chwila", "Dużo lekkości", "Dobra rozmowa", "Poczucie, że nic nie ciąży"]
+  },
+  {
+    "text": "Jaki typ wspólnego odpoczynku najbardziej ci pasuje po intensywnym tygodniu?",
+    "options": ["Powolny", "Aktywny, ale lekki", "Na mieście", "Domowy i miękki"]
+  },
+  {
+    "text": "Co bardziej podnosi cię na duchu, gdy masz wszystkiego dość?",
+    "options": ["Ktoś mnie rozumie", "Ktoś mnie odciąża", "Ktoś mnie rozśmiesza", "Ktoś mnie wyciąga z domu"]
+  },
+  {
+    "text": "Jaką formę wspólnego planowania uznajesz za najbardziej fair?",
+    "options": ["Mówimy otwarcie, czego chcemy", "Jedna osoba rzuca opcje", "Decydujemy po połowie", "Wybieramy to, na co oboje mamy energię"]
+  },
+  {
+    "text": "Gdybyś miał wskazać jedną rzecz, która od razu poprawia atmosferę w domu, co by to było?",
+    "options": ["Życzliwy ton", "Porządek", "Muzyka albo światło", "Brak pośpiechu"]
+  },
+  {
+    "text": "Co najczęściej przywraca ci kontakt z własnym dobrym nastrojem?",
+    "options": ["Ruch", "Bliska osoba", "Smaczny posiłek", "Chwila ciszy"]
+  },
+  {
+    "text": "Jak lubisz spędzać czas z kimś bliskim, kiedy oboje jesteście trochę zmęczeni?",
+    "options": ["Bardzo spokojnie", "Przy czymś prostym do robienia", "Na krótkim spacerze", "W milczeniu bez niezręczności"]
+  },
+  {
+    "text": "Na jaki drobny gest reagujesz cieplej, niż sam się po sobie spodziewasz?",
+    "options": ["Ktoś pamięta o mojej kawie", "Ktoś pisze, że o mnie pomyślał", "Ktoś mnie przytula bez słów", "Ktoś robi za mnie jedną małą rzecz"]
+  },
+  {
+    "text": "Którego rodzaju wspólne zdjęcia lub wspomnienia lubisz najbardziej wracać oglądać?",
+    "options": ["Zwykłe, niepozowane", "Z wyjazdów", "Z zabawnych momentów", "Z ważnych dni"]
+  },
+  {
+    "text": "Co wolisz usłyszeć po naprawdę ciężkim dniu?",
+    "options": ["Jestem przy tobie", "Nic dziś nie musisz", "Chcesz o tym pogadać?", "Chodź, zajmiemy się czymś miłym"]
+  },
+  {
+    "text": "Który rodzaj wspólnego jedzenia ma dla ciebie najlepszy klimat?",
+    "options": ["Śniadanie bez pośpiechu", "Późna kolacja", "Mały wypad po coś dobrego", "Gotowanie od zera razem"]
+  },
+  {
+    "text": "Jaką decyzję odkładasz najchętniej na spokojniejszy moment?",
+    "options": ["Finansową", "Towarzyską", "Dotyczącą pracy", "Dotyczącą większych planów"]
+  },
+  {
+    "text": "Co bardziej działa na ciebie jak sygnał „jesteśmy drużyną”?",
+    "options": ["Wspólne ogarnianie problemu", "Podobne poczucie humoru", "Wspólne rytuały", "Umiejętność dogadania się mimo różnic"]
+  },
+  {
+    "text": "Gdyby ktoś dał wam dziś darmową godzinę tylko dla siebie, jak najlepiej by ją wykorzystać?",
+    "options": ["Na rozmowę", "Na wyjście", "Na odpoczynek obok siebie", "Na coś spontanicznego"]
+  },
+  {
+    "text": "Na jaki typ wspólnego wyjazdu zgadzasz się najszybciej?",
+    "options": ["Jedna noc poza domem", "Weekend w mieście", "Natura i cisza", "Wypad bez wielkiej organizacji"]
+  },
+  {
+    "text": "Co częściej robisz, gdy czujesz, że dzień wymknął się spod kontroli?",
+    "options": ["Zwalniam", "Rozpisuję plan", "Odcinam się na chwilę", "Szukam kogoś bliskiego"]
+  },
+  {
+    "text": "Który styl wspólnego oglądania filmu lub serialu jest ci najbliższy?",
+    "options": ["Pełne skupienie", "Komentowanie wszystkiego", "Coś lekkiego do tła", "Krótki seans i spać"]
+  },
+  {
+    "text": "Jakiego rodzaju przyzwyczajenia w domu najbardziej pomagają ci żyć spokojniej?",
+    "options": ["Stałe drobne rytuały", "Podział obowiązków", "Mniej chaosu wizualnego", "Przewidywalny wieczór"]
+  },
+  {
+    "text": "Co najłatwiej psuje ci przyjemność z wolnego dnia?",
+    "options": ["Zbyt wiele planów", "Niedomówienia", "Bałagan dookoła", "Poczucie, że trzeba coś gonić"]
+  },
+  {
+    "text": "Jakiego typu wspólne żarty są dla ciebie najlepsze?",
+    "options": ["Subtelne", "Głupawkowe", "Z codziennych wpadek", "Oparte na naszej historii"]
+  },
+  {
+    "text": "Co wybierasz chętniej jako sposób na małe świętowanie bez okazji?",
+    "options": ["Dobre jedzenie", "Wyjście gdzieś", "Deser i luz w domu", "Kupienie drobiazgu"]
+  },
+  {
+    "text": "Które miejsce w domu najczęściej kojarzy ci się ze spokojem?",
+    "options": ["Kanapa", "Stół w kuchni", "Sypialnia", "Balkon albo okno"]
+  },
+  {
+    "text": "Jakiego rodzaju zmiana planu najmniej ci przeszkadza?",
+    "options": ["Przesunięcie godziny", "Zmiana miejsca", "Skrócenie planu", "Pełna spontaniczność w ostatniej chwili"]
+  },
+  {
+    "text": "Na co częściej masz energię, gdy niespodziewanie zwolni się wam wieczór?",
+    "options": ["Wyjść gdzieś", "Zostać w domu i pogadać", "Nadrabiać zaległe przyjemności", "Nie robić nic konkretnego"]
+  },
+  {
+    "text": "Co bardziej pomaga ci zostać w dobrym kontakcie z drugą osobą podczas zabieganego tygodnia?",
+    "options": ["Krótki codzienny kontakt", "Jedna dobra rozmowa", "Drobne gesty", "Wspólny punkt dnia"]
+  },
+  {
+    "text": "Jaki rodzaj porannego nastroju lubisz najbardziej u siebie?",
+    "options": ["Spokojny", "Lekko żartobliwy", "Skupiony", "Taki, w którym nic mnie nie ciśnie"]
+  },
+  {
+    "text": "Gdy ktoś chce cię odciążyć, w czym ma największą szansę trafić?",
+    "options": ["W codziennych obowiązkach", "W organizacji dnia", "W przejęciu jednej trudnej rzeczy", "W przypomnieniu, że mogę odpuścić"]
+  },
+  {
+    "text": "Który rodzaj domowego wieczoru najczęściej kończy się najlepiej?",
+    "options": ["Bez wielkich oczekiwań", "Z jedną prostą przyjemnością", "Z wyłączonym telefonem", "Z poczuciem, że nic nie trzeba udowadniać"]
+  },
+  {
+    "text": "Co łatwiej zauważysz jako oznakę zaangażowania drugiej osoby?",
+    "options": ["Regularność", "Ciepło", "Pamięć o szczegółach", "Gotowość do wysiłku"]
+  },
+  {
+    "text": "Jaką przestrzeń najchętniej tworzysz dla relacji w zwykłym tygodniu?",
+    "options": ["Na rozmowę", "Na luz", "Na wspólny rytuał", "Na odpoczynek bez rozproszeń"]
+  },
+  {
+    "text": "Co bardziej cię zbliża do ludzi: wspólne milczenie czy wspólny śmiech?",
+    "options": ["Milczenie", "Śmiech", "Jedno i drugie, zależnie od momentu", "To, że nic nie jest wymuszone"]
+  },
+  {
+    "text": "Które wspólne wyjście częściej kończy się u ciebie myślą „warto było”?",
+    "options": ["Na spokojną kolację", "Na spacer po mieście", "Na coś spontanicznego", "Na miejsce z klimatem"]
+  },
+  {
+    "text": "Jaki typ wsparcia najbardziej lubisz dawać drugiej osobie?",
+    "options": ["Emocjonalne", "Praktyczne", "Humorystyczne", "Organizacyjne"]
+  },
+  {
+    "text": "Co sprawia, że łatwiej ci od razu powiedzieć, o co ci chodzi?",
+    "options": ["Spokojny moment", "Poczucie bezpieczeństwa", "Brak pośpiechu", "To, że druga osoba słucha bez obrony"]
+  },
+  {
+    "text": "Która forma odpoczynku we dwoje wydaje ci się najbardziej „na dłuższą metę”?",
+    "options": ["Spacery", "Wspólne posiłki", "Wieczory bez ekranów", "Krótkie wypady"]
+  },
+  {
+    "text": "Jaką małą zmianę w codzienności najłatwiej wdrożyłbyś z kimś bliskim?",
+    "options": ["Więcej wspólnych posiłków", "Mniej telefonów wieczorem", "Krótki spacer po pracy", "Lepszy podział obowiązków"]
+  },
+  {
+    "text": "Co najchętniej robisz, kiedy czujesz, że trzeba wam wrócić do lepszego rytmu?",
+    "options": ["Ustalam prosty plan", "Odpuszczam część rzeczy", "Pilnuję wspólnego czasu", "Wracam do małych rytuałów"]
+  },
+  {
+    "text": "Który moment dnia ma największą szansę zamienić się w dobrą rozmowę?",
+    "options": ["Tuż po powrocie do domu", "Przy kolacji", "Podczas spaceru", "Przed snem"]
+  },
+  {
+    "text": "Co z tych rzeczy najbardziej poprawia ci samopoczucie bez wielkich kosztów i przygotowań?",
+    "options": ["Dobry posiłek", "Krótki spacer", "Przytulenie", "Porządek w jednym miejscu"]
+  },
+  {
+    "text": "Jakiego rodzaju wieczór zostawia po sobie najlepszy ślad następnego dnia?",
+    "options": ["Spokojny", "Radosny", "Ciepły", "Po prostu niewymuszony"]
+  },
+  {
+    "text": "W czym najłatwiej czujesz, że ktoś bierze cię naprawdę pod uwagę?",
+    "options": ["W sposobie planowania", "W tonie rozmowy", "W drobnych decyzjach", "W pamięci o moich granicach"]
+  },
+  {
+    "text": "Co w codziennym życiu częściej odbierasz jako romantyczne niż „duże gesty”?",
+    "options": ["Uważność", "Stałość", "Spontaniczną dobroć", "Bycie obok w zwykłych momentach"]
+  },
+  {
+    "text": "Na jaki rodzaj wspólnego lenistwa najłatwiej się piszesz bez wyrzutów sumienia?",
+    "options": ["Wolny poranek", "Popołudnie bez celu", "Serial i coś dobrego", "Drzemkę albo nicnierobienie"]
+  },
+  {
+    "text": "Która rzecz najbardziej pomaga ci zachować miękkość w trudniejszym okresie?",
+    "options": ["Czułość", "Humor", "Spokój", "Poczucie, że nie jestem sam"]
+  },
+  {
+    "text": "Co daje ci większą radość w relacji niż kiedyś przypuszczałeś?",
+    "options": ["Wspólne zwykłe dni", "Drobne rytuały", "Szczere rozmowy", "Umiejętność śmiania się razem"]
+  },
+  {
+    "text": "Jaka forma wspólnego bycia razem najmocniej przypomina ci dom, nawet poza domem?",
+    "options": ["Spokój obok siebie", "Lekki humor", "Naturalna rozmowa", "Brak potrzeby udawania"]
+  },
+  {
+    "text": "Co wybierzesz częściej, gdy chcesz zrobić miejsce na więcej lekkości w tygodniu?",
+    "options": ["Mniej planów", "Mniej telefonu", "Więcej ruchu", "Więcej czasu razem"]
+  },
+  {
+    "text": "Jakiego rodzaju kompromisy przychodzą ci najłatwiej?",
+    "options": ["Dotyczące planu dnia", "Dotyczące miejsca", "Dotyczące jedzenia", "Dotyczące tempa"]
+  },
+  {
+    "text": "Co jest dla ciebie bardziej zachęcające, kiedy ktoś proponuje wspólny czas?",
+    "options": ["Brak presji", "Konkretny pomysł", "Miły klimat", "Krótka i lekka forma"]
+  },
+  {
+    "text": "W jakim obszarze najłatwiej odczuwasz wdzięczność wobec bliskiej osoby?",
+    "options": ["Za codzienną obecność", "Za cierpliwość", "Za drobne starania", "Za to, że mogę być sobą"]
+  },
+  {
+    "text": "Który sygnał najszybciej pokazuje ci, że napięcie między wami już schodzi?",
+    "options": ["Pojawia się humor", "Wraca normalny ton", "Jest miękkość w spojrzeniu", "Nikt nie próbuje wygrać"]
+  },
+  {
+    "text": "Co wybierzesz, jeśli można poprawić waszą codzienność tylko jedną małą zmianą?",
+    "options": ["Więcej wspólnych chwil bez ekranów", "Lepszy podział zadań", "Łagodniejsze poranki", "Mniej pośpiechu wieczorem"]
+  },
+  {
+    "text": "Jakiego typu małe plany sprawiają ci najwięcej frajdy w zwykłym tygodniu?",
+    "options": ["Kulinarne", "Spacerowe", "Towarzyskie", "Domowe, ale miłe"]
+  },
+  {
+    "text": "Co częściej jest dla ciebie sygnałem, że relacja dojrzewa w dobrą stronę?",
+    "options": ["Coraz mniej trzeba się domyślać", "Coraz łatwiej się śmiać", "Coraz mniej rzeczy trzeba udowadniać", "Coraz bardziej czuć spokój"]
+  },
+  {
+    "text": "Jaki typ małych przyjemności najczęściej poprawia ci nastrój szybciej, niż myślisz?",
+    "options": ["Dobre jedzenie", "Dobra rozmowa", "Ruch i świeże powietrze", "Chwila tylko dla siebie"]
+  },
+  {
+    "text": "Co najłatwiej zamienia zwykły wieczór w coś, co potem miło wspominasz?",
+    "options": ["Lekkość", "Spontaniczność", "Bliskość", "Drobna niespodzianka"]
+  },
+  {
+    "text": "Jakie tempo wspólnego weekendu najbardziej do ciebie pasuje?",
+    "options": ["Powolne od początku do końca", "Aktywne, ale bez presji", "Z jednym konkretnym planem", "Z dużą dawką improwizacji"]
+  },
+  {
+    "text": "Co jest dla ciebie większym dowodem dojrzałości w relacji?",
+    "options": ["Umiejętność przeproszenia", "Umiejętność słuchania", "Umiejętność odpuszczenia", "Umiejętność mówienia wprost"]
+  },
+  {
+    "text": "Jakiego rodzaju wspólny spokój cenisz najbardziej?",
+    "options": ["Taki, w którym można milczeć", "Taki, w którym nic nie goni", "Taki, w którym wszystko jest jasne", "Taki, w którym czuć ciepło"]
+  },
+  {
+    "text": "Co jest ci bliższe, kiedy myślisz o dobrym końcu dnia?",
+    "options": ["Zamknięte sprawy", "Lekki humor", "Bliskość", "Brak pośpiechu"]
+  },
+  {
+    "text": "Na co częściej liczysz od drugiej osoby, kiedy sam masz mniej siły?",
+    "options": ["Na spokój", "Na czułość", "Na praktyczną pomoc", "Na wyrozumiałość"]
+  },
+  {
+    "text": "Który typ zwykłego wspólnego wyjścia wydaje ci się najbardziej „wasz”?",
+    "options": ["Kawa albo śniadanie", "Spacer", "Wypad po coś dobrego", "Krótki plan bez wielkich przygotowań"]
+  },
+  {
+    "text": "Jakie wspólne tempo rozmowy najbardziej ci odpowiada?",
+    "options": ["Spokojne i dłuższe", "Krótkie, ale konkretne", "Lekkie z przeskakiwaniem tematów", "Takie, w którym można się zatrzymać"]
+  },
+  {
+    "text": "Co najczęściej daje ci wrażenie, że jesteście naprawdę po tej samej stronie?",
+    "options": ["Podobna reakcja na trudność", "Umiejętność dogadania się bez walki", "Wzajemne wsparcie", "Wspólne poczucie humoru"]
+  },
+  {
+    "text": "Której rzeczy najbardziej potrzebujesz od domu jako miejsca, nie tylko mieszkania?",
+    "options": ["Spokoju", "Ciepła", "Bezpieczeństwa", "Lekkości codzienności"]
+  },
+  {
+    "text": "Co bardziej skłania cię do powiedzenia „dziś naprawdę odpocznijmy”?",
+    "options": ["Przebodźcowanie", "Zmęczenie fizyczne", "Napięcie między obowiązkami", "Tydzień pełen ludzi"]
+  },
+  {
+    "text": "Na co częściej zwracasz uwagę, gdy oceniasz, czy dzień był dobrze przeżyty?",
+    "options": ["Jak się czułem", "Czy było blisko", "Czy było spokojnie", "Czy było coś miłego do zapamiętania"]
+  },
+  {
+    "text": "Jaki rodzaj bycia razem najczęściej daje ci ulgę, a nie dodatkowe oczekiwania?",
+    "options": ["Prosty", "Spokojny", "Czuły", "Naturalny"]
+  },
+  {
+    "text": "Jakiego rodzaju wspólny nawyk najłatwiej stałby się dla ciebie ważny?",
+    "options": ["Krótka codzienna rozmowa", "Jeden wieczór tylko dla siebie w tygodniu", "Wspólne śniadanie w weekend", "Spacer po pracy"]
+  },
+  {
+    "text": "Co najchętniej robisz, gdy chcesz wrócić do prostoty po zbyt intensywnym czasie?",
+    "options": ["Ograniczam plany", "Zostaję bliżej domu", "Dbam o małe rytuały", "Szukam ciszy"]
+  },
+  {
+    "text": "Który rodzaj codziennej uwagi najbardziej sprawia, że czujesz się kochany lub kochana?",
+    "options": ["Pamiętanie o szczegółach", "Zainteresowanie moim dniem", "Delikatny dotyk", "Praktyczne odciążenie"]
+  },
+  {
+    "text": "Co bardziej pomaga ci wrócić do dobrego kontaktu po napięciu?",
+    "options": ["Szczerość", "Czułość", "Czas", "Humor"]
+  },
+  {
+    "text": "Jaką jakość najbardziej chciałbyś chronić w relacji, nawet gdy robi się trudno?",
+    "options": ["Szacunek", "Spokój", "Bliskość", "Otwartość"]
+  },
+  {
+    "text": "Co jest ci bliższe, kiedy myślisz o udanym wspólnym starzeniu się przez lata?",
+    "options": ["Poczucie drużyny", "Dobre codzienne życie", "Wspólne wspomnienia", "Lekkość mimo trudności"]
+  },
+  {
+    "text": "Który rodzaj pytań od bliskiej osoby najbardziej pokazuje ci troskę?",
+    "options": ["Jak się dziś czujesz?", "Czego teraz potrzebujesz?", "Jak mogę ci pomóc?", "Masz ochotę pobyć razem czy chwilę sam?"]
+  },
+  {
+    "text": "Co najczęściej pozwala ci wrócić do poczucia wdzięczności za relację?",
+    "options": ["Codzienne drobiazgi", "Jedna dobra rozmowa", "Pamięć o trudniejszych momentach", "Świadomość, że można na sobie polegać"]
+  },
+  {
+    "text": "Która wersja wspólnego spędzania czasu wydaje ci się najbardziej życiowa i prawdziwa?",
+    "options": ["Nieidealna, ale własna", "Spokojna i regularna", "Pełna drobnych przyjemności", "Taka, w której jest miejsce i na bliskość, i na oddech"]
+  },
+  {
+    "text": "Jakiego rodzaju wspólna codzienność sprawia, że mniej tęsknisz za „czymś więcej”?",
+    "options": ["Spokojna", "Uważna", "Pełna małych przyjemności", "Dobrze dogadana"]
+  },
+  {
+    "text": "Który rodzaj wieczoru daje ci największe poczucie domknięcia dnia?",
+    "options": ["Rozmowa i spokój", "Śmiech", "Brak obowiązków", "Dobra kolacja"]
+  },
+  {
+    "text": "Co częściej wybierasz, gdy chcesz naprawdę odetchnąć psychicznie?",
+    "options": ["Mniej ludzi", "Więcej ruchu", "Więcej bliskości", "Mniej planu"]
+  },
+  {
+    "text": "Jak wygląda dla ciebie najbardziej zdrowa bliskość w zwykłym tygodniu?",
+    "options": ["Regularna, ale nienachalna", "Ciepła i spontaniczna", "Oparta na rozmowie", "Widoczna w drobiazgach"]
+  },
+  {
+    "text": "Jaki typ wspólnego poranka chcesz pamiętać po latach?",
+    "options": ["Bardzo prosty", "Leniwy i cichy", "Pełen śmiechu", "Bez pośpiechu i ekranów"]
+  },
+  {
+    "text": "Co najczęściej daje ci wrażenie, że ktoś zna twoje tempo życia, a nie tylko twoje słowa?",
+    "options": ["Szanuje mój rytm", "Nie naciska bez potrzeby", "Wie, kiedy odpuścić", "Wie, kiedy podejść bliżej"]
+  },
+  {
+    "text": "Który element wspólnego odpoczynku jest dla ciebie najważniejszy?",
+    "options": ["Swoboda", "Czułość", "Brak pośpiechu", "Poczucie bezpieczeństwa"]
+  },
+  {
+    "text": "Na co masz większą ochotę, kiedy chcesz poczuć, że dzień jednak miał sens?",
+    "options": ["Zamknąć jedną ważną sprawę", "Usiąść spokojnie razem", "Zrobić coś miłego", "Uprościć resztę planu"]
+  },
+  {
+    "text": "Co najłatwiej sprawia, że atmosfera między wami robi się lżejsza?",
+    "options": ["Życzliwość", "Żart", "Dotyk", "Zmiana tonu rozmowy"]
+  },
+  {
+    "text": "Jakiego rodzaju wspólne wspomnienia najchętniej byś mnożył?",
+    "options": ["Małe i częste", "Spontaniczne", "Domowe", "Takie, do których łatwo wrócić"]
+  },
+  {
+    "text": "Gdy życie przyspiesza, co najbardziej chcesz wtedy chronić między wami?",
+    "options": ["Spokojny ton", "Czas tylko dla siebie", "Poczucie drużyny", "Zwykłą czułość"]
+  },
+  {
+    "text": "Co częściej robi ci prawdziwy odpoczynek: ucisza czy dodaje energii?",
+    "options": ["Bardziej ucisza", "Bardziej dodaje energii", "Najpierw ucisza, potem wzmacnia", "To zależy od dnia"]
+  },
+  {
+    "text": "Który rodzaj prostego planu daje ci najwięcej satysfakcji w tygodniu?",
+    "options": ["Jedna rzecz tylko dla nas", "Jedna rzecz tylko dla mnie", "Jeden spokojny wieczór", "Jedno małe wyjście"]
+  },
+  {
+    "text": "Jak najczęściej budujesz sobie dobry nastrój jeszcze zanim dzień się rozkręci?",
+    "options": ["Spokojnym startem", "Małym rytuałem", "Ruchem", "Kontaktem z kimś bliskim"]
+  },
+  {
+    "text": "Co w relacji częściej wygrywa u ciebie nad spektakularnością?",
+    "options": ["Stałość", "Delikatność", "Uważność", "Praktyczna dobroć"]
+  },
+  {
+    "text": "Jakiego rodzaju wspólne zmęczenie jest dla ciebie najbardziej znośne?",
+    "options": ["Po dobrym dniu", "Po ruchu", "Po śmiechu", "Po czymś zrobionym razem"]
+  },
+  {
+    "text": "Co częściej wybierasz, gdy trzeba odzyskać dobry klimat po chaotycznym dniu?",
+    "options": ["Wyjść na chwilę", "Usiąść i odetchnąć", "Zjeść coś razem", "Odłożyć wszystko inne"]
+  },
+  {
+    "text": "Która wersja wieczoru jest dla ciebie najbardziej sycąca emocjonalnie?",
+    "options": ["Lekka", "Spokojna", "Czuła", "Z poczuciem, że byliśmy naprawdę razem"]
+  },
+  {
+    "text": "Na czym najłatwiej buduje się twoje poczucie „u nas jest dobrze”?",
+    "options": ["Na drobiazgach", "Na szacunku", "Na codziennym spokoju", "Na tym, że nie trzeba wiele udawać"]
+  },
+  {
+    "text": "Co wolisz dostać od bliskiej osoby po trudniejszym tygodniu?",
+    "options": ["Ciepło", "Odciążenie", "Czas", "Jedną prostą przyjemność"]
+  },
+  {
+    "text": "Jakiego rodzaju wspólne wybory najbardziej pokazują ci zgodność charakterów?",
+    "options": ["Te codzienne", "Te w stresie", "Te finansowe", "Te dotyczące odpoczynku"]
+  },
+  {
+    "text": "Który zwykły nawyk ma największą szansę poprawić waszą jakość życia bez wielkiej rewolucji?",
+    "options": ["Jedzenie razem", "Mniej ekranów wieczorem", "Krótki spacer", "Lepsze dogadywanie planu dnia"]
+  },
+  {
+    "text": "Co częściej sprawia, że masz ochotę zostać z kimś na dłużej niż tylko na dobry moment?",
+    "options": ["Spokój", "Poczucie bezpieczeństwa", "Łatwość rozmowy", "To, że codzienność też jest dobra"]
+  },
+  {
+    "text": "Jaką rzecz najłatwiej wybaczasz, jeśli wiesz, że ktoś naprawdę ma dobre intencje?",
+    "options": ["Chaotyczność", "Gorszy humor", "Spóźnienie", "Niefortunne słowa w stresie"]
+  },
+  {
+    "text": "Co najczęściej daje ci poczucie, że dobrze wybraliście sposób na wspólne życie?",
+    "options": ["Jest nam lżej razem", "Można być sobą", "Umiecie wracać do porozumienia", "Zwykłe dni są w porządku"]
+  },
+  {
+    "text": "Który rodzaj wspólnego popołudnia działa na ciebie najbardziej kojąco?",
+    "options": ["Bez planu", "Z małym planem i bez pośpiechu", "Poza domem", "W bardzo domowym klimacie"]
+  },
+  {
+    "text": "Jakiego rodzaju codzienna pewność jest dla ciebie najcenniejsza?",
+    "options": ["Że można porozmawiać", "Że można na sobie polegać", "Że jest czułość", "Że nie trzeba zgadywać intencji"]
+  },
+  {
+    "text": "Co najchętniej wpuściłbyś do waszej codzienności częściej niż teraz?",
+    "options": ["Luz", "Uważność", "Śmiech", "Chwile tylko dla siebie"]
+  },
+  {
+    "text": "Który rodzaj wspólnej decyzji najczęściej kończy się u ciebie największą satysfakcją?",
+    "options": ["Rozsądna i spokojna", "Odważna, ale wspólna", "Prosta i życiowa", "Taka, po której oboje czują ulgę"]
+  },
+  {
+    "text": "Co najbardziej pomaga ci uwierzyć, że dobra relacja nie musi być głośna, żeby była mocna?",
+    "options": ["Spokój na co dzień", "Stałość gestów", "Łatwość wracania do siebie", "Drobna czułość bez scenariusza"]
+  },
+  {
+    "text": "Po czym najszybciej poznajesz, że z kimś naprawdę dobrze ci się układa, nawet bez wielkich deklaracji?",
+    "options": ["Po lekkości rozmowy", "Po spokojnej codzienności", "Po tym, że łatwo się dogadać", "Po poczuciu, że nic nie trzeba udawać"]
+  }
+]

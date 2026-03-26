@@ -20,6 +20,8 @@ model User {
   friendedBy   Friendship[] @relation("FriendOf")
   battleshipGamesAsPlayerOne BattleshipGame[] @relation("BattleshipPlayerOne")
   battleshipGamesAsPlayerTwo BattleshipGame[] @relation("BattleshipPlayerTwo")
+  coupleQaGamesAsPlayerOne   CoupleQaGame[]   @relation("CoupleQaPlayerOne")
+  coupleQaGamesAsPlayerTwo   CoupleQaGame[]   @relation("CoupleQaPlayerTwo")
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
@@ -71,6 +73,34 @@ model BattleshipGame {
   updatedAt      DateTime @updatedAt
   playerOne      User?    @relation("BattleshipPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
   playerTwo      User?    @relation("BattleshipPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
+
+  @@index([playerOneId])
+  @@index([playerTwoId])
+}
+
+model CoupleQaGame {
+  id                    String   @id @default(cuid())
+  roomCode              String   @unique
+  status                String
+  playerOneId           String?
+  playerTwoId           String?
+  playerOneRoomPoints   Int      @default(0)
+  playerTwoRoomPoints   Int      @default(0)
+  compatibilityScore    Int      @default(0)
+  roundIndex            Int      @default(0)
+  questionOrder         String?
+  playerOneAnswer       Int?
+  playerTwoAnswer       Int?
+  playerOneJoined       Boolean  @default(false)
+  playerTwoJoined       Boolean  @default(false)
+  questionStartedAt     DateTime?
+  lastMatch             Boolean?
+  roundResolvedAt       DateTime?
+  rewardGranted         Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  playerOne             User?    @relation("CoupleQaPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
+  playerTwo             User?    @relation("CoupleQaPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
 
   @@index([playerOneId])
   @@index([playerTwoId])

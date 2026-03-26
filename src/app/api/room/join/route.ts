@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { normalizeRoomCode, roomHasCapacity } from "@/lib/room";
+import { resetRoomIfEmpty } from "@/lib/room-cleanup";
+import { roomHasCapacity } from "@/lib/room";
+import { normalizeRoomCode } from "@/lib/room-code";
 import { roomJoinSchema } from "@/lib/validations";
 import type { AuthResponse } from "@/types/auth";
 
@@ -46,12 +48,22 @@ export async function POST(request: Request) {
       );
     }
 
+    const currentUser = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      select: { currentRoomCode: true },
+    });
+    const previousRoomCode = currentUser?.currentRoomCode ?? null;
+
     await prisma.user.update({
       where: { id: session.user.id },
       data: {
         currentRoomCode: roomCode,
       },
     });
+
+    if (previousRoomCode !== roomCode) {
+      await resetRoomIfEmpty(previousRoomCode);
+    }
 
     return NextResponse.json<AuthResponse>({
       success: true,

@@ -10,7 +10,7 @@ import {
   BATTLESHIP_SHIP_LENGTHS,
   type BattleshipCellState,
 } from "@/lib/battleships";
-import { formatRoomCode } from "@/lib/room";
+import { formatRoomCode } from "@/lib/room-code";
 import type { AuthResponse } from "@/types/auth";
 
 type BattleshipStatus = "waiting" | "setup" | "playing" | "finished";

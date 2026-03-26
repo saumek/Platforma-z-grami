@@ -6,12 +6,14 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { formatRoomCode } from "@/lib/room-code";
 import type { AuthResponse } from "@/types/auth";
 
 type ProfileScreenProps = {
   displayName: string;
   bio: string;
   avatarPath: string | null;
+  currentRoomCode: string | null;
   hasJoinedRoom: boolean;
 };
 
@@ -19,6 +21,7 @@ export function ProfileScreen({
   displayName,
   bio,
   avatarPath,
+  currentRoomCode,
   hasJoinedRoom,
 }: ProfileScreenProps) {
   const router = useRouter();
@@ -77,6 +80,12 @@ export function ProfileScreen({
 
   return (
     <div className="profile-screen bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/12 blur-[110px]" />
+        <div className="absolute top-[34%] -left-16 h-56 w-56 rounded-full bg-secondary/8 blur-[100px]" />
+        <div className="absolute bottom-20 right-[-4rem] h-64 w-64 rounded-full bg-primary-dim/10 blur-[120px]" />
+      </div>
+
       <header className="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
         <div className="flex items-center justify-between px-6 h-16 w-full max-w-md mx-auto">
           <button
@@ -95,114 +104,163 @@ export function ProfileScreen({
         </div>
       </header>
 
-      <main className="pt-24 pb-32 px-6 max-w-md mx-auto min-h-screen">
-        <section className="mb-10">
-          <div className="flex flex-col items-center">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500" />
-              <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-high neon-glow-primary bg-surface-container-highest flex items-center justify-center">
-                {avatarPath ? (
-                  <Image
-                    alt="Avatar użytkownika"
-                    className="w-full h-full object-cover"
-                    src={avatarPath}
-                    width={128}
-                    height={128}
-                  />
-                ) : (
-                  <span
-                    className="material-symbols-outlined text-primary text-6xl"
-                    style={{ fontVariationSettings: '"FILL" 1' }}
-                  >
-                    person
-                  </span>
-                )}
+      <main className="pt-24 pb-32 px-6 max-w-md mx-auto min-h-screen space-y-8">
+        <section className="relative overflow-hidden rounded-[2.25rem] bg-surface-container px-6 py-7 shadow-[0_22px_55px_rgba(0,0,0,0.24)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(182,160,255,0.16),transparent_46%),linear-gradient(135deg,rgba(255,255,255,0.03),transparent_60%)]" />
+          <div className="relative">
+            <div className="flex items-start justify-between gap-5">
+              <div className="flex-1">
+                <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-primary/75">
+                  Twoje konto
+                </p>
+                <h2 className="mt-3 max-w-[8ch] font-headline text-[2.75rem] leading-[0.95] font-black tracking-[-0.06em] text-on-background">
+                  {displayName}
+                </h2>
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-surface-container-high px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant">
+                    <span className={`h-2.5 w-2.5 rounded-full ${hasJoinedRoom ? "bg-secondary shadow-[0_0_10px_rgba(0,227,253,0.55)]" : "bg-outline-variant"}`} />
+                    {hasJoinedRoom ? `W pokoju${currentRoomCode ? ` ${formatRoomCode(currentRoomCode)}` : ""}` : "Poza pokojem"}
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative group shrink-0">
+                <div className="absolute -inset-1.5 bg-gradient-to-r from-primary via-secondary to-primary rounded-full blur-md opacity-40 transition duration-500 group-hover:opacity-70" />
+                <div className="relative w-28 h-28 rounded-full overflow-hidden border-4 border-surface-container-high neon-glow-primary bg-surface-container-highest flex items-center justify-center shadow-[0_20px_40px_rgba(0,0,0,0.28)]">
+                  {avatarPath ? (
+                    <Image
+                      alt="Avatar użytkownika"
+                      className="w-full h-full object-cover"
+                      src={avatarPath}
+                      width={112}
+                      height={112}
+                    />
+                  ) : (
+                    <span
+                      className="material-symbols-outlined text-primary text-5xl"
+                      style={{ fontVariationSettings: '"FILL" 1' }}
+                    >
+                      person
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col items-center text-center">
-              <h2 className="font-headline text-3xl font-extrabold tracking-tight text-on-background">
-                {displayName}
-              </h2>
-              <button
-                className="mt-3 px-8 py-2 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors active:scale-95 border border-outline-variant/20"
-                type="button"
-                onClick={() => router.push("/profile/edit")}
-              >
-                Edytuj
-              </button>
-            </div>
+            <button
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-surface-container-highest px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant border border-outline-variant/20 hover:text-primary transition-colors active:scale-95"
+              type="button"
+              onClick={() => router.push("/profile/edit")}
+            >
+              <span className="material-symbols-outlined text-base">edit</span>
+              Edytuj profil
+            </button>
           </div>
         </section>
 
-        <section className="mb-8 p-6 rounded-xl bg-surface-container-low relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl" />
-          <h3 className="font-headline text-sm font-bold text-primary mb-3 flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">info</span> Bio
-          </h3>
-          <p className="text-on-surface-variant leading-relaxed text-sm font-body">{bio}</p>
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-headline text-sm font-bold text-primary uppercase tracking-[0.2em]">
+              O Tobie
+            </h3>
+            <span className="h-px flex-1 ml-4 bg-outline-variant/30" />
+          </div>
+          <p className="max-w-[34ch] text-[15px] leading-8 text-on-surface-variant">
+            {bio}
+          </p>
         </section>
 
-        <section className="mb-8 p-6 rounded-xl bg-surface-container relative overflow-hidden">
-          <h3 className="font-headline text-sm font-bold text-secondary mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">videogame_asset</span> Kod pokoju
-          </h3>
-          <div className="space-y-4">
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-headline text-sm font-bold text-secondary uppercase tracking-[0.2em]">
+              Pokój gry
+            </h3>
+            <span className="h-px flex-1 ml-4 bg-outline-variant/30" />
+          </div>
+
+          <div className="space-y-3">
             <div className="relative group">
               <input
-                className="w-full bg-surface-container-highest border-none rounded-lg px-4 py-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary/50 transition-all outline-none font-body"
-                placeholder="Wpisz kod..."
+                className="w-full bg-surface-container-high border-none rounded-[1.5rem] px-5 py-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-secondary/50 transition-all outline-none font-body"
+                placeholder="Wpisz kod pokoju..."
                 type="text"
                 value={roomCode}
                 onChange={(event) => setRoomCode(event.target.value)}
               />
               <div className="absolute right-4 top-1/2 -translate-y-1/2 text-outline-variant">
-                <span className="material-symbols-outlined">key</span>
+                <span className="material-symbols-outlined">vpn_key</span>
               </div>
             </div>
+
             <button
-              className="w-full py-4 bg-gradient-to-r from-secondary-container to-secondary-dim text-on-secondary-container font-bold rounded-lg shadow-lg shadow-secondary/10 hover:shadow-secondary/20 active:scale-[0.98] transition-all font-headline disabled:opacity-70"
+              className="w-full py-4 bg-gradient-to-r from-secondary-container to-secondary-dim text-on-secondary-container font-bold rounded-[1.5rem] shadow-lg shadow-secondary/10 hover:shadow-secondary/20 active:scale-[0.98] transition-all font-headline disabled:opacity-70"
               type="button"
               onClick={handleJoinRoom}
               disabled={isJoiningRoom}
             >
               {isJoiningRoom ? "Dołączanie..." : "Dołącz do gry"}
             </button>
+
             {roomError ? <p className="text-sm text-error">{roomError}</p> : null}
           </div>
         </section>
 
-        <div className="grid grid-cols-2 gap-4 mb-12">
-          <div className="p-4 rounded-xl bg-surface-container-low flex flex-col items-center justify-center text-center group cursor-pointer hover:bg-surface-container-high transition-colors aspect-square">
-            <span className="material-symbols-outlined text-primary mb-2 text-3xl">
-              emoji_events
-            </span>
-            <span className="text-xs font-bold uppercase tracking-tighter font-headline">
-              Osiągnięcia
-            </span>
+        <section className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h3 className="font-headline text-sm font-bold text-on-surface uppercase tracking-[0.2em]">
+              Szybkie przejścia
+            </h3>
+            <span className="h-px flex-1 ml-4 bg-outline-variant/30" />
           </div>
-          <Link
-            className="p-4 rounded-xl bg-surface-container-low flex flex-col items-center justify-center text-center group cursor-pointer hover:bg-surface-container-high transition-colors aspect-square"
-            href="/friends"
-          >
-            <span className="material-symbols-outlined text-secondary mb-2 text-3xl">
-              group
-            </span>
-            <span className="text-xs font-bold uppercase tracking-tighter font-headline">
-              Znajomi
-            </span>
-          </Link>
-        </div>
 
-        <section className="flex justify-center pt-4">
+          <div className="space-y-3">
+            <button
+              className="w-full rounded-[1.6rem] bg-surface-container-low px-5 py-5 flex items-center justify-between text-left hover:bg-surface-container-high transition-colors active:scale-[0.99]"
+              type="button"
+            >
+              <div className="flex items-center gap-4">
+                <span className="material-symbols-outlined text-primary text-2xl">emoji_events</span>
+                <div>
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-primary/70">
+                    Rozwój
+                  </span>
+                  <span className="block mt-1 text-sm font-black uppercase tracking-tight font-headline">
+                    Osiągnięcia
+                  </span>
+                </div>
+              </div>
+              <span className="material-symbols-outlined text-outline-variant">arrow_forward</span>
+            </button>
+
+            <Link
+              className="w-full rounded-[1.6rem] bg-surface-container-low px-5 py-5 flex items-center justify-between text-left hover:bg-surface-container-high transition-colors active:scale-[0.99]"
+              href="/friends"
+            >
+              <div className="flex items-center gap-4">
+                <span className="material-symbols-outlined text-secondary text-2xl">group</span>
+                <div>
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.22em] text-secondary/80">
+                    Relacje
+                  </span>
+                  <span className="block mt-1 text-sm font-black uppercase tracking-tight font-headline">
+                    Znajomi
+                  </span>
+                </div>
+              </div>
+              <span className="material-symbols-outlined text-outline-variant">arrow_forward</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="pt-2">
           <button
-            className="flex items-center gap-3 px-10 py-4 rounded-full border border-outline-variant/30 text-error-dim font-bold hover:bg-error-container/10 active:scale-95 transition-all font-headline disabled:opacity-70"
+            className="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-full border border-outline-variant/30 text-error-dim font-bold hover:bg-error-container/10 active:scale-95 transition-all font-headline disabled:opacity-70 bg-surface-container-low/60"
             type="button"
             onClick={handleLogout}
             disabled={isLoggingOut}
           >
             <span className="material-symbols-outlined">logout</span>
-            Wyloguj
+            {isLoggingOut ? "Wylogowywanie..." : "Wyloguj"}
           </button>
         </section>
       </main>
