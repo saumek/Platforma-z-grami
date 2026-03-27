@@ -4,6 +4,7 @@ import { getCurrentSession } from "@/lib/auth";
 import { getRoomScoreTotals } from "@/lib/couple-qa";
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
+import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
 import type { AuthResponse } from "@/types/auth";
 
 type RoomStateResponse =
@@ -58,6 +59,8 @@ export async function GET() {
         { status: 409 },
       );
     }
+
+    await pruneInactiveUsersFromRoom(currentUser.currentRoomCode);
 
     const roomUsers = await prisma.user.findMany({
       where: { currentRoomCode: currentUser.currentRoomCode },

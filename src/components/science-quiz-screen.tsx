@@ -2,23 +2,26 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { formatRoomCode } from "@/lib/room-code";
+import {
+  type ScienceQuizCategory,
+  SCIENCE_QUIZ_CATEGORY_LABELS,
+} from "@/lib/science-quiz-categories";
 import type { AuthResponse } from "@/types/auth";
 
-type CoupleQaStatus = "waiting" | "question" | "round_result" | "finished";
+type ScienceQuizStatus = "waiting" | "question" | "round_result" | "finished";
 
-type CoupleQaState = {
+type ScienceQuizState = {
   roomCode: string;
-  status: CoupleQaStatus;
+  category: ScienceQuizCategory;
+  categoryLabel: string;
+  status: ScienceQuizStatus;
   currentUserId: string;
   roundIndex: number;
   totalRounds: number;
-  compatibilityScore: number;
-  compatibilityThreshold: number;
-  compatibilityFill: number;
   question: {
     text: string;
     options: string[];
@@ -27,31 +30,35 @@ type CoupleQaState = {
     id: string;
     name: string;
     avatarPath: string | null;
-    roomPoints: number;
+    score: number;
     answered: boolean;
   } | null;
   opponent: {
     id: string;
     name: string;
     avatarPath: string | null;
-    roomPoints: number;
+    score: number;
     answered: boolean;
   } | null;
   currentAnswer: number | null;
   opponentAnswered: boolean;
   questionEndsAt: number | null;
-  lastMatch: boolean | null;
   resultRevealedUntil: number | null;
-  isEligibleForBonus: boolean;
+  revealedCorrectIndex: number | null;
+  currentPlayerCorrect: boolean | null;
+  opponentCorrect: boolean | null;
+  winnerId: string | null;
 };
 
-type CoupleQaScreenProps = {
+type ScienceQuizScreenProps = {
   roomCode: string;
+  category: ScienceQuizCategory;
   hasJoinedRoom: boolean;
-  initialState: CoupleQaState | null;
+  initialState: ScienceQuizState | null;
 };
 
-const QUESTION_TIMER_SECONDS = 15;
+const QUESTION_TIMER_SECONDS = 30;
+
 function Avatar({
   src,
   alt,
@@ -62,9 +69,7 @@ function Avatar({
   accent: "cyan" | "pink";
 }) {
   const ringClass =
-    accent === "cyan"
-      ? "from-secondary to-primary"
-      : "from-error to-primary";
+    accent === "cyan" ? "from-secondary to-primary" : "from-error to-primary";
 
   return (
     <div className={`h-12 w-12 rounded-full bg-gradient-to-tr p-0.5 ${ringClass}`}>
@@ -85,71 +90,70 @@ function Avatar({
   );
 }
 
-function HeartMeter({
-  fill,
+function ScoreBoard({
+  leftScore,
+  rightScore,
 }: {
-  fill: number;
+  leftScore: number;
+  rightScore: number;
 }) {
-  const clampedFill = Math.max(0, Math.min(1, fill));
-  const reveal = `${(1 - clampedFill) * 100}%`;
-
   return (
-    <div className="relative flex items-center justify-center">
-      <span className="material-symbols-outlined absolute text-4xl text-error/20">favorite</span>
-      <span
-        className="material-symbols-outlined compat-heart-beat text-4xl text-error drop-shadow-[0_0_8px_rgba(255,110,132,0.6)] transition-[clip-path] duration-700 ease-out"
-        style={{
-          fontVariationSettings: '"FILL" 1',
-          clipPath: `inset(${reveal} 0 0 0)`,
-        }}
-      >
-        favorite
+    <div className="flex items-center justify-center gap-2 rounded-full bg-surface-container-low px-4 py-2">
+      <span className="font-headline text-2xl font-bold tracking-tight text-secondary">
+        {leftScore}
       </span>
-      <div className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#00e3fd]" />
+      <span className="font-headline text-lg font-bold text-on-surface-variant">:</span>
+      <span className="font-headline text-2xl font-bold tracking-tight text-error">
+        {rightScore}
+      </span>
     </div>
   );
 }
 
 function ResultScreen({
-  score,
-  totalRounds,
-  isEligibleForBonus,
+  currentPlayer,
+  opponent,
+  winnerId,
+  categoryLabel,
   onRematch,
   onBackToMenu,
   isRestarting,
 }: {
-  score: number;
-  totalRounds: number;
-  isEligibleForBonus: boolean;
+  currentPlayer: ScienceQuizState["currentPlayer"];
+  opponent: ScienceQuizState["opponent"];
+  winnerId: string | null;
+  categoryLabel: string;
   onRematch: () => void;
   onBackToMenu: () => void;
   isRestarting: boolean;
 }) {
-  const headline = isEligibleForBonus ? "Pełen match" : "Może rewanż?";
-  const body =
-    score >= 9
-      ? "Weszliście w ten sam rytm niemal przez całą serię."
-      : score >= 8
-        ? "Bardzo wysoka zgodność. Oboje zgarnęliście punkt pokoju."
-        : score >= 5
-          ? "Jest chemia, ale jeszcze zostało trochę nieprzewidywalności."
-          : "Tym razem bardziej kontrast niż pełna kompatybilność.";
+  const isDraw =
+    (currentPlayer?.score ?? 0) === (opponent?.score ?? 0);
+  const won = currentPlayer?.id && currentPlayer.id === winnerId;
+  const headline = isDraw ? "Remis" : won ? "Wygrywasz" : "Przegrywasz";
+  const body = isDraw
+    ? "Obie osoby kończą quiz z tym samym wynikiem."
+    : won
+      ? "Masz więcej poprawnych odpowiedzi w tej serii."
+      : "Tym razem przeciwnik zdobył więcej punktów.";
 
   return (
     <main className="flex min-h-screen flex-col bg-surface-dim px-8 pb-32 pt-28 text-on-surface">
       <div className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center">
         <div className="relative mb-8 flex h-28 w-28 items-center justify-center rounded-full bg-surface-container-low">
-          <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,110,132,0.18),transparent_68%)] blur-xl" />
+          <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(0,227,253,0.18),transparent_68%)] blur-xl" />
           <span
-            className="material-symbols-outlined compat-bounce relative z-10 text-[4.5rem] text-error drop-shadow-[0_0_14px_rgba(255,110,132,0.35)]"
+            className={`material-symbols-outlined compat-bounce relative z-10 text-[4.5rem] drop-shadow-[0_0_14px_rgba(0,227,253,0.3)] ${
+              isDraw ? "text-primary" : won ? "text-secondary" : "text-error"
+            }`}
             style={{ fontVariationSettings: '"FILL" 1' }}
           >
-            favorite
+            {isDraw ? "balance" : won ? "military_tech" : "close"}
           </span>
         </div>
 
         <p className="mb-3 font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">
-          Wynik końcowy
+          {categoryLabel}
         </p>
         <h1 className="compat-bounce text-center font-headline text-5xl font-bold tracking-tight text-on-surface">
           {headline}
@@ -162,16 +166,11 @@ function ResultScreen({
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="font-label text-[10px] uppercase tracking-[0.18em] text-on-surface-variant">
-                Zgodność
+                Wynik końcowy
               </p>
               <p className="mt-2 font-headline text-4xl font-bold text-on-surface">
-                {score}/{totalRounds}
+                {currentPlayer?.score ?? 0} : {opponent?.score ?? 0}
               </p>
-            </div>
-            <div className="rounded-full bg-surface-container-high px-3 py-2">
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-tertiary-dim">
-                {isEligibleForBonus ? "+1 pkt pokój" : "bez bonusu"}
-              </span>
             </div>
           </div>
         </div>
@@ -199,20 +198,21 @@ function ResultScreen({
   );
 }
 
-export function CoupleQaScreen({
+export function ScienceQuizScreen({
   roomCode,
+  category,
   hasJoinedRoom,
   initialState,
-}: CoupleQaScreenProps) {
+}: ScienceQuizScreenProps) {
   const router = useRouter();
-  const [state, setState] = useState<CoupleQaState | null>(initialState);
+  const [state, setState] = useState<ScienceQuizState | null>(initialState);
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
 
-  async function refreshState() {
-    const response = await fetch("/api/games/couple-qa/state", {
+  const refreshState = useCallback(async () => {
+    const response = await fetch(`/api/games/science-quiz/state?category=${category}`, {
       method: "GET",
       cache: "no-store",
     });
@@ -223,16 +223,22 @@ export function CoupleQaScreen({
 
     const data = (await response.json()) as {
       success: boolean;
-      state?: CoupleQaState;
+      state?: ScienceQuizState;
     };
 
     if (data.success && data.state) {
       setState(data.state);
     }
-  }
+  }, [category]);
 
   useEffect(() => {
-    void fetch("/api/games/couple-qa/start", { method: "POST" })
+    void fetch("/api/games/science-quiz/start", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ category }),
+    })
       .then(async (response) => {
         if (!response.ok) {
           return;
@@ -240,7 +246,7 @@ export function CoupleQaScreen({
 
         const data = (await response.json()) as {
           success: boolean;
-          state?: CoupleQaState;
+          state?: ScienceQuizState;
         };
 
         if (data.success && data.state) {
@@ -250,7 +256,7 @@ export function CoupleQaScreen({
       .catch(() => {
         // Keep current state if warm-up request fails.
       });
-  }, []);
+  }, [category]);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -269,7 +275,7 @@ export function CoupleQaScreen({
       window.clearInterval(intervalId);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []);
+  }, [refreshState]);
 
   useEffect(() => {
     if (state?.status !== "question") {
@@ -288,8 +294,7 @@ export function CoupleQaScreen({
       setTimeLeft(nextTime);
     }, 100);
 
-    const initialTime = Math.max(0, (endsAt - Date.now()) / 1000);
-    setTimeLeft(initialTime);
+    setTimeLeft(Math.max(0, (endsAt - Date.now()) / 1000));
 
     return () => {
       window.clearInterval(intervalId);
@@ -314,7 +319,7 @@ export function CoupleQaScreen({
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/games/couple-qa/answer", {
+      const response = await fetch("/api/games/science-quiz/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -339,7 +344,7 @@ export function CoupleQaScreen({
     setIsRestarting(true);
 
     try {
-      const response = await fetch("/api/games/couple-qa/restart", {
+      const response = await fetch("/api/games/science-quiz/restart", {
         method: "POST",
       });
 
@@ -350,7 +355,7 @@ export function CoupleQaScreen({
         await refreshState();
       }
     } catch {
-      setStatusMessage("Nie udało się przygotować rewanżu.");
+      setStatusMessage("Nie udało się przygotować nowego quizu.");
     } finally {
       setIsRestarting(false);
     }
@@ -360,7 +365,7 @@ export function CoupleQaScreen({
     setIsRestarting(true);
 
     try {
-      await fetch("/api/games/couple-qa/restart", {
+      await fetch("/api/games/science-quiz/restart", {
         method: "POST",
       });
     } catch {
@@ -374,9 +379,10 @@ export function CoupleQaScreen({
   if (state?.status === "finished") {
     return (
       <ResultScreen
-        score={state.compatibilityScore}
-        totalRounds={state.totalRounds}
-        isEligibleForBonus={state.isEligibleForBonus}
+        currentPlayer={state.currentPlayer}
+        opponent={state.opponent}
+        winnerId={state.winnerId}
+        categoryLabel={state.categoryLabel}
         onRematch={handleRestart}
         onBackToMenu={handleBackToMenu}
         isRestarting={isRestarting}
@@ -404,7 +410,10 @@ export function CoupleQaScreen({
               </span>
             </div>
 
-            <HeartMeter fill={state?.compatibilityFill ?? 0} />
+            <ScoreBoard
+              leftScore={state?.currentPlayer?.score ?? 0}
+              rightScore={state?.opponent?.score ?? 0}
+            />
 
             <div className="flex flex-col items-center gap-1">
               <Avatar
@@ -427,6 +436,12 @@ export function CoupleQaScreen({
           <div className="absolute -bottom-20 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-[80px]" />
 
           <div className="relative z-10 text-center">
+            <div className="mb-4 inline-block rounded-full bg-surface-container-high px-4 py-1">
+              <span className="font-label text-[11px] font-bold uppercase tracking-[0.15em] text-secondary">
+                {state?.categoryLabel ?? SCIENCE_QUIZ_CATEGORY_LABELS[category]}
+              </span>
+            </div>
+
             <div className="mb-6 inline-block rounded-full bg-surface-container-high px-4 py-1">
               <span className="font-label text-[11px] font-bold uppercase tracking-[0.15em] text-secondary">
                 Runda {Math.min(state?.roundIndex ?? 1, state?.totalRounds ?? 10)} /{" "}
@@ -436,7 +451,7 @@ export function CoupleQaScreen({
 
             <h1 className="px-2 font-headline text-3xl font-bold leading-tight tracking-tight text-on-surface">
               {state?.status === "waiting"
-                ? "Czekamy, aż druga osoba wejdzie do gry"
+                ? "Czekamy, aż druga osoba wejdzie do quizu"
                 : state?.question?.text ?? "Ładowanie pytania..."}
             </h1>
 
@@ -447,11 +462,11 @@ export function CoupleQaScreen({
         {state?.status === "waiting" ? (
           <div className="w-full max-w-md rounded-[2rem] bg-surface-container-low px-6 py-7 text-center">
             <p className="text-sm leading-6 text-on-surface-variant">
-              Gdy druga osoba otworzy tę grę, od razu zacznie się pierwsza runda i wylosuje się nowy zestaw pytań.
+              Gdy druga osoba otworzy ten quiz, wystartuje pierwsza runda i wspólny licznik 30 sekund.
             </p>
           </div>
         ) : (
-          <div className="grid w-full max-w-md grid-cols-2 gap-4">
+          <div className="flex w-full max-w-md flex-col gap-3">
             {state?.question?.options.map((option, index) => {
               const isSelected = state.currentAnswer === index;
               const isDisabled =
@@ -460,7 +475,7 @@ export function CoupleQaScreen({
               return (
                 <button
                   key={`${state.roundIndex}-${index}`}
-                  className={`group relative flex h-32 items-center justify-center rounded-lg bg-surface-container-low p-4 transition-all duration-300 active:scale-95 ${
+                  className={`group relative flex min-h-16 items-center gap-4 rounded-lg bg-surface-container-low px-5 py-4 text-left transition-all duration-300 active:scale-95 ${
                     isSelected ? "bg-surface-container-high shadow-[0_0_0_1px_rgba(0,227,253,0.25)]" : ""
                   }`}
                   type="button"
@@ -468,9 +483,12 @@ export function CoupleQaScreen({
                   disabled={isDisabled}
                 >
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-secondary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                  <div className="relative z-10 text-center">
-                    <span className="font-body text-sm font-semibold text-on-surface">{option}</span>
-                  </div>
+                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-container-high text-sm font-bold text-secondary">
+                    {String.fromCharCode(65 + index)}
+                  </span>
+                  <span className="relative z-10 font-body text-sm font-semibold text-on-surface">
+                    {option}
+                  </span>
                 </button>
               );
             })}
@@ -515,21 +533,26 @@ export function CoupleQaScreen({
             <div className="w-full max-w-sm rounded-[2rem] bg-surface-container-low px-6 py-7 text-center shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
               <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-surface-container-high">
                 <span
-                  className={`material-symbols-outlined text-3xl ${
-                    state.lastMatch ? "text-error" : "text-secondary"
-                  }`}
+                  className="material-symbols-outlined text-3xl text-secondary"
                   style={{ fontVariationSettings: '"FILL" 1' }}
                 >
-                  {state.lastMatch ? "favorite" : "compare_arrows"}
+                  quiz
                 </span>
               </div>
               <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface">
-                {state.lastMatch ? "Pełna zgodność" : "Różne odpowiedzi"}
+                {state.currentPlayerCorrect && state.opponentCorrect
+                  ? "Oboje punktujecie"
+                  : state.currentPlayerCorrect || state.opponentCorrect
+                    ? "Punkt dla jednej osoby"
+                    : "Bez punktu"}
               </h2>
               <p className="mt-3 text-sm leading-6 text-on-surface-variant">
-                {state.lastMatch
-                  ? "Serce się wypełniło, bo odpowiedzieliście tak samo."
-                  : "Tym razem wasze odpowiedzi się rozjechały."}
+                Poprawna odpowiedź:{" "}
+                {state.revealedCorrectIndex !== null
+                  ? `${String.fromCharCode(65 + state.revealedCorrectIndex)}. ${
+                      state.question?.options[state.revealedCorrectIndex] ?? ""
+                    }`
+                  : "brak"}
               </p>
               <p className="mt-4 text-xs uppercase tracking-[0.18em] text-tertiary-dim">
                 {currentAnswerLabel ?? "Odpowiedź zapisana"}

@@ -1,0 +1,2002 @@
+[
+  {
+    "text": "Jaką pracę trzeba wykonać, aby zwiększyć energię kinetyczną ciała z 20 J do 68 J?",
+    "options": [
+      "48 J",
+      "34 J",
+      "68 J",
+      "88 J"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Piłka o masie 0,5 kg porusza się z prędkością 6 m/s. Jaki ma pęd?",
+    "options": [
+      "12 kg·m/s",
+      "3 kg·m/s",
+      "1,5 kg·m/s",
+      "0,083 kg·m/s"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Dla satelity poruszającego się po orbicie kołowej wokół Ziemi, przy pominięciu oporu, stała pozostaje przede wszystkim...",
+    "options": [
+      "energia potencjalna i pęd jednocześnie równe zeru",
+      "kierunek wektora prędkości",
+      "wartość jego prędkości",
+      "odległość od wszystkich planet"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Przez opornik 12 Ω płynie prąd 0,5 A. Jakie jest napięcie na jego końcach?",
+    "options": [
+      "24 V",
+      "12,5 V",
+      "0,24 V",
+      "6 V"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jeśli prędkość rozchodzenia się fali nie zmienia się, a jej częstotliwość wzrasta dwukrotnie, to długość fali...",
+    "options": [
+      "maleje dwukrotnie",
+      "rośnie dwukrotnie",
+      "pozostaje taka sama",
+      "maleje czterokrotnie"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "W jakim położeniu przedmiotu zwierciadło wklęsłe daje obraz pozorny i powiększony?",
+    "options": [
+      "W środku krzywizny",
+      "Między ogniskiem a zwierciadłem",
+      "Za środkiem krzywizny",
+      "Dokładnie w ognisku"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Która jednostka w układzie SI jest równoważna ciśnieniu?",
+    "options": [
+      "J·s",
+      "kg/m",
+      "N/m^2",
+      "W/m"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Elektron wpada prostopadle do jednorodnego pola magnetycznego. Jaki tor będzie opisywał?",
+    "options": [
+      "Linię prostą",
+      "Parabolę",
+      "Spiralę o stałym promieniu bez składowej stycznej",
+      "Okrąg"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W ruchu harmonicznym prostym ciało przechodząc przez położenie równowagi ma...",
+    "options": [
+      "maksymalną wartość prędkości",
+      "maksymalne wychylenie",
+      "zerową energię kinetyczną",
+      "maksymalne przyspieszenie"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Okres wahadła matematycznego zależy od długości linki jak pierwiastek kwadratowy. Co stanie się z okresem po czterokrotnym zwiększeniu długości?",
+    "options": [
+      "Wzrośnie czterokrotnie",
+      "Wzrośnie dwukrotnie",
+      "Zmaleje dwukrotnie",
+      "Nie zmieni się"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Ciało o masie 2 kg podniesiono pionowo na wysokość 5 m. Przyjmując g = 10 m/s^2, o ile wzrosła jego energia potencjalna?",
+    "options": [
+      "25 J",
+      "50 J",
+      "100 J",
+      "10 J"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W transformatorze idealnym napięcie wtórne jest dziesięć razy mniejsze od pierwotnego. Jak zmienia się natężenie wtórne przy tej samej mocy?",
+    "options": [
+      "Jest dziesięć razy mniejsze",
+      "Nie zmienia się",
+      "Spada o połowę",
+      "Jest dziesięć razy większe"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Z prawa Archimedesa wynika, że siła wyporu działająca na zanurzone ciało jest równa...",
+    "options": [
+      "ciężarowi wypartej cieczy",
+      "masie ciała pomnożonej przez jego objętość",
+      "ciśnieniu hydrostatycznemu na dnie naczynia",
+      "sumie sił działających na ciecz"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaką wartość ma opór zastępczy dwóch oporników 4 Ω i 6 Ω połączonych szeregowo?",
+    "options": [
+      "2,4 Ω",
+      "10 Ω",
+      "24 Ω",
+      "5 Ω"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co zwiększa pojemność kondensatora płaskiego, jeśli pole okładek i odległość między nimi są stałe?",
+    "options": [
+      "Zmniejszenie ładunku na okładkach",
+      "Zamiana okładek na cieńsze",
+      "Wypełnienie go dielektrykiem o większej przenikalności",
+      "Podłączenie go do amperomierza"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Promień światła przechodzi z ośrodka gęstszego optycznie do rzadszego pod kątem większym od granicznego. Co zajdzie?",
+    "options": [
+      "Całkowita absorpcja promienia",
+      "Rozszczepienie na barwy",
+      "Brak zmiany kierunku",
+      "Całkowite wewnętrzne odbicie"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Gdy długość fali promieniowania elektromagnetycznego maleje, energia pojedynczego fotonu...",
+    "options": [
+      "rośnie",
+      "maleje",
+      "pozostaje stała",
+      "staje się równa zeru"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jednostką indukcji magnetycznej jest...",
+    "options": [
+      "weber na sekundę",
+      "tesla",
+      "kulomb",
+      "henr"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jeżeli wypadkowa siła działająca na ciało jest równa zeru, ciało może...",
+    "options": [
+      "wyłącznie spoczywać",
+      "zawsze poruszać się po okręgu",
+      "poruszać się ruchem jednostajnym prostoliniowym",
+      "zwiększać prędkość liniowo w czasie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Na wykresie p(V) pole pod krzywą przemiany gazowej odpowiada...",
+    "options": [
+      "jego temperaturze bezwzględnej",
+      "zmianie masy gazu",
+      "liczbie cząsteczek w próbce",
+      "pracy wykonanej przez gaz"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W którym ośrodku fala dźwiękowa nie może się rozchodzić?",
+    "options": [
+      "W próżni",
+      "W stali",
+      "W wodzie",
+      "W powietrzu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Amperomierz w obwodzie elektrycznym włącza się szeregowo, ponieważ mierzy...",
+    "options": [
+      "napięcie między zaciskami",
+      "natężenie prądu",
+      "opór wewnętrzny źródła",
+      "pojemność elektryczną"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Prawo odbicia światła mówi, że kąt odbicia jest...",
+    "options": [
+      "zawsze dwa razy większy od kąta padania",
+      "mierzony względem powierzchni, a nie normalnej",
+      "równy kątowi padania",
+      "niezależny od kąta padania"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Dla gazu doskonałego przy stałej temperaturze iloczyn p·V...",
+    "options": [
+      "rośnie liniowo z objętością",
+      "jest równy zeru",
+      "maleje proporcjonalnie do temperatury",
+      "pozostaje stały"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Moc urządzenia definiujemy jako...",
+    "options": [
+      "pracę wykonaną w jednostce czasu",
+      "iloraz energii i masy",
+      "sumę sił działających na układ",
+      "sprawność pomnożoną przez czas pracy"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jeżeli częstotliwość siły wymuszającej zrówna się z częstotliwością własną układu, obserwujemy...",
+    "options": [
+      "dyfrakcję",
+      "rezonans",
+      "polaryzację",
+      "interferencję destruktywną"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pierwsza zasada termodynamiki wiąże ze sobą...",
+    "options": [
+      "masę, pęd i temperaturę",
+      "ładunek, potencjał i napięcie",
+      "ciepło, pracę i zmianę energii wewnętrznej",
+      "natężenie pola i drogę swobodną"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który warunek musi spełniać satelita geostacjonarny?",
+    "options": [
+      "Musi poruszać się po orbicie polarnej",
+      "Musi mieć zerową prędkość względem Słońca",
+      "Musi znajdować się poza ziemską magnetosferą",
+      "Musi obiegać Ziemię nad równikiem z okresem doby"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Po spolaryzowaniu diody półprzewodnikowej w kierunku przewodzenia jej opór dynamiczny zwykle...",
+    "options": [
+      "maleje",
+      "rośnie do nieskończoności",
+      "nie zależy od napięcia",
+      "staje się ujemny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Przy przejściu światła z powietrza do szkła promień załamany ugina się...",
+    "options": [
+      "od normalnej",
+      "ku normalnej",
+      "równolegle do granicy ośrodków",
+      "dokładnie pod kątem 90°"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Która cecha fotonu jest poprawna?",
+    "options": [
+      "Ma ładunek dodatni równy +e",
+      "Spoczywa w polu magnetycznym",
+      "Nie ma ładunku elektrycznego",
+      "Jego prędkość w próżni zależy od koloru"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Źródło o sile elektromotorycznej 12 V ma opór wewnętrzny 1 Ω i zasila opornik 5 Ω. Jakie natężenie płynie w obwodzie?",
+    "options": [
+      "12 A",
+      "2,4 A",
+      "1 A",
+      "2 A"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "O barwie światła widzialnego w próżni decyduje przede wszystkim...",
+    "options": [
+      "częstotliwość",
+      "natężenie",
+      "polaryzacja",
+      "amplituda drgań źródła"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Dla różnych gazów w tej samej temperaturze średnia energia kinetyczna cząsteczek jest...",
+    "options": [
+      "większa dla gazu o większej masie molowej",
+      "taka sama",
+      "większa dla gazu pod większym ciśnieniem niezależnie od temperatury",
+      "równa zeru dla gazu szlachetnego"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jeśli prędkość ciała wzrośnie trzykrotnie, jego energia kinetyczna...",
+    "options": [
+      "wzrośnie trzykrotnie",
+      "zmaleje trzykrotnie",
+      "wzrośnie dziewięciokrotnie",
+      "nie zmieni się"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Dwukrotne zwiększenie odległości między dwoma masami spowoduje, że siła grawitacji między nimi...",
+    "options": [
+      "wzrośnie dwukrotnie",
+      "zmaleje dwukrotnie",
+      "pozostanie bez zmian",
+      "zmaleje czterokrotnie"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Cząstka alfa jest jądrem atomu...",
+    "options": [
+      "helu",
+      "wodoru",
+      "litu",
+      "berylu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "W doświadczeniu Younga zwiększenie odległości między szczelinami przy tej samej długości fali spowoduje, że prążki interferencyjne będą...",
+    "options": [
+      "położone dalej od siebie",
+      "położone bliżej siebie",
+      "całkiem zanikną",
+      "miały identyczne położenie jak wcześniej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jeżeli ciało przesuwa się po poziomej powierzchni ze stałą prędkością mimo działania siły ciągnącej, to siła tarcia kinetycznego...",
+    "options": [
+      "musi być większa od ciężaru",
+      "jest równa zeru",
+      "równoważy wartość siły ciągnącej",
+      "powoduje przyspieszanie ciała"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Ile dżuli odpowiada energii 1 kWh?",
+    "options": [
+      "3,6·10^3 J",
+      "360 J",
+      "1,0·10^6 J",
+      "3,6·10^6 J"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który pierwiastek ma konfigurację walencyjną kończącą się na 3p^5?",
+    "options": [
+      "chlor",
+      "siarka",
+      "argon",
+      "potas"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "W reakcji zobojętniania kwasu solnego roztworem NaOH powstaje sól o wzorze...",
+    "options": [
+      "Na2SO4",
+      "NaCl",
+      "NaNO3",
+      "Na2CO3"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaka hybrydyzacja atomów węgla występuje w cząsteczce etynu?",
+    "options": [
+      "sp^2",
+      "sp^3",
+      "sp",
+      "dsp^2"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który czynnik obniża energię aktywacji reakcji chemicznej?",
+    "options": [
+      "inhibitor",
+      "zwiększenie objętości naczynia",
+      "schłodzenie reagentów",
+      "katalizator"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jakie pH ma roztwór, w którym stężenie jonów H+ wynosi 10^-3 mol/dm^3?",
+    "options": [
+      "3",
+      "11",
+      "1",
+      "7"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Ile moli gazu zajmuje objętość 11,2 dm^3 w warunkach normalnych?",
+    "options": [
+      "1 mol",
+      "0,5 mola",
+      "2 mole",
+      "0,25 mola"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Która z podanych substancji tworzy między własnymi cząsteczkami silne wiązania wodorowe?",
+    "options": [
+      "metan",
+      "dwutlenek węgla",
+      "woda",
+      "siarkowodór"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Bardziej aktywny metal wrzucony do roztworu soli metalu mniej aktywnego może...",
+    "options": [
+      "utworzyć gaz szlachetny",
+      "zawsze ulec pasywacji",
+      "zamienić sól w zasadę bez reakcji redoks",
+      "wyprzeć go z roztworu"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaki stopień utlenienia ma siarka w cząsteczce H2SO4?",
+    "options": [
+      "+6",
+      "+4",
+      "-2",
+      "0"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który tlenek ma charakter amfoteryczny?",
+    "options": [
+      "SO3",
+      "Al2O3",
+      "CO2",
+      "Na2O"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "W reakcji estryfikacji alkoholu z kwasem karboksylowym produktami są...",
+    "options": [
+      "keton i wodór",
+      "aldehyd i tlen",
+      "ester i woda",
+      "alken i dwutlenek węgla"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Izotopy to atomy tego samego pierwiastka różniące się...",
+    "options": [
+      "liczbą protonów",
+      "ładunkiem jądra",
+      "liczbą powłok elektronowych",
+      "liczbą neutronów"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Zwiększenie ciśnienia w stanie równowagi gazowej przesuwa ją zwykle w stronę...",
+    "options": [
+      "mniejszej liczby moli gazu",
+      "większej liczby moli gazu",
+      "wyłącznie substratów stałych",
+      "wyłącznie produktów ciekłych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Roztwór buforowy można otrzymać z mieszaniny...",
+    "options": [
+      "mocnego kwasu i mocnej zasady w równych ilościach",
+      "słabego kwasu i soli tego kwasu z mocną zasadą",
+      "dwóch mocnych kwasów",
+      "wody destylowanej i soli obojętnej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wiązanie jonowe powstaje przede wszystkim wskutek...",
+    "options": [
+      "uwspólnienia jednej pary elektronowej",
+      "nakładania się chmur elektronowych bez zmiany ładunku",
+      "przeniesienia elektronu i przyciągania elektrostatycznego jonów",
+      "działania wyłącznie sił van der Waalsa"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Masa molowa węglanu wapnia CaCO3 wynosi w przybliżeniu...",
+    "options": [
+      "56 g/mol",
+      "84 g/mol",
+      "120 g/mol",
+      "100 g/mol"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Brunatny, drażniący gaz wydzielający się często przy reakcji miedzi ze stężonym kwasem azotowym(V) to...",
+    "options": [
+      "NO2",
+      "NH3",
+      "SO2",
+      "CO"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Elektroliza stopionego chlorku sodu prowadzi do otrzymania...",
+    "options": [
+      "sodu i tlenu",
+      "sodu i chloru",
+      "chlorowodoru i sodu",
+      "wodoru i chloru"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Cechą charakterystyczną alkenów jest obecność...",
+    "options": [
+      "grupy karboksylowej",
+      "pierścienia aromatycznego",
+      "wiązania podwójnego C=C",
+      "wiązania potrójnego C≡C"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który z halogenów jest najsilniejszym utleniaczem?",
+    "options": [
+      "jod",
+      "brom",
+      "chlor",
+      "fluor"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Rozpuszczono 20 g NaCl w 180 g wody. Jakie jest stężenie procentowe otrzymanego roztworu?",
+    "options": [
+      "10%",
+      "20%",
+      "9%",
+      "11,1%"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który proces jest endotermiczny?",
+    "options": [
+      "skraplanie pary wodnej",
+      "topnienie lodu",
+      "krzepnięcie rtęci",
+      "neutralizacja mocnego kwasu z mocną zasadą"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Stała Avogadra ma wartość zbliżoną do...",
+    "options": [
+      "9,81·10^2 mol^-1",
+      "3,14·10^8 mol^-1",
+      "6,02·10^23 mol^-1",
+      "1,60·10^-19 mol^-1"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W procesie redukcji cząstka chemiczna...",
+    "options": [
+      "oddaje elektrony",
+      "zawsze traci protony",
+      "musi być metalem",
+      "przyjmuje elektrony"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Rozpuszczalność większości gazów w wodzie wraz ze wzrostem temperatury...",
+    "options": [
+      "maleje",
+      "rośnie",
+      "nie ulega zmianie",
+      "najpierw rośnie, potem zawsze spada do zera"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Do wykrywania skrobi w próbce stosuje się najczęściej...",
+    "options": [
+      "wodę bromową",
+      "płyn Lugola",
+      "fenoloftaleinę",
+      "oranż metylowy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Polimery addycyjne różnią się od kondensacyjnych tym, że...",
+    "options": [
+      "zawsze zawierają tylko atomy węgla i wodoru",
+      "tworzą się wyłącznie z monomerów nasyconych",
+      "powstają bez wydzielania małocząsteczkowego produktu ubocznego",
+      "nie mogą być tworzywami sztucznymi"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Twardość przemijająca wody wynika głównie z obecności...",
+    "options": [
+      "chlorku sodu",
+      "azotanów potasu",
+      "krzemionki koloidalnej",
+      "wodorowęglanów wapnia i magnezu"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaką masę ma 0,25 mola wody?",
+    "options": [
+      "4,5 g",
+      "9 g",
+      "18 g",
+      "2,25 g"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który typ podpowłoki może pomieścić maksymalnie 6 elektronów?",
+    "options": [
+      "s",
+      "p",
+      "d",
+      "f"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wspólną cechą stężonego H2SO4 i stężonego HNO3 jest to, że...",
+    "options": [
+      "są lotnymi gazami w temperaturze pokojowej",
+      "zawsze odbarwiają wodę bromową",
+      "mogą działać jako utleniacze",
+      "nie reagują z metalami"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jednorodną mieszaninę co najmniej dwóch metali nazywamy...",
+    "options": [
+      "emulsją",
+      "zawiesiną",
+      "hydratem",
+      "stopem"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W szeregu homologicznym alkoholi kolejne związki różnią się zwykle o grupę...",
+    "options": [
+      "-CH2-",
+      "-OH",
+      "-COOH",
+      "-NH2"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaki stopień utlenienia ma tlen w nadtlenkach, na przykład w H2O2?",
+    "options": [
+      "-2",
+      "-1",
+      "0",
+      "+2"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który wskaźnik przyjmuje malinowe zabarwienie w środowisku zasadowym?",
+    "options": [
+      "oranż metylowy",
+      "błękit bromotymolowy",
+      "fenoloftaleina",
+      "skrobia"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Całkowite spalanie propanu prowadzi do powstania...",
+    "options": [
+      "CO i H2",
+      "sadzy i wodoru",
+      "metanolu i wody",
+      "CO2 i H2O"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Grafit przewodzi prąd elektryczny, ponieważ...",
+    "options": [
+      "ma zdelokalizowane elektrony w warstwach",
+      "zawiera wyłącznie wiązania jonowe",
+      "jest odmianą metalu przejściowego",
+      "jego atomy mogą łatwo emitować protony"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Pod wpływem światła chlor reagujący z metanem daje w pierwszym etapie substytucji między innymi...",
+    "options": [
+      "chloroform od razu jako jedyny produkt",
+      "chlorometan",
+      "metanol",
+      "etylen"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Ile protonów znajduje się w jądrze atomu sodu?",
+    "options": [
+      "23",
+      "12",
+      "11",
+      "10"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który popularny nawóz dostarcza roślinom głównie azotu amidowego?",
+    "options": [
+      "superfosfat",
+      "sól potasowa",
+      "wapno nawozowe",
+      "mocznik"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W którym organellum komórkowym zachodzi większość etapów oddychania tlenowego?",
+    "options": [
+      "w mitochondrium",
+      "w aparacie Golgiego",
+      "w lizosomie",
+      "w jąderku"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "W której fazie mitozy chromosomy ustawiają się w płaszczyźnie równikowej komórki?",
+    "options": [
+      "w telofazie",
+      "w metafazie",
+      "w interfazie",
+      "w cytokinezie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Określenie, że kod genetyczny jest zdegenerowany, oznacza, że...",
+    "options": [
+      "każdy kodon koduje kilka aminokwasów",
+      "kodony występują tylko u organizmów prostych",
+      "jeden aminokwas może być kodowany przez kilka różnych kodonów",
+      "informacja genetyczna zanika po translacji"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Denaturacja enzymu polega przede wszystkim na...",
+    "options": [
+      "rozerwaniu wszystkich wiązań peptydowych",
+      "usunięciu z cząsteczki każdego aminokwasu",
+      "zamianie enzymu w lipid",
+      "utracie jego prawidłowej struktury przestrzennej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Narządem, w którym dojrzewają limfocyty T, jest...",
+    "options": [
+      "grasica",
+      "śledziona",
+      "trzustka",
+      "szpik kostny żółty"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który hormon obniża stężenie glukozy we krwi człowieka?",
+    "options": [
+      "glukagon",
+      "insulina",
+      "adrenalina",
+      "kortyzol"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Crossing-over zachodzi podczas...",
+    "options": [
+      "anafazy mitozy",
+      "replikacji DNA w fazie G2",
+      "profazy I mejozy",
+      "cytokinezy u bakterii"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Głównym barwnikiem uczestniczącym bezpośrednio w fotosyntezie tlenowej jest...",
+    "options": [
+      "karoten",
+      "ksantofil",
+      "fikocyjanina",
+      "chlorofil a"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "U ptaków wymiana gazowa zachodzi przede wszystkim w...",
+    "options": [
+      "parabronchach płuc",
+      "workach powietrznych",
+      "jamie ciała",
+      "oskrzelach głównych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Bezpośrednim uniwersalnym nośnikiem energii chemicznej w komórce jest...",
+    "options": [
+      "DNA",
+      "ATP",
+      "glikogen",
+      "cholesterol"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Allele to...",
+    "options": [
+      "połączone chromosomy homologiczne",
+      "białka regulujące transkrypcję",
+      "różne wersje tego samego genu",
+      "cząsteczki budujące rybosom"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Prawo Hardy'ego-Weinberga opisuje sytuację, w której przy spełnieniu określonych warunków...",
+    "options": [
+      "mutacje zachodzą szybciej niż dobór",
+      "każdy osobnik ma identyczny genotyp",
+      "zanika zmienność fenotypowa",
+      "częstości alleli w populacji pozostają stałe"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Dobór naturalny faworyzujący fenotypy pośrednie nazywamy doborem...",
+    "options": [
+      "stabilizującym",
+      "rozrywającym",
+      "kierunkowym",
+      "sztucznym"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Podstawową jednostką strukturalno-funkcjonalną nerki jest...",
+    "options": [
+      "pęcherzyk płucny",
+      "nefron",
+      "neuryt",
+      "kanalik żółciowy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Tlen w krwi człowieka jest transportowany głównie dzięki...",
+    "options": [
+      "osoczu jako gazowi rozpuszczonemu w całości",
+      "płytkom krwi",
+      "hemoglobinie w erytrocytach",
+      "leukocytom wielojądrzastym"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Skurcz mięśnia poprzecznie prążkowanego zachodzi dzięki...",
+    "options": [
+      "wydłużaniu sarkomerów przez wapń",
+      "rozrywaniu błon włókien mięśniowych",
+      "syntezie nowych jąder komórkowych przy każdym skurczu",
+      "przesuwaniu się filamentów aktynowych i miozynowych"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Podwójne zapłodnienie u roślin okrytonasiennych prowadzi do powstania...",
+    "options": [
+      "zygoty i bielma",
+      "dwóch zarodków",
+      "wyłącznie łupiny nasiennej",
+      "korzenia zarodkowego i pylnika"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "mRNA powstaje na matrycy DNA w procesie...",
+    "options": [
+      "translacji",
+      "transkrypcji",
+      "replikacji",
+      "glikolizy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Centralnym atomem cząsteczki chlorofilu jest...",
+    "options": [
+      "żelazo",
+      "wapń",
+      "magnez",
+      "miedź"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Mutacja zmiany sensu to taka, która...",
+    "options": [
+      "zawsze usuwa cały gen",
+      "nie wpływa na sekwencję kodonu",
+      "zamienia DNA w RNA",
+      "powoduje podstawienie innego aminokwasu w białku"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Bakterie nitryfikacyjne w obiegu azotu...",
+    "options": [
+      "utleniają jony amonowe do azotynów i azotanów",
+      "wiążą azot cząsteczkowy bezpośrednio w białkach",
+      "redukcyjnie rozkładają azotany do N2 podczas denitryfikacji",
+      "produkują mocznik w korzeniach roślin"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jeżeli w reakcji PCR startujemy z jednej kopii fragmentu DNA, to po 5 idealnych cyklach otrzymamy...",
+    "options": [
+      "10 kopii",
+      "32 kopie",
+      "25 kopii",
+      "64 kopie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "U typowego neuronu potencjał czynnościowy najczęściej inicjuje się we...",
+    "options": [
+      "jądrze komórkowym",
+      "dendrytach",
+      "wzgórku aksonu",
+      "osłonce mielinowej"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Antygeny układu ABO znajdują się u człowieka przede wszystkim na powierzchni...",
+    "options": [
+      "neuronów",
+      "osteocytów",
+      "komórek beta trzustki",
+      "erytrocytów"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który rodzaj RNA dostarcza aminokwasy do rybosomu podczas translacji?",
+    "options": [
+      "tRNA",
+      "rRNA",
+      "miRNA",
+      "snRNA"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Homeostaza oznacza zdolność organizmu do...",
+    "options": [
+      "produkcji wyłącznie własnych enzymów",
+      "utrzymywania względnie stałych warunków wewnętrznych",
+      "niezmiennego wzrostu przez całe życie",
+      "całkowitej niezależności od środowiska"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Krew odpływa z kłębuszka nerkowego przez...",
+    "options": [
+      "żyłę nerkową",
+      "naczynie limfatyczne",
+      "tętniczkę odprowadzającą",
+      "kanalik zbiorczy"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Przykładem pary mięśni antagonistycznych są...",
+    "options": [
+      "przepona i mięsień sercowy",
+      "mięśnie międzyżebrowe wewnętrzne i skóra",
+      "łydka i ścięgno Achillesa",
+      "mięsień dwugłowy i trójgłowy ramienia"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Płyn tkankowy powstaje głównie na skutek...",
+    "options": [
+      "filtracji osocza przez ściany naczyń włosowatych",
+      "wydzielania go przez erytrocyty",
+      "bezpośredniej produkcji w wątrobie do przestrzeni międzykomórkowych",
+      "rozpadu leukocytów w tkankach"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Aparaty szparkowe liści regulują przede wszystkim...",
+    "options": [
+      "wytwarzanie skrobi w nasionach",
+      "transpirację i wymianę gazową",
+      "transport floemowy cukrów do korzenia",
+      "ruch chloroplastów w komórce"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Na którym poziomie troficznym ekosystemu dostępne jest zwykle najwięcej energii?",
+    "options": [
+      "u konsumentów najwyższego rzędu",
+      "u destruentów",
+      "u producentów",
+      "na każdym poziomie tyle samo"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Sukcesja pierwotna rozpoczyna się na obszarze...",
+    "options": [
+      "po pożarze lasu z zachowaną glebą",
+      "po wycięciu łąki",
+      "po czasowym osuszeniu stawu",
+      "pozbawionym gleby i wcześniejszej biocenozy"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaką cząsteczkę pobierają z powietrza bakterie brodawkowe, zanim przekształcą ją w formy przyswajalne dla roślin?",
+    "options": [
+      "azot cząsteczkowy N2",
+      "amoniak NH3",
+      "azotan sodu",
+      "tlen O2"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Polimeraza DNA dobudowuje nowy łańcuch wyłącznie do końca...",
+    "options": [
+      "5'",
+      "3'",
+      "fosforanowego dowolnego końca",
+      "karboksylowego"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Operon lac u bakterii wykazuje najwyższą ekspresję, gdy...",
+    "options": [
+      "obecna jest glukoza, a brak laktozy",
+      "brak jednocześnie laktozy i glukozy",
+      "obecna jest laktoza, a glukozy jest mało",
+      "w komórce nie ma żadnych źródeł węgla"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Nondysjunkcja chromosomów podczas mejozy może prowadzić do...",
+    "options": [
+      "powstania tylko gamet haploidalnych bez wyjątku",
+      "replikacji białek zamiast DNA",
+      "zawsze letalnej mutacji punktowej",
+      "aneuploidii"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Ogromną powierzchnię wchłaniania w jelicie cienkim człowieka zwiększają przede wszystkim...",
+    "options": [
+      "kosmki i mikrokosmki",
+      "fałdy mięśni gładkich bez nabłonka",
+      "wyrostki robaczkowe",
+      "pęcherzyki płucne"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Warstwą serca odpowiedzialną bezpośrednio za skurcz jest...",
+    "options": [
+      "wsierdzie",
+      "mięsień sercowy",
+      "osierdzie",
+      "zastawka dwudzielna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "W teorii kohezyjno-tensyjnej transport wody w drewnie roślin jest możliwy głównie dzięki...",
+    "options": [
+      "aktywnemu pompowaniu wody przez floem",
+      "dyfuzji w poprzek korzenia bez udziału transpiracji",
+      "spójności cząsteczek wody i sile ssącej liści",
+      "pracy aparatów Golgiego w naczyniach"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W typowym łańcuchu pokarmowym biomasa kolejnych poziomów troficznych zwykle...",
+    "options": [
+      "rośnie aż do drapieżników szczytowych",
+      "pozostaje taka sama",
+      "zanika wyłącznie u producentów",
+      "maleje"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Dlaczego Księżyc nie utrzymał gęstej atmosfery porównywalnej z ziemską?",
+    "options": [
+      "Ma zbyt małą grawitację i prędkość ucieczki",
+      "Jest zbyt blisko Jowisza",
+      "Nie odbiera promieniowania słonecznego",
+      "Składa się wyłącznie z lodu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Gwiazda ciągu głównego czerpie energię przede wszystkim z...",
+    "options": [
+      "spalania chemicznego węgla na powierzchni",
+      "syntezy wodoru w hel w jądrze",
+      "zderzeń z planetami",
+      "kurczenia się wyłącznie z pominięciem reakcji jądrowych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Zgodnie z prawem Hubble'a większe przesunięcie ku czerwieni odległej galaktyki oznacza zwykle, że...",
+    "options": [
+      "świeci chłodniej, ale stoi w miejscu",
+      "ma mniejszą masę",
+      "oddala się ona szybciej",
+      "jest młodsza od Słońca"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Która planeta Układu Słonecznego ma największą masę?",
+    "options": [
+      "Saturn",
+      "Neptun",
+      "Ziemia",
+      "Jowisz"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Fazy Wenus były ważnym argumentem na rzecz modelu heliocentrycznego, ponieważ pokazują, że Wenus...",
+    "options": [
+      "krąży wokół Słońca",
+      "ma własne źródło światła",
+      "obraca się wolniej od Ziemi",
+      "nie posiada atmosfery"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Rok świetlny jest jednostką...",
+    "options": [
+      "czasu",
+      "odległości",
+      "jasności gwiazd",
+      "mocy promieniowania"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Gwiazda neutronowa powstaje zwykle jako pozostałość po...",
+    "options": [
+      "zderzeniu dwóch planet skalistych",
+      "ostygnięciu białego karła do zera absolutnego",
+      "zapadnięciu jądra masywnej gwiazdy po wybuchu supernowej",
+      "rozerwaniu komety przez Słońce"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W centrum Drogi Mlecznej znajduje się najprawdopodobniej...",
+    "options": [
+      "gromada kulista bez centralnego obiektu",
+      "pulsar z jedną planetą",
+      "mgławica planetarna",
+      "supermasywna czarna dziura"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Ziemia znajduje się najbliżej Słońca...",
+    "options": [
+      "na początku stycznia, w peryhelium",
+      "w dniu przesilenia letniego",
+      "w chwili równonocy jesiennej",
+      "na początku lipca"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Zaćmienie Słońca może zajść tylko wtedy, gdy Księżyc jest w fazie...",
+    "options": [
+      "pełni",
+      "nowiu",
+      "pierwszej kwadry",
+      "ostatniej kwadry"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Główną przyczyną występowania pór roku na Ziemi jest...",
+    "options": [
+      "zmienność odległości Ziemi od Słońca w skali roku",
+      "codzienny obrót Ziemi",
+      "nachylenie osi obrotu względem płaszczyzny orbity",
+      "zmiany aktywności plam słonecznych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Meteoroid różni się od meteoru tym, że meteoroid to...",
+    "options": [
+      "ślad świetlny w atmosferze",
+      "fragment skały znaleziony na powierzchni Ziemi",
+      "pierścień pyłu wokół planety",
+      "niewielkie ciało krążące w przestrzeni kosmicznej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Energia emitowana przez Słońce powstaje przede wszystkim w...",
+    "options": [
+      "jego jądrze",
+      "fotosferze",
+      "koronie słonecznej",
+      "warstwie plam słonecznych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Typ widmowy gwiazdy informuje przede wszystkim o jej...",
+    "options": [
+      "odległości od Ziemi",
+      "temperaturze powierzchni",
+      "wieku absolutnym",
+      "liczbie planet"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Paralaksa roczna jest metodą wyznaczania...",
+    "options": [
+      "masy czarnych dziur",
+      "składu chemicznego mgławic",
+      "odległości do względnie bliskich gwiazd",
+      "wieku meteorytów"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jeżeli egzoplaneta przechodzi na tle swojej gwiazdy, obserwator może zauważyć...",
+    "options": [
+      "natychmiastowy wybuch supernowej",
+      "zanik linii widmowych wszystkich pierwiastków",
+      "zmianę typu galaktyki",
+      "okresowy spadek jasności gwiazdy"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Horyzont zdarzeń czarnej dziury to...",
+    "options": [
+      "granica, zza której nawet światło nie może się wydostać",
+      "najgorętsza warstwa akrecyjna",
+      "orbita najbliższej planety",
+      "obszar o zerowej grawitacji"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Dominującym pierwiastkiem w składzie Słońca jest...",
+    "options": [
+      "tlen",
+      "wodór",
+      "krzem",
+      "żelazo"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Główny pas planetoid znajduje się pomiędzy orbitami...",
+    "options": [
+      "Ziemi i Marsa",
+      "Jowisza i Saturna",
+      "Marsa i Jowisza",
+      "Merkurego i Wenus"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jednym z powodów, dla których Pluton nie jest obecnie klasyfikowany jako planeta, jest to, że...",
+    "options": [
+      "nie obiega Słońca",
+      "nie ma księżyców",
+      "jest zbudowany głównie z lodu",
+      "nie oczyścił sąsiedztwa swojej orbity"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Najsilniejszy wpływ na pływy morskie na Ziemi wywiera grawitacja...",
+    "options": [
+      "Księżyca",
+      "Marsa",
+      "Wenus",
+      "gwiazdy Polarnej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Wysokość Gwiazdy Polarnej nad horyzontem obserwatora na półkuli północnej jest w przybliżeniu równa...",
+    "options": [
+      "długości geograficznej",
+      "jego szerokości geograficznej",
+      "odległości od równika w kilometrach",
+      "nachyleniu osi Ziemi"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Gwiazda przechodzi w stadium czerwonego olbrzyma, gdy w jej jądrze...",
+    "options": [
+      "zaczyna dominować spalanie chemiczne",
+      "całkowicie zanika grawitacja",
+      "wyczerpuje się wodór",
+      "powstaje żelazne jądro w gwieździe podobnej do Słońca bez etapów pośrednich"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Dlaczego ziemskie niebo jest w pogodny dzień niebieskie?",
+    "options": [
+      "Atmosfera emituje wyłącznie niebieskie światło",
+      "Słońce świeci tylko w zakresie niebieskim",
+      "Chmury odbijają głównie barwę niebieską",
+      "Krótsze fale światła silniej ulegają rozpraszaniu Rayleigha"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Ekliptyka to...",
+    "options": [
+      "pozorna roczna droga Słońca na sferze niebieskiej",
+      "pas Drogi Mlecznej widoczny nocą",
+      "tor obiegu Księżyca wokół Ziemi",
+      "granica pola magnetycznego Ziemi"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Supernowe typu Ia są szczególnie cenne w kosmologii, ponieważ mogą służyć jako...",
+    "options": [
+      "źródła fal radiowych o stałej długości",
+      "świece standardowe do szacowania odległości",
+      "dowód na brak ciemnej materii",
+      "modele budowy planet skalistych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trzecie prawo Keplera oznacza między innymi, że wraz ze wzrostem wielkiej półosi orbity planety jej okres obiegu...",
+    "options": [
+      "maleje",
+      "pozostaje identyczny",
+      "rośnie",
+      "staje się równy jednej dobie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Merkury ma bardzo duże dobowe amplitudy temperatury głównie dlatego, że...",
+    "options": [
+      "jest najbliżej Jowisza",
+      "obraca się szybciej od wszystkich planet",
+      "emituje własne ciepło jak gwiazda",
+      "ma niezwykle rzadką atmosferę"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Która z poniższych planet jest gazowym olbrzymem?",
+    "options": [
+      "Saturn",
+      "Mars",
+      "Wenus",
+      "Merkury"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Gdy temperatura powierzchni gwiazdy rośnie, maksimum jej widma przesuwa się ku...",
+    "options": [
+      "dłuższym falom",
+      "krótszym falom",
+      "zakresowi fal radiowych niezależnie od temperatury",
+      "stałej długości fali 550 nm"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Mgławica emisyjna świeci głównie dlatego, że...",
+    "options": [
+      "odbija wyłącznie światło Księżyca",
+      "jest zbudowana z zimnych asteroid",
+      "wzbudzony przez gorące gwiazdy zjonizowany gaz emituje promieniowanie",
+      "pochłania całe światło i dlatego świeci na czarno"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jednostka astronomiczna odpowiada w przybliżeniu...",
+    "options": [
+      "średnicy orbity Księżyca",
+      "promieniowi Słońca",
+      "odległości do najbliższej gwiazdy",
+      "średniej odległości Ziemi od Słońca"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jednym z klasycznych testów ogólnej teorii względności było potwierdzenie...",
+    "options": [
+      "ugięcia światła gwiazd w pobliżu Słońca",
+      "stałości prędkości światła w wodzie",
+      "zaniku plam słonecznych",
+      "istnienia atmosfery na Księżycu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Obiekt krążący po bardzo wydłużonej orbicie i tworzący warkocz w pobliżu Słońca to...",
+    "options": [
+      "pulsar",
+      "kometa",
+      "kwazar",
+      "biały karzeł"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Odkrycie księżyców Galileuszowych Jowisza było przełomowe, bo pokazało, że...",
+    "options": [
+      "Jowisz jest gwiazdą",
+      "Księżyc nie ma własnej grawitacji",
+      "nie wszystkie ciała niebieskie krążą wokół Ziemi",
+      "orbity planet są kwadratowe"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Mikrofalowe promieniowanie tła pochodzi z epoki, w której Wszechświat...",
+    "options": [
+      "dopiero rozpoczął inflację",
+      "zawierał już dojrzałe galaktyki spiralne",
+      "składał się wyłącznie z czarnych dziur",
+      "stał się przezroczysty dla fotonów po rekombinacji"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Grawitacyjne soczewkowanie polega na...",
+    "options": [
+      "ugięciu toru światła przez masywny obiekt",
+      "rozszczepieniu światła przez pryzmat w teleskopie",
+      "wzmocnieniu pola magnetycznego gwiazdy",
+      "pochłanianiu neutrin przez pył kosmiczny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Z Ziemi widzimy stale tę samą półkulę Księżyca, ponieważ jego obrót jest...",
+    "options": [
+      "dziesięć razy szybszy od obiegu",
+      "synchroniczny z obiegiem wokół Ziemi",
+      "całkowicie zatrzymany",
+      "losowy i chaotyczny"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Równonoc występuje wtedy, gdy...",
+    "options": [
+      "Ziemia jest najbliżej Słońca",
+      "oś Ziemi przestaje być nachylona",
+      "Słońce przecina równik niebieski",
+      "Księżyc znajduje się w pełni"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jeśli w widmie galaktyki obserwujemy systematyczne przesunięcie linii ku czerwieni, najczęściej interpretujemy to jako skutek...",
+    "options": [
+      "spadku jej temperatury do zera absolutnego",
+      "zaniku wodoru w gwiazdach",
+      "oddziaływania ziemskiej atmosfery na teleskop",
+      "oddalania się tej galaktyki"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Która z podanych skał jest skałą magmową głębinową?",
+    "options": [
+      "granit",
+      "bazalt",
+      "wapień",
+      "piaskowiec"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Za główny mechanizm napędzający ruch płyt litosfery uznaje się...",
+    "options": [
+      "pływy wywołane przez Księżyc",
+      "prądy konwekcyjne w płaszczu",
+      "zmiany faz Księżyca",
+      "rotację jądra wewnętrznego niezależną od całej Ziemi"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Dlaczego wiele silnych trzęsień ziemi koncentruje się na granicach płyt tektonicznych?",
+    "options": [
+      "Tylko tam występuje grawitacja",
+      "Tylko tam istnieje skorupa oceaniczna",
+      "Tam gromadzą się i uwalniają naprężenia tektoniczne",
+      "Ponieważ w tych miejscach nie ma atmosfery"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Miejsce we wnętrzu Ziemi, w którym rozpoczyna się trzęsienie ziemi, nazywamy...",
+    "options": [
+      "epicentrum",
+      "uskokiem zwierciadlanym",
+      "izobatą",
+      "hipocentrum"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Punkt na powierzchni Ziemi leżący bezpośrednio nad hipocentrum to...",
+    "options": [
+      "epicentrum",
+      "astroblema",
+      "synklina",
+      "antyklina"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który rodzaj fal sejsmicznych może rozchodzić się także przez ciecze?",
+    "options": [
+      "fale S",
+      "fale P",
+      "fale powierzchniowe Love'a",
+      "żaden z wymienionych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Klimat Europy Zachodniej jest łagodzony między innymi przez...",
+    "options": [
+      "zimny Prąd Peruwiański",
+      "monsun zimowy",
+      "ciepły Prąd Zatokowy",
+      "zorzę polarną"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Kwaśne opady wiążą się przede wszystkim z emisją do atmosfery...",
+    "options": [
+      "helu i neonu",
+      "pary wodnej i tlenu",
+      "metanu i argonu wyłącznie naturalnego",
+      "tlenków siarki i azotu"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W troposferze temperatura powietrza zazwyczaj wraz z wysokością...",
+    "options": [
+      "spada",
+      "rośnie",
+      "pozostaje zawsze stała",
+      "osiąga natychmiast 0°C"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Warstwa ozonowa w stratosferze chroni organizmy żywe, bo pochłania znaczną część promieniowania...",
+    "options": [
+      "rentgenowskiego pochodzącego z wnętrza Ziemi",
+      "ultrafioletowego",
+      "gamma z burz",
+      "mikrofalowego odbitego od oceanów"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Najważniejszym gazem odpowiadającym za współczesne antropogeniczne ocieplenie klimatu jest...",
+    "options": [
+      "hel",
+      "azot",
+      "dwutlenek węgla",
+      "neon"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Efekt Coriolisa jest bezpośrednią konsekwencją...",
+    "options": [
+      "zmiennej odległości Ziemi od Słońca",
+      "ruchu płyt litosfery",
+      "obecności pola magnetycznego Słońca",
+      "obrotu Ziemi"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Wietrzenie chemiczne przebiega najszybciej w klimacie...",
+    "options": [
+      "ciepłym i wilgotnym",
+      "zimnym i suchym",
+      "polarnym o małej wilgotności",
+      "suchym wysokogórskim"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Meandry najłatwiej rozwijają się w...",
+    "options": [
+      "strefie źródłowej rzek górskich",
+      "środkowym i dolnym biegu rzeki",
+      "korytach lodowcowych pod lądolodem",
+      "ujściach krasowych bez przepływu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Delta rzeczna powstaje tam, gdzie rzeka...",
+    "options": [
+      "wpływa do wąskiego kanionu",
+      "całkowicie zanika przez parowanie",
+      "osadza materiał przy ujściu do spokojnego zbiornika",
+      "łączy się z lodowcem"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który typ chmur najczęściej przynosi długotrwały, jednostajny opad?",
+    "options": [
+      "Cirrus",
+      "Cumulus humilis",
+      "Altocumulus",
+      "Nimbostratus"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Zjawisko El Niño oznacza przede wszystkim...",
+    "options": [
+      "ocieplenie wód wschodniego Pacyfiku związane z osłabieniem pasatów",
+      "nagłe zlodowacenie Antarktydy",
+      "wzrost aktywności wulkanicznej Islandii",
+      "stałe ochłodzenie całego Atlantyku"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Na zasolenie mórz zamkniętych bardzo silnie wpływa...",
+    "options": [
+      "siła Coriolisa jako jedyny czynnik",
+      "bilans parowania i dopływu wód słodkich",
+      "liczba dni z pełnią Księżyca",
+      "nachylenie osi Ziemi"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Gleby lessowe powstały głównie z osadów...",
+    "options": [
+      "morskich odkładanych w deltach",
+      "lawowych z wulkanów tarczowych",
+      "pyłowych nanoszonych przez wiatr",
+      "morenowych niesortowanych przez rzeki"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Które stwierdzenie najlepiej odróżnia tornado od huraganu?",
+    "options": [
+      "Huragan powstaje wyłącznie nad lądem, a tornado wyłącznie nad oceanem",
+      "Tornado trwa miesiącami, a huragan kilka minut",
+      "Huragan nigdy nie wiąże się z opadami",
+      "Tornado jest zwykle znacznie mniejszym i krótkotrwalszym wirem związanym z burzą"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Przesuwający się lodowiec pozostawia po sobie między innymi...",
+    "options": [
+      "moreny",
+      "rafy koralowe",
+      "wydmy paraboliczne",
+      "atole"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaskinie krasowe tworzą się głównie wskutek...",
+    "options": [
+      "krystalizacji bazaltu",
+      "rozpuszczania wapieni przez lekko kwaśne wody",
+      "wietrzenia mrozowego w granicie bez udziału wody",
+      "osadzania pyłów lessowych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Izobary na mapie synoptycznej łączą punkty o jednakowym...",
+    "options": [
+      "zasoleniu",
+      "nasłonecznieniu",
+      "ciśnieniu atmosferycznym",
+      "spadku rzeki"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Inwersja temperatury sprzyja wzrostowi stężenia smogu, ponieważ...",
+    "options": [
+      "przyspiesza konwekcję i oczyszcza troposferę",
+      "powoduje zanik pary wodnej z atmosfery",
+      "zwiększa prędkość ucieczki gazów z Ziemi",
+      "utrudnia mieszanie się powietrza i zatrzymuje zanieczyszczenia przy powierzchni"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Albedo powierzchni to miara...",
+    "options": [
+      "udziału promieniowania odbitego",
+      "zawartości tlenu w glebie",
+      "szybkości wietrzenia skał",
+      "ilości jonów w wodzie gruntowej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "W strefie subdukcji zazwyczaj...",
+    "options": [
+      "powstaje nowa skorupa oceaniczna na osi ryftu",
+      "gęstsza płyta oceaniczna wsuwa się pod inną płytę",
+      "dwie płyty oddalają się od siebie bez magmatyzmu",
+      "litosfera całkowicie zanika bez śladu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wiatr halny po zawietrznej stronie gór jest ciepły i suchy głównie dlatego, że powietrze...",
+    "options": [
+      "unosi się i gwałtownie zamarza",
+      "napływa zawsze znad oceanu polarnego",
+      "opada i ogrzewa się adiabatycznie",
+      "miesza się z pyłem wulkanicznym"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Marmur jest skałą...",
+    "options": [
+      "osadową luźną",
+      "magmową wylewną",
+      "organogeniczną nieskonsolidowaną",
+      "metamorficzną"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Odczyn gleby wyrażony wartością pH informuje o...",
+    "options": [
+      "jej kwasowości lub zasadowości",
+      "głębokości wód gruntowych",
+      "zawartości próchnicy w procentach",
+      "wieku geologicznym podłoża"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Poziom wodonośny to...",
+    "options": [
+      "najwyższy punkt działu wodnego",
+      "przepuszczalna warstwa skał lub osadów nasycona wodą",
+      "strefa wiecznej zmarzliny",
+      "powierzchnia falowania oceanu w sztormie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wulkany tarczowe budują się głównie z law...",
+    "options": [
+      "ryolitowych bardzo lepkich",
+      "wyłącznie osadowych",
+      "bazaltowych o małej lepkości",
+      "siarkowych bez udziału magmy"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Front atmosferyczny powstaje na styku...",
+    "options": [
+      "dwóch płyt litosfery",
+      "prądu morskiego i lądu",
+      "warstwy ozonowej i troposfery",
+      "mas powietrza o różnych właściwościach"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Na półkuli północnej wokół układu niskiego ciśnienia powietrze krąży zazwyczaj...",
+    "options": [
+      "przeciwnie do ruchu wskazówek zegara",
+      "zgodnie z ruchem wskazówek zegara",
+      "wyłącznie pionowo w dół",
+      "bez żadnego uporządkowania wynikającego z dynamiki atmosfery"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Pustynie zwrotnikowe często występują w pobliżu 30° szerokości geograficznej, ponieważ dominuje tam...",
+    "options": [
+      "stały napływ wilgotnych niżów równikowych",
+      "opadanie suchego powietrza w komórce Hadleya",
+      "największe na Ziemi parowanie z lądolodów",
+      "wzmożona aktywność sejsmiczna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Eutrofizację jezior przyspiesza nadmierny dopływ...",
+    "options": [
+      "krzemionki i tlenu",
+      "argonu i helu",
+      "związków azotu i fosforu",
+      "chlorku sodu z opadów śniegu wyłącznie zimą"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Nieciągłość Mohorovičicia oddziela...",
+    "options": [
+      "jądro zewnętrzne od wewnętrznego",
+      "troposferę od stratosfery",
+      "hydrosferę od litosfery",
+      "skorupę ziemską od płaszcza"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Bazalt na grzbietach śródoceanicznych powstaje wskutek...",
+    "options": [
+      "krzepnięcia lawy wydobywającej się w strefach spreadingu",
+      "przeobrażenia wapienia pod wysokim ciśnieniem",
+      "wietrzenia granitu w klimacie pustynnym",
+      "osadzania pyłów na dnie oceanu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Skamieniałości przewodnie są szczególnie użyteczne przy ustalaniu...",
+    "options": [
+      "składu chemicznego magmy",
+      "wieku względnego warstw skalnych",
+      "aktualnego ciśnienia atmosferycznego",
+      "głębokości oceanu na podstawie jednej próbki wody"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Sezonowość monsunów wynika przede wszystkim z...",
+    "options": [
+      "zmian prędkości obrotu Ziemi",
+      "przesuwania się biegunów magnetycznych co miesiąc",
+      "różnic w nagrzewaniu lądu i oceanu",
+      "wpływu zaćmień Księżyca"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Rosa pojawia się na roślinach nad ranem, gdy...",
+    "options": [
+      "z gleby wydobywa się ciekła woda pod wpływem fotosyntezy",
+      "liście aktywnie wydzielają wodę tylko nocą",
+      "wiatr mechanicznie rozpyla krople z wyższych warstw atmosfery",
+      "para wodna skrapla się na chłodnych powierzchniach po osiągnięciu punktu rosy"
+    ],
+    "correctIndex": 3
+  }
+]

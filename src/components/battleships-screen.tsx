@@ -465,6 +465,21 @@ export function BattleshipsScreen({
     }
   }
 
+  async function handleBackToMenu() {
+    setIsRestarting(true);
+
+    try {
+      await fetch("/api/games/battleships/restart", {
+        method: "POST",
+      });
+    } catch {
+      // Ignore restart failure and still allow leaving the screen.
+    } finally {
+      setIsRestarting(false);
+      router.push("/games");
+    }
+  }
+
   const boardCells = Array.from({ length: BATTLESHIP_BOARD_SIZE * BATTLESHIP_BOARD_SIZE }, (_, index) => index);
   const setupBoard = boardCells.map((cell) => (placedCells.has(cell) ? "ship" : "empty")) as BattleshipCellState[];
   const isSetupLocked = Boolean(state?.currentPlayer?.ready);
@@ -552,7 +567,7 @@ export function BattleshipsScreen({
             points={state.currentPlayer?.score ?? 0}
             wins={state.currentPlayer?.wins ?? 0}
             onRematch={handleRematch}
-            onBackToMenu={() => router.push("/games")}
+            onBackToMenu={handleBackToMenu}
             rematchPending={isRestarting}
           />
         ) : state?.status === "waiting" || state?.status === "setup" ? (

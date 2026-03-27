@@ -1,0 +1,2002 @@
+[
+  {
+    "text": "Który dokument z 1215 roku stał się symbolem ograniczenia samowoli angielskiego monarchy?",
+    "options": [
+      "Magna Carta Libertatum",
+      "unia w Krewie z końca XIV wieku",
+      "pokój kaliski z zakonem krzyżackim",
+      "edykty mediolańskie późnego antyku"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Które porozumienie z 1648 roku utrwaliło w Europie zasadę suwerenności państw?",
+    "options": [
+      "wojna siedmioletnia w Europie",
+      "kompromis missouri w USA",
+      "akt nawigacyjny Cromwella",
+      "pokój westfalski"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który autor w dziele \"O duchu praw\" sformułował klasyczny model rozdziału władz?",
+    "options": [
+      "rewolucja lipcowa we Francji",
+      "kongres berliński epoki imperialnej",
+      "Monteskiusz",
+      "pakt Brianda-Kellogga"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki amerykański program finansowy przyspieszył odbudowę Europy Zachodniej po II wojnie światowej?",
+    "options": [
+      "edykt nantejski Henryka IV",
+      "Plan Marshalla",
+      "Liga Święta przeciw Turkom",
+      "traktat z Lozanny po Wielkiej Wojnie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywał się rosyjski parlament powołany po wydarzeniach 1905 roku?",
+    "options": [
+      "komuna paryska 1871 roku",
+      "powstanie bokserów w Chinach",
+      "rewolta sipajów w Indiach",
+      "Duma Państwowa"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co oznaczał termin \"detente\" w polityce zimnowojennej?",
+    "options": [
+      "okres odprężenia między blokami",
+      "pokój w Utrechcie",
+      "przewrót 18 brumaire'a",
+      "unia w Horodle"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który ruch narodowy zapoczątkowany w 1821 roku doprowadził do wyłonienia się niepodległej Grecji?",
+    "options": [
+      "insurekcja kościuszkowska",
+      "rewolucja lutowa w Rosji",
+      "greckie powstanie niepodległościowe",
+      "sejm konwokacyjny Rzeczypospolitej"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Która doktryna amerykańska zapowiadała powstrzymywanie ekspansji komunizmu po II wojnie światowej?",
+    "options": [
+      "doktryna Trumana",
+      "bitwa pod Adrianopolem",
+      "pakt stalowy państw Osi",
+      "konferencja w Poczdamie"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Które porozumienie z 1938 roku oddało Sudety III Rzeszy bez udziału władz czechosłowackich?",
+    "options": [
+      "trójporozumienie ententy",
+      "konkordat wormacki",
+      "bitwa pod Poitiers",
+      "układ monachijski"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaka instytucja była politycznym centrum rewolucyjnej Francji w okresie jakobińskiego terroru?",
+    "options": [
+      "syjonizm polityczny Herzla",
+      "edykt z Fontainebleau",
+      "rewizjonizm międzywojenny",
+      "Komitet Ocalenia Publicznego"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który proces po II wojnie światowej stworzył precedens odpowiedzialności jednostek za zbrodnie przeciw ludzkości?",
+    "options": [
+      "wojna burska w Afryce Południowej",
+      "ustawa Kansas-Nebraska",
+      "proces norymberski",
+      "kongres wersalski"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazwano politykę przebudowy ZSRR kojarzoną z Michaiłem Gorbaczowem?",
+    "options": [
+      "dynastia Merowingów",
+      "rewolucja irańska 1979 roku",
+      "pierestrojka",
+      "ruch młodoturecki"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który średniowieczny spór dotyczył prawa do mianowania biskupów przez świeckich władców?",
+    "options": [
+      "wojna o sukcesję hiszpańską",
+      "krucjata albigeńska",
+      "spór o inwestyturę",
+      "układ w Rapallo"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki akt federalny w USA z 1964 roku zniósł segregację rasową w miejscach publicznych?",
+    "options": [
+      "bulla Unam sanctam",
+      "pokój w Campo Formio",
+      "ustawy antysocjalistyczne Rzeszy",
+      "Civil Rights Act"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywał się sojusz wojskowy państw bloku wschodniego powołany w 1955 roku?",
+    "options": [
+      "konstytucja marcowa II RP",
+      "Układ Warszawski",
+      "manifest październikowy cara",
+      "dekret z Alhambry"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który nurt polityczny w XIX-wiecznej Rosji wiązał nadzieję na przemianę z chłopską wspólnotą?",
+    "options": [
+      "narodnictwo",
+      "wojna opiumowa pierwsza",
+      "pakt Ribbentrop-Mołotow",
+      "pańszczyzna odrobkowa Europy Wschodniej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak określa się politykę Bismarcka wymierzoną w wpływy Kościoła katolickiego w Cesarstwie Niemieckim?",
+    "options": [
+      "rzeź galicyjska 1846 roku",
+      "Kulturkampf",
+      "karta atlantycka 1941 roku",
+      "konfederacja targowicka"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Czym była tak zwana Chwalebna Rewolucja w dziejach Anglii?",
+    "options": [
+      "kryzys sueski 1956 roku",
+      "sejm czteroletni",
+      "rewolucja goździków w Portugalii",
+      "bezkrwawą zmianą dynastii i wzmocnieniem parlamentu"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który traktat utworzył podstawy Europejskiej Wspólnoty Gospodarczej?",
+    "options": [
+      "bitwa na Kosowym Polu",
+      "traktat rzymski",
+      "statut westminsterski",
+      "deklaracja niepodległości Haiti"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazwano reformistyczny kurs w Czechosłowacji stłumiony przez interwencję w 1968 roku?",
+    "options": [
+      "kongres w Akwizgranie",
+      "system kontynentalny Napoleona",
+      "Praska Wiosna",
+      "wyprawy krzyżowe do Lewantu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Co było najdalej idącym skutkiem opublikowania 95 tez Marcina Lutra?",
+    "options": [
+      "doktryna Monroe",
+      "początek reformacji protestanckiej",
+      "rewolucja meksykańska Madera",
+      "pokój w Nijmegen"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaki organ w Atenach klasycznych losowano spośród obywateli do prowadzenia wielu spraw publicznych?",
+    "options": [
+      "Rada Pięciuset",
+      "traktat w Verdun",
+      "wojna domowa w Hiszpanii",
+      "powstanie dekabrystów"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Która idea polityczna i etyczna była rdzeniem strategii Mahatmy Gandhiego?",
+    "options": [
+      "satyagraha",
+      "zakon krzyżacki w Prusach",
+      "imperium Songhaju",
+      "królestwo Franków Karola Młota"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaki akt Henryka VIII zerwał zwierzchność papieską nad Kościołem w Anglii?",
+    "options": [
+      "monarchia lipcowa Ludwika Filipa",
+      "rewolucja kulturalna w Chinach",
+      "rządy restauracji Meiji",
+      "Akt supremacji"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który proces dyplomatyczny po 1989 roku ostatecznie zamknął kwestię podziału Niemiec?",
+    "options": [
+      "pokój w Brześciu Litewskim",
+      "Noc długich noży",
+      "misja cywilizacyjna kolonializmu",
+      "traktat dwa plus cztery"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaki nurt myślenia w zaborze rosyjskim wiązano z hasłem pracy organicznej i modernizacji społecznej?",
+    "options": [
+      "cesarstwo Karolingów",
+      "polski pozytywizm",
+      "rewolucja cen w XVI wieku",
+      "wojna peloponeska"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazwano porozumienie z 1573 roku gwarantujące pokój religijny w Rzeczypospolitej?",
+    "options": [
+      "konfederacja warszawska",
+      "bitwa pod Kannami",
+      "wojna burska druga",
+      "konferencja jałtańska"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Która unia realna stworzyła Rzeczpospolitą Obojga Narodów?",
+    "options": [
+      "ustawa o heretykach Lollardów",
+      "unia lubelska",
+      "teoria domina zimnej wojny",
+      "ruch sanskylotów paryskich"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Czym w praktyce ustrojowej dawnej Rzeczypospolitej było liberum veto?",
+    "options": [
+      "panowanie dynastii Qing",
+      "państwo Sasanidów",
+      "prawem pojedynczego posła do zerwania sejmu",
+      "powstanie tajpingów"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki projekt gospodarczy II Rzeczypospolitej wiąże się z Eugeniuszem Kwiatkowskim i uprzemysłowieniem centrum kraju?",
+    "options": [
+      "kryzys kubański 1962 roku",
+      "Centralny Okręg Przemysłowy",
+      "aneksja Alzacji i Lotaryngii",
+      "pakt antykominternowski"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co oznaczał plan \"Burza\" przygotowany przez Armię Krajową?",
+    "options": [
+      "akt gwarancyjny Katarzyny II",
+      "ujawnienie polskiego podziemia wobec wkraczającej Armii Czerwonej",
+      "przywilej koszycki",
+      "wojna trzydziestoletnia"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaka instytucja cywilna podziemnego państwa reprezentowała legalny rząd na okupowanym terytorium?",
+    "options": [
+      "rewolucja neolityczna",
+      "Delegatura Rządu na Kraj",
+      "dekolonizacja Algierii",
+      "zjazd gnieźnieński"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Czym była akcja \"Wisła\" przeprowadzona w 1947 roku?",
+    "options": [
+      "kampania Gallipoli",
+      "przymusowym przesiedleniem ludności ukraińskiej i łemkowskiej",
+      "kodyfikacja Napoleona",
+      "restauracja Burbonów"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Które porozumienia z sierpnia 1980 roku otworzyły drogę do legalizacji Solidarności?",
+    "options": [
+      "Porozumienia Gdańskie",
+      "epoka sengoku w Japonii",
+      "wojna domowa w Anglii",
+      "powstanie sipajów epoki wiktoriańskiej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaki nadzwyczajny stan prawny wprowadzono w PRL 13 grudnia 1981 roku?",
+    "options": [
+      "krwawe niedziele Petersburga",
+      "stan wojenny",
+      "suwerenność lenników Rzeszy",
+      "triumwirat Oktawiana i Antoniusza"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywał się sejm z 1717 roku, którego obrady zakończono bez dyskusji pod presją rosyjską?",
+    "options": [
+      "ekspansja normańska na Sycylię",
+      "Sejm Niemy",
+      "traktat w Küczük Kajnardży",
+      "związek niemiecki po 1815 roku"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który polski monarcha przeniósł centrum władzy z Krakowa do Warszawy?",
+    "options": [
+      "wygnanie Stuartów do Francji",
+      "hetmanat kozacki Chmielnickiego",
+      "Zygmunt III Waza",
+      "rewolucja gloriuszów niderlandzkich"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki konflikt XVII wieku określa się w polskiej historiografii mianem potopu?",
+    "options": [
+      "oblężenie Konstantynopola 1453",
+      "edykt tesaloński późnego cesarstwa",
+      "układ laterański z Watykanem",
+      "szwedzką inwazję z lat 1655-1660"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jakie znaczenie historyczne miała konfederacja barska?",
+    "options": [
+      "była zbrojnym buntem przeciw rosyjskiej dominacji",
+      "bitwa pod Hastings 1066 roku",
+      "traktat w Tylży po kampanii napoleońskiej",
+      "wojna stuletnia monarchii zachodnich"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który dokument z 1791 roku miał zreformować ustrój Rzeczypospolitej bez zrywania z monarchią?",
+    "options": [
+      "rewolucja trzynastu kolonii amerykańskich",
+      "uwłaszczenie chłopów w Rosji carskiej",
+      "unia dynastyczna Kastylii i Aragonii",
+      "Konstytucja 3 maja"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Kto napisał powieść \"Ferdydurke\"?",
+    "options": [
+      "Witold Gombrowicz",
+      "Guernica Picassa",
+      "teatr absurdu",
+      "sonata księżycowa Beethovena"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Z którym nurtem najściślej wiąże się obraz Moneta \"Impresja, wschód słońca\"?",
+    "options": [
+      "ars poetica Horacego",
+      "poemat heroikomiczny",
+      "symbolizm francuski",
+      "impresjonizm"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który dramat Wyspiańskiego stał się gorzką diagnozą niemocy polskich elit?",
+    "options": [
+      "Wesele",
+      "surrealizm Bretona",
+      "kantata barokowa Bacha",
+      "Kapitał Marksa jako tekst dziewiętnastowieczny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co w literaturoznawstwie oznacza termin \"deus ex machina\"?",
+    "options": [
+      "dramat elżbietański",
+      "nagłe rozwiązanie konfliktu przez zewnętrzną ingerencję",
+      "ekspresjonizm niemiecki",
+      "powieść gotycka angielska"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaką techniką operował Rembrandt, budując mocne kontrasty światła i cienia?",
+    "options": [
+      "mesjanizm romantyczny",
+      "światłocień typu chiaroscuro",
+      "opera buffa",
+      "aliteracja staroangielska"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Która powieść George’a Orwella analizuje mechanizmy nowomowy i totalnej kontroli?",
+    "options": [
+      "powieść pikareskowa",
+      "Rok 1984",
+      "happening awangardowy",
+      "wielka synteza renesansu włoskiego"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywa się figura retoryczna zestawiająca ze sobą pozornie sprzeczne pojęcia?",
+    "options": [
+      "symbol wieszczego chochoła",
+      "styl empire w sztuce",
+      "oksymoron",
+      "akwarela pejzażowa Turnera"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który twórca filmu \"Siódma pieczęć\" jest jednym z symboli kina egzystencjalnego?",
+    "options": [
+      "tragedia szekspirowska",
+      "kontrapunkt renesansowy",
+      "groteska modernistyczna",
+      "Ingmar Bergman"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaki styl architektoniczny kojarzy się z ostrym łukiem, przyporami i rozbudowanymi witrażami?",
+    "options": [
+      "gotyk",
+      "ekfraza poetycka",
+      "architektura romańska",
+      "manieryzm późnego Cinquecenta"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który renesansowy traktat Baldassare Castiglionego opisywał ideał dworzanina?",
+    "options": [
+      "proza szkatułkowa",
+      "Dworzanin",
+      "oratorium Händla",
+      "rycina drzeworytnicza Hokusai"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaki główny temat wyłania się z \"Procesu\" Franza Kafki?",
+    "options": [
+      "mit arkadyjski",
+      "bezsilność jednostki wobec nieprzejrzystej władzy",
+      "koncert grosso Corellego",
+      "estetyka wabi-sabi"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który poeta anglojęzyczny napisał modernistyczną \"Ziemię jałową\"?",
+    "options": [
+      "powieść epistolarna",
+      "symfonia programowa",
+      "kronika Galla Anonima",
+      "Thomas Stearns Eliot"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się technika malarska oparta na nakładaniu farby drobnymi punktami barwy?",
+    "options": [
+      "puentylizm",
+      "literatura łagrowa",
+      "biedermeier mieszczański",
+      "fowizm Matisse'a"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który kompozytor stworzył tetralogię \"Pierścień Nibelunga\"?",
+    "options": [
+      "teatr epicki Brechta",
+      "Richard Wagner",
+      "poemat dygresyjny",
+      "malarstwo batalistyczne"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Czym w refleksji nad tragedią grecką jest katharsis?",
+    "options": [
+      "oczyszczeniem emocjonalnym widza",
+      "fotonowela prasowa",
+      "hiperrealizm malarski",
+      "komedia dell'arte"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaką formę narracji stosuje \"Ulisses\" Joyce’a, imitując tok myśli bohaterów?",
+    "options": [
+      "styl zakopiański",
+      "powieść inicjacyjna",
+      "strumień świadomości",
+      "akmeizm rosyjski"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który polski reportażysta jest autorem książki \"Cesarz\"?",
+    "options": [
+      "ikonostas bizantyjski",
+      "suita taneczna baroku",
+      "chorał gregoriański",
+      "Ryszard Kapuściński"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się zabieg, gdy utwór odsyła do innego tekstu bez dosłownego cytatu?",
+    "options": [
+      "transawangarda włoska",
+      "intertekstualność",
+      "kolaż kubistyczny",
+      "esej personalny"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który kierunek awangardowy uczynił przypadek i absurd narzędziem buntu przeciw logice wojny?",
+    "options": [
+      "dadaizm",
+      "sonata klasyczna",
+      "monodram aktorski",
+      "malarstwo marynistyczne"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Z którym malarzem wiąże się suprematyzm i obraz \"Czarny kwadrat\"?",
+    "options": [
+      "intonacja psalmodyczna",
+      "libretto operowe",
+      "dramat mieszczański",
+      "Kazimierz Malewicz"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaką funkcję pełni chór w tragedii antycznej?",
+    "options": [
+      "nurt verismo",
+      "powieść szkatułkowa orientalistyczna",
+      "komentuje wydarzenia i nadaje im wymiar wspólnotowy",
+      "styl joński w architekturze"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który polski noblista napisał \"Zniewolony umysł\"?",
+    "options": [
+      "poemat prozą",
+      "komedia satyryczna",
+      "retoryka wysokiego stylu",
+      "Czesław Miłosz"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się pytanie zadawane nie po to, by uzyskać odpowiedź, lecz by coś podkreślić?",
+    "options": [
+      "pytanie retoryczne",
+      "ballada romantyczna",
+      "neoklasycyzm francuski",
+      "kino noir"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który urbanista przebudował Paryż w XIX wieku siecią szerokich bulwarów?",
+    "options": [
+      "paleta secesyjna",
+      "poezja metafizyczna",
+      "Georges-Eugene Haussmann",
+      "epitafium renesansowe"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki nurt filmowy kojarzy się z Godardem i Truffautem oraz zrywaniem z klasyczną narracją?",
+    "options": [
+      "opera seria",
+      "awangarda krakowska",
+      "mural meksykański",
+      "francuska nowa fala"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co odróżnia sonet od wiersza wolnego?",
+    "options": [
+      "rygorystyczna budowa stroficzna i układ rymów",
+      "ekranizacja modernistyczna",
+      "estetyka camp",
+      "teatr dokumentalny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Która autorka napisała powieść \"Pani Dalloway\"?",
+    "options": [
+      "Virginia Woolf",
+      "styl brutalistyczny",
+      "poetyka realizmu magicznego",
+      "ornament secesyjny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się średniowieczny gatunek opowieści o czynach rycerskich związanych z kręgiem Karola Wielkiego?",
+    "options": [
+      "chanson de geste",
+      "chanson réaliste",
+      "epopeja homerycka",
+      "kantyczka średniowieczna"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który filozof-poeta stworzył aforystyczne \"Tako rzecze Zaratustra\"?",
+    "options": [
+      "powieść polifoniczna",
+      "rzeźba archaiczna Grecji",
+      "malarstwo ikonowe Rusi",
+      "Friedrich Nietzsche"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który pisarz stworzył postać komisarza Maigreta?",
+    "options": [
+      "słowotwórcza neologia futurystów",
+      "konceptualizm lat sześćdziesiątych",
+      "Georges Simenon",
+      "koncert skrzypcowy romantyzmu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywa się technika narracyjna, w której opowieść zaczyna się od środka wydarzeń?",
+    "options": [
+      "miniatura perska",
+      "narracja ramowa",
+      "cykl pieśni Schuberta",
+      "in medias res"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który myśliciel sformułował imperatyw kategoryczny jako centralną zasadę etyki?",
+    "options": [
+      "teoria racjonalnego wyboru",
+      "efekt halo",
+      "Immanuel Kant",
+      "pluralizm prawny"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywa się model państwa, w którym władzę ograniczają konstytucja i niezależne sądy?",
+    "options": [
+      "państwo prawne",
+      "libertarianizm klasyczny",
+      "dobra klubowe",
+      "krzywa Laffera"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co w ekonomii oznacza inflacja kosztowa?",
+    "options": [
+      "wzrost cen napędzany kosztami produkcji",
+      "egalitaryzm relacyjny",
+      "paternalizm miękki",
+      "państwo minimum"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się błąd poznawczy polegający na dostrzeganiu głównie informacji potwierdzających własną tezę?",
+    "options": [
+      "współczynnik Giniego",
+      "eksternalia negatywne",
+      "mowa nienawiści w prawie",
+      "efekt potwierdzenia"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który autor uważał, że w stanie natury życie człowieka jest samotne, biedne, brutalne i krótkie?",
+    "options": [
+      "efekt zakotwiczenia",
+      "dewiacja wtórna",
+      "kapitał społeczny Putnama",
+      "Thomas Hobbes"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak określa się ustrój, w którym rząd odpowiada przed parlamentem, ale istnieje także silny prezydent?",
+    "options": [
+      "koszyk inflacyjny",
+      "system semiprezydencki",
+      "heurystyka reprezentatywności",
+      "monizm prawny"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co oznacza termin \"gerrymandering\" w politologii?",
+    "options": [
+      "dyskonto hiperboliczne",
+      "manipulowanie granicami okręgów wyborczych",
+      "sekurytyzacja w stosunkach międzynarodowych",
+      "teoria elit Pareta"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który ekonomista opisał twórczą destrukcję jako motor kapitalizmu?",
+    "options": [
+      "moral hazard",
+      "preferencje ujawnione",
+      "Joseph Schumpeter",
+      "efekt aureoli medialnej"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywa się sytuacja, gdy wszyscy korzystają z dobra niezależnie od tego, kto za nie płaci?",
+    "options": [
+      "dobro wspólne republiki",
+      "problem gapowicza",
+      "legitymizacja charyzmatyczna",
+      "przymusowy arbitraż pracy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Czym w logice klasycznej jest sylogizm?",
+    "options": [
+      "autorytaryzm konkurencyjny",
+      "efekt ramek decyzyjnych",
+      "wnioskowaniem z przesłanek do konkluzji",
+      "kryterium Pareto"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który filozof jest autorem dialogu \"Państwo\", ważnego dla klasycznej teorii sprawiedliwości?",
+    "options": [
+      "stopa partycypacji zawodowej",
+      "pluralizm aksjologiczny",
+      "soft power państwa",
+      "Platon"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się procedura usunięcia głowy państwa w trybie odpowiedzialności konstytucyjnej?",
+    "options": [
+      "impeachment",
+      "reputacyjna asymetria informacji",
+      "władza dyscyplinarna Foucaulta",
+      "reguła większości bezwzględnej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co oznacza pojęcie anomii w klasycznej socjologii Durkheima?",
+    "options": [
+      "demokracja deliberatywna",
+      "test falsyfikowalności Poppera",
+      "osłabienie norm regulujących życie społeczne",
+      "spirala zadłużenia publicznego"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który nurt psychologii kojarzy się z Abrahamem Maslowem i ideą samorealizacji?",
+    "options": [
+      "kontrakt psychologiczny w organizacji",
+      "błąd hazardzisty",
+      "państwo opiekuńcze typu nordyckiego",
+      "psychologia humanistyczna"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się przekonanie, że wynik był oczywisty dopiero po fakcie?",
+    "options": [
+      "prawa naturalne Locke'a",
+      "racjonalna ignorancja wyborców",
+      "efekt wstecznej oczywistości",
+      "wolność pozytywna Berlina"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Czym jest regres do średniej?",
+    "options": [
+      "efekt pierwszeństwa",
+      "społeczne dowody słuszności",
+      "spójność poznawcza Festingera",
+      "tendencją skrajnych wyników do zbliżania się do przeciętnej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak określa się rynek kontrolowany przez jedną firmę dzięki korzyściom skali i wysokim barierom wejścia?",
+    "options": [
+      "metoda d'Hondta",
+      "monopol naturalny",
+      "zasada subsydiarności",
+      "paradoks Condorceta"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywa się eksperyment, w którym ani badany, ani oceniający nie znają przydziału do grup?",
+    "options": [
+      "kapitał kulturowy",
+      "próba podwójnie ślepa",
+      "partycypacja budżetowa",
+      "efekt fałszywej powszechności"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co odróżnia korelację od przyczynowości w interpretacji danych?",
+    "options": [
+      "realizm polityczny Morgenthaua",
+      "teoria gier o sumie zerowej",
+      "współwystępowanie nie dowodzi związku sprawczego",
+      "delegacja ustawowa"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaka norma prawna stoi w hierarchii ponad ustawami?",
+    "options": [
+      "zasada proporcjonalności prawa",
+      "konstytucja",
+      "samorząd terytorialny",
+      "bieżąca preferencja konsumpcyjna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywa się model rządzenia, w którym duży wpływ zyskują eksperci i urzędnicy?",
+    "options": [
+      "pułapka średniego dochodu",
+      "renta ekonomiczna",
+      "technokracja",
+      "indeks rozwoju społecznego"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Co Hannah Arendt nazywała banalnością zła?",
+    "options": [
+      "bezrefleksyjnym wykonywaniem nieludzkich czynów",
+      "próg wyborczy",
+      "efekt Krugera-Dunninga",
+      "polaryzacja grupowa"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się zjawisko wzrostu poparcia dla opinii tylko dlatego, że wydaje się dominująca publicznie?",
+    "options": [
+      "spirala milczenia",
+      "sprawiedliwość dystrybutywna",
+      "represja prewencyjna",
+      "reguła jednomyślności"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który filozof egzystencjalny napisał \"Byt i nicość\"?",
+    "options": [
+      "kapitalizm interesariuszy",
+      "spirala cen i płac",
+      "jawność życia publicznego",
+      "Jean-Paul Sartre"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Czym w badaniach społecznych jest próba reprezentatywna?",
+    "options": [
+      "federalizm fiskalny",
+      "grupą odzwierciedlającą cechy całej populacji",
+      "wybór publiczny Buchanana",
+      "subsumpcja prawna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaki mechanizm skłania ludzi do dalszego inwestowania, bo już ponieśli koszty?",
+    "options": [
+      "pułapka zadłużenia gospodarstw",
+      "efekt posiadania",
+      "efekt utopionych kosztów",
+      "samospełniające się proroctwo"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Co w etyce oznacza utylitaryzm?",
+    "options": [
+      "ocenianie działań przez ich skutki dla dobrostanu",
+      "narracja tożsamościowa",
+      "selekcja negatywna rynku",
+      "bezrobocie frykcyjne"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który autor eseju \"O wolności\" bronił zasady niekrzywdzenia innych jako granicy władzy?",
+    "options": [
+      "efekt Pigmaliona",
+      "społeczna umowa Rousseau w wersji klasycznej",
+      "społeczna odpowiedzialność biznesu",
+      "John Stuart Mill"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się odwołanie polityka w głosowaniu obywatelskim przed końcem kadencji?",
+    "options": [
+      "asymetria między centrum a peryferiami",
+      "recall",
+      "prawomocność proceduralna",
+      "redystrybucja transferowa"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co oznacza skrót BATNA w negocjacjach?",
+    "options": [
+      "anarchizm mutualistyczny",
+      "próg bólu podatkowego",
+      "teoria uznania Honnetha",
+      "najlepszą alternatywę wobec braku porozumienia"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który uczony zaproponował model atomu z dyskretnymi orbitami elektronów?",
+    "options": [
+      "cykl Krebsa",
+      "przemiana izobaryczna",
+      "efekt fotoelektryczny",
+      "Niels Bohr"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się zasada mówiąca, że nie da się jednocześnie dokładnie znać położenia i pędu cząstki?",
+    "options": [
+      "równanie Schrödingera",
+      "prawo Hubble'a",
+      "gradient geotermiczny",
+      "zasada nieoznaczoności Heisenberga"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co opisuje liczba Avogadra?",
+    "options": [
+      "liczbę cząstek przypadającą na jeden mol",
+      "rezonans spinowy",
+      "mostek wodorowy",
+      "rekombinacja genetyczna"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który proces komórkowy dostarcza większość ATP w warunkach tlenowych?",
+    "options": [
+      "pierwsza zasada dynamiki Newtona",
+      "siła Coriolisa",
+      "fosforylacja oksydacyjna",
+      "osmoza odwrócona"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaka cząstka pośredniczy w oddziaływaniu elektromagnetycznym?",
+    "options": [
+      "widmo emisyjne sodu",
+      "fotosystem drugi",
+      "mutacja nonsensowna",
+      "foton"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Która zasada geologii mówi, że w nieprzemieszczonej sekwencji warstwy młodsze leżą nad starszymi?",
+    "options": [
+      "zasada superpozycji",
+      "prawo Ohma",
+      "ruch Browna",
+      "reakcja estryfikacji"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się zjawisko ugięcia toru światła przy przejściu między ośrodkami?",
+    "options": [
+      "pole magnetyczne dipola",
+      "radiacja tła mikrofalowego",
+      "refrakcja",
+      "mitoza prometafazowa"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki enzym wydłuża końce chromosomów w części komórek eukariotycznych?",
+    "options": [
+      "prawo Snelliusa",
+      "izotop promieniotwórczy",
+      "faza El Nino",
+      "telomeraza"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co najlepiej wyjaśnia dryf kontynentów we współczesnej geologii?",
+    "options": [
+      "tektonika płyt",
+      "enzym restrykcyjny",
+      "bomba sodowo-potasowa",
+      "strefa subdukcji"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się granica masy białego karła związana z ciśnieniem zdegenerowanego gazu elektronowego?",
+    "options": [
+      "cykl azotowy biosfery",
+      "przemiana adiabatyczna",
+      "laser półprzewodnikowy",
+      "granica Chandrasekhara"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który mechanizm pozwala roślinom C4 ograniczać fotooddychanie w gorącym klimacie?",
+    "options": [
+      "cząstka W plus",
+      "przestrzenne rozdzielenie wiązania CO2 i cyklu Calvina",
+      "napięcie powierzchniowe",
+      "ruch precesyjny osi"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Czym jest paradoks Fermiego?",
+    "options": [
+      "krzyżówka testowa",
+      "pytaniem o brak śladów obcych cywilizacji mimo ogromu kosmosu",
+      "genom jądrowy",
+      "punkt potrójny wody"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który rodzaj promieniowania ma bardzo dużą zdolność jonizacji, ale mały zasięg w materii?",
+    "options": [
+      "dyfuzja prosta",
+      "rekord paleomagnetyczny",
+      "promieniowanie alfa",
+      "prąd zatokowy"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Co opisuje stała równowagi reakcji chemicznej?",
+    "options": [
+      "wiązanie peptydowe",
+      "stosunek aktywności produktów do substratów w stanie równowagi",
+      "izotermiczna ekspansja gazu",
+      "energia aktywacji"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Która metoda wykrywania egzoplanet opiera się na zmianach prędkości gwiazdy obserwowanych w widmie?",
+    "options": [
+      "metoda prędkości radialnych",
+      "prawo Keplera trzecie",
+      "efekt cieplarniany naturalny",
+      "mejoza redukcyjna"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co w biologii ewolucyjnej oznacza dobór krewniaczy?",
+    "options": [
+      "prawo Coulomba",
+      "warstwa ozonowa stratosfery",
+      "stała Plancka",
+      "faworyzowanie zachowań zwiększających sukces spokrewnionych genetycznie"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się układ białek sterujących przejściami między fazami cyklu komórkowego?",
+    "options": [
+      "protisty fotosyntetyzujące",
+      "kompleksy cyklin i kinaz CDK",
+      "pulsar milisekundowy",
+      "gradient protonowy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który eksperyment potwierdził falową naturę elektronów?",
+    "options": [
+      "plateau potencjału czynnościowego",
+      "doświadczenie Davissona i Germera",
+      "białko histonowe",
+      "supersymetria hipotetyczna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co opisuje prawo Hardy’ego-Weinberga?",
+    "options": [
+      "warunki stałości częstości alleli w idealnej populacji",
+      "wiązanie kowalencyjne spolaryzowane",
+      "metamorfizm kontaktowy",
+      "układ limbiczny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaki typ symbiozy łączy grzyb z glonem lub sinicą w porostach?",
+    "options": [
+      "mutualizm porostowy",
+      "matryca zewnątrzkomórkowa",
+      "promieniowanie Czerenkowa",
+      "próbnik genetyczny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się granica wokół czarnej dziury, zza której nie może uciec światło?",
+    "options": [
+      "zasada zachowania pędu",
+      "izotopy tlenu w rdzeniach lodowych",
+      "efekt Zeemana",
+      "horyzont zdarzeń"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co w klimatologii oznacza albedo?",
+    "options": [
+      "stężenie molalne",
+      "część promieniowania odbijaną przez powierzchnię",
+      "mikrotubule cytoszkieletu",
+      "ekspresja epigenetyczna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaką technikę sekwencjonowania DNA opracował Frederick Sanger?",
+    "options": [
+      "biom tundry arktycznej",
+      "zjawisko tunelowe",
+      "metoda terminacji łańcucha",
+      "promień Schwarzschilda w ujęciu klasycznym"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który związek chemiczny najczęściej odpowiada za twardość przemijającą wody?",
+    "options": [
+      "strefa cienia sejsmicznego",
+      "sinica planktonowa",
+      "równowaga dynamiczna reakcji",
+      "wodorowęglan wapnia"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się system pokrewieństwa oparty na pochodzeniu liczonym w linii żeńskiej?",
+    "options": [
+      "matrylinearność",
+      "rytuał potlaczu",
+      "kodeks Hammurabiego",
+      "mit o Wieży Babel"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Czym w tradycji judaistycznej jest Talmud?",
+    "options": [
+      "sanskryckie Upaniszady",
+      "zbiorem komentarzy i dyskusji interpretujących Prawo",
+      "archiwum glinianych tabliczek",
+      "kanon konfucjański"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaką funkcję pełnił senat w republice rzymskiej?",
+    "options": [
+      "obrzęd przejścia van Gennepa",
+      "teoria axial age",
+      "święta księga awestyjska",
+      "kształtował politykę przez autorytet i kontrolę nad finansami"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się praktyka świadomego niszczenia wizerunków religijnych?",
+    "options": [
+      "ceremoniał dworski Heian",
+      "ikonoklazm",
+      "mapa Hereford średniowiecza",
+      "prawo talionu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co w antropologii oznacza egzogamia?",
+    "options": [
+      "pamięć komunikacyjna Assmanna",
+      "totemizm klanowy",
+      "kodeks bushido w wersji nowożytnej",
+      "nakaz szukania partnera poza własną grupą"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który traktat Marsyliusza z Padwy bronił prymatu wspólnoty świeckiej nad władzą papieską?",
+    "options": [
+      "Defensor pacis",
+      "teoria wymiany daru Maussa",
+      "rytuał koronacyjny monarchii",
+      "oralność wtórna mediów"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się zbiorowa praktyka przemilczania niewygodnych fragmentów przeszłości?",
+    "options": [
+      "kanon prawa kanonicznego",
+      "pieczęć cesarska Chin",
+      "kult przodków dynastii Zhou",
+      "amnezja kulturowa"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który termin opisuje rządy oparte bardziej na osobistej lojalności niż na trwałych instytucjach?",
+    "options": [
+      "rytuał oczyszczenia lustralnego",
+      "neopatrimonializm",
+      "megalityczny krąg kultowy",
+      "święto Chanuka"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co w medioznawstwie oznacza framing?",
+    "options": [
+      "buddyjski ośmioraki szlak",
+      "szkoła aleksandryjska judaizmu",
+      "monastycyzm pachomiański",
+      "nadawanie wydarzeniu określonych ram interpretacyjnych"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się zbiór norm regulujących konflikty zbrojne i ochronę ludności cywilnej?",
+    "options": [
+      "prawo zwyczajowe plemion",
+      "kanaon staroobrzędowców",
+      "ceremonia herbaciana chanoyu",
+      "międzynarodowe prawo humanitarne"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który socjolog wprowadził pojęcie habitusu?",
+    "options": [
+      "pamięć protetyczna Landsberg",
+      "mit założycielski Rzymu",
+      "sacrum i profanum Eliadego",
+      "Pierre Bourdieu"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co oznacza sekularyzacja?",
+    "options": [
+      "stopniowe uniezależnianie życia publicznego od religii",
+      "kanon muratoriego",
+      "epigrafika funerarna",
+      "katechumenat wczesnochrześcijański"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się japoński system pisma używany głównie do zapisu rodzimych końcówek i wielu słów funkcyjnych?",
+    "options": [
+      "święto Yom Kippur",
+      "kalendarz juliański",
+      "hiragana",
+      "mnemotopos narodowy"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Które pojęcie opisuje spory o interpretację przeszłości i prawo do jej symbolicznego zawłaszczenia?",
+    "options": [
+      "polityka pamięci",
+      "etos sarmacki",
+      "pismo klinowe akadyjskie",
+      "rytuał maskowy Dogonów"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który traktat z 1494 roku symbolicznie podzielił strefy ekspansji zamorskiej Hiszpanii i Portugalii?",
+    "options": [
+      "wojna rosyjsko-japońska początku XX wieku",
+      "traktat z Tordesillas",
+      "powstanie Mahdiego w Sudanie",
+      "karta Narodów Zjednoczonych z San Francisco"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywał się szlak handlowy łączący Bałtyk z Bizancjum przez Europę Wschodnią?",
+    "options": [
+      "Liga Narodów międzywojnia",
+      "szlak od Waregów do Greków",
+      "kampania stu dni Napoleona",
+      "wojna secesyjna Stanów Zjednoczonych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Które miasto było stolicą kalifatu Umajjadów w okresie jego największej potęgi?",
+    "options": [
+      "reformy józefińskie monarchii habsburskiej",
+      "pakt czterech mocarstw lat trzydziestych",
+      "Damaszek",
+      "traktat z Maastricht tworzący Unię Europejską"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywa się proces przejmowania kultury greckiej przez elity Wschodu po podbojach Aleksandra?",
+    "options": [
+      "hellenizacja",
+      "wielka wojna północna",
+      "oblężenie Wiednia z 1683 roku",
+      "pokój karłowicki z Imperium Osmańskim"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Która wyprawa jako pierwsza doprowadziła do opłynięcia Ziemi dookoła?",
+    "options": [
+      "ekspedycja Magellana i Elcano",
+      "ruch grodzeń wspólnych pól w Anglii",
+      "rewolucja przemysłowa Wysp Brytyjskich",
+      "edykty o tolerancji Józefa II"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywał się system dróg i stacji kurierskich spinający imperium Achemenidów?",
+    "options": [
+      "królewska droga perska",
+      "antyfeudalna jacquerie francuska",
+      "powstanie styczniowe przeciw Rosji",
+      "powstanie listopadowe Królestwa Polskiego"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który władca Mali zasłynął pielgrzymką do Mekki i demonstracją ogromnego bogactwa?",
+    "options": [
+      "bitwa pod Salaminą",
+      "konfederacja generalna Korony",
+      "bitwa pod Maratonem",
+      "Mansa Musa"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co było najważniejszą innowacją fenicką o długim wpływie na dzieje pisma?",
+    "options": [
+      "traktat londyński z 1839 roku",
+      "rządy triumwiratu drugiego",
+      "alfabet spółgłoskowy",
+      "wojna punicka druga"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywa się typ nowożytnego miasta obronnego o gwiaździstym układzie bastionów?",
+    "options": [
+      "plan Schlieffena",
+      "twierdza bastionowa",
+      "doktryna Breżniewa",
+      "wojna koreańska"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Które imperium Afryki Zachodniej kontrolowało handel złotem i solą przed wzrostem Mali?",
+    "options": [
+      "plan Dawesa dla Niemiec",
+      "układy campdawidzkie",
+      "rewolucja młodoturecka 1908 roku",
+      "imperium Ghany"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Z którym malarzem wiąże się technika sfumato widoczna w \"Mona Lisie\"?",
+    "options": [
+      "dramat symboliczny",
+      "Leonardo da Vinci",
+      "arte povera",
+      "malarstwo en plein air"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który rzeźbiarz stworzył \"Ekstazę świętej Teresy\" w barokowym Rzymie?",
+    "options": [
+      "Gian Lorenzo Bernini",
+      "performans feministyczny",
+      "teoria katharsis Arystotelesa rozszerzona",
+      "fresk sieneński trecenta"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaki element architektury Panteonu doświetla wnętrze od góry bez bocznych okien?",
+    "options": [
+      "estetyka sublime",
+      "metafora konceptualna",
+      "poetyka klasycyzmu francuskiego",
+      "oculus"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który kompozytor napisał \"Wiosnę\" z cyklu \"Cztery pory roku\"?",
+    "options": [
+      "satyra menippejska",
+      "malarstwo caravaggionistów",
+      "Antonio Vivaldi",
+      "koncert fortepianowy Chopina e-moll"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywa się kierunek malarski rozbijający formy na geometryczne płaszczyzny?",
+    "options": [
+      "misterium średniowieczne",
+      "kubizm",
+      "powieść realistyczna Balzaka",
+      "estetyka groteski kafkowskiej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Która reżyserka nakręciła film \"Cléo od 5 do 7\"?",
+    "options": [
+      "liberatura eksperymentalna",
+      "teatr nō klasycznej Japonii",
+      "Agnès Varda",
+      "dramat ibsenowski"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki termin muzyczny oznacza stopniowe przyspieszanie tempa?",
+    "options": [
+      "powieść drogi amerykańskiej",
+      "malarstwo historyczne akademizmu",
+      "land art",
+      "accelerando"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który polski kompozytor stworzył \"Tren Ofiarom Hiroszimy\"?",
+    "options": [
+      "faktura impresyjna Debussy'ego",
+      "Krzysztof Penderecki",
+      "opera narodowa Moniuszki",
+      "poemat tyrtejski"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaka technika graficzna pozwalała Dürerowi osiągać wyjątkowo precyzyjne linie w rycinach na metalu?",
+    "options": [
+      "sonet włoski petrarkistów",
+      "miedzioryt",
+      "kino neorealizmu włoskiego",
+      "baśń filozoficzna oświecenia"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Z czym w refleksji Jerzego Grotowskiego wiąże się pojęcie teatru ubogiego?",
+    "options": [
+      "epos rycerski Iberii",
+      "powieść dystopijna XX wieku",
+      "rzeźba hellenistyczna",
+      "z redukcją dekoracji na rzecz pracy aktora"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który architekt zaprojektował kaplicę Notre-Dame du Haut w Ronchamp?",
+    "options": [
+      "monumentalizm socrealistyczny",
+      "estetyka kolażu dadaistów",
+      "motyw vanitas baroku",
+      "Le Corbusier"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się montażowy efekt polegający na tym, że zestawienie dwóch ujęć tworzy nowe znaczenie?",
+    "options": [
+      "fotografia piktorialna",
+      "sielanka pastoralna",
+      "proza eseistyczna Sebalda",
+      "efekt Kuleszowa"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który poeta barokowy napisał sonet \"Do trupa\"?",
+    "options": [
+      "poemat symfoniczny Liszta",
+      "arabeska ornamentalna islamu",
+      "Jan Andrzej Morsztyn",
+      "dramat romantyczny Hugo"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaka cecha odróżnia fugę od prostego utworu homofonicznego?",
+    "options": [
+      "palimpsest literacki",
+      "ikona mandylionu",
+      "poezja konkretna",
+      "imitacyjne rozwijanie jednego tematu w kolejnych głosach"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się japoński teatr z maskami i silną stylizacją ruchu, starszy od kabuki?",
+    "options": [
+      "teatr nō",
+      "autotematyzm prozy nowoczesnej",
+      "estetyka noir komiksu",
+      "fresk pompejański"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który polski reżyser zrealizował film \"Popiół i diament\"?",
+    "options": [
+      "Andrzej Wajda",
+      "kino moralnego niepokoju",
+      "miniatura karolińska",
+      "powieść psychologiczna Henry'ego Jamesa"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaki kierunek projektowy i architektoniczny głosił zasadę \"forma wynika z funkcji\"?",
+    "options": [
+      "teoria montażu Eisensteina",
+      "scenografia konstruktywistyczna",
+      "wiersz biały",
+      "Bauhaus"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Z którym pisarzem kojarzy się powieść szkatułkowa \"Rękopis znaleziony w Saragossie\"?",
+    "options": [
+      "opera wagnerowska totalna",
+      "sztuka site-specific",
+      "malarstwo suprematyczne późne",
+      "Jan Potocki"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co w teorii wyboru społecznego opisuje twierdzenie Arrowa?",
+    "options": [
+      "konstytucjonalizm liberalny",
+      "niemożność skonstruowania idealnej ordynacji agregującej preferencje",
+      "efekt mrożący wypowiedzi",
+      "współczynnik zależności demograficznej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywa się chwyt polegający na ataku na osobę zamiast na jej argument?",
+    "options": [
+      "preferencje społeczne Fehra",
+      "scentralizowane planowanie nakazowe",
+      "autokorelacja błędów",
+      "argument ad hominem"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się eksperyment myślowy o inteligencji znającej położenie i pęd wszystkich cząstek?",
+    "options": [
+      "cykl Wilsona",
+      "demon Laplace'a",
+      "prąd zmienny sinusoidalny",
+      "interferencja falowa"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co w semiotyce oznacza znak indeksalny?",
+    "options": [
+      "archetyp jungowski",
+      "ikonografia maryjna",
+      "teoria długiego trwania Braudela",
+      "znak powiązany ze źródłem związkiem fizycznym lub przyczynowym"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się metoda dowodzenia, w której przyjmuje się tezę przeciwną i wyprowadza z niej sprzeczność?",
+    "options": [
+      "test Turinga jako metafora społeczna",
+      "partia kadrowa",
+      "losowanie obywatelskie",
+      "dowód nie wprost"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który paradoks statystyczny polega na odwracaniu się trendu po zsumowaniu danych z kilku grup?",
+    "options": [
+      "narracyjna tożsamość jednostki",
+      "paradoks oszczędzania",
+      "demokracja konsocjonalna",
+      "paradoks Simpsona"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Czym jest okno Overtona w analizie debaty publicznej?",
+    "options": [
+      "zakresem idei uznawanych za politycznie akceptowalne",
+      "próg ubóstwa relatywnego",
+      "wyuczona bezradność",
+      "teoria wyboru publicznego"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się mechanizm społeczny, przez który świadkowie rzadziej reagują, gdy wokół jest wielu innych ludzi?",
+    "options": [
+      "pluralizm mediów",
+      "sankcja symboliczna",
+      "legitymizacja legalna Webera",
+      "efekt widza"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który eksperyment myślowy Russella wykorzystuje historię codziennie karmionego indyka?",
+    "options": [
+      "framing podatkowy",
+      "teoria centrum-peryferii",
+      "koordynacja przez normy",
+      "indyk Russella"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co oznacza pojęcie path dependence w historii instytucji?",
+    "options": [
+      "współczynnik Theila",
+      "teoria wyboru racjonalnego w polityce",
+      "rozproszenie odpowiedzialności",
+      "wpływ dawnych decyzji na zawężenie późniejszych możliwości"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Który model z teorii gier pokazuje, że zdrada bywa racjonalna mimo gorszego wyniku dla obu stron?",
+    "options": [
+      "pluralistyczna teoria demokracji",
+      "dylemat więźnia",
+      "demokracja monitorująca",
+      "dylemat wspólnego pastwiska"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Czym jest heurystyka dostępności?",
+    "options": [
+      "efekt świeżości",
+      "ocenianiem prawdopodobieństwa przez łatwość przywołania przykładów",
+      "ilościowa teoria pieniądza",
+      "równowaga Nasha"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywa się błąd logiczny polegający na wywodzeniu A z faktu, że zaszło B oraz A implikuje B?",
+    "options": [
+      "potwierdzanie następstwa",
+      "koszt alternatywny decyzji",
+      "kapitał ludzki Beckera",
+      "uzależnienie od ścieżki technologicznej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak określa się proces, w którym miejsca i rocznice zaczynają działać jak świeckie świętości wspólnoty politycznej?",
+    "options": [
+      "sakralizacja pamięci zbiorowej",
+      "pieśń genealogiczna griotów",
+      "panteon bóstw mezopotamskich",
+      "kult cargo w Oceanii"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co w etnologii oznacza tabu?",
+    "options": [
+      "średniowieczna ars memoriae",
+      "święto Obon w Japonii",
+      "kulturowy zakaz obwarowany silną sankcją symboliczną",
+      "dyskurs orientalizmu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywa się model języka Romana Jakobsona wyróżniający funkcję poetycką?",
+    "options": [
+      "relikwia kontaktowa",
+      "model sześciu funkcji języka",
+      "ceremonia wejścia w dorosłość",
+      "rytuał odwrócenia ról karnawałowych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywa się pozasądowa procedura rozstrzygania sporu przez bezstronnego arbitra?",
+    "options": [
+      "sprawiedliwość naprawcza",
+      "arbitraż",
+      "autorytet tradycyjny Webera",
+      "deprywacja relatywna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co w teorii argumentacji oznacza chochoł?",
+    "options": [
+      "teoria modernizacji klasycznej",
+      "zniekształcenie cudzego stanowiska w łatwiejszą do obalenia karykaturę",
+      "społeczna tożsamość Tajfela",
+      "problem wspólnego zasobu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak można nazwać sytuację, w której organizacja bardziej broni własnego trwania niż pierwotnego celu?",
+    "options": [
+      "efekt samej ekspozycji",
+      "dobra merit goods",
+      "dryf instytucjonalny",
+      "negocjacje integracyjne"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Czym w historii idei jest republikanizm obywatelski?",
+    "options": [
+      "wizją wolności jako niepodlegania arbitralnej dominacji",
+      "zachowanie stadne inwestorów",
+      "teoria agencji",
+      "bias status quo"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się przechodzenie wpływu przez prywatne sieci lojalności zamiast przez oficjalne procedury?",
+    "options": [
+      "współczynnik aktywności zawodowej kobiet",
+      "klientelizm polityczny",
+      "perswazja peryferyjna w modelu ELM",
+      "efekt aureoli kompetencji"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak określa się dział filozofii badający naturę poznania, uzasadnienia i prawdy?",
+    "options": [
+      "epistemologia",
+      "asymetria wiedzy wyborczej",
+      "spirala radykalizacji",
+      "sprawiedliwość proceduralna"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co Guy Debord opisywał pojęciem społeczeństwa spektaklu?",
+    "options": [
+      "koszt krańcowy produkcji",
+      "dominację obrazów i przedstawień nad bezpośrednim doświadczeniem",
+      "teoria hegemonii Gramsciego",
+      "społeczna pamięć instytucji"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który mechanizm prawny chroni jednostkę przed bezprawnym więzieniem przez nakaz przedstawienia zatrzymanego sądowi?",
+    "options": [
+      "habeas corpus",
+      "złudzenie kontroli",
+      "kapitał pomostowy",
+      "efekt posłuszeństwa normie"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się błąd polegający na analizowaniu wyłącznie przypadków, które przetrwały selekcję?",
+    "options": [
+      "ekonomia behawioralna",
+      "błąd przeżywalności",
+      "konformizm normatywny",
+      "efekt tłumu online"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co w humanistyce cyfrowej oznacza distant reading?",
+    "options": [
+      "barwna chromatyka fowistów",
+      "epigramat renesansowy",
+      "analizę dużych korpusów tekstów zamiast bliskiej lektury pojedynczego dzieła",
+      "pieśń truwerów"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak nazywał się system zależności politycznych epoki Tokugawa łączący władzę sioguna z domenami daimyo?",
+    "options": [
+      "bakuhan taisei",
+      "bitwa pod Midway",
+      "operacja Overlord",
+      "oblężenie Sarajewa"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Która koncepcja socjologiczna mówi o współistnieniu wielu nowoczesności, a nie jednego zachodniego wzorca?",
+    "options": [
+      "wielorakie nowoczesności",
+      "pluralizm metodologiczny",
+      "reguła minimum Coase'a",
+      "teoria sprawiedliwości tranzycyjnej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co w teorii mediów oznacza agenda-setting?",
+    "options": [
+      "władza miękka kulturowa",
+      "wpływanie na to, o czym odbiorcy uznają za ważne myśleć",
+      "przesunięcie odpowiedzialności moralnej",
+      "problem principal-agent"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazywa się zjawisko, gdy pozornie neutralne reguły utrwalają nierówność między grupami?",
+    "options": [
+      "spirala roszczeń inflacyjnych",
+      "legitymizacja wynikowa",
+      "dyskryminacja pośrednia",
+      "wybory pierwszej preferencji"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który ruch społeczny w Anglii domagał się powszechniejszego prawa wyborczego i tajnego głosowania w pierwszej połowie XIX wieku?",
+    "options": [
+      "wojny husyckie",
+      "czartyzm",
+      "powstanie węgierskie 1956 roku",
+      "Praska defenestracja"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak nazwano politykę gospodarczą Lenina dopuszczającą ograniczony rynek po wojnie domowej?",
+    "options": [
+      "kryzys sukcesyjny po Neronie",
+      "Nowa Polityka Ekonomiczna",
+      "edykty Aszoki",
+      "bitwa pod Austerlitz"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Który konflikt z 1853-1856 roku ujawnił słabość imperium carskiego wobec koalicji zachodniej?",
+    "options": [
+      "wojna krymska",
+      "blokada Berlina Zachodniego",
+      "bitwa pod Waterloo",
+      "wojna o Falklandy"
+    ],
+    "correctIndex": 0
+  }
+]

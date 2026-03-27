@@ -6,6 +6,11 @@ import { useEffect, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { formatRoomCode } from "@/lib/room-code";
+import {
+  SCIENCE_QUIZ_CATEGORIES,
+  SCIENCE_QUIZ_CATEGORY_LABELS,
+  type ScienceQuizCategory,
+} from "@/lib/science-quiz-categories";
 
 type GamesScreenProps = {
   roomCode: string;
@@ -33,6 +38,7 @@ export function GamesScreen({
     userOneWins,
     userTwoWins,
   });
+  const [scienceCategory, setScienceCategory] = useState<ScienceQuizCategory>("matma");
 
   useEffect(() => {
     let isCancelled = false;
@@ -227,18 +233,29 @@ export function GamesScreen({
                       Test your knowledge of the universe
                     </p>
                   </div>
-                  <button className="bg-tertiary-container hover:bg-tertiary text-on-tertiary p-3 rounded-full active:scale-90 duration-200 shadow-lg shadow-tertiary/20">
+                  <button
+                    className="bg-tertiary-container hover:bg-tertiary text-on-tertiary p-3 rounded-full active:scale-90 duration-200 shadow-lg shadow-tertiary/20"
+                    type="button"
+                    onClick={() => router.push(`/games/science-quiz/${scienceCategory}`)}
+                  >
                     <span className="material-symbols-outlined">psychology</span>
                   </button>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex-1 flex items-center justify-between px-4 py-2 bg-surface/50 rounded-lg border border-outline-variant/20 hover:bg-surface transition-colors cursor-pointer group/select">
-                    <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
-                      Wybierz dziedzinę
-                    </span>
-                    <span className="material-symbols-outlined text-sm text-[#b6a0ff]">
-                      expand_more
-                    </span>
+                  <div className="flex-1 rounded-lg border border-outline-variant/20 bg-surface/50 transition-colors hover:bg-surface">
+                    <select
+                      className="w-full bg-transparent px-4 py-2 text-xs font-label uppercase tracking-widest text-on-surface-variant outline-none"
+                      value={scienceCategory}
+                      onChange={(event) =>
+                        setScienceCategory(event.target.value as ScienceQuizCategory)
+                      }
+                    >
+                      {SCIENCE_QUIZ_CATEGORIES.map((category) => (
+                        <option key={category} value={category} className="bg-surface-container-low text-on-surface">
+                          {SCIENCE_QUIZ_CATEGORY_LABELS[category]}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
               </div>

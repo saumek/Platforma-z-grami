@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { prisma } from "@/lib/prisma";
+import { removeUserFromRoom } from "@/lib/room-cleanup";
 
 const SESSION_COOKIE = "gamely_session";
 const SESSION_DURATION_MS = 1000 * 60 * 60;
@@ -114,6 +115,7 @@ export async function getCurrentSession() {
   }
 
   if (session.expiresAt <= new Date()) {
+    await removeUserFromRoom(session.user.id);
     await invalidateSession(session.id);
     return null;
   }

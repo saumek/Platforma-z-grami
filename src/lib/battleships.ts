@@ -1,5 +1,6 @@
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
+import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
 
 export const BATTLESHIP_BOARD_SIZE = 5;
 export const BATTLESHIP_SHIP_LENGTHS = [3, 2, 2] as const;
@@ -143,6 +144,8 @@ export function validatePlacement(board: number[][]) {
 }
 
 async function getRoomPlayers(roomCode: string) {
+  await pruneInactiveUsersFromRoom(roomCode);
+
   return prisma.user.findMany({
     where: { currentRoomCode: roomCode },
     select: {

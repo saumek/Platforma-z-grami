@@ -22,6 +22,8 @@ model User {
   battleshipGamesAsPlayerTwo BattleshipGame[] @relation("BattleshipPlayerTwo")
   coupleQaGamesAsPlayerOne   CoupleQaGame[]   @relation("CoupleQaPlayerOne")
   coupleQaGamesAsPlayerTwo   CoupleQaGame[]   @relation("CoupleQaPlayerTwo")
+  scienceQuizGamesAsPlayerOne ScienceQuizGame[] @relation("ScienceQuizPlayerOne")
+  scienceQuizGamesAsPlayerTwo ScienceQuizGame[] @relation("ScienceQuizPlayerTwo")
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
@@ -101,6 +103,35 @@ model CoupleQaGame {
   updatedAt             DateTime @updatedAt
   playerOne             User?    @relation("CoupleQaPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
   playerTwo             User?    @relation("CoupleQaPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
+
+  @@index([playerOneId])
+  @@index([playerTwoId])
+}
+
+model ScienceQuizGame {
+  id                String   @id @default(cuid())
+  roomCode          String   @unique
+  category          String
+  status            String
+  playerOneId       String?
+  playerTwoId       String?
+  playerOneJoined   Boolean  @default(false)
+  playerTwoJoined   Boolean  @default(false)
+  playerOneScore    Int      @default(0)
+  playerTwoScore    Int      @default(0)
+  playerOneRoomPoints Int    @default(0)
+  playerTwoRoomPoints Int    @default(0)
+  roundIndex        Int      @default(0)
+  questionOrder     String?
+  playerOneAnswer   Int?
+  playerTwoAnswer   Int?
+  questionStartedAt DateTime?
+  roundResolvedAt   DateTime?
+  rewardGranted     Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  playerOne         User?    @relation("ScienceQuizPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
+  playerTwo         User?    @relation("ScienceQuizPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
 
   @@index([playerOneId])
   @@index([playerTwoId])

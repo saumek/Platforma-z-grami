@@ -1,6 +1,7 @@
 import qaQuestions from "@/data/qa-lightning.json";
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
+import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
 
 const TOTAL_ROUNDS = 10;
 const QUESTION_TIMER_MS = 15_000;
@@ -82,6 +83,8 @@ function getName(user: { email: string; displayName: string | null }) {
 }
 
 async function getRoomPlayers(roomCode: string) {
+  await pruneInactiveUsersFromRoom(roomCode);
+
   return prisma.user.findMany({
     where: { currentRoomCode: roomCode },
     select: {
@@ -462,7 +465,7 @@ export async function restartCoupleQaGame(roomCode: string, currentUserId: strin
 }
 
 export async function getRoomScoreTotals(roomCode: string) {
-  const [battleshipGame, coupleQaGame] = await Promise.all([
+  const [battleshipGame, coupleQaGame, scienceQuizGame] = await Promise.all([
     prisma.battleshipGame.findUnique({
       where: { roomCode },
       select: {
@@ -477,12 +480,23 @@ export async function getRoomScoreTotals(roomCode: string) {
         playerTwoRoomPoints: true,
       },
     }),
+    prisma.scienceQuizGame.findUnique({
+      where: { roomCode },
+      select: {
+        playerOneRoomPoints: true,
+        playerTwoRoomPoints: true,
+      },
+    }),
   ]);
 
   return {
     userOnePoints:
-      (battleshipGame?.playerOneWins ?? 0) + (coupleQaGame?.playerOneRoomPoints ?? 0),
+      (battleshipGame?.playerOneWins ?? 0) +
+      (coupleQaGame?.playerOneRoomPoints ?? 0) +
+      (scienceQuizGame?.playerOneRoomPoints ?? 0),
     userTwoPoints:
-      (battleshipGame?.playerTwoWins ?? 0) + (coupleQaGame?.playerTwoRoomPoints ?? 0),
+      (battleshipGame?.playerTwoWins ?? 0) +
+      (coupleQaGame?.playerTwoRoomPoints ?? 0) +
+      (scienceQuizGame?.playerTwoRoomPoints ?? 0),
   };
 }
