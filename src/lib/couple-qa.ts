@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
 
 const TOTAL_ROUNDS = 10;
-const QUESTION_TIMER_MS = 15_000;
+const QUESTION_TIMER_MS = 30_000;
 const RESULT_REVEAL_MS = 3000;
 
 type QuestionItem = {
@@ -43,6 +43,13 @@ export type CoupleQaState = {
   lastMatch: boolean | null;
   resultRevealedUntil: number | null;
   isEligibleForBonus: boolean;
+  isPaused: boolean;
+  pausedAt: number | null;
+  pauseRequestedByName: string | null;
+  exitRequestedByName: string | null;
+  isCurrentUserExitRequester: boolean;
+  canRespondToExit: boolean;
+  shouldReturnToMenu: boolean;
 };
 
 function getQuestionPool() {
@@ -112,12 +119,40 @@ function haveBothJoined(game: {
   return Boolean(game.playerOneId && game.playerTwoId && game.playerOneJoined && game.playerTwoJoined);
 }
 
+function getPausedName(
+  requestedById: string | null,
+  players: {
+    playerOneId: string | null;
+    playerTwoId: string | null;
+    playerOne?: { email: string; displayName: string | null } | null;
+    playerTwo?: { email: string; displayName: string | null } | null;
+  },
+) {
+  if (!requestedById) {
+    return null;
+  }
+
+  if (requestedById === players.playerOneId && players.playerOne) {
+    return getName(players.playerOne);
+  }
+
+  if (requestedById === players.playerTwoId && players.playerTwo) {
+    return getName(players.playerTwo);
+  }
+
+  return "Drugi gracz";
+}
+
 async function advanceResolvedRound(roomCode: string) {
   const game = await prisma.coupleQaGame.findUnique({
     where: { roomCode },
   });
 
   if (!game) {
+    return game;
+  }
+
+  if (game.isPaused || game.terminatedAt) {
     return game;
   }
 
@@ -183,7 +218,12 @@ async function advanceResolvedRound(roomCode: string) {
   });
 }
 
-export async function ensureCoupleQaGame(roomCode: string) {
+export async function ensureCoupleQaGame(
+  roomCode: string,
+  options?: {
+    resetTerminated?: boolean;
+  },
+) {
   const roomPlayers = await getRoomPlayers(roomCode);
   const playerOneId = roomPlayers[0]?.id ?? null;
   const playerTwoId = roomPlayers[1]?.id ?? null;
@@ -211,6 +251,35 @@ export async function ensureCoupleQaGame(roomCode: string) {
   const playersChanged =
     existing.playerOneId !== playerOneId || existing.playerTwoId !== playerTwoId;
 
+  if (existing.terminatedAt && options?.resetTerminated) {
+    return prisma.coupleQaGame.update({
+      where: { id: existing.id },
+      data: {
+        roomCode,
+        status: "waiting",
+        playerOneId,
+        playerTwoId,
+        compatibilityScore: 0,
+        roundIndex: 0,
+        questionOrder: getFreshQuestionOrder(),
+        playerOneAnswer: null,
+        playerTwoAnswer: null,
+        playerOneJoined: false,
+        playerTwoJoined: false,
+        questionStartedAt: null,
+        lastMatch: null,
+        roundResolvedAt: null,
+        rewardGranted: false,
+        isPaused: false,
+        pausedAt: null,
+        pauseRequestedById: null,
+        exitRequestedById: null,
+        terminatedAt: null,
+        terminationReason: null,
+      },
+    });
+  }
+
   if (!playersChanged) {
     return advanceResolvedRound(roomCode);
   }
@@ -233,12 +302,24 @@ export async function ensureCoupleQaGame(roomCode: string) {
       lastMatch: null,
       roundResolvedAt: null,
       rewardGranted: false,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: null,
+      terminationReason: null,
     },
   });
 }
 
-export async function getCoupleQaState(roomCode: string, currentUserId: string) {
-  await ensureCoupleQaGame(roomCode);
+export async function getCoupleQaState(
+  roomCode: string,
+  currentUserId: string,
+  options?: {
+    resetTerminated?: boolean;
+  },
+) {
+  await ensureCoupleQaGame(roomCode, options);
 
   const game = await prisma.coupleQaGame.findUnique({
     where: { roomCode },
@@ -327,11 +408,28 @@ export async function getCoupleQaState(roomCode: string, currentUserId: string) 
     lastMatch: game.lastMatch,
     resultRevealedUntil,
     isEligibleForBonus: game.compatibilityScore >= 8,
+    isPaused: game.isPaused,
+    pausedAt: game.pausedAt ? game.pausedAt.getTime() : null,
+    pauseRequestedByName: getPausedName(game.pauseRequestedById, {
+      playerOneId: game.playerOneId,
+      playerTwoId: game.playerTwoId,
+      playerOne: game.playerOne,
+      playerTwo: game.playerTwo,
+    }),
+    exitRequestedByName: getPausedName(game.exitRequestedById, {
+      playerOneId: game.playerOneId,
+      playerTwoId: game.playerTwoId,
+      playerOne: game.playerOne,
+      playerTwo: game.playerTwo,
+    }),
+    isCurrentUserExitRequester: game.exitRequestedById === currentUserId,
+    canRespondToExit: Boolean(game.exitRequestedById && game.exitRequestedById !== currentUserId),
+    shouldReturnToMenu: game.terminationReason === "agreed_exit",
   } satisfies CoupleQaState;
 }
 
 export async function startCoupleQaGame(roomCode: string, currentUserId: string) {
-  await ensureCoupleQaGame(roomCode);
+  await ensureCoupleQaGame(roomCode, { resetTerminated: true });
 
   const game = await prisma.coupleQaGame.findUnique({
     where: { roomCode },
@@ -339,6 +437,10 @@ export async function startCoupleQaGame(roomCode: string, currentUserId: string)
 
   if (!game) {
     return null;
+  }
+
+  if (game.isPaused || game.terminatedAt) {
+    return game;
   }
 
   const isPlayerOne = game.playerOneId === currentUserId;
@@ -379,6 +481,10 @@ export async function submitCoupleQaAnswer(roomCode: string, currentUserId: stri
 
   if (game.status !== "question") {
     return { success: false as const, message: "Poczekaj na kolejną rundę." };
+  }
+
+  if (game.isPaused) {
+    return { success: false as const, message: "Gra jest obecnie wstrzymana." };
   }
 
   const questionOrder = parseQuestionOrder(game.questionOrder);
@@ -458,10 +564,172 @@ export async function restartCoupleQaGame(roomCode: string, currentUserId: strin
       lastMatch: null,
       roundResolvedAt: null,
       rewardGranted: false,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: null,
+      terminationReason: null,
     },
   });
 
   return { success: true as const, message: "Nowa seria pytań jest gotowa." };
+}
+
+export async function pauseCoupleQaGame(roomCode: string, currentUserId: string) {
+  const game = await prisma.coupleQaGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (game.isPaused) {
+    return { success: true as const, message: "Gra jest już wstrzymana." };
+  }
+
+  await prisma.coupleQaGame.update({
+    where: { id: game.id },
+    data: {
+      isPaused: true,
+      pausedAt: new Date(),
+      pauseRequestedById: currentUserId,
+      exitRequestedById: null,
+    },
+  });
+
+  return { success: true as const, message: "Gra została wstrzymana." };
+}
+
+export async function resumeCoupleQaGame(roomCode: string, currentUserId: string) {
+  const game = await prisma.coupleQaGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.isPaused) {
+    return { success: true as const, message: "Gra już działa." };
+  }
+
+  const pausedDuration = game.pausedAt ? Date.now() - game.pausedAt.getTime() : 0;
+
+  await prisma.coupleQaGame.update({
+    where: { id: game.id },
+    data: {
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      questionStartedAt:
+        game.status === "question" && game.questionStartedAt
+          ? new Date(game.questionStartedAt.getTime() + pausedDuration)
+          : game.questionStartedAt,
+      roundResolvedAt:
+        game.status === "round_result" && game.roundResolvedAt
+          ? new Date(game.roundResolvedAt.getTime() + pausedDuration)
+          : game.roundResolvedAt,
+    },
+  });
+
+  return { success: true as const, message: "Gra została wznowiona." };
+}
+
+export async function requestCoupleQaExit(roomCode: string, currentUserId: string) {
+  const game = await prisma.coupleQaGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.isPaused) {
+    return { success: false as const, message: "Najpierw wstrzymaj grę." };
+  }
+
+  await prisma.coupleQaGame.update({
+    where: { id: game.id },
+    data: {
+      exitRequestedById: currentUserId,
+    },
+  });
+
+  return { success: true as const, message: "Wysłano prośbę o zakończenie gry." };
+}
+
+export async function respondCoupleQaExit(
+  roomCode: string,
+  currentUserId: string,
+  approve: boolean,
+) {
+  const game = await prisma.coupleQaGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.exitRequestedById || game.exitRequestedById === currentUserId) {
+    return { success: false as const, message: "Nie ma prośby do potwierdzenia." };
+  }
+
+  if (!approve) {
+    await prisma.coupleQaGame.update({
+      where: { id: game.id },
+      data: {
+        exitRequestedById: null,
+      },
+    });
+
+    return { success: true as const, message: "Gra pozostaje wstrzymana." };
+  }
+
+  await prisma.coupleQaGame.update({
+    where: { id: game.id },
+    data: {
+      status: "waiting",
+      compatibilityScore: 0,
+      roundIndex: 0,
+      questionOrder: getFreshQuestionOrder(),
+      playerOneAnswer: null,
+      playerTwoAnswer: null,
+      playerOneJoined: false,
+      playerTwoJoined: false,
+      questionStartedAt: null,
+      lastMatch: null,
+      roundResolvedAt: null,
+      rewardGranted: false,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: new Date(),
+      terminationReason: "agreed_exit",
+    },
+  });
+
+  return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
 }
 
 export async function getRoomScoreTotals(roomCode: string) {

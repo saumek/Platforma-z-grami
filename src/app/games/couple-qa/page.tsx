@@ -23,7 +23,9 @@ export default async function CoupleQaPage() {
     redirect("/profile");
   }
 
-  const initialState = await getCoupleQaState(user.currentRoomCode, session.user.id);
+  const initialState = await getCoupleQaState(user.currentRoomCode, session.user.id, {
+    resetTerminated: true,
+  });
 
   return (
     <CoupleQaScreen

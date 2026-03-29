@@ -34,6 +34,7 @@ export default async function ScienceQuizPage({
     user.currentRoomCode,
     session.user.id,
     normalizedCategory,
+    { resetTerminated: true },
   );
 
   return (

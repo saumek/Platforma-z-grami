@@ -18,6 +18,10 @@ model User {
   sessions     Session[]
   friends      Friendship[] @relation("UserFriends")
   friendedBy   Friendship[] @relation("FriendOf")
+  sentFriendRequests     FriendRequest[] @relation("SentFriendRequests")
+  receivedFriendRequests FriendRequest[] @relation("ReceivedFriendRequests")
+  notifications          Notification[]  @relation("UserNotifications")
+  actedNotifications     Notification[]  @relation("NotificationActor")
   battleshipGamesAsPlayerOne BattleshipGame[] @relation("BattleshipPlayerOne")
   battleshipGamesAsPlayerTwo BattleshipGame[] @relation("BattleshipPlayerTwo")
   coupleQaGamesAsPlayerOne   CoupleQaGame[]   @relation("CoupleQaPlayerOne")
@@ -53,10 +57,50 @@ model Friendship {
   @@index([friendId])
 }
 
+model FriendRequest {
+  id         String   @id @default(cuid())
+  senderId   String
+  receiverId String
+  status     String   @default("pending")
+  respondedAt DateTime?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  sender     User     @relation("SentFriendRequests", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver   User     @relation("ReceivedFriendRequests", fields: [receiverId], references: [id], onDelete: Cascade)
+  notifications Notification[]
+
+  @@unique([senderId, receiverId])
+  @@index([senderId, status])
+  @@index([receiverId, status])
+}
+
+model Notification {
+  id              String        @id @default(cuid())
+  userId          String
+  actorId         String?
+  type            String
+  friendRequestId String?
+  readAt          DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  user            User          @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+  actor           User?         @relation("NotificationActor", fields: [actorId], references: [id], onDelete: SetNull)
+  friendRequest   FriendRequest? @relation(fields: [friendRequestId], references: [id], onDelete: SetNull)
+
+  @@index([userId, readAt, createdAt])
+  @@index([friendRequestId])
+}
+
 model BattleshipGame {
   id             String   @id @default(cuid())
   roomCode       String   @unique
   status         String
+  isPaused       Boolean  @default(false)
+  pausedAt       DateTime?
+  pauseRequestedById String?
+  exitRequestedById String?
+  terminatedAt   DateTime?
+  terminationReason String?
   playerOneId    String?
   playerTwoId    String?
   playerOneScore Int      @default(0)
@@ -84,6 +128,12 @@ model CoupleQaGame {
   id                    String   @id @default(cuid())
   roomCode              String   @unique
   status                String
+  isPaused              Boolean  @default(false)
+  pausedAt              DateTime?
+  pauseRequestedById    String?
+  exitRequestedById     String?
+  terminatedAt          DateTime?
+  terminationReason     String?
   playerOneId           String?
   playerTwoId           String?
   playerOneRoomPoints   Int      @default(0)
@@ -113,6 +163,12 @@ model ScienceQuizGame {
   roomCode          String   @unique
   category          String
   status            String
+  isPaused          Boolean  @default(false)
+  pausedAt          DateTime?
+  pauseRequestedById String?
+  exitRequestedById String?
+  terminatedAt      DateTime?
+  terminationReason String?
   playerOneId       String?
   playerTwoId       String?
   playerOneJoined   Boolean  @default(false)

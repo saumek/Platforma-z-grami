@@ -28,7 +28,7 @@ export async function POST() {
       );
     }
 
-    await ensureBattleshipGame(user.currentRoomCode);
+    await ensureBattleshipGame(user.currentRoomCode, { resetTerminated: true });
     const state = await getBattleshipState(user.currentRoomCode, session.user.id);
 
     return NextResponse.json({

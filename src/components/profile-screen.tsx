@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { formatRoomCode } from "@/lib/room-code";
@@ -15,7 +15,33 @@ type ProfileScreenProps = {
   avatarPath: string | null;
   currentRoomCode: string | null;
   hasJoinedRoom: boolean;
+  notifications: {
+    id: string;
+    type: "friend_request" | "friend_request_accepted";
+    actorName: string;
+    actorAvatarPath: string | null;
+    friendRequestId: string | null;
+    isActionable: boolean;
+  }[];
 };
+
+function NotificationAvatar({
+  src,
+  alt,
+}: {
+  src: string | null;
+  alt: string;
+}) {
+  return (
+    <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-surface-container-highest">
+      {src ? (
+        <Image alt={alt} className="h-full w-full object-cover" src={src} width={44} height={44} />
+      ) : (
+        <span className="material-symbols-outlined text-on-surface-variant">person</span>
+      )}
+    </div>
+  );
+}
 
 export function ProfileScreen({
   displayName,
@@ -23,12 +49,37 @@ export function ProfileScreen({
   avatarPath,
   currentRoomCode,
   hasJoinedRoom,
+  notifications,
 }: ProfileScreenProps) {
   const router = useRouter();
   const [roomCode, setRoomCode] = useState("");
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [isJoiningRoom, setIsJoiningRoom] = useState(false);
   const [roomError, setRoomError] = useState("");
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [busyNotificationId, setBusyNotificationId] = useState<string | null>(null);
+  const [notificationError, setNotificationError] = useState("");
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      router.refresh();
+    }, 7000);
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") {
+        router.refresh();
+      }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.clearInterval(intervalId);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [router]);
+
+  const unreadNotificationsCount = notifications.length;
 
   async function handleLogout() {
     setIsLoggingOut(true);
@@ -78,6 +129,62 @@ export function ProfileScreen({
     }
   }
 
+  async function handleFriendRequestResponse(requestId: string, action: "accept" | "reject") {
+    setNotificationError("");
+    setBusyNotificationId(requestId);
+
+    try {
+      const response = await fetch("/api/friends/respond", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ requestId, action }),
+      });
+
+      const data = (await response.json()) as AuthResponse;
+
+      if (!response.ok) {
+        setNotificationError(data.message);
+        return;
+      }
+
+      router.refresh();
+    } catch {
+      setNotificationError("Nie udało się obsłużyć zaproszenia.");
+    } finally {
+      setBusyNotificationId(null);
+    }
+  }
+
+  async function handleDismissNotification(notificationId: string) {
+    setNotificationError("");
+    setBusyNotificationId(notificationId);
+
+    try {
+      const response = await fetch("/api/notifications/read", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ notificationId }),
+      });
+
+      const data = (await response.json()) as AuthResponse;
+
+      if (!response.ok) {
+        setNotificationError(data.message);
+        return;
+      }
+
+      router.refresh();
+    } catch {
+      setNotificationError("Nie udało się zamknąć powiadomienia.");
+    } finally {
+      setBusyNotificationId(null);
+    }
+  }
+
   return (
     <div className="profile-screen bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -86,7 +193,7 @@ export function ProfileScreen({
         <div className="absolute bottom-20 right-[-4rem] h-64 w-64 rounded-full bg-primary-dim/10 blur-[120px]" />
       </div>
 
-      <header className="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
+      <header className="sticky top-0 w-full z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
         <div className="flex items-center justify-between px-6 h-16 w-full max-w-md mx-auto">
           <button
             className="text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
@@ -98,13 +205,114 @@ export function ProfileScreen({
           <h1 className="font-headline font-bold tracking-tighter text-[#b6a0ff] text-xl">
             Profil
           </h1>
-          <div className="text-2xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-[#b6a0ff] to-[#7e51ff] font-headline">
-            Gamely
-          </div>
+          <button
+            className="relative text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
+            type="button"
+            onClick={() => setIsNotificationsOpen((current) => !current)}
+          >
+            <span className="material-symbols-outlined">notifications</span>
+            {unreadNotificationsCount ? (
+              <span className="absolute -right-2 -top-1 min-w-5 rounded-full bg-secondary px-1.5 py-0.5 text-center text-[10px] font-black text-background shadow-[0_0_12px_rgba(0,227,253,0.45)]">
+                {unreadNotificationsCount}
+              </span>
+            ) : null}
+          </button>
         </div>
       </header>
 
-      <main className="pt-24 pb-32 px-6 max-w-md mx-auto min-h-screen space-y-8">
+      <main className="pt-8 pb-32 px-6 max-w-md mx-auto min-h-screen space-y-8">
+        {isNotificationsOpen ? (
+          <section className="rounded-[2rem] border border-outline-variant/15 bg-surface-container-low px-4 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.24)]">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-primary/75">
+                  Powiadomienia
+                </p>
+                <h3 className="mt-1 font-headline text-lg font-black tracking-tight text-on-background">
+                  {unreadNotificationsCount ? `${unreadNotificationsCount} nowych` : "Brak nowych"}
+                </h3>
+              </div>
+              <span className="rounded-full bg-surface-container-high px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-on-surface-variant">
+                Dzwonek
+              </span>
+            </div>
+
+            {notificationError ? (
+              <p className="mb-3 text-sm text-error">{notificationError}</p>
+            ) : null}
+
+            <div className="space-y-3">
+              {notifications.length ? (
+                notifications.map((notification) => (
+                  <div
+                    key={notification.id}
+                    className="rounded-[1.5rem] border border-outline-variant/10 bg-surface-container px-4 py-4"
+                  >
+                    <div className="flex items-start gap-3">
+                      <NotificationAvatar
+                        src={notification.actorAvatarPath}
+                        alt={notification.actorName}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-on-surface-variant">
+                          {notification.type === "friend_request"
+                            ? "Zaproszenie do znajomych"
+                            : "Znajomi"}
+                        </p>
+                        <p className="mt-1 text-sm leading-6 text-on-surface">
+                          {notification.type === "friend_request"
+                            ? `${notification.actorName} chce dodać Cię do znajomych.`
+                            : `${notification.actorName} zaakceptował Twoje zaproszenie.`}
+                        </p>
+                      </div>
+                    </div>
+
+                    {notification.isActionable && notification.friendRequestId ? (
+                      <div className="mt-4 flex gap-3">
+                        <button
+                          className="flex-1 rounded-full bg-gradient-to-r from-primary to-primary-dim px-4 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-on-primary-fixed active:scale-[0.98] disabled:opacity-60"
+                          type="button"
+                          onClick={() =>
+                            handleFriendRequestResponse(notification.friendRequestId!, "accept")
+                          }
+                          disabled={busyNotificationId === notification.friendRequestId}
+                        >
+                          Akceptuj
+                        </button>
+                        <button
+                          className="flex-1 rounded-full border border-outline-variant/25 bg-surface-container-high px-4 py-3 text-[11px] font-bold uppercase tracking-[0.16em] text-on-surface active:scale-[0.98] disabled:opacity-60"
+                          type="button"
+                          onClick={() =>
+                            handleFriendRequestResponse(notification.friendRequestId!, "reject")
+                          }
+                          disabled={busyNotificationId === notification.friendRequestId}
+                        >
+                          Odrzuć
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="mt-4 flex justify-end">
+                        <button
+                          className="rounded-full border border-outline-variant/25 bg-surface-container-high px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-on-surface-variant active:scale-[0.98] disabled:opacity-60"
+                          type="button"
+                          onClick={() => handleDismissNotification(notification.id)}
+                          disabled={busyNotificationId === notification.id}
+                        >
+                          Zamknij
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div className="rounded-[1.5rem] bg-surface-container px-4 py-5 text-sm text-on-surface-variant">
+                  Na razie nie masz żadnych nowych powiadomień.
+                </div>
+              )}
+            </div>
+          </section>
+        ) : null}
+
         <section className="relative overflow-hidden rounded-[2.25rem] bg-surface-container px-6 py-7 shadow-[0_22px_55px_rgba(0,0,0,0.24)]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(182,160,255,0.16),transparent_46%),linear-gradient(135deg,rgba(255,255,255,0.03),transparent_60%)]" />
           <div className="relative">

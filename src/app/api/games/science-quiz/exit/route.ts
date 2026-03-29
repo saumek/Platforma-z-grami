@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { restartScienceQuiz } from "@/lib/science-quiz";
+import { requestScienceQuizExit, respondScienceQuizExit } from "@/lib/science-quiz";
 import type { AuthResponse } from "@/types/auth";
 
 export async function POST(request: Request) {
@@ -29,11 +29,14 @@ export async function POST(request: Request) {
     }
 
     const body = (await request.json().catch(() => ({}))) as {
-      mode?: "menu" | "rematch";
+      action?: "request" | "respond";
+      approve?: boolean;
     };
-    const result = await restartScienceQuiz(user.currentRoomCode, session.user.id, {
-      resetToWaiting: body.mode === "menu",
-    });
+
+    const result =
+      body.action === "respond"
+        ? await respondScienceQuizExit(user.currentRoomCode, session.user.id, Boolean(body.approve))
+        : await requestScienceQuizExit(user.currentRoomCode, session.user.id);
 
     return NextResponse.json<AuthResponse>(
       { success: result.success, message: result.message },
@@ -41,7 +44,7 @@ export async function POST(request: Request) {
     );
   } catch {
     return NextResponse.json<AuthResponse>(
-      { success: false, message: "Nie udało się przygotować nowego quizu." },
+      { success: false, message: "Nie udało się obsłużyć zakończenia gry." },
       { status: 500 },
     );
   }

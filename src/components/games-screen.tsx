@@ -98,7 +98,7 @@ export function GamesScreen({
 
   return (
     <div className="bg-background text-on-background font-body min-h-screen pb-32">
-      <header className="sticky top-0 z-50 bg-[#0e0e0e]/80 backdrop-blur-xl w-full flex justify-between items-center px-6 py-4 shadow-[0_10px_30px_-15px_rgba(182,160,255,0.15)]">
+      <header className="sticky top-0 z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl w-full flex justify-between items-center px-6 py-4 shadow-[0_10px_30px_-15px_rgba(182,160,255,0.15)]">
         <div className="flex items-center gap-4">
           <button
             className="active:scale-95 duration-200 hover:opacity-80 transition-opacity"

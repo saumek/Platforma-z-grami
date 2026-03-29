@@ -13,7 +13,7 @@ type Roommate = {
   id: string;
   displayName: string;
   avatarPath: string | null;
-  isFriend: boolean;
+  relationship: "friend" | "outgoing_pending" | "incoming_pending" | "none";
 };
 
 type FriendItem = {
@@ -66,6 +66,7 @@ export function FriendsScreen({
   const router = useRouter();
   const [pendingFriendId, setPendingFriendId] = useState<string | null>(null);
   const [joiningFriendId, setJoiningFriendId] = useState<string | null>(null);
+  const [friendActionMessage, setFriendActionMessage] = useState("");
   const [joinError, setJoinError] = useState("");
 
   useEffect(() => {
@@ -88,6 +89,7 @@ export function FriendsScreen({
   }, [router]);
 
   async function addFriend(friendId: string) {
+    setFriendActionMessage("");
     setPendingFriendId(friendId);
 
     try {
@@ -100,6 +102,8 @@ export function FriendsScreen({
       });
 
       const data = (await response.json()) as AuthResponse;
+
+      setFriendActionMessage(data.message);
 
       if (!response.ok) {
         return;
@@ -146,7 +150,7 @@ export function FriendsScreen({
 
   return (
     <div className="bg-background text-on-background min-h-screen">
-      <header className="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
+      <header className="sticky top-0 w-full z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
         <div className="flex items-center justify-between px-6 h-16 w-full max-w-md mx-auto">
           <button
             className="text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
@@ -164,7 +168,7 @@ export function FriendsScreen({
         </div>
       </header>
 
-      <main className="pt-24 px-6 max-w-md mx-auto space-y-8 pb-32">
+      <main className="pt-8 px-6 max-w-md mx-auto space-y-8 pb-32">
         {roommate ? (
           <section className="p-6 rounded-xl bg-surface-container relative overflow-hidden">
             <div className="flex items-end justify-between mb-4">
@@ -185,9 +189,17 @@ export function FriendsScreen({
                     {roommate.displayName}
                   </h3>
                 </Link>
-                {roommate.isFriend ? (
+                {roommate.relationship === "friend" ? (
                   <div className="inline-flex items-center gap-2 bg-surface-container-highest text-on-surface-variant px-4 sm:px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider border border-outline-variant/20">
                     Znajomy
+                  </div>
+                ) : roommate.relationship === "outgoing_pending" ? (
+                  <div className="inline-flex items-center gap-2 bg-surface-container-highest text-primary px-4 sm:px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider border border-primary/20">
+                    Zaproszenie wysłane
+                  </div>
+                ) : roommate.relationship === "incoming_pending" ? (
+                  <div className="inline-flex items-center gap-2 bg-surface-container-highest text-secondary px-4 sm:px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider border border-secondary/20">
+                    Czeka w powiadomieniach
                   </div>
                 ) : (
                   <button
@@ -201,6 +213,9 @@ export function FriendsScreen({
                 )}
               </div>
             </div>
+            {friendActionMessage ? (
+              <p className="mt-4 text-sm text-on-surface-variant">{friendActionMessage}</p>
+            ) : null}
           </section>
         ) : null}
 

@@ -32,10 +32,45 @@ export async function POST(request: Request) {
       );
     }
 
-    const friend = await prisma.user.findUnique({
-      where: { id: friendId },
-      select: { id: true },
-    });
+    const [friend, existingFriendship, outgoingRequest, incomingRequest] = await Promise.all([
+      prisma.user.findUnique({
+        where: { id: friendId },
+        select: { id: true },
+      }),
+      prisma.friendship.findUnique({
+        where: {
+          userId_friendId: {
+            userId: session.user.id,
+            friendId,
+          },
+        },
+        select: { id: true },
+      }),
+      prisma.friendRequest.findUnique({
+        where: {
+          senderId_receiverId: {
+            senderId: session.user.id,
+            receiverId: friendId,
+          },
+        },
+        select: {
+          id: true,
+          status: true,
+        },
+      }),
+      prisma.friendRequest.findUnique({
+        where: {
+          senderId_receiverId: {
+            senderId: friendId,
+            receiverId: session.user.id,
+          },
+        },
+        select: {
+          id: true,
+          status: true,
+        },
+      }),
+    ]);
 
     if (!friend) {
       return NextResponse.json<AuthResponse>(
@@ -44,42 +79,61 @@ export async function POST(request: Request) {
       );
     }
 
-    await prisma.$transaction([
-      prisma.friendship.upsert({
-        where: {
-          userId_friendId: {
-            userId: session.user.id,
-            friendId,
-          },
-        },
-        update: {},
-        create: {
-          userId: session.user.id,
-          friendId,
-        },
-      }),
-      prisma.friendship.upsert({
-        where: {
-          userId_friendId: {
-            userId: friendId,
-            friendId: session.user.id,
-          },
-        },
-        update: {},
-        create: {
+    if (existingFriendship) {
+      return NextResponse.json<AuthResponse>({
+        success: true,
+        message: "Ta osoba jest już w Twoich znajomych.",
+      });
+    }
+
+    if (incomingRequest?.status === "pending") {
+      return NextResponse.json<AuthResponse>({
+        success: true,
+        message: "Ta osoba już wysłała Ci zaproszenie. Sprawdź powiadomienia.",
+      });
+    }
+
+    if (outgoingRequest?.status === "pending") {
+      return NextResponse.json<AuthResponse>({
+        success: true,
+        message: "Zaproszenie zostało już wysłane.",
+      });
+    }
+
+    await prisma.$transaction(async (tx) => {
+      const friendRequest = outgoingRequest
+        ? await tx.friendRequest.update({
+            where: { id: outgoingRequest.id },
+            data: {
+              status: "pending",
+              respondedAt: null,
+            },
+          })
+        : await tx.friendRequest.create({
+            data: {
+              senderId: session.user.id,
+              receiverId: friendId,
+              status: "pending",
+            },
+          });
+
+      await tx.notification.create({
+        data: {
           userId: friendId,
-          friendId: session.user.id,
+          actorId: session.user.id,
+          type: "friend_request",
+          friendRequestId: friendRequest.id,
         },
-      }),
-    ]);
+      });
+    });
 
     return NextResponse.json<AuthResponse>({
       success: true,
-      message: "Dodano do znajomych.",
+      message: "Zaproszenie do znajomych zostało wysłane.",
     });
   } catch {
     return NextResponse.json<AuthResponse>(
-      { success: false, message: "Nie udało się dodać do znajomych." },
+      { success: false, message: "Nie udało się wysłać zaproszenia." },
       { status: 500 },
     );
   }

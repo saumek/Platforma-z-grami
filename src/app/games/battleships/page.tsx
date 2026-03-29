@@ -23,7 +23,9 @@ export default async function BattleshipsPage() {
     redirect("/profile");
   }
 
-  const initialState = await getBattleshipState(user.currentRoomCode, session.user.id);
+  const initialState = await getBattleshipState(user.currentRoomCode, session.user.id, {
+    resetTerminated: true,
+  });
 
   return (
     <BattleshipsScreen

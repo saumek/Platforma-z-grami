@@ -31,6 +31,12 @@ export type BattleshipState = {
   opponentBoard: BattleshipCellState[];
   isCurrentUserTurn: boolean;
   winnerId: string | null;
+  isPaused: boolean;
+  pauseRequestedByName: string | null;
+  exitRequestedByName: string | null;
+  isCurrentUserExitRequester: boolean;
+  canRespondToExit: boolean;
+  shouldReturnToMenu: boolean;
 };
 
 function normalizeBoard(board: number[][]) {
@@ -164,6 +170,30 @@ function getName(user: { email: string; displayName: string | null }) {
   return user.displayName ?? defaultDisplayName(user.email);
 }
 
+function getPausedName(
+  requestedById: string | null,
+  players: {
+    playerOneId: string | null;
+    playerTwoId: string | null;
+    playerOne?: { email: string; displayName: string | null } | null;
+    playerTwo?: { email: string; displayName: string | null } | null;
+  },
+) {
+  if (!requestedById) {
+    return null;
+  }
+
+  if (requestedById === players.playerOneId && players.playerOne) {
+    return getName(players.playerOne);
+  }
+
+  if (requestedById === players.playerTwoId && players.playerTwo) {
+    return getName(players.playerTwo);
+  }
+
+  return "Drugi gracz";
+}
+
 function buildOwnBoard(board: number[][], opponentShots: number[]) {
   const shipCells = new Set(board.flat());
 
@@ -192,7 +222,12 @@ function buildOpponentBoard(board: number[][], shots: number[], isTurn: boolean,
   }) satisfies BattleshipCellState[];
 }
 
-export async function ensureBattleshipGame(roomCode: string) {
+export async function ensureBattleshipGame(
+  roomCode: string,
+  options?: {
+    resetTerminated?: boolean;
+  },
+) {
   const roomPlayers = await getRoomPlayers(roomCode);
   const playerOneId = roomPlayers[0]?.id ?? null;
   const playerTwoId = roomPlayers[1]?.id ?? null;
@@ -216,6 +251,33 @@ export async function ensureBattleshipGame(roomCode: string) {
   const playersChanged =
     existing.playerOneId !== playerOneId || existing.playerTwoId !== playerTwoId;
 
+  if (existing.terminatedAt && options?.resetTerminated) {
+    return prisma.battleshipGame.update({
+      where: { id: existing.id },
+      data: {
+        status: nextStatus,
+        playerOneId,
+        playerTwoId,
+        playerOneReady: false,
+        playerTwoReady: false,
+        playerOneBoard: null,
+        playerTwoBoard: null,
+        playerOneScore: 0,
+        playerTwoScore: 0,
+        playerOneShots: "[]",
+        playerTwoShots: "[]",
+        currentTurnUserId: null,
+        winnerId: null,
+        isPaused: false,
+        pausedAt: null,
+        pauseRequestedById: null,
+        exitRequestedById: null,
+        terminatedAt: null,
+        terminationReason: null,
+      },
+    });
+  }
+
   if (!playersChanged) {
     return existing;
   }
@@ -238,14 +300,26 @@ export async function ensureBattleshipGame(roomCode: string) {
             playerTwoShots: "[]",
             currentTurnUserId: null,
             winnerId: null,
+            isPaused: false,
+            pausedAt: null,
+            pauseRequestedById: null,
+            exitRequestedById: null,
+            terminatedAt: null,
+            terminationReason: null,
           }
         : {}),
     },
   });
 }
 
-export async function getBattleshipState(roomCode: string, currentUserId: string) {
-  await ensureBattleshipGame(roomCode);
+export async function getBattleshipState(
+  roomCode: string,
+  currentUserId: string,
+  options?: {
+    resetTerminated?: boolean;
+  },
+) {
+  await ensureBattleshipGame(roomCode, options);
 
   const game = await prisma.battleshipGame.findUnique({
     where: { roomCode },
@@ -313,6 +387,22 @@ export async function getBattleshipState(roomCode: string, currentUserId: string
     opponentBoard: buildOpponentBoard(opponentBoardData, ownShots, isTurn, game.status === "finished"),
     isCurrentUserTurn: isTurn,
     winnerId: game.winnerId,
+    isPaused: game.isPaused,
+    pauseRequestedByName: getPausedName(game.pauseRequestedById, {
+      playerOneId: game.playerOneId,
+      playerTwoId: game.playerTwoId,
+      playerOne: game.playerOne,
+      playerTwo: game.playerTwo,
+    }),
+    exitRequestedByName: getPausedName(game.exitRequestedById, {
+      playerOneId: game.playerOneId,
+      playerTwoId: game.playerTwoId,
+      playerOne: game.playerOne,
+      playerTwo: game.playerTwo,
+    }),
+    isCurrentUserExitRequester: game.exitRequestedById === currentUserId,
+    canRespondToExit: Boolean(game.exitRequestedById && game.exitRequestedById !== currentUserId),
+    shouldReturnToMenu: game.terminationReason === "agreed_exit",
   } satisfies BattleshipState;
 }
 
@@ -331,6 +421,10 @@ export async function saveBattleshipPlacement(roomCode: string, currentUserId: s
 
   if (!game) {
     return { success: false as const, message: "Nie udało się przygotować gry." };
+  }
+
+  if (game.isPaused) {
+    return { success: false as const, message: "Gra jest obecnie wstrzymana." };
   }
 
   if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
@@ -381,6 +475,10 @@ export async function shootBattleship(roomCode: string, currentUserId: string, t
 
   if (game.status !== "playing") {
     return { success: false as const, message: "Gra nie jest jeszcze gotowa." };
+  }
+
+  if (game.isPaused) {
+    return { success: false as const, message: "Gra jest obecnie wstrzymana." };
   }
 
   if (game.currentTurnUserId !== currentUserId) {
@@ -476,8 +574,159 @@ export async function restartBattleshipRound(roomCode: string, currentUserId: st
       playerTwoShots: "[]",
       currentTurnUserId: null,
       winnerId: null,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: null,
+      terminationReason: null,
     },
   });
 
   return { success: true as const, message: "Runda została zresetowana. Możecie zagrać rewanż." };
+}
+
+export async function pauseBattleshipGame(roomCode: string, currentUserId: string) {
+  const game = await prisma.battleshipGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (game.isPaused) {
+    return { success: true as const, message: "Gra jest już wstrzymana." };
+  }
+
+  await prisma.battleshipGame.update({
+    where: { id: game.id },
+    data: {
+      isPaused: true,
+      pausedAt: new Date(),
+      pauseRequestedById: currentUserId,
+      exitRequestedById: null,
+    },
+  });
+
+  return { success: true as const, message: "Gra została wstrzymana." };
+}
+
+export async function resumeBattleshipGame(roomCode: string, currentUserId: string) {
+  const game = await prisma.battleshipGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.isPaused) {
+    return { success: true as const, message: "Gra już działa." };
+  }
+
+  await prisma.battleshipGame.update({
+    where: { id: game.id },
+    data: {
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+    },
+  });
+
+  return { success: true as const, message: "Gra została wznowiona." };
+}
+
+export async function requestBattleshipExit(roomCode: string, currentUserId: string) {
+  const game = await prisma.battleshipGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.isPaused) {
+    return { success: false as const, message: "Najpierw wstrzymaj grę." };
+  }
+
+  await prisma.battleshipGame.update({
+    where: { id: game.id },
+    data: {
+      exitRequestedById: currentUserId,
+    },
+  });
+
+  return { success: true as const, message: "Wysłano prośbę o zakończenie gry." };
+}
+
+export async function respondBattleshipExit(
+  roomCode: string,
+  currentUserId: string,
+  approve: boolean,
+) {
+  const game = await prisma.battleshipGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.exitRequestedById || game.exitRequestedById === currentUserId) {
+    return { success: false as const, message: "Nie ma prośby do potwierdzenia." };
+  }
+
+  if (!approve) {
+    await prisma.battleshipGame.update({
+      where: { id: game.id },
+      data: {
+        exitRequestedById: null,
+      },
+    });
+
+    return { success: true as const, message: "Gra pozostaje wstrzymana." };
+  }
+
+  await prisma.battleshipGame.update({
+    where: { id: game.id },
+    data: {
+      status: game.playerOneId && game.playerTwoId ? "setup" : "waiting",
+      playerOneReady: false,
+      playerTwoReady: false,
+      playerOneBoard: null,
+      playerTwoBoard: null,
+      playerOneScore: 0,
+      playerTwoScore: 0,
+      playerOneShots: "[]",
+      playerTwoShots: "[]",
+      currentTurnUserId: null,
+      winnerId: null,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: new Date(),
+      terminationReason: "agreed_exit",
+    },
+  });
+
+  return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
 }

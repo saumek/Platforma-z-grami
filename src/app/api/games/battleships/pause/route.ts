@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
+import { pauseBattleshipGame, resumeBattleshipGame } from "@/lib/battleships";
 import { prisma } from "@/lib/prisma";
-import { restartScienceQuiz } from "@/lib/science-quiz";
 import type { AuthResponse } from "@/types/auth";
 
 export async function POST(request: Request) {
@@ -28,12 +28,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = (await request.json().catch(() => ({}))) as {
-      mode?: "menu" | "rematch";
-    };
-    const result = await restartScienceQuiz(user.currentRoomCode, session.user.id, {
-      resetToWaiting: body.mode === "menu",
-    });
+    const body = (await request.json().catch(() => ({}))) as { action?: "pause" | "resume" };
+    const result =
+      body.action === "resume"
+        ? await resumeBattleshipGame(user.currentRoomCode, session.user.id)
+        : await pauseBattleshipGame(user.currentRoomCode, session.user.id);
 
     return NextResponse.json<AuthResponse>(
       { success: result.success, message: result.message },
@@ -41,7 +40,7 @@ export async function POST(request: Request) {
     );
   } catch {
     return NextResponse.json<AuthResponse>(
-      { success: false, message: "Nie udało się przygotować nowego quizu." },
+      { success: false, message: "Nie udało się zmienić stanu gry." },
       { status: 500 },
     );
   }

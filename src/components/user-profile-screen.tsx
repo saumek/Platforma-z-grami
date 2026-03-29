@@ -22,7 +22,7 @@ export function UserProfileScreen({
 
   return (
     <div className="profile-screen bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
-      <header className="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
+      <header className="sticky top-0 w-full z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
         <div className="flex items-center justify-between px-6 h-16 w-full max-w-md mx-auto">
           <button
             className="text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
@@ -40,7 +40,7 @@ export function UserProfileScreen({
         </div>
       </header>
 
-      <main className="pt-24 pb-32 px-6 max-w-md mx-auto min-h-screen">
+      <main className="pt-8 pb-32 px-6 max-w-md mx-auto min-h-screen">
         <section className="mb-10">
           <div className="flex flex-col items-center">
             <div className="relative group">

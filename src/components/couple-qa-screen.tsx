@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { GamePauseOverlay } from "@/components/game-pause-overlay";
 import { formatRoomCode } from "@/lib/room-code";
 import type { AuthResponse } from "@/types/auth";
 
@@ -43,6 +44,13 @@ type CoupleQaState = {
   lastMatch: boolean | null;
   resultRevealedUntil: number | null;
   isEligibleForBonus: boolean;
+  isPaused: boolean;
+  pausedAt: number | null;
+  pauseRequestedByName: string | null;
+  exitRequestedByName: string | null;
+  isCurrentUserExitRequester: boolean;
+  canRespondToExit: boolean;
+  shouldReturnToMenu: boolean;
 };
 
 type CoupleQaScreenProps = {
@@ -51,7 +59,7 @@ type CoupleQaScreenProps = {
   initialState: CoupleQaState | null;
 };
 
-const QUESTION_TIMER_SECONDS = 15;
+const QUESTION_TIMER_SECONDS = 30;
 function Avatar({
   src,
   alt,
@@ -209,6 +217,7 @@ export function CoupleQaScreen({
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
+  const [isPauseBusy, setIsPauseBusy] = useState(false);
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
 
   async function refreshState() {
@@ -272,6 +281,13 @@ export function CoupleQaScreen({
   }, []);
 
   useEffect(() => {
+    if (state?.shouldReturnToMenu) {
+      router.push("/games");
+      router.refresh();
+    }
+  }, [router, state?.shouldReturnToMenu]);
+
+  useEffect(() => {
     if (state?.status !== "question") {
       setTimeLeft(QUESTION_TIMER_SECONDS);
       return;
@@ -283,18 +299,23 @@ export function CoupleQaScreen({
     }
 
     const endsAt = state.questionEndsAt;
+    const referenceNow = state.isPaused && state.pausedAt ? state.pausedAt : Date.now();
+    const initialTime = Math.max(0, (endsAt - referenceNow) / 1000);
+    setTimeLeft(initialTime);
+
+    if (state.isPaused) {
+      return;
+    }
+
     const intervalId = window.setInterval(() => {
       const nextTime = Math.max(0, (endsAt - Date.now()) / 1000);
       setTimeLeft(nextTime);
     }, 100);
 
-    const initialTime = Math.max(0, (endsAt - Date.now()) / 1000);
-    setTimeLeft(initialTime);
-
     return () => {
       window.clearInterval(intervalId);
     };
-  }, [state?.status, state?.roundIndex, state?.question?.text, state?.questionEndsAt]);
+  }, [state?.status, state?.roundIndex, state?.question?.text, state?.questionEndsAt, state?.isPaused, state?.pausedAt]);
 
   const answerProgress = Math.max(0, Math.min(100, (timeLeft / QUESTION_TIMER_SECONDS) * 100));
 
@@ -305,6 +326,56 @@ export function CoupleQaScreen({
 
     return state.question.options[state.currentAnswer] ?? null;
   }, [state]);
+
+  async function handlePause(action: "pause" | "resume") {
+    setIsPauseBusy(true);
+
+    try {
+      const response = await fetch("/api/games/couple-qa/pause", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ action }),
+      });
+
+      const data = (await response.json()) as AuthResponse;
+      setStatusMessage(data.message);
+
+      if (response.ok) {
+        await refreshState();
+      }
+    } catch {
+      setStatusMessage("Nie udało się zmienić stanu gry.");
+    } finally {
+      setIsPauseBusy(false);
+    }
+  }
+
+  async function handleExit(action: "request" | "respond", approve?: boolean) {
+    setIsPauseBusy(true);
+
+    try {
+      const response = await fetch("/api/games/couple-qa/exit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ action, approve }),
+      });
+
+      const data = (await response.json()) as AuthResponse;
+      setStatusMessage(data.message);
+
+      if (response.ok) {
+        await refreshState();
+      }
+    } catch {
+      setStatusMessage("Nie udało się obsłużyć zakończenia gry.");
+    } finally {
+      setIsPauseBusy(false);
+    }
+  }
 
   async function handleAnswer(answerIndex: number) {
     if (!state || state.status !== "question" || state.currentAnswer !== null) {
@@ -386,13 +457,13 @@ export function CoupleQaScreen({
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-surface-dim font-body text-on-surface">
-      <header className="fixed top-0 z-50 w-full bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(182,160,255,0.1)]">
+      <header className="fixed top-0 z-50 w-full mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(182,160,255,0.1)]">
         <div className="flex flex-col items-center pb-2 pt-4">
           <span className="mb-2 font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">
             Pokój {formatRoomCode(roomCode)}
           </span>
 
-          <div className="flex h-16 w-full max-w-md items-center justify-between px-6">
+          <div className="relative flex h-16 w-full max-w-md items-center justify-between px-6">
             <div className="flex flex-col items-center gap-1">
               <Avatar
                 src={state?.currentPlayer?.avatarPath ?? null}
@@ -416,12 +487,23 @@ export function CoupleQaScreen({
                 {state?.opponent?.name ?? "Użytkownik 2"}
               </span>
             </div>
+
+            {state?.status !== "waiting" ? (
+              <button
+                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
+                type="button"
+                onClick={() => handlePause("pause")}
+                disabled={isPauseBusy || state?.isPaused}
+              >
+                <span className="material-symbols-outlined text-[20px]">pause</span>
+              </button>
+            ) : null}
           </div>
         </div>
         <div className="h-px w-full bg-[#131313] opacity-20" />
       </header>
 
-      <main className="flex min-h-screen flex-col items-center justify-center px-8 pb-32 pt-32">
+      <main className="mobile-safe-top-offset-lg flex min-h-screen flex-col items-center justify-center px-8 pb-32">
         <div className="relative mb-12 w-full max-w-md">
           <div className="absolute -left-10 -top-20 h-40 w-40 rounded-full bg-primary/10 blur-[80px]" />
           <div className="absolute -bottom-20 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-[80px]" />
@@ -538,6 +620,50 @@ export function CoupleQaScreen({
           </div>
         ) : null}
       </main>
+
+      <GamePauseOverlay
+        isOpen={Boolean(state?.isPaused)}
+        title={state?.exitRequestedByName ? "Zakończyć grę?" : "Gra wstrzymana"}
+        description={
+          state?.exitRequestedByName
+            ? state.canRespondToExit
+              ? `${state.exitRequestedByName} chce zakończyć grę. Czy zgadzasz się na wyjście?`
+              : "Czekamy na decyzję drugiej osoby w sprawie zakończenia gry."
+            : state?.pauseRequestedByName
+              ? `${state.pauseRequestedByName} wstrzymał grę. Możesz wznowić albo poprosić o zakończenie.`
+              : "Gra jest obecnie wstrzymana."
+        }
+        primaryLabel={
+          state?.exitRequestedByName
+            ? state.canRespondToExit
+              ? "Tak, zakończ"
+              : undefined
+            : "Wznów"
+        }
+        onPrimary={
+          state?.exitRequestedByName
+            ? state.canRespondToExit
+              ? () => handleExit("respond", true)
+              : undefined
+            : () => handlePause("resume")
+        }
+        secondaryLabel={
+          state?.exitRequestedByName
+            ? state.canRespondToExit
+              ? "Zostań w grze"
+              : undefined
+            : "Wyjdź z gry"
+        }
+        onSecondary={
+          state?.exitRequestedByName
+            ? state.canRespondToExit
+              ? () => handleExit("respond", false)
+              : undefined
+            : () => handleExit("request")
+        }
+        isBusy={isPauseBusy}
+        infoLabel={state?.exitRequestedByName && !state.canRespondToExit ? "Oczekiwanie na potwierdzenie" : undefined}
+      />
 
       <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} />
     </div>

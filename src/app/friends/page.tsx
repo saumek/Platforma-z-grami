@@ -19,6 +19,22 @@ export default async function FriendsPage() {
           friendId: true,
         },
       },
+      sentFriendRequests: {
+        where: {
+          status: "pending",
+        },
+        select: {
+          receiverId: true,
+        },
+      },
+      receivedFriendRequests: {
+        where: {
+          status: "pending",
+        },
+        select: {
+          senderId: true,
+        },
+      },
     },
   });
 
@@ -27,6 +43,8 @@ export default async function FriendsPage() {
   }
 
   const friendIds = currentUser.friends.map((entry) => entry.friendId);
+  const outgoingRequestIds = new Set(currentUser.sentFriendRequests.map((entry) => entry.receiverId));
+  const incomingRequestIds = new Set(currentUser.receivedFriendRequests.map((entry) => entry.senderId));
 
   const friends = friendIds.length
     ? await prisma.user.findMany({
@@ -65,6 +83,15 @@ export default async function FriendsPage() {
       : null;
 
   const isRoommateFriend = roommate ? friendIds.includes(roommate.id) : false;
+  const roommateRelationship = roommate
+    ? isRoommateFriend
+      ? "friend"
+      : outgoingRequestIds.has(roommate.id)
+        ? "outgoing_pending"
+        : incomingRequestIds.has(roommate.id)
+          ? "incoming_pending"
+          : "none"
+    : "none";
 
   const friendItems = friends.map((friend) => {
     const active = friend.sessions.some((session) => isActiveNow(session.expiresAt));
@@ -99,8 +126,8 @@ export default async function FriendsPage() {
           ? {
               id: roommate.id,
               displayName: roommate.displayName ?? defaultDisplayName(roommate.email),
-              avatarPath: roommate.avatarPath,
-              isFriend: isRoommateFriend,
+            avatarPath: roommate.avatarPath,
+              relationship: roommateRelationship,
             }
           : null
       }

@@ -213,6 +213,18 @@ button {
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
 }
 
+.mobile-safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.mobile-safe-top-offset {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 6rem);
+}
+
+.mobile-safe-top-offset-lg {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 8rem);
+}
+
 .profile-screen,
 .profile-screen .font-body,
 .profile-screen .font-label,

@@ -53,6 +53,13 @@ export type ScienceQuizState = {
   currentPlayerCorrect: boolean | null;
   opponentCorrect: boolean | null;
   winnerId: string | null;
+  isPaused: boolean;
+  pausedAt: number | null;
+  pauseRequestedByName: string | null;
+  exitRequestedByName: string | null;
+  isCurrentUserExitRequester: boolean;
+  canRespondToExit: boolean;
+  shouldReturnToMenu: boolean;
 };
 
 function getQuestionPool(category: ScienceQuizCategory) {
@@ -147,12 +154,40 @@ function getWinnerId(game: {
   return game.playerOneScore > game.playerTwoScore ? game.playerOneId : game.playerTwoId;
 }
 
+function getPausedName(
+  requestedById: string | null,
+  players: {
+    playerOneId: string | null;
+    playerTwoId: string | null;
+    playerOne?: { email: string; displayName: string | null } | null;
+    playerTwo?: { email: string; displayName: string | null } | null;
+  },
+) {
+  if (!requestedById) {
+    return null;
+  }
+
+  if (requestedById === players.playerOneId && players.playerOne) {
+    return getName(players.playerOne);
+  }
+
+  if (requestedById === players.playerTwoId && players.playerTwo) {
+    return getName(players.playerTwo);
+  }
+
+  return "Drugi gracz";
+}
+
 async function advanceScienceQuizLifecycle(roomCode: string) {
   const game = await prisma.scienceQuizGame.findUnique({
     where: { roomCode },
   });
 
   if (!game) {
+    return game;
+  }
+
+  if (game.isPaused || game.terminatedAt) {
     return game;
   }
 
@@ -234,6 +269,9 @@ async function advanceScienceQuizLifecycle(roomCode: string) {
 export async function ensureScienceQuizGame(
   roomCode: string,
   requestedCategory: string | null | undefined,
+  options?: {
+    resetTerminated?: boolean;
+  },
 ) {
   const category = normalizeScienceQuizCategory(requestedCategory);
   const roomPlayers = await getRoomPlayers(roomCode);
@@ -262,6 +300,36 @@ export async function ensureScienceQuizGame(
   const playersChanged =
     existing.playerOneId !== playerOneId || existing.playerTwoId !== playerTwoId;
 
+  if (existing.terminatedAt && options?.resetTerminated) {
+    return prisma.scienceQuizGame.update({
+      where: { id: existing.id },
+      data: {
+        roomCode,
+        category,
+        status: "waiting",
+        playerOneId,
+        playerTwoId,
+        playerOneJoined: false,
+        playerTwoJoined: false,
+        playerOneScore: 0,
+        playerTwoScore: 0,
+        roundIndex: 0,
+        questionOrder: getFreshQuestionOrder(category),
+        playerOneAnswer: null,
+        playerTwoAnswer: null,
+        questionStartedAt: null,
+        roundResolvedAt: null,
+        rewardGranted: false,
+        isPaused: false,
+        pausedAt: null,
+        pauseRequestedById: null,
+        exitRequestedById: null,
+        terminatedAt: null,
+        terminationReason: null,
+      },
+    });
+  }
+
   if (playersChanged) {
     return prisma.scienceQuizGame.update({
       where: { id: existing.id },
@@ -282,6 +350,12 @@ export async function ensureScienceQuizGame(
         questionStartedAt: null,
         roundResolvedAt: null,
         rewardGranted: false,
+        isPaused: false,
+        pausedAt: null,
+        pauseRequestedById: null,
+        exitRequestedById: null,
+        terminatedAt: null,
+        terminationReason: null,
       },
     });
   }
@@ -315,7 +389,7 @@ export async function startScienceQuizGame(
   currentUserId: string,
   requestedCategory: string | null | undefined,
 ) {
-  await ensureScienceQuizGame(roomCode, requestedCategory);
+  await ensureScienceQuizGame(roomCode, requestedCategory, { resetTerminated: true });
 
   const game = await prisma.scienceQuizGame.findUnique({
     where: { roomCode },
@@ -323,6 +397,10 @@ export async function startScienceQuizGame(
 
   if (!game) {
     return null;
+  }
+
+  if (game.isPaused || game.terminatedAt) {
+    return game;
   }
 
   const isPlayerOne = game.playerOneId === currentUserId;
@@ -354,8 +432,11 @@ export async function getScienceQuizState(
   roomCode: string,
   currentUserId: string,
   requestedCategory: string | null | undefined,
+  options?: {
+    resetTerminated?: boolean;
+  },
 ) {
-  await ensureScienceQuizGame(roomCode, requestedCategory);
+  await ensureScienceQuizGame(roomCode, requestedCategory, options);
 
   const game = await prisma.scienceQuizGame.findUnique({
     where: { roomCode },
@@ -451,6 +532,23 @@ export async function getScienceQuizState(
     currentPlayerCorrect,
     opponentCorrect,
     winnerId: game.status === "finished" ? getWinnerId(game) : null,
+    isPaused: game.isPaused,
+    pausedAt: game.pausedAt ? game.pausedAt.getTime() : null,
+    pauseRequestedByName: getPausedName(game.pauseRequestedById, {
+      playerOneId: game.playerOneId,
+      playerTwoId: game.playerTwoId,
+      playerOne: game.playerOne,
+      playerTwo: game.playerTwo,
+    }),
+    exitRequestedByName: getPausedName(game.exitRequestedById, {
+      playerOneId: game.playerOneId,
+      playerTwoId: game.playerTwoId,
+      playerOne: game.playerOne,
+      playerTwo: game.playerTwo,
+    }),
+    isCurrentUserExitRequester: game.exitRequestedById === currentUserId,
+    canRespondToExit: Boolean(game.exitRequestedById && game.exitRequestedById !== currentUserId),
+    shouldReturnToMenu: game.terminationReason === "agreed_exit",
   } satisfies ScienceQuizState;
 }
 
@@ -467,6 +565,10 @@ export async function submitScienceQuizAnswer(
 
   if (game.status !== "question") {
     return { success: false as const, message: "Poczekaj na kolejną rundę." };
+  }
+
+  if (game.isPaused) {
+    return { success: false as const, message: "Gra jest obecnie wstrzymana." };
   }
 
   const category = normalizeScienceQuizCategory(game.category);
@@ -528,7 +630,13 @@ export async function submitScienceQuizAnswer(
   return { success: true as const, message: "Tym razem nikt nie zdobył punktu." };
 }
 
-export async function restartScienceQuiz(roomCode: string, currentUserId: string) {
+export async function restartScienceQuiz(
+  roomCode: string,
+  currentUserId: string,
+  options?: {
+    resetToWaiting?: boolean;
+  },
+) {
   const game = await prisma.scienceQuizGame.findUnique({
     where: { roomCode },
   });
@@ -541,14 +649,15 @@ export async function restartScienceQuiz(roomCode: string, currentUserId: string
     return { success: false as const, message: "Nie należysz do tej gry." };
   }
 
-  const canStartNow = Boolean(game.playerOneId && game.playerTwoId);
+  const resetToWaiting = options?.resetToWaiting ?? false;
+  const canStartNow = Boolean(game.playerOneId && game.playerTwoId) && !resetToWaiting;
 
   await prisma.scienceQuizGame.update({
     where: { id: game.id },
     data: {
       status: canStartNow ? "question" : "waiting",
-      playerOneJoined: Boolean(game.playerOneId),
-      playerTwoJoined: Boolean(game.playerTwoId),
+      playerOneJoined: resetToWaiting ? false : Boolean(game.playerOneId),
+      playerTwoJoined: resetToWaiting ? false : Boolean(game.playerTwoId),
       playerOneScore: 0,
       playerTwoScore: 0,
       roundIndex: 0,
@@ -558,8 +667,170 @@ export async function restartScienceQuiz(roomCode: string, currentUserId: string
       questionStartedAt: canStartNow ? new Date() : null,
       roundResolvedAt: null,
       rewardGranted: false,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: null,
+      terminationReason: null,
     },
   });
 
   return { success: true as const, message: "Nowy quiz jest gotowy." };
+}
+
+export async function pauseScienceQuiz(roomCode: string, currentUserId: string) {
+  const game = await prisma.scienceQuizGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (game.isPaused) {
+    return { success: true as const, message: "Gra jest już wstrzymana." };
+  }
+
+  await prisma.scienceQuizGame.update({
+    where: { id: game.id },
+    data: {
+      isPaused: true,
+      pausedAt: new Date(),
+      pauseRequestedById: currentUserId,
+      exitRequestedById: null,
+    },
+  });
+
+  return { success: true as const, message: "Gra została wstrzymana." };
+}
+
+export async function resumeScienceQuiz(roomCode: string, currentUserId: string) {
+  const game = await prisma.scienceQuizGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.isPaused) {
+    return { success: true as const, message: "Gra już działa." };
+  }
+
+  const pausedDuration = game.pausedAt ? Date.now() - game.pausedAt.getTime() : 0;
+
+  await prisma.scienceQuizGame.update({
+    where: { id: game.id },
+    data: {
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      questionStartedAt:
+        game.status === "question" && game.questionStartedAt
+          ? new Date(game.questionStartedAt.getTime() + pausedDuration)
+          : game.questionStartedAt,
+      roundResolvedAt:
+        game.status === "round_result" && game.roundResolvedAt
+          ? new Date(game.roundResolvedAt.getTime() + pausedDuration)
+          : game.roundResolvedAt,
+    },
+  });
+
+  return { success: true as const, message: "Gra została wznowiona." };
+}
+
+export async function requestScienceQuizExit(roomCode: string, currentUserId: string) {
+  const game = await prisma.scienceQuizGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.isPaused) {
+    return { success: false as const, message: "Najpierw wstrzymaj grę." };
+  }
+
+  await prisma.scienceQuizGame.update({
+    where: { id: game.id },
+    data: {
+      exitRequestedById: currentUserId,
+    },
+  });
+
+  return { success: true as const, message: "Wysłano prośbę o zakończenie gry." };
+}
+
+export async function respondScienceQuizExit(
+  roomCode: string,
+  currentUserId: string,
+  approve: boolean,
+) {
+  const game = await prisma.scienceQuizGame.findUnique({
+    where: { roomCode },
+  });
+
+  if (!game) {
+    return { success: false as const, message: "Nie znaleziono gry." };
+  }
+
+  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
+    return { success: false as const, message: "Nie należysz do tej gry." };
+  }
+
+  if (!game.exitRequestedById || game.exitRequestedById === currentUserId) {
+    return { success: false as const, message: "Nie ma prośby do potwierdzenia." };
+  }
+
+  if (!approve) {
+    await prisma.scienceQuizGame.update({
+      where: { id: game.id },
+      data: {
+        exitRequestedById: null,
+      },
+    });
+
+    return { success: true as const, message: "Gra pozostaje wstrzymana." };
+  }
+
+  await prisma.scienceQuizGame.update({
+    where: { id: game.id },
+    data: {
+      status: "waiting",
+      playerOneJoined: false,
+      playerTwoJoined: false,
+      playerOneScore: 0,
+      playerTwoScore: 0,
+      roundIndex: 0,
+      questionOrder: getFreshQuestionOrder(normalizeScienceQuizCategory(game.category)),
+      playerOneAnswer: null,
+      playerTwoAnswer: null,
+      questionStartedAt: null,
+      roundResolvedAt: null,
+      rewardGranted: false,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: new Date(),
+      terminationReason: "agreed_exit",
+    },
+  });
+
+  return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
 }
