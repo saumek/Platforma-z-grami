@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
-import { GamePauseOverlay } from "@/components/game-pause-overlay";
+import { useGameSessionControls } from "@/components/use-game-session-controls";
 import { formatRoomCode } from "@/lib/room-code";
 import type { AuthResponse } from "@/types/auth";
 
@@ -217,7 +217,6 @@ export function CoupleQaScreen({
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
-  const [isPauseBusy, setIsPauseBusy] = useState(false);
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
 
   async function refreshState() {
@@ -281,13 +280,6 @@ export function CoupleQaScreen({
   }, []);
 
   useEffect(() => {
-    if (state?.shouldReturnToMenu) {
-      router.push("/games");
-      router.refresh();
-    }
-  }, [router, state?.shouldReturnToMenu]);
-
-  useEffect(() => {
     if (state?.status !== "question") {
       setTimeLeft(QUESTION_TIMER_SECONDS);
       return;
@@ -326,56 +318,12 @@ export function CoupleQaScreen({
 
     return state.question.options[state.currentAnswer] ?? null;
   }, [state]);
-
-  async function handlePause(action: "pause" | "resume") {
-    setIsPauseBusy(true);
-
-    try {
-      const response = await fetch("/api/games/couple-qa/pause", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ action }),
-      });
-
-      const data = (await response.json()) as AuthResponse;
-      setStatusMessage(data.message);
-
-      if (response.ok) {
-        await refreshState();
-      }
-    } catch {
-      setStatusMessage("Nie udało się zmienić stanu gry.");
-    } finally {
-      setIsPauseBusy(false);
-    }
-  }
-
-  async function handleExit(action: "request" | "respond", approve?: boolean) {
-    setIsPauseBusy(true);
-
-    try {
-      const response = await fetch("/api/games/couple-qa/exit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ action, approve }),
-      });
-
-      const data = (await response.json()) as AuthResponse;
-      setStatusMessage(data.message);
-
-      if (response.ok) {
-        await refreshState();
-      }
-    } catch {
-      setStatusMessage("Nie udało się obsłużyć zakończenia gry.");
-    } finally {
-      setIsPauseBusy(false);
-    }
-  }
+  const gameSessionControls = useGameSessionControls({
+    gamePath: "couple-qa",
+    state,
+    refreshState,
+    setStatusMessage,
+  });
 
   async function handleAnswer(answerIndex: number) {
     if (!state || state.status !== "question" || state.currentAnswer !== null) {
@@ -488,12 +436,12 @@ export function CoupleQaScreen({
               </span>
             </div>
 
-            {state?.status !== "waiting" ? (
+            {gameSessionControls.pauseButtonVisible ? (
               <button
                 className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
                 type="button"
-                onClick={() => handlePause("pause")}
-                disabled={isPauseBusy || state?.isPaused}
+                onClick={gameSessionControls.requestPause}
+                disabled={gameSessionControls.pauseButtonDisabled}
               >
                 <span className="material-symbols-outlined text-[20px]">pause</span>
               </button>
@@ -621,49 +569,7 @@ export function CoupleQaScreen({
         ) : null}
       </main>
 
-      <GamePauseOverlay
-        isOpen={Boolean(state?.isPaused)}
-        title={state?.exitRequestedByName ? "Zakończyć grę?" : "Gra wstrzymana"}
-        description={
-          state?.exitRequestedByName
-            ? state.canRespondToExit
-              ? `${state.exitRequestedByName} chce zakończyć grę. Czy zgadzasz się na wyjście?`
-              : "Czekamy na decyzję drugiej osoby w sprawie zakończenia gry."
-            : state?.pauseRequestedByName
-              ? `${state.pauseRequestedByName} wstrzymał grę. Możesz wznowić albo poprosić o zakończenie.`
-              : "Gra jest obecnie wstrzymana."
-        }
-        primaryLabel={
-          state?.exitRequestedByName
-            ? state.canRespondToExit
-              ? "Tak, zakończ"
-              : undefined
-            : "Wznów"
-        }
-        onPrimary={
-          state?.exitRequestedByName
-            ? state.canRespondToExit
-              ? () => handleExit("respond", true)
-              : undefined
-            : () => handlePause("resume")
-        }
-        secondaryLabel={
-          state?.exitRequestedByName
-            ? state.canRespondToExit
-              ? "Zostań w grze"
-              : undefined
-            : "Wyjdź z gry"
-        }
-        onSecondary={
-          state?.exitRequestedByName
-            ? state.canRespondToExit
-              ? () => handleExit("respond", false)
-              : undefined
-            : () => handleExit("request")
-        }
-        isBusy={isPauseBusy}
-        infoLabel={state?.exitRequestedByName && !state.canRespondToExit ? "Oczekiwanie na potwierdzenie" : undefined}
-      />
+      {gameSessionControls.overlay}
 
       <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} />
     </div>
