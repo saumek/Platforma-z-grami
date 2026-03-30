@@ -733,7 +733,7 @@ export async function respondCoupleQaExit(
 }
 
 export async function getRoomScoreTotals(roomCode: string) {
-  const [battleshipGame, coupleQaGame, scienceQuizGame] = await Promise.all([
+  const [battleshipGame, coupleQaGame, scienceQuizGame, ludoGame] = await Promise.all([
     prisma.battleshipGame.findUnique({
       where: { roomCode },
       select: {
@@ -755,16 +755,25 @@ export async function getRoomScoreTotals(roomCode: string) {
         playerTwoRoomPoints: true,
       },
     }),
+    prisma.ludoGame.findUnique({
+      where: { roomCode },
+      select: {
+        playerOneRoomPoints: true,
+        playerTwoRoomPoints: true,
+      },
+    }),
   ]);
 
   return {
     userOnePoints:
       (battleshipGame?.playerOneWins ?? 0) +
       (coupleQaGame?.playerOneRoomPoints ?? 0) +
-      (scienceQuizGame?.playerOneRoomPoints ?? 0),
+      (scienceQuizGame?.playerOneRoomPoints ?? 0) +
+      (ludoGame?.playerOneRoomPoints ?? 0),
     userTwoPoints:
       (battleshipGame?.playerTwoWins ?? 0) +
       (coupleQaGame?.playerTwoRoomPoints ?? 0) +
-      (scienceQuizGame?.playerTwoRoomPoints ?? 0),
+      (scienceQuizGame?.playerTwoRoomPoints ?? 0) +
+      (ludoGame?.playerTwoRoomPoints ?? 0),
   };
 }

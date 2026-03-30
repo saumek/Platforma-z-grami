@@ -23,6 +23,9 @@ export async function resetRoomIfEmpty(roomCode: string | null | undefined) {
     prisma.scienceQuizGame.deleteMany({
       where: { roomCode },
     }),
+    prisma.ludoGame.deleteMany({
+      where: { roomCode },
+    }),
   ]);
 }
 

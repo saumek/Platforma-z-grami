@@ -260,6 +260,34 @@ export function GamesScreen({
                 </div>
               </div>
             </div>
+
+            <div className="group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10 hover:border-primary/30 transition-all duration-300">
+              <div className="aspect-[21/9] w-full relative">
+                <Image
+                  alt=""
+                  className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL1MatwHeEOX7F1Ng-KbU3PQNDJ9blXcP69tqUgyrgk-R8pdVX8pMUOLWd7ATq-mMqZMZbqSX9Pc38p2dav1oLG8REYzvxbn7amesPCvzINflTAE8X5Cj6olqLF0cnfZGrGXEVLhxhg2V_kfWiZQMq49LCMSCZ1xlce-7ZnGqL1SCCVW54nULzkDMcJ1sZS_73F4hhCJQW2Um-SkSkGsAjfdO-5_I2IhJ7NcryVKc3ldQgjYBcPR5pSyBCRQ7GVwcyT1LMkbM3Iw"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 768px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-transparent" />
+              </div>
+              <div className="p-5 flex justify-between items-end">
+                <div>
+                  <h3 className="font-headline text-xl font-bold text-on-surface">Chińczyk</h3>
+                  <p className="text-sm text-on-surface-variant">Classic ludo game for two</p>
+                </div>
+                <button
+                  aria-label="Chińczyk"
+                  className="bg-primary hover:bg-primary-dim text-on-primary p-3 rounded-full active:scale-90 duration-200 shadow-lg shadow-primary/20"
+                  title="Chińczyk"
+                  type="button"
+                  onClick={() => router.push("/games/ludo")}
+                >
+                  <span className="material-symbols-outlined">play_arrow</span>
+                </button>
+              </div>
+            </div>
           </div>
         </section>
       </main>

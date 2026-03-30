@@ -28,6 +28,8 @@ model User {
   coupleQaGamesAsPlayerTwo   CoupleQaGame[]   @relation("CoupleQaPlayerTwo")
   scienceQuizGamesAsPlayerOne ScienceQuizGame[] @relation("ScienceQuizPlayerOne")
   scienceQuizGamesAsPlayerTwo ScienceQuizGame[] @relation("ScienceQuizPlayerTwo")
+  ludoGamesAsPlayerOne       LudoGame[]       @relation("LudoPlayerOne")
+  ludoGamesAsPlayerTwo       LudoGame[]       @relation("LudoPlayerTwo")
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
@@ -188,6 +190,40 @@ model ScienceQuizGame {
   updatedAt         DateTime @updatedAt
   playerOne         User?    @relation("ScienceQuizPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
   playerTwo         User?    @relation("ScienceQuizPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
+
+  @@index([playerOneId])
+  @@index([playerTwoId])
+}
+
+model LudoGame {
+  id                  String   @id @default(cuid())
+  roomCode            String   @unique
+  status              String
+  isPaused            Boolean  @default(false)
+  pausedAt            DateTime?
+  pauseRequestedById  String?
+  exitRequestedById   String?
+  terminatedAt        DateTime?
+  terminationReason   String?
+  playerOneId         String?
+  playerTwoId         String?
+  playerOneColor      String?
+  playerTwoColor      String?
+  playerOneTokens     String   @default("[-1,-1,-1,-1]")
+  playerTwoTokens     String   @default("[-1,-1,-1,-1]")
+  playerOneRoomPoints Int      @default(0)
+  playerTwoRoomPoints Int      @default(0)
+  rewardGranted       Boolean  @default(false)
+  currentTurnUserId   String?
+  diceValue           Int?
+  lastRollValue       Int?
+  lastRollById        String?
+  lastRollAt          DateTime?
+  winnerId            String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  playerOne           User?    @relation("LudoPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
+  playerTwo           User?    @relation("LudoPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
 
   @@index([playerOneId])
   @@index([playerTwoId])
