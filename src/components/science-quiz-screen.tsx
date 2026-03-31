@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { GameHeaderShell } from "@/components/game-header-shell";
+import { useGameStateSync } from "@/components/use-game-state-sync";
 import { useGameSessionControls } from "@/components/use-game-session-controls";
-import { formatRoomCode } from "@/lib/room-code";
 import {
   type ScienceQuizCategory,
   SCIENCE_QUIZ_CATEGORY_LABELS,
@@ -213,77 +214,17 @@ export function ScienceQuizScreen({
   initialState,
 }: ScienceQuizScreenProps) {
   const router = useRouter();
-  const [state, setState] = useState<ScienceQuizState | null>(initialState);
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIMER_SECONDS);
-
-  const refreshState = useCallback(async () => {
-    const response = await fetch(`/api/games/science-quiz/state?category=${category}`, {
-      method: "GET",
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      return;
-    }
-
-    const data = (await response.json()) as {
-      success: boolean;
-      state?: ScienceQuizState;
-    };
-
-    if (data.success && data.state) {
-      setState(data.state);
-    }
-  }, [category]);
-
-  useEffect(() => {
-    void fetch("/api/games/science-quiz/start", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ category }),
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          return;
-        }
-
-        const data = (await response.json()) as {
-          success: boolean;
-          state?: ScienceQuizState;
-        };
-
-        if (data.success && data.state) {
-          setState(data.state);
-        }
-      })
-      .catch(() => {
-        // Keep current state if warm-up request fails.
-      });
-  }, [category]);
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      void refreshState();
-    }, 1200);
-
-    function handleVisibilityChange() {
-      if (document.visibilityState === "visible") {
-        void refreshState();
-      }
-    }
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.clearInterval(intervalId);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [refreshState]);
+  const { state, setState, refreshState } = useGameStateSync<ScienceQuizState>({
+    initialState,
+    statePath: `/api/games/science-quiz/state?category=${category}`,
+    startPath: "/api/games/science-quiz/start",
+    startBody: { category },
+    intervalMs: 1200,
+  });
 
   useEffect(() => {
     if (state?.status !== "question") {
@@ -415,54 +356,47 @@ export function ScienceQuizScreen({
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-surface-dim font-body text-on-surface">
-      <header className="fixed top-0 z-50 w-full mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(182,160,255,0.1)]">
-        <div className="flex flex-col items-center pb-2 pt-4">
-          <span className="mb-2 font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">
-            Pokój {formatRoomCode(roomCode)}
-          </span>
-
-          <div className="relative flex h-16 w-full max-w-md items-center justify-between px-6">
-            <div className="flex flex-col items-center gap-1">
-              <Avatar
-                src={state?.currentPlayer?.avatarPath ?? null}
-                alt={state?.currentPlayer?.name ?? "Ty"}
-                accent="cyan"
-              />
-              <span className="font-label text-[10px] font-bold tracking-tight text-primary">
-                {state?.currentPlayer?.name ?? "Użytkownik 1"}
-              </span>
-            </div>
-
-            <ScoreBoard
-              leftScore={state?.currentPlayer?.score ?? 0}
-              rightScore={state?.opponent?.score ?? 0}
+      <GameHeaderShell roomCode={roomCode} showRoomLabel divider fixed>
+        <div className="relative flex h-16 items-center justify-between px-6">
+          <div className="flex flex-col items-center gap-1">
+            <Avatar
+              src={state?.currentPlayer?.avatarPath ?? null}
+              alt={state?.currentPlayer?.name ?? "Ty"}
+              accent="cyan"
             />
-
-            <div className="flex flex-col items-center gap-1">
-              <Avatar
-                src={state?.opponent?.avatarPath ?? null}
-                alt={state?.opponent?.name ?? "Druga osoba"}
-                accent="pink"
-              />
-              <span className="font-label text-[10px] font-bold tracking-tight text-error">
-                {state?.opponent?.name ?? "Użytkownik 2"}
-              </span>
-            </div>
-
-            {gameSessionControls.pauseButtonVisible ? (
-              <button
-                className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
-                type="button"
-                onClick={gameSessionControls.requestPause}
-                disabled={gameSessionControls.pauseButtonDisabled}
-              >
-                <span className="material-symbols-outlined text-[20px]">pause</span>
-              </button>
-            ) : null}
+            <span className="font-label text-[10px] font-bold tracking-tight text-primary">
+              {state?.currentPlayer?.name ?? "Użytkownik 1"}
+            </span>
           </div>
+
+          <ScoreBoard
+            leftScore={state?.currentPlayer?.score ?? 0}
+            rightScore={state?.opponent?.score ?? 0}
+          />
+
+          <div className="flex flex-col items-center gap-1">
+            <Avatar
+              src={state?.opponent?.avatarPath ?? null}
+              alt={state?.opponent?.name ?? "Druga osoba"}
+              accent="pink"
+            />
+            <span className="font-label text-[10px] font-bold tracking-tight text-error">
+              {state?.opponent?.name ?? "Użytkownik 2"}
+            </span>
+          </div>
+
+          {gameSessionControls.pauseButtonVisible ? (
+            <button
+              className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
+              type="button"
+              onClick={gameSessionControls.requestPause}
+              disabled={gameSessionControls.pauseButtonDisabled}
+            >
+              <span className="material-symbols-outlined text-[20px]">pause</span>
+            </button>
+          ) : null}
         </div>
-        <div className="h-px w-full bg-[#131313] opacity-20" />
-      </header>
+      </GameHeaderShell>
 
       <main className="mobile-safe-top-offset-lg flex min-h-screen flex-col items-center justify-center px-8 pb-32">
         <div className="relative mb-12 w-full max-w-md">

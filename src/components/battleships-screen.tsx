@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { GameHeaderShell } from "@/components/game-header-shell";
+import { useGameStateSync } from "@/components/use-game-state-sync";
 import { useGameSessionControls } from "@/components/use-game-session-controls";
 import {
   BATTLESHIP_BOARD_SIZE,
@@ -275,7 +277,11 @@ export function BattleshipsScreen({
   initialState,
 }: BattleshipsScreenProps) {
   const router = useRouter();
-  const [state, setState] = useState<BattleshipState | null>(initialState);
+  const { state, setState, refreshState } = useGameStateSync<BattleshipState>({
+    initialState,
+    statePath: "/api/games/battleships/state",
+    intervalMs: 2500,
+  });
   const [placements, setPlacements] = useState<Placement[]>(BATTLESHIP_SHIP_LENGTHS.map(() => null));
   const [selectedShipIndex, setSelectedShipIndex] = useState(0);
   const [orientation, setOrientation] = useState<"horizontal" | "vertical">("horizontal");
@@ -283,46 +289,6 @@ export function BattleshipsScreen({
   const [isSaving, setIsSaving] = useState(false);
   const [isShooting, setIsShooting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
-
-  async function refreshState() {
-    const response = await fetch("/api/games/battleships/state", {
-      method: "GET",
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      return;
-    }
-
-    const data = (await response.json()) as {
-      success: boolean;
-      message: string;
-      state?: BattleshipState;
-    };
-
-    if (data.success && data.state) {
-      setState(data.state);
-    }
-  }
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      void refreshState();
-    }, 2500);
-
-    function handleVisibilityChange() {
-      if (document.visibilityState === "visible") {
-        void refreshState();
-      }
-    }
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.clearInterval(intervalId);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
 
   const placedCells = useMemo(
     () => new Set(placements.flatMap((ship) => ship ?? [])),
@@ -513,8 +479,9 @@ export function BattleshipsScreen({
 
   return (
     <div className="bg-background text-on-background font-body min-h-screen pb-32">
-      <header className="sticky top-0 z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl w-full flex justify-between items-center px-6 py-4 shadow-[0_10px_30px_-15px_rgba(182,160,255,0.15)]">
-        <div className="flex items-center gap-4">
+      <GameHeaderShell roomCode={roomCode} fixed={false} maxWidthClassName="max-w-md">
+        <div className="flex items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-4">
           <button
             className="active:scale-95 duration-200 hover:opacity-80 transition-opacity"
             type="button"
@@ -547,7 +514,8 @@ export function BattleshipsScreen({
             alt={state?.currentPlayer?.name ?? "Użytkownik"}
           />
         </div>
-      </header>
+      </div>
+      </GameHeaderShell>
 
       <main className="px-6 pt-8 space-y-8 max-w-md mx-auto">
         <section className="flex items-center justify-between gap-4">

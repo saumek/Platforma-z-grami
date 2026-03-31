@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { AppSectionHeader } from "@/components/app-section-header";
 import { formatRoomCode } from "@/lib/room-code";
 import {
   SCIENCE_QUIZ_CATEGORIES,
@@ -98,8 +99,11 @@ export function GamesScreen({
 
   return (
     <div className="bg-background text-on-background font-body min-h-screen pb-32">
-      <header className="sticky top-0 z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl w-full flex justify-between items-center px-6 py-4 shadow-[0_10px_30px_-15px_rgba(182,160,255,0.15)]">
-        <div className="flex items-center gap-4">
+      <AppSectionHeader
+        title="Gry"
+        subtitle={`Pokój ${formatRoomCode(roomState.roomCode)}`}
+        maxWidthClassName="max-w-2xl"
+        leftSlot={
           <button
             className="active:scale-95 duration-200 hover:opacity-80 transition-opacity"
             type="button"
@@ -107,17 +111,16 @@ export function GamesScreen({
           >
             <span className="material-symbols-outlined text-[#b6a0ff] text-2xl">arrow_back</span>
           </button>
-          <h1 className="font-headline text-xl font-bold tracking-tighter text-[#b6a0ff]">
-            Room {formatRoomCode(roomState.roomCode)}
-          </h1>
-        </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-full border border-outline-variant/15">
-          <span className="w-2 h-2 rounded-full bg-tertiary-dim shadow-[0_0_8px_#beee00]" />
-          <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
-            {roomState.activeUsersCount} Active
-          </span>
-        </div>
-      </header>
+        }
+        rightSlot={
+          <div className="flex items-center gap-2 rounded-full border border-outline-variant/15 bg-surface-container-high px-3 py-1.5">
+            <span className="h-2 w-2 rounded-full bg-tertiary-dim shadow-[0_0_8px_#beee00]" />
+            <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant">
+              {roomState.activeUsersCount} Active
+            </span>
+          </div>
+        }
+      />
 
       <div className="bg-gradient-to-b from-[#131313] to-transparent h-4 w-full" />
 

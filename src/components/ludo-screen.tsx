@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { GameHeaderShell } from "@/components/game-header-shell";
+import { useGameStateSync } from "@/components/use-game-state-sync";
 import { useGameSessionControls } from "@/components/use-game-session-controls";
 import {
   LUDO_COLORS,
@@ -721,61 +723,16 @@ function ResultScreen({
 
 export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreenProps) {
   const router = useRouter();
-  const [state, setState] = useState<LudoState | null>(initialState);
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
   const [now, setNow] = useState(Date.now());
-
-  const refreshState = useCallback(async () => {
-    const response = await fetch("/api/games/ludo/state", {
-      method: "GET",
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      return;
-    }
-
-    const data = (await response.json()) as { success: boolean; state?: LudoState };
-
-    if (data.success && data.state) {
-      setState(data.state);
-    }
-  }, []);
-
-  useEffect(() => {
-    void fetch("/api/games/ludo/start", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          return;
-        }
-
-        const data = (await response.json()) as { success: boolean; state?: LudoState };
-
-        if (data.success && data.state) {
-          setState(data.state);
-        }
-      })
-      .catch(() => {
-        // Keep the initial state if the warm-up call fails.
-      });
-  }, []);
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      void refreshState();
-    }, 1200);
-
-    return () => {
-      window.clearInterval(intervalId);
-    };
-  }, [refreshState]);
+  const { state, setState, refreshState } = useGameStateSync<LudoState>({
+    initialState,
+    statePath: "/api/games/ludo/state",
+    startPath: "/api/games/ludo/start",
+    intervalMs: 1200,
+  });
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -928,8 +885,8 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
 
   return (
     <div className="min-h-screen bg-background text-on-background">
-      <header className="sticky top-0 z-50 mobile-safe-top bg-[#0e0e0e]/82 px-6 py-4 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-2xl items-center justify-between gap-4">
+      <GameHeaderShell roomCode={roomCode} fixed={false} maxWidthClassName="max-w-2xl">
+        <div className="mx-auto flex items-center justify-between gap-4 px-6 py-4">
           <div className="flex items-center gap-4">
             <button type="button" onClick={() => router.push("/games")}>
               <span className="material-symbols-outlined text-primary">arrow_back</span>
@@ -955,7 +912,7 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
             </button>
           ) : null}
         </div>
-      </header>
+      </GameHeaderShell>
 
       {state.status === "waiting" || state.status === "color_selection" ? (
         <ColorSelectionScreen

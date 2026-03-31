@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { AppSectionHeader } from "@/components/app-section-header";
+import { useRouterRefreshPolling } from "@/components/use-router-refresh-polling";
 import { formatRoomCode } from "@/lib/room-code";
 import type { AuthResponse } from "@/types/auth";
 
@@ -69,24 +71,7 @@ export function FriendsScreen({
   const [friendActionMessage, setFriendActionMessage] = useState("");
   const [joinError, setJoinError] = useState("");
 
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      router.refresh();
-    }, 5000);
-
-    function handleVisibilityChange() {
-      if (document.visibilityState === "visible") {
-        router.refresh();
-      }
-    }
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.clearInterval(intervalId);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [router]);
+  useRouterRefreshPolling(5000);
 
   async function addFriend(friendId: string) {
     setFriendActionMessage("");
@@ -150,8 +135,9 @@ export function FriendsScreen({
 
   return (
     <div className="bg-background text-on-background min-h-screen">
-      <header className="sticky top-0 w-full z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
-        <div className="flex items-center justify-between px-6 h-16 w-full max-w-md mx-auto">
+      <AppSectionHeader
+        title="Znajomi"
+        leftSlot={
           <button
             className="text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
             type="button"
@@ -159,14 +145,13 @@ export function FriendsScreen({
           >
             <span className="material-symbols-outlined">arrow_back</span>
           </button>
-          <h1 className="font-headline font-bold tracking-tighter text-[#b6a0ff] text-xl">
-            Znajomi
-          </h1>
+        }
+        rightSlot={
           <div className="text-2xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-[#b6a0ff] to-[#7e51ff] font-headline">
             Gamely
           </div>
-        </div>
-      </header>
+        }
+      />
 
       <main className="pt-8 px-6 max-w-md mx-auto space-y-8 pb-32">
         {roommate ? (

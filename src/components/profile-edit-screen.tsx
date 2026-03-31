@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
+import { AppSectionHeader } from "@/components/app-section-header";
 import type { AuthResponse } from "@/types/auth";
 
 type ProfileEditScreenProps = {
@@ -82,8 +83,9 @@ export function ProfileEditScreen({
 
   return (
     <div className="profile-screen bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
-      <header className="sticky top-0 w-full z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
-        <div className="flex items-center justify-between px-6 h-16 w-full max-w-md mx-auto">
+      <AppSectionHeader
+        title="Edycja"
+        leftSlot={
           <button
             className="text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
             type="button"
@@ -91,14 +93,13 @@ export function ProfileEditScreen({
           >
             <span className="material-symbols-outlined">arrow_back</span>
           </button>
-          <h1 className="font-headline font-bold tracking-tighter text-[#b6a0ff] text-xl">
-            Edycja
-          </h1>
+        }
+        rightSlot={
           <div className="text-2xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-[#b6a0ff] to-[#7e51ff] font-headline">
             Gamely
           </div>
-        </div>
-      </header>
+        }
+      />
 
       <main className="pt-8 pb-12 px-6 max-w-md mx-auto min-h-screen">
         <form className="space-y-6" onSubmit={handleSubmit}>

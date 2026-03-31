@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { AppSectionHeader } from "@/components/app-section-header";
+import { useRouterRefreshPolling } from "@/components/use-router-refresh-polling";
 import { formatRoomCode } from "@/lib/room-code";
 import type { AuthResponse } from "@/types/auth";
 
@@ -60,24 +62,7 @@ export function ProfileScreen({
   const [busyNotificationId, setBusyNotificationId] = useState<string | null>(null);
   const [notificationError, setNotificationError] = useState("");
 
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      router.refresh();
-    }, 7000);
-
-    function handleVisibilityChange() {
-      if (document.visibilityState === "visible") {
-        router.refresh();
-      }
-    }
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      window.clearInterval(intervalId);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [router]);
+  useRouterRefreshPolling(7000);
 
   const unreadNotificationsCount = notifications.length;
 
@@ -193,8 +178,9 @@ export function ProfileScreen({
         <div className="absolute bottom-20 right-[-4rem] h-64 w-64 rounded-full bg-primary-dim/10 blur-[120px]" />
       </div>
 
-      <header className="sticky top-0 w-full z-50 mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_40px_0_rgba(182,160,255,0.1)]">
-        <div className="flex items-center justify-between px-6 h-16 w-full max-w-md mx-auto">
+      <AppSectionHeader
+        title="Profil"
+        leftSlot={
           <button
             className="text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
             type="button"
@@ -202,9 +188,8 @@ export function ProfileScreen({
           >
             <span className="material-symbols-outlined">arrow_back</span>
           </button>
-          <h1 className="font-headline font-bold tracking-tighter text-[#b6a0ff] text-xl">
-            Profil
-          </h1>
+        }
+        rightSlot={
           <button
             className="relative text-[#b6a0ff] hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200"
             type="button"
@@ -217,8 +202,8 @@ export function ProfileScreen({
               </span>
             ) : null}
           </button>
-        </div>
-      </header>
+        }
+      />
 
       <main className="pt-8 pb-32 px-6 max-w-md mx-auto min-h-screen space-y-8">
         {isNotificationsOpen ? (
