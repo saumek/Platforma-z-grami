@@ -1,47 +1,17 @@
-import { NextResponse } from "next/server";
-
-import { getCurrentSession } from "@/lib/auth";
-import { pauseCoupleQaGame, resumeCoupleQaGame } from "@/lib/couple-qa";
-import { prisma } from "@/lib/prisma";
-import type { AuthResponse } from "@/types/auth";
+import { getCoupleQaState, pauseCoupleQaGame, resumeCoupleQaGame } from "@/lib/couple-qa";
+import { runGameCommandRoute } from "@/lib/game-command-route";
 
 export async function POST(request: Request) {
-  try {
-    const session = await getCurrentSession();
-
-    if (!session) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Najpierw zaloguj się do swojego konta." },
-        { status: 401 },
-      );
-    }
-
-    const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
-      select: { currentRoomCode: true },
-    });
-
-    if (!user?.currentRoomCode) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Nie jesteś obecnie w żadnym pokoju." },
-        { status: 409 },
-      );
-    }
-
-    const body = (await request.json().catch(() => ({}))) as { action?: "pause" | "resume" };
-    const result =
+  return runGameCommandRoute({
+    request,
+    parseBody: async (currentRequest) =>
+      ((await currentRequest.json().catch(() => ({}))) as { action?: "pause" | "resume" }),
+    command: ({ roomCode, userId, body }) =>
       body.action === "resume"
-        ? await resumeCoupleQaGame(user.currentRoomCode, session.user.id)
-        : await pauseCoupleQaGame(user.currentRoomCode, session.user.id);
-
-    return NextResponse.json<AuthResponse>(
-      { success: result.success, message: result.message },
-      { status: result.success ? 200 : 400 },
-    );
-  } catch {
-    return NextResponse.json<AuthResponse>(
-      { success: false, message: "Nie udało się zmienić stanu gry." },
-      { status: 500 },
-    );
-  }
+        ? resumeCoupleQaGame(roomCode, userId)
+        : pauseCoupleQaGame(roomCode, userId),
+    getState: ({ roomCode, userId }) => getCoupleQaState(roomCode, userId),
+    notInRoomMessage: "Nie jesteś obecnie w żadnym pokoju.",
+    errorMessage: "Nie udało się zmienić stanu gry.",
+  });
 }

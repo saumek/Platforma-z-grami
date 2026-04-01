@@ -1,3 +1,8 @@
+import {
+  applyVersionedGameUpdate,
+  isGameParticipant,
+  runGameCommand,
+} from "@/lib/game-command";
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
 import { LUDO_COLORS, LUDO_COLOR_LABELS, type LudoColor } from "@/lib/ludo-constants";
@@ -467,198 +472,288 @@ export async function chooseLudoColor(roomCode: string, userId: string, color: s
     return { success: false, message: "Wybierz poprawny kolor." };
   }
 
-  if (game.playerOneId !== userId && game.playerTwoId !== userId) {
-    return { success: false, message: "Nie jesteś graczem tej partii." };
-  }
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.ludoGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie udało się znaleźć gry.",
+    execute: async ({ game: currentGame, staleResult }) => {
+      if (!isGameParticipant(currentGame, userId)) {
+        return { success: false, message: "Nie jesteś graczem tej partii." };
+      }
 
-  const nextColor = color as LudoColor;
-  const isPlayerOne = game.playerOneId === userId;
-  const opponentColor = isPlayerOne ? game.playerTwoColor : game.playerOneColor;
+      const nextColor = color as LudoColor;
+      const isPlayerOne = currentGame.playerOneId === userId;
+      const opponentColor = isPlayerOne ? currentGame.playerTwoColor : currentGame.playerOneColor;
 
-  if (opponentColor === nextColor) {
-    return { success: false, message: "Ten kolor został już zajęty." };
-  }
+      if (opponentColor === nextColor) {
+        return { success: false, message: "Ten kolor został już zajęty." };
+      }
 
-  const updated = await prisma.ludoGame.update({
-    where: { id: game.id },
-    data: isPlayerOne ? { playerOneColor: nextColor } : { playerTwoColor: nextColor },
+      const updated = await prisma.ludoGame.findUnique({
+        where: { id: currentGame.id },
+      });
+
+      if (!updated) {
+        return { success: false, message: "Nie udało się znaleźć gry." };
+      }
+
+      const colorUpdated = await applyVersionedGameUpdate(
+        prisma.ludoGame,
+        updated,
+        {
+          status: { not: "finished" },
+          ...(isPlayerOne
+            ? { playerOneColor: updated.playerOneColor }
+            : { playerTwoColor: updated.playerTwoColor }),
+          ...(isPlayerOne
+            ? { playerTwoColor: { not: nextColor } }
+            : { playerOneColor: { not: nextColor } }),
+        },
+        {
+          ...(isPlayerOne ? { playerOneColor: nextColor } : { playerTwoColor: nextColor }),
+        },
+      );
+
+      if (!colorUpdated) {
+        return staleResult();
+      }
+
+      const nextGame = await prisma.ludoGame.findUnique({
+        where: { id: currentGame.id },
+      });
+
+      if (!nextGame) {
+        return { success: false, message: "Nie udało się znaleźć gry." };
+      }
+
+      if (nextGame.playerOneColor && nextGame.playerTwoColor) {
+        await applyVersionedGameUpdate(
+          prisma.ludoGame,
+          nextGame,
+          {
+            status: "color_selection",
+          },
+          {
+            status: "playing",
+            currentTurnUserId: nextGame.playerOneId,
+          },
+        );
+      }
+
+      return { success: true, message: "Kolor został wybrany." };
+    },
   });
-
-  if (updated.playerOneColor && updated.playerTwoColor) {
-    await prisma.ludoGame.update({
-      where: { id: updated.id },
-      data: {
-        status: "playing",
-        currentTurnUserId: updated.playerOneId,
-      },
-    });
-  }
-
-  return { success: true, message: "Kolor został wybrany." };
 }
 
 export async function rollLudoDice(roomCode: string, userId: string) {
-  const game = await ensureLudoGame(roomCode);
+  await ensureLudoGame(roomCode);
 
-  if (!game) {
-    return { success: false, message: "Nie udało się znaleźć gry." };
-  }
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.ludoGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie udało się znaleźć gry.",
+    execute: async ({ game, staleResult }) => {
+      if (game.isPaused || game.terminatedAt) {
+        return { success: false, message: "Gra jest obecnie niedostępna." };
+      }
 
-  if (game.isPaused || game.terminatedAt) {
-    return { success: false, message: "Gra jest obecnie niedostępna." };
-  }
+      if (game.status !== "playing") {
+        return { success: false, message: "Gra nie jest jeszcze gotowa do ruchu." };
+      }
 
-  if (game.status !== "playing") {
-    return { success: false, message: "Gra nie jest jeszcze gotowa do ruchu." };
-  }
+      if (game.currentTurnUserId !== userId) {
+        return { success: false, message: "Teraz ruch należy do drugiej osoby." };
+      }
 
-  if (game.currentTurnUserId !== userId) {
-    return { success: false, message: "Teraz ruch należy do drugiej osoby." };
-  }
+      if (game.diceValue !== null) {
+        return { success: false, message: "Najpierw wybierz pionek do przesunięcia." };
+      }
 
-  if (game.diceValue !== null) {
-    return { success: false, message: "Najpierw wybierz pionek do przesunięcia." };
-  }
+      const isPlayerOne = game.playerOneId === userId;
+      const ownColor = (isPlayerOne ? game.playerOneColor : game.playerTwoColor) as LudoColor | null;
+      const opponentColor = (isPlayerOne ? game.playerTwoColor : game.playerOneColor) as LudoColor | null;
+      const ownTokens = parseTokens(isPlayerOne ? game.playerOneTokens : game.playerTwoTokens);
+      const opponentTokens = parseTokens(isPlayerOne ? game.playerTwoTokens : game.playerOneTokens);
 
-  const isPlayerOne = game.playerOneId === userId;
-  const ownColor = (isPlayerOne ? game.playerOneColor : game.playerTwoColor) as LudoColor | null;
-  const opponentColor = (isPlayerOne ? game.playerTwoColor : game.playerOneColor) as LudoColor | null;
-  const ownTokens = parseTokens(isPlayerOne ? game.playerOneTokens : game.playerTwoTokens);
-  const opponentTokens = parseTokens(isPlayerOne ? game.playerTwoTokens : game.playerOneTokens);
+      if (!ownColor || !opponentColor) {
+        return { success: false, message: "Obie osoby muszą najpierw wybrać kolory." };
+      }
 
-  if (!ownColor || !opponentColor) {
-    return { success: false, message: "Obie osoby muszą najpierw wybrać kolory." };
-  }
+      const value = Math.floor(Math.random() * 6) + 1;
+      const movableTokenIndexes = getMovableTokenIndexes(
+        ownTokens,
+        ownColor,
+        opponentTokens,
+        opponentColor,
+        value,
+      );
 
-  const value = Math.floor(Math.random() * 6) + 1;
-  const movableTokenIndexes = getMovableTokenIndexes(
-    ownTokens,
-    ownColor,
-    opponentTokens,
-    opponentColor,
-    value,
-  );
+      const updateSucceeded = await applyVersionedGameUpdate(
+        prisma.ludoGame,
+        game,
+        {
+          status: "playing",
+          isPaused: false,
+          terminatedAt: null,
+          currentTurnUserId: userId,
+          diceValue: null,
+        },
+        movableTokenIndexes.length === 0
+          ? {
+              diceValue: null,
+              lastRollValue: value,
+              lastRollById: userId,
+              lastRollAt: new Date(),
+              currentTurnUserId: isPlayerOne ? game.playerTwoId : game.playerOneId,
+            }
+          : {
+              diceValue: value,
+              lastRollValue: value,
+              lastRollById: userId,
+              lastRollAt: new Date(),
+            },
+      );
 
-  if (movableTokenIndexes.length === 0) {
-    await prisma.ludoGame.update({
-      where: { id: game.id },
-      data: {
-        diceValue: null,
-        lastRollValue: value,
-        lastRollById: userId,
-        lastRollAt: new Date(),
-        currentTurnUserId: isPlayerOne ? game.playerTwoId : game.playerOneId,
-      },
-    });
+      if (!updateSucceeded) {
+        return staleResult();
+      }
 
-    return { success: true, message: `Wypadło ${value}. Nie masz możliwego ruchu.` };
-  }
-
-  await prisma.ludoGame.update({
-    where: { id: game.id },
-    data: {
-      diceValue: value,
-      lastRollValue: value,
-      lastRollById: userId,
-      lastRollAt: new Date(),
+      return {
+        success: true,
+        message:
+          movableTokenIndexes.length === 0
+            ? `Wypadło ${value}. Nie masz możliwego ruchu.`
+            : `Wypadło ${value}. Wybierz pionek.`,
+      };
     },
   });
-
-  return { success: true, message: `Wypadło ${value}. Wybierz pionek.` };
 }
 
 export async function moveLudoToken(roomCode: string, userId: string, tokenIndex: number) {
-  const game = await ensureLudoGame(roomCode);
+  await ensureLudoGame(roomCode);
 
-  if (!game) {
-    return { success: false, message: "Nie udało się znaleźć gry." };
-  }
-
-  if (game.isPaused || game.terminatedAt) {
-    return { success: false, message: "Gra jest obecnie niedostępna." };
-  }
-
-  if (game.status !== "playing" || game.currentTurnUserId !== userId || game.diceValue === null) {
-    return { success: false, message: "Nie możesz teraz poruszyć pionkiem." };
-  }
-
-  const isPlayerOne = game.playerOneId === userId;
-  const ownColor = (isPlayerOne ? game.playerOneColor : game.playerTwoColor) as LudoColor | null;
-  const opponentColor = (isPlayerOne ? game.playerTwoColor : game.playerOneColor) as LudoColor | null;
-  const ownTokens = parseTokens(isPlayerOne ? game.playerOneTokens : game.playerTwoTokens);
-  const opponentTokens = parseTokens(isPlayerOne ? game.playerTwoTokens : game.playerOneTokens);
-
-  if (!ownColor || !opponentColor) {
-    return { success: false, message: "Brakuje wyboru kolorów." };
-  }
-
-  const movableTokenIndexes = getMovableTokenIndexes(
-    ownTokens,
-    ownColor,
-    opponentTokens,
-    opponentColor,
-    game.diceValue,
-  );
-
-  if (!Number.isInteger(tokenIndex) || tokenIndex < 0 || tokenIndex >= TOKEN_COUNT || !movableTokenIndexes.includes(tokenIndex)) {
-    return { success: false, message: "Ten pionek nie może się teraz ruszyć." };
-  }
-
-  const nextProgress = getTargetProgress(ownTokens[tokenIndex] ?? -1, game.diceValue);
-
-  if (nextProgress === null) {
-    return { success: false, message: "Nieprawidłowy ruch." };
-  }
-
-  ownTokens[tokenIndex] = nextProgress;
-
-  if (nextProgress >= 0 && nextProgress <= TRACK_LENGTH - 1) {
-    const landingTrackIndex = getTrackIndex(ownColor, nextProgress);
-
-    opponentTokens.forEach((progress, index) => {
-      if (progress >= 0 && progress <= TRACK_LENGTH - 1 && getTrackIndex(opponentColor, progress) === landingTrackIndex) {
-        opponentTokens[index] = -1;
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.ludoGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie udało się znaleźć gry.",
+    execute: async ({ game, staleResult }) => {
+      if (game.isPaused || game.terminatedAt) {
+        return { success: false, message: "Gra jest obecnie niedostępna." };
       }
-    });
-  }
 
-  const hasWon = ownTokens.every((progress) => progress === FINISH_PROGRESS);
-  const shouldGrantRoomPoint = hasWon && !game.rewardGranted;
+      if (game.status !== "playing" || game.currentTurnUserId !== userId || game.diceValue === null) {
+        return { success: false, message: "Nie możesz teraz poruszyć pionkiem." };
+      }
 
-  await prisma.ludoGame.update({
-    where: { id: game.id },
-    data: isPlayerOne
-      ? {
-          playerOneTokens: serializeTokens(ownTokens),
-          playerTwoTokens: serializeTokens(opponentTokens),
-          playerOneRoomPoints: shouldGrantRoomPoint ? { increment: 1 } : undefined,
-          rewardGranted: shouldGrantRoomPoint ? true : undefined,
-          diceValue: null,
-          currentTurnUserId: hasWon
-            ? null
-            : game.diceValue === 6
-              ? game.playerOneId
-              : game.playerTwoId,
-          status: hasWon ? "finished" : "playing",
-          winnerId: hasWon ? userId : null,
-        }
-      : {
-          playerOneTokens: serializeTokens(opponentTokens),
-          playerTwoTokens: serializeTokens(ownTokens),
-          playerTwoRoomPoints: shouldGrantRoomPoint ? { increment: 1 } : undefined,
-          rewardGranted: shouldGrantRoomPoint ? true : undefined,
-          diceValue: null,
-          currentTurnUserId: hasWon
-            ? null
-            : game.diceValue === 6
-              ? game.playerTwoId
-              : game.playerOneId,
-          status: hasWon ? "finished" : "playing",
-          winnerId: hasWon ? userId : null,
+      const isPlayerOne = game.playerOneId === userId;
+      const ownColor = (isPlayerOne ? game.playerOneColor : game.playerTwoColor) as LudoColor | null;
+      const opponentColor = (isPlayerOne ? game.playerTwoColor : game.playerOneColor) as LudoColor | null;
+      const ownTokens = parseTokens(isPlayerOne ? game.playerOneTokens : game.playerTwoTokens);
+      const opponentTokens = parseTokens(isPlayerOne ? game.playerTwoTokens : game.playerOneTokens);
+
+      if (!ownColor || !opponentColor) {
+        return { success: false, message: "Brakuje wyboru kolorów." };
+      }
+
+      const movableTokenIndexes = getMovableTokenIndexes(
+        ownTokens,
+        ownColor,
+        opponentTokens,
+        opponentColor,
+        game.diceValue,
+      );
+
+      if (
+        !Number.isInteger(tokenIndex) ||
+        tokenIndex < 0 ||
+        tokenIndex >= TOKEN_COUNT ||
+        !movableTokenIndexes.includes(tokenIndex)
+      ) {
+        return { success: false, message: "Ten pionek nie może się teraz ruszyć." };
+      }
+
+      const nextProgress = getTargetProgress(ownTokens[tokenIndex] ?? -1, game.diceValue);
+
+      if (nextProgress === null) {
+        return { success: false, message: "Nieprawidłowy ruch." };
+      }
+
+      ownTokens[tokenIndex] = nextProgress;
+
+      if (nextProgress >= 0 && nextProgress <= TRACK_LENGTH - 1) {
+        const landingTrackIndex = getTrackIndex(ownColor, nextProgress);
+
+        opponentTokens.forEach((progress, index) => {
+          if (
+            progress >= 0 &&
+            progress <= TRACK_LENGTH - 1 &&
+            getTrackIndex(opponentColor, progress) === landingTrackIndex
+          ) {
+            opponentTokens[index] = -1;
+          }
+        });
+      }
+
+      const hasWon = ownTokens.every((progress) => progress === FINISH_PROGRESS);
+      const shouldGrantRoomPoint = hasWon && !game.rewardGranted;
+
+      const moveUpdated = await applyVersionedGameUpdate(
+        prisma.ludoGame,
+        game,
+        {
+          status: "playing",
+          isPaused: false,
+          terminatedAt: null,
+          currentTurnUserId: userId,
+          diceValue: game.diceValue,
         },
-  });
+        isPlayerOne
+          ? {
+              playerOneTokens: serializeTokens(ownTokens),
+              playerTwoTokens: serializeTokens(opponentTokens),
+              playerOneRoomPoints: shouldGrantRoomPoint ? { increment: 1 } : undefined,
+              rewardGranted: shouldGrantRoomPoint ? true : undefined,
+              diceValue: null,
+              currentTurnUserId: hasWon
+                ? null
+                : game.diceValue === 6
+                  ? game.playerOneId
+                  : game.playerTwoId,
+              status: hasWon ? "finished" : "playing",
+              winnerId: hasWon ? userId : null,
+            }
+          : {
+              playerOneTokens: serializeTokens(opponentTokens),
+              playerTwoTokens: serializeTokens(ownTokens),
+              playerTwoRoomPoints: shouldGrantRoomPoint ? { increment: 1 } : undefined,
+              rewardGranted: shouldGrantRoomPoint ? true : undefined,
+              diceValue: null,
+              currentTurnUserId: hasWon
+                ? null
+                : game.diceValue === 6
+                  ? game.playerTwoId
+                  : game.playerOneId,
+              status: hasWon ? "finished" : "playing",
+              winnerId: hasWon ? userId : null,
+            },
+      );
 
-  return { success: true, message: hasWon ? "Partia zakończona zwycięstwem." : "Ruch wykonany." };
+      if (!moveUpdated) {
+        return staleResult();
+      }
+
+      return { success: true, message: hasWon ? "Partia zakończona zwycięstwem." : "Ruch wykonany." };
+    },
+  });
 }
 
 export async function restartLudo(
@@ -668,48 +763,65 @@ export async function restartLudo(
     resetToWaiting?: boolean;
   },
 ) {
-  const game = await ensureLudoGame(roomCode, { resetTerminated: true });
+  await ensureLudoGame(roomCode, { resetTerminated: true });
 
-  if (!game) {
-    return { success: false, message: "Nie udało się znaleźć gry." };
-  }
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.ludoGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie udało się znaleźć gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, userId)) {
+        return { success: false, message: "Nie jesteś graczem tej partii." };
+      }
 
-  if (game.playerOneId !== userId && game.playerTwoId !== userId) {
-    return { success: false, message: "Nie jesteś graczem tej partii." };
-  }
+      const roomPlayers = await getRoomPlayers(roomCode);
+      const playerOneId = roomPlayers[0]?.id ?? null;
+      const playerTwoId = roomPlayers[1]?.id ?? null;
+      const shouldWait = options?.resetToWaiting ?? false;
+      const restarted = await applyVersionedGameUpdate(
+        prisma.ludoGame,
+        game,
+        {},
+        {
+          playerOneId,
+          playerTwoId,
+          playerOneColor: null,
+          playerTwoColor: null,
+          playerOneTokens: getFreshTokens(),
+          playerTwoTokens: getFreshTokens(),
+          rewardGranted: false,
+          currentTurnUserId: null,
+          diceValue: null,
+          lastRollValue: null,
+          lastRollById: null,
+          lastRollAt: null,
+          winnerId: null,
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+          terminatedAt: null,
+          terminationReason: null,
+          status: shouldWait
+            ? playerOneId && playerTwoId
+              ? "color_selection"
+              : "waiting"
+            : playerOneId && playerTwoId
+              ? "color_selection"
+              : "waiting",
+        },
+      );
 
-  const roomPlayers = await getRoomPlayers(roomCode);
-  const playerOneId = roomPlayers[0]?.id ?? null;
-  const playerTwoId = roomPlayers[1]?.id ?? null;
-  const shouldWait = options?.resetToWaiting ?? false;
+      if (!restarted) {
+        return staleResult();
+      }
 
-  await prisma.ludoGame.update({
-    where: { id: game.id },
-    data: {
-      playerOneId,
-      playerTwoId,
-      playerOneColor: null,
-      playerTwoColor: null,
-      playerOneTokens: getFreshTokens(),
-      playerTwoTokens: getFreshTokens(),
-      rewardGranted: false,
-      currentTurnUserId: null,
-      diceValue: null,
-      lastRollValue: null,
-      lastRollById: null,
-      lastRollAt: null,
-      winnerId: null,
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
-      terminatedAt: null,
-      terminationReason: null,
-      status: shouldWait ? (playerOneId && playerTwoId ? "color_selection" : "waiting") : (playerOneId && playerTwoId ? "color_selection" : "waiting"),
+      return { success: true, message: "Przygotowano nową partię Chińczyka." };
     },
   });
-
-  return { success: true, message: "Przygotowano nową partię Chińczyka." };
 }
 
 export async function setLudoPauseState(
@@ -717,40 +829,67 @@ export async function setLudoPauseState(
   userId: string,
   action: "pause" | "resume",
 ) {
-  const game = await ensureLudoGame(roomCode);
+  await ensureLudoGame(roomCode);
 
-  if (!game) {
-    return { success: false, message: "Nie udało się znaleźć gry." };
-  }
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.ludoGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie udało się znaleźć gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, userId)) {
+        return { success: false, message: "Nie jesteś graczem tej partii." };
+      }
 
-  if (game.playerOneId !== userId && game.playerTwoId !== userId) {
-    return { success: false, message: "Nie jesteś graczem tej partii." };
-  }
+      if (action === "pause") {
+        if (game.isPaused) {
+          return { success: true, message: "Gra jest już wstrzymana." };
+        }
 
-  if (action === "pause") {
-    await prisma.ludoGame.update({
-      where: { id: game.id },
-      data: {
-        isPaused: true,
-        pausedAt: new Date(),
-        pauseRequestedById: userId,
-      },
-    });
+        const paused = await applyVersionedGameUpdate(
+          prisma.ludoGame,
+          game,
+          { isPaused: false },
+          {
+            isPaused: true,
+            pausedAt: new Date(),
+            pauseRequestedById: userId,
+            exitRequestedById: null,
+          },
+        );
 
-    return { success: true, message: "Gra została wstrzymana." };
-  }
+        if (!paused) {
+          return staleResult();
+        }
 
-  await prisma.ludoGame.update({
-    where: { id: game.id },
-    data: {
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
+        return { success: true, message: "Gra została wstrzymana." };
+      }
+
+      if (!game.isPaused) {
+        return { success: true, message: "Gra już działa." };
+      }
+
+      const resumed = await applyVersionedGameUpdate(
+        prisma.ludoGame,
+        game,
+        { isPaused: true },
+        {
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+        },
+      );
+
+      if (!resumed) {
+        return staleResult();
+      }
+
+      return { success: true, message: "Gra została wznowiona." };
     },
   });
-
-  return { success: true, message: "Gra została wznowiona." };
 }
 
 export async function handleLudoExit(
@@ -759,54 +898,78 @@ export async function handleLudoExit(
   action: "request" | "respond",
   approve?: boolean,
 ) {
-  const game = await ensureLudoGame(roomCode);
+  await ensureLudoGame(roomCode);
 
-  if (!game) {
-    return { success: false, message: "Nie udało się znaleźć gry." };
-  }
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.ludoGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie udało się znaleźć gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, userId)) {
+        return { success: false, message: "Nie jesteś graczem tej partii." };
+      }
 
-  if (game.playerOneId !== userId && game.playerTwoId !== userId) {
-    return { success: false, message: "Nie jesteś graczem tej partii." };
-  }
+      if (action === "request") {
+        const requested = await applyVersionedGameUpdate(
+          prisma.ludoGame,
+          game,
+          {},
+          {
+            isPaused: true,
+            pausedAt: new Date(),
+            pauseRequestedById: userId,
+            exitRequestedById: userId,
+          },
+        );
 
-  if (action === "request") {
-    await prisma.ludoGame.update({
-      where: { id: game.id },
-      data: {
-        isPaused: true,
-        pausedAt: new Date(),
-        pauseRequestedById: userId,
-        exitRequestedById: userId,
-      },
-    });
+        if (!requested) {
+          return staleResult();
+        }
 
-    return { success: true, message: "Wysłano prośbę o zakończenie gry." };
-  }
+        return { success: true, message: "Wysłano prośbę o zakończenie gry." };
+      }
 
-  if (!game.exitRequestedById || game.exitRequestedById === userId) {
-    return { success: false, message: "Nie ma prośby o zakończenie do zaakceptowania." };
-  }
+      if (!game.exitRequestedById || game.exitRequestedById === userId) {
+        return { success: false, message: "Nie ma prośby o zakończenie do zaakceptowania." };
+      }
 
-  if (!approve) {
-    await prisma.ludoGame.update({
-      where: { id: game.id },
-      data: {
-        exitRequestedById: null,
-      },
-    });
+      if (!approve) {
+        const cleared = await applyVersionedGameUpdate(
+          prisma.ludoGame,
+          game,
+          { exitRequestedById: game.exitRequestedById },
+          {
+            exitRequestedById: null,
+          },
+        );
 
-    return { success: true, message: "Gra będzie kontynuowana." };
-  }
+        if (!cleared) {
+          return staleResult();
+        }
 
-  await prisma.ludoGame.update({
-    where: { id: game.id },
-    data: {
-      terminatedAt: new Date(),
-      terminationReason: "exit_confirmed",
-      isPaused: true,
-      pausedAt: new Date(),
+        return { success: true, message: "Gra będzie kontynuowana." };
+      }
+
+      const terminated = await applyVersionedGameUpdate(
+        prisma.ludoGame,
+        game,
+        { exitRequestedById: game.exitRequestedById },
+        {
+          terminatedAt: new Date(),
+          terminationReason: "exit_confirmed",
+          isPaused: true,
+          pausedAt: new Date(),
+        },
+      );
+
+      if (!terminated) {
+        return staleResult();
+      }
+
+      return { success: true, message: "Gra została zakończona za zgodą obu osób." };
     },
   });
-
-  return { success: true, message: "Gra została zakończona za zgodą obu osób." };
 }

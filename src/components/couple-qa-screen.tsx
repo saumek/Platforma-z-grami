@@ -223,6 +223,12 @@ export function CoupleQaScreen({
     statePath: "/api/games/couple-qa/state",
     startPath: "/api/games/couple-qa/start",
     intervalMs: 1200,
+    getNextRefreshAt: (currentState) =>
+      currentState?.status === "question"
+        ? currentState.questionEndsAt
+        : currentState?.status === "round_result"
+          ? currentState.resultRevealedUntil
+          : null,
   });
 
   useEffect(() => {

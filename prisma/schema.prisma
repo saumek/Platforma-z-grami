@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Room {
+  code      String   @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model User {
   id           String    @id @default(cuid())
   email        String    @unique
@@ -97,6 +103,7 @@ model BattleshipGame {
   id             String   @id @default(cuid())
   roomCode       String   @unique
   status         String
+  version        Int      @default(0)
   isPaused       Boolean  @default(false)
   pausedAt       DateTime?
   pauseRequestedById String?
@@ -130,6 +137,7 @@ model CoupleQaGame {
   id                    String   @id @default(cuid())
   roomCode              String   @unique
   status                String
+  version               Int      @default(0)
   isPaused              Boolean  @default(false)
   pausedAt              DateTime?
   pauseRequestedById    String?
@@ -165,6 +173,7 @@ model ScienceQuizGame {
   roomCode          String   @unique
   category          String
   status            String
+  version           Int      @default(0)
   isPaused          Boolean  @default(false)
   pausedAt          DateTime?
   pauseRequestedById String?
@@ -199,6 +208,7 @@ model LudoGame {
   id                  String   @id @default(cuid())
   roomCode            String   @unique
   status              String
+  version             Int      @default(0)
   isPaused            Boolean  @default(false)
   pausedAt            DateTime?
   pauseRequestedById  String?

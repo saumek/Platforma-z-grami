@@ -1,3 +1,8 @@
+import {
+  applyVersionedGameUpdate,
+  isGameParticipant,
+  runGameCommand,
+} from "@/lib/game-command";
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
 import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
@@ -413,264 +418,324 @@ export async function saveBattleshipPlacement(roomCode: string, currentUserId: s
     return { success: false as const, message: error };
   }
 
+  const normalized = JSON.stringify(normalizeBoard(board));
   await ensureBattleshipGame(roomCode);
 
-  const game = await prisma.battleshipGame.findUnique({
-    where: { roomCode },
-  });
-
-  if (!game) {
-    return { success: false as const, message: "Nie udało się przygotować gry." };
-  }
-
-  if (game.isPaused) {
-    return { success: false as const, message: "Gra jest obecnie wstrzymana." };
-  }
-
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tego pokoju gry." };
-  }
-
-  const normalized = JSON.stringify(normalizeBoard(board));
-  const isPlayerOne = game.playerOneId === currentUserId;
-
-  const updated = await prisma.battleshipGame.update({
-    where: { id: game.id },
-    data: isPlayerOne
-      ? {
-          playerOneBoard: normalized,
-          playerOneReady: true,
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.battleshipGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie udało się przygotować gry.",
+    execute: async ({ game, staleResult }) =>
+      prisma.$transaction(async (tx) => {
+        if (game.isPaused) {
+          return { success: false as const, message: "Gra jest obecnie wstrzymana." };
         }
-      : {
-          playerTwoBoard: normalized,
-          playerTwoReady: true,
-        },
+
+        if (!isGameParticipant(game, currentUserId)) {
+          return { success: false as const, message: "Nie należysz do tego pokoju gry." };
+        }
+
+        const isPlayerOne = game.playerOneId === currentUserId;
+        const placementUpdate = await applyVersionedGameUpdate(
+          tx.battleshipGame,
+          game,
+          {
+            isPaused: false,
+            status: { in: ["setup", "waiting"] },
+          },
+          isPlayerOne
+            ? {
+                playerOneBoard: normalized,
+                playerOneReady: true,
+              }
+            : {
+                playerTwoBoard: normalized,
+                playerTwoReady: true,
+              },
+        );
+
+        if (!placementUpdate) {
+          return staleResult();
+        }
+
+        const updated = await tx.battleshipGame.findUnique({
+          where: { id: game.id },
+          select: {
+            id: true,
+            version: true,
+            status: true,
+            playerOneReady: true,
+            playerTwoReady: true,
+            playerOneId: true,
+          },
+        });
+
+        if (!updated) {
+          return staleResult("Nie znaleziono gry.");
+        }
+
+        if (updated.playerOneReady && updated.playerTwoReady && updated.status !== "playing") {
+          await applyVersionedGameUpdate(
+            tx.battleshipGame,
+            updated,
+            {
+              status: { in: ["setup", "waiting"] },
+            },
+            {
+              status: "playing",
+              currentTurnUserId: updated.playerOneId,
+            },
+          );
+        }
+
+        return { success: true as const, message: "Statki ustawione. Czekamy na drugiego gracza." };
+      }),
   });
-
-  if (updated.playerOneReady && updated.playerTwoReady) {
-    await prisma.battleshipGame.update({
-      where: { id: updated.id },
-      data: {
-        status: "playing",
-        currentTurnUserId: updated.playerOneId,
-      },
-    });
-  }
-
-  return { success: true as const, message: "Statki ustawione. Czekamy na drugiego gracza." };
 }
 
 export async function shootBattleship(roomCode: string, currentUserId: string, target: number) {
   if (!Number.isInteger(target) || target < 0 || target >= BATTLESHIP_CELL_COUNT) {
     return { success: false as const, message: "Wybrano nieprawidłowe pole." };
   }
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.battleshipGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) =>
+      prisma.$transaction(async (tx) => {
+        if (game.status !== "playing") {
+          return { success: false as const, message: "Gra nie jest jeszcze gotowa." };
+        }
 
-  const game = await prisma.battleshipGame.findUnique({
-    where: { roomCode },
+        if (game.isPaused) {
+          return { success: false as const, message: "Gra jest obecnie wstrzymana." };
+        }
+
+        if (game.currentTurnUserId !== currentUserId) {
+          return { success: false as const, message: "To nie jest Twój ruch." };
+        }
+
+        const isPlayerOne = game.playerOneId === currentUserId;
+        const ownShots = parseShots(isPlayerOne ? game.playerOneShots : game.playerTwoShots);
+
+        if (ownShots.includes(target)) {
+          return { success: false as const, message: "W to pole już został oddany strzał." };
+        }
+
+        const opponentBoard = parseBoard(isPlayerOne ? game.playerTwoBoard : game.playerOneBoard);
+        const opponentShipCells = opponentBoard.flat();
+        const nextShots = [...ownShots, target].sort((a, b) => a - b);
+        const isHit = opponentShipCells.includes(target);
+        const allHit =
+          opponentShipCells.length > 0 && opponentShipCells.every((cell) => nextShots.includes(cell));
+        const opponentId = isPlayerOne ? game.playerTwoId : game.playerOneId;
+        const shotUpdated = await applyVersionedGameUpdate(
+          tx.battleshipGame,
+          game,
+          {
+            status: "playing",
+            isPaused: false,
+            currentTurnUserId: currentUserId,
+          },
+          isPlayerOne
+            ? {
+                playerOneShots: JSON.stringify(nextShots),
+                playerOneScore: isHit ? { increment: 1 } : undefined,
+                playerOneWins: allHit ? { increment: 1 } : undefined,
+                status: allHit ? "finished" : "playing",
+                currentTurnUserId: allHit ? null : opponentId,
+                winnerId: allHit ? currentUserId : null,
+              }
+            : {
+                playerTwoShots: JSON.stringify(nextShots),
+                playerTwoScore: isHit ? { increment: 1 } : undefined,
+                playerTwoWins: allHit ? { increment: 1 } : undefined,
+                status: allHit ? "finished" : "playing",
+                currentTurnUserId: allHit ? null : opponentId,
+                winnerId: allHit ? currentUserId : null,
+              },
+        );
+
+        if (!shotUpdated) {
+          return staleResult();
+        }
+
+        return {
+          success: true as const,
+          message: allHit
+            ? isHit
+              ? "Trafiony. Wygrywasz rundę i dostajesz punkt ogólny pokoju!"
+              : "Wygrywasz rundę i dostajesz punkt ogólny pokoju!"
+            : isHit
+              ? "Trafiony!"
+              : "Pudło.",
+        };
+      }),
   });
-
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
-
-  if (game.status !== "playing") {
-    return { success: false as const, message: "Gra nie jest jeszcze gotowa." };
-  }
-
-  if (game.isPaused) {
-    return { success: false as const, message: "Gra jest obecnie wstrzymana." };
-  }
-
-  if (game.currentTurnUserId !== currentUserId) {
-    return { success: false as const, message: "To nie jest Twój ruch." };
-  }
-
-  const isPlayerOne = game.playerOneId === currentUserId;
-  const ownShots = parseShots(isPlayerOne ? game.playerOneShots : game.playerTwoShots);
-
-  if (ownShots.includes(target)) {
-    return { success: false as const, message: "W to pole już został oddany strzał." };
-  }
-
-  const opponentBoard = parseBoard(isPlayerOne ? game.playerTwoBoard : game.playerOneBoard);
-  const opponentShipCells = opponentBoard.flat();
-  const nextShots = [...ownShots, target].sort((a, b) => a - b);
-  const isHit = opponentShipCells.includes(target);
-  const allHit = opponentShipCells.length > 0 && opponentShipCells.every((cell) => nextShots.includes(cell));
-  const opponentId = isPlayerOne ? game.playerTwoId : game.playerOneId;
-
-  if (allHit) {
-    await prisma.battleshipGame.update({
-      where: { id: game.id },
-      data: {
-        ...(isPlayerOne
-          ? {
-              playerOneShots: JSON.stringify(nextShots),
-              playerOneScore: isHit ? { increment: 1 } : undefined,
-              playerOneWins: { increment: 1 },
-            }
-          : {
-              playerTwoShots: JSON.stringify(nextShots),
-              playerTwoScore: isHit ? { increment: 1 } : undefined,
-              playerTwoWins: { increment: 1 },
-            }),
-        status: "finished",
-        currentTurnUserId: null,
-        winnerId: currentUserId,
-      },
-    });
-
-    return {
-      success: true as const,
-      message: isHit
-        ? "Trafiony. Wygrywasz rundę i dostajesz punkt ogólny pokoju!"
-        : "Wygrywasz rundę i dostajesz punkt ogólny pokoju!",
-    };
-  }
-
-  await prisma.battleshipGame.update({
-    where: { id: game.id },
-    data: {
-      ...(isPlayerOne
-        ? {
-            playerOneShots: JSON.stringify(nextShots),
-            playerOneScore: isHit ? { increment: 1 } : undefined,
-          }
-        : {
-            playerTwoShots: JSON.stringify(nextShots),
-            playerTwoScore: isHit ? { increment: 1 } : undefined,
-          }),
-      currentTurnUserId: opponentId,
-    },
-  });
-
-  return { success: true as const, message: isHit ? "Trafiony!" : "Pudło." };
 }
 
 export async function restartBattleshipRound(roomCode: string, currentUserId: string) {
-  const game = await prisma.battleshipGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.battleshipGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry do rewanżu.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry do rewanżu." };
-  }
+      const restarted = await applyVersionedGameUpdate(
+        prisma.battleshipGame,
+        game,
+        {},
+        {
+          status: game.playerOneId && game.playerTwoId ? "setup" : "waiting",
+          playerOneReady: false,
+          playerTwoReady: false,
+          playerOneBoard: null,
+          playerTwoBoard: null,
+          playerOneScore: 0,
+          playerTwoScore: 0,
+          playerOneShots: "[]",
+          playerTwoShots: "[]",
+          currentTurnUserId: null,
+          winnerId: null,
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+          terminatedAt: null,
+          terminationReason: null,
+        },
+      );
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      if (!restarted) {
+        return staleResult();
+      }
 
-  await prisma.battleshipGame.update({
-    where: { id: game.id },
-    data: {
-      status: game.playerOneId && game.playerTwoId ? "setup" : "waiting",
-      playerOneReady: false,
-      playerTwoReady: false,
-      playerOneBoard: null,
-      playerTwoBoard: null,
-      playerOneScore: 0,
-      playerTwoScore: 0,
-      playerOneShots: "[]",
-      playerTwoShots: "[]",
-      currentTurnUserId: null,
-      winnerId: null,
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
-      terminatedAt: null,
-      terminationReason: null,
+      return { success: true as const, message: "Runda została zresetowana. Możecie zagrać rewanż." };
     },
   });
-
-  return { success: true as const, message: "Runda została zresetowana. Możecie zagrać rewanż." };
 }
 
 export async function pauseBattleshipGame(roomCode: string, currentUserId: string) {
-  const game = await prisma.battleshipGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.battleshipGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (game.isPaused) {
+        return { success: true as const, message: "Gra jest już wstrzymana." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      const paused = await applyVersionedGameUpdate(
+        prisma.battleshipGame,
+        game,
+        { isPaused: false },
+        {
+          isPaused: true,
+          pausedAt: new Date(),
+          pauseRequestedById: currentUserId,
+          exitRequestedById: null,
+        },
+      );
 
-  if (game.isPaused) {
-    return { success: true as const, message: "Gra jest już wstrzymana." };
-  }
+      if (!paused) {
+        return staleResult();
+      }
 
-  await prisma.battleshipGame.update({
-    where: { id: game.id },
-    data: {
-      isPaused: true,
-      pausedAt: new Date(),
-      pauseRequestedById: currentUserId,
-      exitRequestedById: null,
+      return { success: true as const, message: "Gra została wstrzymana." };
     },
   });
-
-  return { success: true as const, message: "Gra została wstrzymana." };
 }
 
 export async function resumeBattleshipGame(roomCode: string, currentUserId: string) {
-  const game = await prisma.battleshipGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.battleshipGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (!game.isPaused) {
+        return { success: true as const, message: "Gra już działa." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      const resumed = await applyVersionedGameUpdate(
+        prisma.battleshipGame,
+        game,
+        { isPaused: true },
+        {
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+        },
+      );
 
-  if (!game.isPaused) {
-    return { success: true as const, message: "Gra już działa." };
-  }
+      if (!resumed) {
+        return staleResult();
+      }
 
-  await prisma.battleshipGame.update({
-    where: { id: game.id },
-    data: {
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
+      return { success: true as const, message: "Gra została wznowiona." };
     },
   });
-
-  return { success: true as const, message: "Gra została wznowiona." };
 }
 
 export async function requestBattleshipExit(roomCode: string, currentUserId: string) {
-  const game = await prisma.battleshipGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.battleshipGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (!game.isPaused) {
+        return { success: false as const, message: "Najpierw wstrzymaj grę." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      const requested = await applyVersionedGameUpdate(
+        prisma.battleshipGame,
+        game,
+        { isPaused: true },
+        {
+          exitRequestedById: currentUserId,
+        },
+      );
 
-  if (!game.isPaused) {
-    return { success: false as const, message: "Najpierw wstrzymaj grę." };
-  }
+      if (!requested) {
+        return staleResult();
+      }
 
-  await prisma.battleshipGame.update({
-    where: { id: game.id },
-    data: {
-      exitRequestedById: currentUserId,
+      return { success: true as const, message: "Wysłano prośbę o zakończenie gry." };
     },
   });
-
-  return { success: true as const, message: "Wysłano prośbę o zakończenie gry." };
 }
 
 export async function respondBattleshipExit(
@@ -678,55 +743,69 @@ export async function respondBattleshipExit(
   currentUserId: string,
   approve: boolean,
 ) {
-  const game = await prisma.battleshipGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.battleshipGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (!game.exitRequestedById || game.exitRequestedById === currentUserId) {
+        return { success: false as const, message: "Nie ma prośby do potwierdzenia." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      if (!approve) {
+        const cleared = await applyVersionedGameUpdate(
+          prisma.battleshipGame,
+          game,
+          { exitRequestedById: game.exitRequestedById },
+          {
+            exitRequestedById: null,
+          },
+        );
 
-  if (!game.exitRequestedById || game.exitRequestedById === currentUserId) {
-    return { success: false as const, message: "Nie ma prośby do potwierdzenia." };
-  }
+        if (!cleared) {
+          return staleResult();
+        }
 
-  if (!approve) {
-    await prisma.battleshipGame.update({
-      where: { id: game.id },
-      data: {
-        exitRequestedById: null,
-      },
-    });
+        return { success: true as const, message: "Gra pozostaje wstrzymana." };
+      }
 
-    return { success: true as const, message: "Gra pozostaje wstrzymana." };
-  }
+      const terminated = await applyVersionedGameUpdate(
+        prisma.battleshipGame,
+        game,
+        { exitRequestedById: game.exitRequestedById },
+        {
+          status: game.playerOneId && game.playerTwoId ? "setup" : "waiting",
+          playerOneReady: false,
+          playerTwoReady: false,
+          playerOneBoard: null,
+          playerTwoBoard: null,
+          playerOneScore: 0,
+          playerTwoScore: 0,
+          playerOneShots: "[]",
+          playerTwoShots: "[]",
+          currentTurnUserId: null,
+          winnerId: null,
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+          terminatedAt: new Date(),
+          terminationReason: "agreed_exit",
+        },
+      );
 
-  await prisma.battleshipGame.update({
-    where: { id: game.id },
-    data: {
-      status: game.playerOneId && game.playerTwoId ? "setup" : "waiting",
-      playerOneReady: false,
-      playerTwoReady: false,
-      playerOneBoard: null,
-      playerTwoBoard: null,
-      playerOneScore: 0,
-      playerTwoScore: 0,
-      playerOneShots: "[]",
-      playerTwoShots: "[]",
-      currentTurnUserId: null,
-      winnerId: null,
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
-      terminatedAt: new Date(),
-      terminationReason: "agreed_exit",
+      if (!terminated) {
+        return staleResult();
+      }
+
+      return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
     },
   });
-
-  return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
 }

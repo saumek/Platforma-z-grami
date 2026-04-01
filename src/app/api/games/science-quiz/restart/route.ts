@@ -1,48 +1,19 @@
-import { NextResponse } from "next/server";
-
-import { getCurrentSession } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { restartScienceQuiz } from "@/lib/science-quiz";
-import type { AuthResponse } from "@/types/auth";
+import { runGameCommandRoute } from "@/lib/game-command-route";
+import { getScienceQuizState, restartScienceQuiz } from "@/lib/science-quiz";
 
 export async function POST(request: Request) {
-  try {
-    const session = await getCurrentSession();
-
-    if (!session) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Najpierw zaloguj się do swojego konta." },
-        { status: 401 },
-      );
-    }
-
-    const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
-      select: { currentRoomCode: true },
-    });
-
-    if (!user?.currentRoomCode) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Nie jesteś obecnie w żadnym pokoju." },
-        { status: 409 },
-      );
-    }
-
-    const body = (await request.json().catch(() => ({}))) as {
-      mode?: "menu" | "rematch";
-    };
-    const result = await restartScienceQuiz(user.currentRoomCode, session.user.id, {
-      resetToWaiting: body.mode === "menu",
-    });
-
-    return NextResponse.json<AuthResponse>(
-      { success: result.success, message: result.message },
-      { status: result.success ? 200 : 400 },
-    );
-  } catch {
-    return NextResponse.json<AuthResponse>(
-      { success: false, message: "Nie udało się przygotować nowego quizu." },
-      { status: 500 },
-    );
-  }
+  return runGameCommandRoute({
+    request,
+    parseBody: async (currentRequest) =>
+      ((await currentRequest.json().catch(() => ({}))) as {
+        mode?: "menu" | "rematch";
+      }),
+    command: ({ roomCode, userId, body }) =>
+      restartScienceQuiz(roomCode, userId, {
+        resetToWaiting: body.mode === "menu",
+      }),
+    getState: ({ roomCode, userId }) => getScienceQuizState(roomCode, userId, null),
+    notInRoomMessage: "Nie jesteś obecnie w żadnym pokoju.",
+    errorMessage: "Nie udało się przygotować nowego quizu.",
+  });
 }

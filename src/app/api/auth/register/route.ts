@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 
 import { hashPassword } from "@/lib/auth";
 import { defaultDisplayName } from "@/lib/profile";
@@ -23,30 +24,32 @@ export async function POST(request: Request) {
 
     const email = parsed.data.email.toLowerCase().trim();
 
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
-      select: { id: true },
-    });
-
-    if (existingUser) {
-      return NextResponse.json<AuthResponse>(
-        {
-          success: false,
-          message: "Użytkownik z takim adresem e-mail już istnieje.",
-        },
-        { status: 409 },
-      );
-    }
-
     const passwordHash = await hashPassword(parsed.data.password);
-    await prisma.user.create({
-      data: {
-        email,
-        passwordHash,
-        displayName: defaultDisplayName(email),
-        bio: "",
-      },
-    });
+    try {
+      await prisma.user.create({
+        data: {
+          email,
+          passwordHash,
+          displayName: defaultDisplayName(email),
+          bio: "",
+        },
+      });
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === "P2002"
+      ) {
+        return NextResponse.json<AuthResponse>(
+          {
+            success: false,
+            message: "Użytkownik z takim adresem e-mail już istnieje.",
+          },
+          { status: 409 },
+        );
+      }
+
+      throw error;
+    }
 
     return NextResponse.json<AuthResponse>({
       success: true,

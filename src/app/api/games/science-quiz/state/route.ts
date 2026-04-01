@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
+import { publishGameEvent } from "@/lib/game-events";
 import { prisma } from "@/lib/prisma";
 import { getScienceQuizState } from "@/lib/science-quiz";
 import type { AuthResponse } from "@/types/auth";
@@ -30,7 +31,19 @@ export async function GET(request: Request) {
 
     const url = new URL(request.url);
     const category = url.searchParams.get("category");
+    const before = await prisma.scienceQuizGame.findUnique({
+      where: { roomCode: user.currentRoomCode },
+      select: { version: true },
+    });
     const state = await getScienceQuizState(user.currentRoomCode, session.user.id, category);
+    const after = await prisma.scienceQuizGame.findUnique({
+      where: { roomCode: user.currentRoomCode },
+      select: { version: true },
+    });
+
+    if (before?.version !== after?.version && after) {
+      publishGameEvent(user.currentRoomCode);
+    }
 
     return NextResponse.json({
       success: true,

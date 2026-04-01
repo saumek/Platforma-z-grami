@@ -6,10 +6,9 @@ import { redirect } from "next/navigation";
 
 import { prisma } from "@/lib/prisma";
 import { removeUserFromRoom } from "@/lib/room-cleanup";
+import { SESSION_DURATION_MS, shouldRefreshSession } from "@/lib/session-refresh";
 
 const SESSION_COOKIE = "gamely_session";
-const SESSION_DURATION_MS = 1000 * 60 * 60;
-const SESSION_REFRESH_WINDOW_MS = 1000 * 60 * 5;
 
 export async function hashPassword(password: string) {
   return bcrypt.hash(password, 12);
@@ -120,7 +119,7 @@ export async function getCurrentSession() {
     return null;
   }
 
-  if (session.expiresAt.getTime() - Date.now() <= SESSION_DURATION_MS - SESSION_REFRESH_WINDOW_MS) {
+  if (shouldRefreshSession(session.expiresAt)) {
     const nextExpiresAt = new Date(Date.now() + SESSION_DURATION_MS);
     await refreshSession(session.id, nextExpiresAt);
     session.expiresAt = nextExpiresAt;

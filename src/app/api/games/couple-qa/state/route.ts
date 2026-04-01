@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
 import { getCoupleQaState } from "@/lib/couple-qa";
+import { publishGameEvent } from "@/lib/game-events";
 import { prisma } from "@/lib/prisma";
 import type { AuthResponse } from "@/types/auth";
 
@@ -28,7 +29,21 @@ export async function GET() {
       );
     }
 
+    const before = await prisma.coupleQaGame.findUnique({
+      where: { roomCode: user.currentRoomCode },
+      select: { version: true },
+    });
+
     const state = await getCoupleQaState(user.currentRoomCode, session.user.id);
+
+    const after = await prisma.coupleQaGame.findUnique({
+      where: { roomCode: user.currentRoomCode },
+      select: { version: true },
+    });
+
+    if (before?.version !== after?.version && after) {
+      publishGameEvent(user.currentRoomCode);
+    }
 
     return NextResponse.json({
       success: true,

@@ -1,0 +1,6 @@
+-- CreateTable
+CREATE TABLE "Room" (
+  "code" TEXT NOT NULL PRIMARY KEY,
+  "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" DATETIME NOT NULL
+);

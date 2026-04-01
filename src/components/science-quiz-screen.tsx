@@ -224,6 +224,12 @@ export function ScienceQuizScreen({
     startPath: "/api/games/science-quiz/start",
     startBody: { category },
     intervalMs: 1200,
+    getNextRefreshAt: (currentState) =>
+      currentState?.status === "question"
+        ? currentState.questionEndsAt
+        : currentState?.status === "round_result"
+          ? currentState.resultRevealedUntil
+          : null,
   });
 
   useEffect(() => {

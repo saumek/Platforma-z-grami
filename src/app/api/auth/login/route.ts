@@ -7,8 +7,8 @@ import {
   verifyPassword,
 } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { resetRoomIfEmpty } from "@/lib/room-cleanup";
-import { roomHasCapacity } from "@/lib/room";
+import { removeUserFromRoom } from "@/lib/room-cleanup";
+import { assignUserToRoom } from "@/lib/room";
 import { normalizeRoomCode } from "@/lib/room-code";
 import { loginSchema } from "@/lib/validations";
 import type { AuthResponse, LoginRequest } from "@/types/auth";
@@ -62,15 +62,18 @@ export async function POST(request: Request) {
     }
 
     const existingSessionId = await getSessionId();
-    if (existingSessionId) {
-      await invalidateSession(existingSessionId);
-    }
+    const existingSession = existingSessionId
+      ? await prisma.session.findUnique({
+          where: { id: existingSessionId },
+          select: { id: true, userId: true },
+        })
+      : null;
 
     if (parsed.data.room?.trim()) {
       const roomCode = normalizeRoomCode(parsed.data.room);
-      const hasCapacity = await roomHasCapacity(roomCode, user.id);
+      const roomAssignment = await assignUserToRoom(user.id, roomCode);
 
-      if (!hasCapacity) {
+      if (!roomAssignment.success) {
         return NextResponse.json<AuthResponse>(
           {
             success: false,
@@ -80,18 +83,14 @@ export async function POST(request: Request) {
         );
       }
 
-      const previousRoomCode = user.currentRoomCode;
+    }
 
-      await prisma.user.update({
-        where: { id: user.id },
-        data: {
-          currentRoomCode: roomCode,
-        },
-      });
+    if (existingSession && existingSession.userId !== user.id) {
+      await removeUserFromRoom(existingSession.userId);
+    }
 
-      if (previousRoomCode !== roomCode) {
-        await resetRoomIfEmpty(previousRoomCode);
-      }
+    if (existingSessionId) {
+      await invalidateSession(existingSessionId);
     }
 
     await createSession(user.id);

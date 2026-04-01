@@ -117,14 +117,27 @@ export async function POST(request: Request) {
             },
           });
 
-      await tx.notification.create({
-        data: {
+      const existingUnreadRequestNotification = await tx.notification.findFirst({
+        where: {
           userId: friendId,
           actorId: session.user.id,
           type: "friend_request",
           friendRequestId: friendRequest.id,
+          readAt: null,
         },
+        select: { id: true },
       });
+
+      if (!existingUnreadRequestNotification) {
+        await tx.notification.create({
+          data: {
+            userId: friendId,
+            actorId: session.user.id,
+            type: "friend_request",
+            friendRequestId: friendRequest.id,
+          },
+        });
+      }
     });
 
     return NextResponse.json<AuthResponse>({

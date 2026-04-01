@@ -1,26 +1,23 @@
-import { randomUUID } from "node:crypto";
-import { mkdir, unlink, writeFile } from "node:fs/promises";
-import path from "node:path";
-
 import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
-import { defaultBio, defaultDisplayName } from "@/lib/profile";
+import {
+  buildProfileAvatarPaths,
+  commitProfileAvatar,
+  deleteManagedProfileAvatar,
+  discardProfileAvatar,
+  hasAllowedImageSignature,
+  stageProfileAvatar,
+} from "@/lib/avatar-storage";
 import { prisma } from "@/lib/prisma";
 import { profileUpdateSchema } from "@/lib/validations";
 import type { AuthResponse } from "@/types/auth";
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads", "profiles");
-const PUBLIC_PREFIX = "/uploads/profiles";
 const ALLOWED_TYPES = new Map([
   ["image/jpeg", ".jpg"],
   ["image/png", ".png"],
   ["image/webp", ".webp"],
 ]);
-
-function isManagedAvatar(pathname: string | null) {
-  return Boolean(pathname?.startsWith(PUBLIC_PREFIX));
-}
 
 export async function PUT(request: Request) {
   try {
@@ -59,6 +56,13 @@ export async function PUT(request: Request) {
 
     let avatarPath = currentUser?.avatarPath ?? null;
     const avatarFile = formData.get("avatar");
+    let avatarStaging:
+      | {
+          stagedPath: string;
+          finalPath: string;
+          publicPath: string;
+        }
+      | null = null;
 
     if (avatarFile instanceof File && avatarFile.size > 0) {
       const extension = ALLOWED_TYPES.get(avatarFile.type);
@@ -83,32 +87,55 @@ export async function PUT(request: Request) {
         );
       }
 
-      await mkdir(UPLOAD_DIR, { recursive: true });
-
-      const fileName = `${session.user.id}-${randomUUID()}${extension}`;
-      const destination = path.join(UPLOAD_DIR, fileName);
       const buffer = Buffer.from(await avatarFile.arrayBuffer());
 
-      await writeFile(destination, buffer);
-
-      const previousAvatarPath = currentUser?.avatarPath ?? null;
-
-      if (previousAvatarPath && isManagedAvatar(previousAvatarPath)) {
-        const previousFile = path.join(process.cwd(), "public", previousAvatarPath);
-        await unlink(previousFile).catch(() => undefined);
+      if (!hasAllowedImageSignature(buffer, avatarFile.type)) {
+        return NextResponse.json<AuthResponse>(
+          {
+            success: false,
+            message: "Plik avatara ma nieprawidłową sygnaturę.",
+          },
+          { status: 400 },
+        );
       }
 
-      avatarPath = `${PUBLIC_PREFIX}/${fileName}`;
+      avatarStaging = buildProfileAvatarPaths(session.user.id, extension);
+
+      try {
+        await stageProfileAvatar(buffer, avatarStaging.stagedPath);
+        await commitProfileAvatar(avatarStaging.stagedPath, avatarStaging.finalPath);
+        avatarPath = avatarStaging.publicPath;
+      } catch (error) {
+        if (avatarStaging) {
+          await discardProfileAvatar(avatarStaging);
+        }
+
+        throw error;
+      }
     }
 
-    await prisma.user.update({
-      where: { id: session.user.id },
-      data: {
-        displayName: parsed.data.displayName,
-        bio: parsed.data.bio,
-        avatarPath,
-      },
-    });
+    const previousAvatarPath = currentUser?.avatarPath ?? null;
+
+    try {
+      await prisma.user.update({
+        where: { id: session.user.id },
+        data: {
+          displayName: parsed.data.displayName,
+          bio: parsed.data.bio,
+          avatarPath,
+        },
+      });
+    } catch (error) {
+      if (avatarStaging) {
+        await discardProfileAvatar(avatarStaging);
+      }
+
+      throw error;
+    }
+
+    if (avatarStaging && previousAvatarPath && previousAvatarPath !== avatarPath) {
+      await deleteManagedProfileAvatar(previousAvatarPath);
+    }
 
     return NextResponse.json<AuthResponse>({
       success: true,

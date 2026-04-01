@@ -1,4 +1,9 @@
 import qaQuestions from "@/data/qa-lightning.json";
+import {
+  applyVersionedGameUpdate,
+  isGameParticipant,
+  runGameCommand,
+} from "@/lib/game-command";
 import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
 import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
@@ -167,15 +172,25 @@ async function advanceResolvedRound(roomCode: string) {
       game.playerTwoAnswer !== null &&
       game.playerOneAnswer === game.playerTwoAnswer;
 
-    return prisma.coupleQaGame.update({
-      where: { id: game.id },
+    await prisma.coupleQaGame.updateMany({
+      where: {
+        id: game.id,
+        version: game.version,
+        status: "question",
+        isPaused: false,
+      },
       data: {
         status: "round_result",
         compatibilityScore: matched ? { increment: 1 } : undefined,
         lastMatch: matched,
         roundResolvedAt: new Date(),
         questionStartedAt: null,
+        version: { increment: 1 },
       },
+    });
+
+    return prisma.coupleQaGame.findUnique({
+      where: { id: game.id },
     });
   }
 
@@ -192,20 +207,33 @@ async function advanceResolvedRound(roomCode: string) {
   if (isLastRound) {
     const shouldGrantReward = game.compatibilityScore >= 8 && !game.rewardGranted;
 
-    return prisma.coupleQaGame.update({
-      where: { id: game.id },
+    await prisma.coupleQaGame.updateMany({
+      where: {
+        id: game.id,
+        version: game.version,
+        status: "round_result",
+      },
       data: {
         status: "finished",
         playerOneRoomPoints: shouldGrantReward ? { increment: 1 } : undefined,
         playerTwoRoomPoints: shouldGrantReward ? { increment: 1 } : undefined,
         questionStartedAt: null,
         rewardGranted: shouldGrantReward ? true : game.rewardGranted,
+        version: { increment: 1 },
       },
+    });
+
+    return prisma.coupleQaGame.findUnique({
+      where: { id: game.id },
     });
   }
 
-  return prisma.coupleQaGame.update({
-    where: { id: game.id },
+  await prisma.coupleQaGame.updateMany({
+    where: {
+      id: game.id,
+      version: game.version,
+      status: "round_result",
+    },
     data: {
       status: "question",
       roundIndex: { increment: 1 },
@@ -214,7 +242,12 @@ async function advanceResolvedRound(roomCode: string) {
       questionStartedAt: new Date(),
       lastMatch: null,
       roundResolvedAt: null,
+      version: { increment: 1 },
     },
+  });
+
+  return prisma.coupleQaGame.findUnique({
+    where: { id: game.id },
   });
 }
 
@@ -430,247 +463,332 @@ export async function getCoupleQaState(
 
 export async function startCoupleQaGame(roomCode: string, currentUserId: string) {
   await ensureCoupleQaGame(roomCode, { resetTerminated: true });
+  await runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.coupleQaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (game.isPaused || game.terminatedAt || !isGameParticipant(game, currentUserId)) {
+        return { success: true, message: "Stan gry został odświeżony." };
+      }
 
-  const game = await prisma.coupleQaGame.findUnique({
+      const isPlayerOne = game.playerOneId === currentUserId;
+      const joinedUpdated = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        game,
+        {
+          isPaused: false,
+          terminatedAt: null,
+          ...(isPlayerOne ? { playerOneJoined: false } : { playerTwoJoined: false }),
+        },
+        {
+          ...(isPlayerOne ? { playerOneJoined: true } : { playerTwoJoined: true }),
+        },
+      );
+
+      const joinedGame = await prisma.coupleQaGame.findUnique({
+        where: { id: game.id },
+      });
+
+      if (!joinedGame) {
+        return staleResult("Nie znaleziono gry.");
+      }
+
+      if (!joinedUpdated) {
+        return { success: true, message: "Stan gry został odświeżony." };
+      }
+
+      if (joinedGame.status === "waiting" && haveBothJoined(joinedGame)) {
+        await applyVersionedGameUpdate(
+          prisma.coupleQaGame,
+          joinedGame,
+          {
+            status: "waiting",
+          },
+          {
+            status: "question",
+            questionStartedAt: new Date(),
+          },
+        );
+      }
+
+      return { success: true, message: "Stan gry został odświeżony." };
+    },
+  });
+
+  return prisma.coupleQaGame.findUnique({
     where: { roomCode },
   });
-
-  if (!game) {
-    return null;
-  }
-
-  if (game.isPaused || game.terminatedAt) {
-    return game;
-  }
-
-  const isPlayerOne = game.playerOneId === currentUserId;
-  const isPlayerTwo = game.playerTwoId === currentUserId;
-
-  if (!isPlayerOne && !isPlayerTwo) {
-    return game;
-  }
-
-  const joinedUpdate = isPlayerOne ? { playerOneJoined: true } : { playerTwoJoined: true };
-  const joinedGame = await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: joinedUpdate,
-  });
-
-  if (
-    joinedGame.status === "waiting" &&
-    haveBothJoined(joinedGame)
-  ) {
-    return prisma.coupleQaGame.update({
-      where: { id: joinedGame.id },
-      data: {
-        status: "question",
-        questionStartedAt: new Date(),
-      },
-    });
-  }
-
-  return joinedGame;
 }
 
 export async function submitCoupleQaAnswer(roomCode: string, currentUserId: string, answerIndex: number) {
-  const game = await advanceResolvedRound(roomCode);
+  await advanceResolvedRound(roomCode);
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.coupleQaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (game.status !== "question") {
+        return { success: false as const, message: "Poczekaj na kolejną rundę." };
+      }
 
-  if (game.status !== "question") {
-    return { success: false as const, message: "Poczekaj na kolejną rundę." };
-  }
+      if (game.isPaused) {
+        return { success: false as const, message: "Gra jest obecnie wstrzymana." };
+      }
 
-  if (game.isPaused) {
-    return { success: false as const, message: "Gra jest obecnie wstrzymana." };
-  }
+      const questionOrder = parseQuestionOrder(game.questionOrder);
+      const question =
+        questionOrder[game.roundIndex] !== undefined
+          ? getQuestionPool()[questionOrder[game.roundIndex]!]
+          : null;
 
-  const questionOrder = parseQuestionOrder(game.questionOrder);
-  const question = questionOrder[game.roundIndex] !== undefined ? getQuestionPool()[questionOrder[game.roundIndex]!] : null;
+      if (!question || answerIndex < 0 || answerIndex >= question.options.length) {
+        return { success: false as const, message: "Wybrano nieprawidłową odpowiedź." };
+      }
 
-  if (!question || answerIndex < 0 || answerIndex >= question.options.length) {
-    return { success: false as const, message: "Wybrano nieprawidłową odpowiedź." };
-  }
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  const isPlayerOne = game.playerOneId === currentUserId;
+      const isPlayerOne = game.playerOneId === currentUserId;
+      const currentAnswer = isPlayerOne ? game.playerOneAnswer : game.playerTwoAnswer;
 
-  if (!isPlayerOne && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      if (currentAnswer !== null) {
+        return { success: false as const, message: "Na to pytanie już odpowiedziałeś." };
+      }
 
-  const currentAnswer = isPlayerOne ? game.playerOneAnswer : game.playerTwoAnswer;
+      const answerUpdated = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        game,
+        {
+          status: "question",
+          isPaused: false,
+          ...(isPlayerOne ? { playerOneAnswer: null } : { playerTwoAnswer: null }),
+        },
+        {
+          ...(isPlayerOne ? { playerOneAnswer: answerIndex } : { playerTwoAnswer: answerIndex }),
+        },
+      );
 
-  if (currentAnswer !== null) {
-    return { success: false as const, message: "Na to pytanie już odpowiedziałeś." };
-  }
+      if (!answerUpdated) {
+        return staleResult();
+      }
 
-  const updated = await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: isPlayerOne ? { playerOneAnswer: answerIndex } : { playerTwoAnswer: answerIndex },
-  });
+      const updated = await prisma.coupleQaGame.findUnique({
+        where: { id: game.id },
+      });
 
-  const playerOneAnswer = isPlayerOne ? answerIndex : updated.playerOneAnswer;
-  const playerTwoAnswer = isPlayerOne ? updated.playerTwoAnswer : answerIndex;
+      if (!updated) {
+        return staleResult("Nie znaleziono gry.");
+      }
 
-  if (playerOneAnswer === null || playerTwoAnswer === null) {
-    return { success: true as const, message: "Odpowiedź zapisana. Czekamy na drugą osobę." };
-  }
+      const playerOneAnswer = isPlayerOne ? answerIndex : updated.playerOneAnswer;
+      const playerTwoAnswer = isPlayerOne ? updated.playerTwoAnswer : answerIndex;
 
-  const matched = playerOneAnswer === playerTwoAnswer;
+      if (playerOneAnswer === null || playerTwoAnswer === null) {
+        return { success: true as const, message: "Odpowiedź zapisana. Czekamy na drugą osobę." };
+      }
 
-  await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: {
-      status: "round_result",
-      compatibilityScore: matched ? { increment: 1 } : undefined,
-      lastMatch: matched,
-      roundResolvedAt: new Date(),
+      const matched = playerOneAnswer === playerTwoAnswer;
+      const roundResolved = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        updated,
+        {
+          status: "question",
+        },
+        {
+          status: "round_result",
+          compatibilityScore: matched ? { increment: 1 } : undefined,
+          lastMatch: matched,
+          roundResolvedAt: new Date(),
+        },
+      );
+
+      if (!roundResolved) {
+        return staleResult();
+      }
+
+      return {
+        success: true as const,
+        message: matched ? "Macie zgodność!" : "Tym razem odpowiedzi się różniły.",
+      };
     },
   });
-
-  return {
-    success: true as const,
-    message: matched ? "Macie zgodność!" : "Tym razem odpowiedzi się różniły.",
-  };
 }
 
 export async function restartCoupleQaGame(roomCode: string, currentUserId: string) {
-  const game = await prisma.coupleQaGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.coupleQaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry do restartu.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry do restartu." };
-  }
+      const restarted = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        game,
+        {},
+        {
+          status: game.playerOneId && game.playerTwoId ? "question" : "waiting",
+          compatibilityScore: 0,
+          roundIndex: 0,
+          questionOrder: getFreshQuestionOrder(),
+          playerOneAnswer: null,
+          playerTwoAnswer: null,
+          playerOneJoined: Boolean(game.playerOneId),
+          playerTwoJoined: Boolean(game.playerTwoId),
+          questionStartedAt: game.playerOneId && game.playerTwoId ? new Date() : null,
+          lastMatch: null,
+          roundResolvedAt: null,
+          rewardGranted: false,
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+          terminatedAt: null,
+          terminationReason: null,
+        },
+      );
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      if (!restarted) {
+        return staleResult();
+      }
 
-  await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: {
-      status: game.playerOneId && game.playerTwoId ? "question" : "waiting",
-      compatibilityScore: 0,
-      roundIndex: 0,
-      questionOrder: getFreshQuestionOrder(),
-      playerOneAnswer: null,
-      playerTwoAnswer: null,
-      playerOneJoined: Boolean(game.playerOneId),
-      playerTwoJoined: Boolean(game.playerTwoId),
-      questionStartedAt: game.playerOneId && game.playerTwoId ? new Date() : null,
-      lastMatch: null,
-      roundResolvedAt: null,
-      rewardGranted: false,
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
-      terminatedAt: null,
-      terminationReason: null,
+      return { success: true as const, message: "Nowa seria pytań jest gotowa." };
     },
   });
-
-  return { success: true as const, message: "Nowa seria pytań jest gotowa." };
 }
 
 export async function pauseCoupleQaGame(roomCode: string, currentUserId: string) {
-  const game = await prisma.coupleQaGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.coupleQaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (game.isPaused) {
+        return { success: true as const, message: "Gra jest już wstrzymana." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      const paused = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        game,
+        { isPaused: false },
+        {
+          isPaused: true,
+          pausedAt: new Date(),
+          pauseRequestedById: currentUserId,
+          exitRequestedById: null,
+        },
+      );
 
-  if (game.isPaused) {
-    return { success: true as const, message: "Gra jest już wstrzymana." };
-  }
+      if (!paused) {
+        return staleResult();
+      }
 
-  await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: {
-      isPaused: true,
-      pausedAt: new Date(),
-      pauseRequestedById: currentUserId,
-      exitRequestedById: null,
+      return { success: true as const, message: "Gra została wstrzymana." };
     },
   });
-
-  return { success: true as const, message: "Gra została wstrzymana." };
 }
 
 export async function resumeCoupleQaGame(roomCode: string, currentUserId: string) {
-  const game = await prisma.coupleQaGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.coupleQaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (!game.isPaused) {
+        return { success: true as const, message: "Gra już działa." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      const pausedDuration = game.pausedAt ? Date.now() - game.pausedAt.getTime() : 0;
+      const resumed = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        game,
+        { isPaused: true },
+        {
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+          questionStartedAt:
+            game.status === "question" && game.questionStartedAt
+              ? new Date(game.questionStartedAt.getTime() + pausedDuration)
+              : game.questionStartedAt,
+          roundResolvedAt:
+            game.status === "round_result" && game.roundResolvedAt
+              ? new Date(game.roundResolvedAt.getTime() + pausedDuration)
+              : game.roundResolvedAt,
+        },
+      );
 
-  if (!game.isPaused) {
-    return { success: true as const, message: "Gra już działa." };
-  }
+      if (!resumed) {
+        return staleResult();
+      }
 
-  const pausedDuration = game.pausedAt ? Date.now() - game.pausedAt.getTime() : 0;
-
-  await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: {
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
-      questionStartedAt:
-        game.status === "question" && game.questionStartedAt
-          ? new Date(game.questionStartedAt.getTime() + pausedDuration)
-          : game.questionStartedAt,
-      roundResolvedAt:
-        game.status === "round_result" && game.roundResolvedAt
-          ? new Date(game.roundResolvedAt.getTime() + pausedDuration)
-          : game.roundResolvedAt,
+      return { success: true as const, message: "Gra została wznowiona." };
     },
   });
-
-  return { success: true as const, message: "Gra została wznowiona." };
 }
 
 export async function requestCoupleQaExit(roomCode: string, currentUserId: string) {
-  const game = await prisma.coupleQaGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.coupleQaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (!game.isPaused) {
+        return { success: false as const, message: "Najpierw wstrzymaj grę." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      const requested = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        game,
+        { isPaused: true },
+        {
+          exitRequestedById: currentUserId,
+        },
+      );
 
-  if (!game.isPaused) {
-    return { success: false as const, message: "Najpierw wstrzymaj grę." };
-  }
+      if (!requested) {
+        return staleResult();
+      }
 
-  await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: {
-      exitRequestedById: currentUserId,
+      return { success: true as const, message: "Wysłano prośbę o zakończenie gry." };
     },
   });
-
-  return { success: true as const, message: "Wysłano prośbę o zakończenie gry." };
 }
 
 export async function respondCoupleQaExit(
@@ -678,58 +796,72 @@ export async function respondCoupleQaExit(
   currentUserId: string,
   approve: boolean,
 ) {
-  const game = await prisma.coupleQaGame.findUnique({
-    where: { roomCode },
-  });
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.coupleQaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      if (!isGameParticipant(game, currentUserId)) {
+        return { success: false as const, message: "Nie należysz do tej gry." };
+      }
 
-  if (!game) {
-    return { success: false as const, message: "Nie znaleziono gry." };
-  }
+      if (!game.exitRequestedById || game.exitRequestedById === currentUserId) {
+        return { success: false as const, message: "Nie ma prośby do potwierdzenia." };
+      }
 
-  if (game.playerOneId !== currentUserId && game.playerTwoId !== currentUserId) {
-    return { success: false as const, message: "Nie należysz do tej gry." };
-  }
+      if (!approve) {
+        const cleared = await applyVersionedGameUpdate(
+          prisma.coupleQaGame,
+          game,
+          { exitRequestedById: game.exitRequestedById },
+          {
+            exitRequestedById: null,
+          },
+        );
 
-  if (!game.exitRequestedById || game.exitRequestedById === currentUserId) {
-    return { success: false as const, message: "Nie ma prośby do potwierdzenia." };
-  }
+        if (!cleared) {
+          return staleResult();
+        }
 
-  if (!approve) {
-    await prisma.coupleQaGame.update({
-      where: { id: game.id },
-      data: {
-        exitRequestedById: null,
-      },
-    });
+        return { success: true as const, message: "Gra pozostaje wstrzymana." };
+      }
 
-    return { success: true as const, message: "Gra pozostaje wstrzymana." };
-  }
+      const terminated = await applyVersionedGameUpdate(
+        prisma.coupleQaGame,
+        game,
+        { exitRequestedById: game.exitRequestedById },
+        {
+          status: "waiting",
+          compatibilityScore: 0,
+          roundIndex: 0,
+          questionOrder: getFreshQuestionOrder(),
+          playerOneAnswer: null,
+          playerTwoAnswer: null,
+          playerOneJoined: false,
+          playerTwoJoined: false,
+          questionStartedAt: null,
+          lastMatch: null,
+          roundResolvedAt: null,
+          rewardGranted: false,
+          isPaused: false,
+          pausedAt: null,
+          pauseRequestedById: null,
+          exitRequestedById: null,
+          terminatedAt: new Date(),
+          terminationReason: "agreed_exit",
+        },
+      );
 
-  await prisma.coupleQaGame.update({
-    where: { id: game.id },
-    data: {
-      status: "waiting",
-      compatibilityScore: 0,
-      roundIndex: 0,
-      questionOrder: getFreshQuestionOrder(),
-      playerOneAnswer: null,
-      playerTwoAnswer: null,
-      playerOneJoined: false,
-      playerTwoJoined: false,
-      questionStartedAt: null,
-      lastMatch: null,
-      roundResolvedAt: null,
-      rewardGranted: false,
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
-      terminatedAt: new Date(),
-      terminationReason: "agreed_exit",
+      if (!terminated) {
+        return staleResult();
+      }
+
+      return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
     },
   });
-
-  return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
 }
 
 export async function getRoomScoreTotals(roomCode: string) {

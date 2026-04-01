@@ -1,48 +1,14 @@
-import { NextResponse } from "next/server";
-
-import { getCurrentSession } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { submitCoupleQaAnswer } from "@/lib/couple-qa";
-import type { AuthResponse } from "@/types/auth";
+import { runGameCommandRoute } from "@/lib/game-command-route";
+import { getCoupleQaState, submitCoupleQaAnswer } from "@/lib/couple-qa";
 
 export async function POST(request: Request) {
-  try {
-    const session = await getCurrentSession();
-
-    if (!session) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Najpierw zaloguj się do swojego konta." },
-        { status: 401 },
-      );
-    }
-
-    const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
-      select: { currentRoomCode: true },
-    });
-
-    if (!user?.currentRoomCode) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Nie jesteś obecnie w żadnym pokoju." },
-        { status: 409 },
-      );
-    }
-
-    const body = (await request.json()) as { answerIndex?: number };
-    const result = await submitCoupleQaAnswer(
-      user.currentRoomCode,
-      session.user.id,
-      body.answerIndex ?? -1,
-    );
-
-    return NextResponse.json<AuthResponse>(
-      { success: result.success, message: result.message },
-      { status: result.success ? 200 : 400 },
-    );
-  } catch {
-    return NextResponse.json<AuthResponse>(
-      { success: false, message: "Nie udało się zapisać odpowiedzi." },
-      { status: 500 },
-    );
-  }
+  return runGameCommandRoute({
+    request,
+    parseBody: async (currentRequest) =>
+      ((await currentRequest.json().catch(() => ({}))) as { answerIndex?: number }),
+    command: ({ roomCode, userId, body }) => submitCoupleQaAnswer(roomCode, userId, body.answerIndex ?? -1),
+    getState: ({ roomCode, userId }) => getCoupleQaState(roomCode, userId),
+    notInRoomMessage: "Nie jesteś obecnie w żadnym pokoju.",
+    errorMessage: "Nie udało się zapisać odpowiedzi.",
+  });
 }

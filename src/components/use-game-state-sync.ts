@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type UseGameStateSyncArgs<TState> = {
   initialState: TState | null;
@@ -8,6 +8,8 @@ type UseGameStateSyncArgs<TState> = {
   startPath?: string;
   startBody?: Record<string, unknown>;
   intervalMs?: number;
+  nextRefreshAt?: number | null;
+  getNextRefreshAt?: (state: TState | null) => number | null | undefined;
 };
 
 export function useGameStateSync<TState>({
@@ -16,8 +18,12 @@ export function useGameStateSync<TState>({
   startPath,
   startBody,
   intervalMs = 1200,
+  nextRefreshAt,
+  getNextRefreshAt,
 }: UseGameStateSyncArgs<TState>) {
   const [state, setState] = useState<TState | null>(initialState);
+  const [isRealtimeConnected, setIsRealtimeConnected] = useState(false);
+  const hasStartedRef = useRef(false);
   const serializedStartBody = useMemo(
     () => (startBody ? JSON.stringify(startBody) : undefined),
     [startBody],
@@ -44,9 +50,11 @@ export function useGameStateSync<TState>({
   }, [statePath]);
 
   useEffect(() => {
-    if (!startPath) {
+    if (!startPath || hasStartedRef.current) {
       return;
     }
+
+    hasStartedRef.current = true;
 
     void fetch(startPath, {
       method: "POST",
@@ -77,10 +85,49 @@ export function useGameStateSync<TState>({
   }, [serializedStartBody, startPath]);
 
   useEffect(() => {
+    if (typeof EventSource === "undefined") {
+      return;
+    }
+
+    const eventSource = new EventSource("/api/games/events");
+
+    const handleStateChange = () => {
+      if (document.visibilityState === "visible") {
+        void refreshState();
+      }
+    };
+
+    eventSource.addEventListener("ready", () => {
+      setIsRealtimeConnected(true);
+      void refreshState();
+    });
+    eventSource.addEventListener("state", handleStateChange);
+    eventSource.addEventListener("heartbeat", () => {
+      setIsRealtimeConnected(true);
+    });
+    eventSource.onerror = () => {
+      setIsRealtimeConnected(false);
+    };
+
+    return () => {
+      eventSource.close();
+      setIsRealtimeConnected(false);
+    };
+  }, [refreshState]);
+
+  useEffect(() => {
     function refreshIfVisible() {
       if (document.visibilityState === "visible") {
         void refreshState();
       }
+    }
+
+    if (isRealtimeConnected) {
+      document.addEventListener("visibilitychange", refreshIfVisible);
+
+      return () => {
+        document.removeEventListener("visibilitychange", refreshIfVisible);
+      };
     }
 
     const intervalId = window.setInterval(refreshIfVisible, intervalMs);
@@ -91,12 +138,32 @@ export function useGameStateSync<TState>({
       window.clearInterval(intervalId);
       document.removeEventListener("visibilitychange", refreshIfVisible);
     };
-  }, [intervalMs, refreshState]);
+  }, [intervalMs, isRealtimeConnected, refreshState]);
+
+  const scheduledRefreshAt = getNextRefreshAt ? getNextRefreshAt(state) : nextRefreshAt;
+
+  useEffect(() => {
+    if (!scheduledRefreshAt || Number.isNaN(scheduledRefreshAt)) {
+      return;
+    }
+
+    const delay = Math.max(0, scheduledRefreshAt - Date.now() + 50);
+
+    const timeoutId = window.setTimeout(() => {
+      if (document.visibilityState === "visible") {
+        void refreshState();
+      }
+    }, delay);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [refreshState, scheduledRefreshAt]);
 
   return {
     state,
     setState,
     refreshState,
+    isRealtimeConnected,
   };
 }
-

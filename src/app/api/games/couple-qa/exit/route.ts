@@ -1,51 +1,20 @@
-import { NextResponse } from "next/server";
-
-import { getCurrentSession } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
-import { requestCoupleQaExit, respondCoupleQaExit } from "@/lib/couple-qa";
-import type { AuthResponse } from "@/types/auth";
+import { getCoupleQaState, requestCoupleQaExit, respondCoupleQaExit } from "@/lib/couple-qa";
+import { runGameCommandRoute } from "@/lib/game-command-route";
 
 export async function POST(request: Request) {
-  try {
-    const session = await getCurrentSession();
-
-    if (!session) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Najpierw zaloguj się do swojego konta." },
-        { status: 401 },
-      );
-    }
-
-    const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
-      select: { currentRoomCode: true },
-    });
-
-    if (!user?.currentRoomCode) {
-      return NextResponse.json<AuthResponse>(
-        { success: false, message: "Nie jesteś obecnie w żadnym pokoju." },
-        { status: 409 },
-      );
-    }
-
-    const body = (await request.json().catch(() => ({}))) as {
-      action?: "request" | "respond";
-      approve?: boolean;
-    };
-
-    const result =
+  return runGameCommandRoute({
+    request,
+    parseBody: async (currentRequest) =>
+      ((await currentRequest.json().catch(() => ({}))) as {
+        action?: "request" | "respond";
+        approve?: boolean;
+      }),
+    command: ({ roomCode, userId, body }) =>
       body.action === "respond"
-        ? await respondCoupleQaExit(user.currentRoomCode, session.user.id, Boolean(body.approve))
-        : await requestCoupleQaExit(user.currentRoomCode, session.user.id);
-
-    return NextResponse.json<AuthResponse>(
-      { success: result.success, message: result.message },
-      { status: result.success ? 200 : 400 },
-    );
-  } catch {
-    return NextResponse.json<AuthResponse>(
-      { success: false, message: "Nie udało się obsłużyć zakończenia gry." },
-      { status: 500 },
-    );
-  }
+        ? respondCoupleQaExit(roomCode, userId, Boolean(body.approve))
+        : requestCoupleQaExit(roomCode, userId),
+    getState: ({ roomCode, userId }) => getCoupleQaState(roomCode, userId),
+    notInRoomMessage: "Nie jesteś obecnie w żadnym pokoju.",
+    errorMessage: "Nie udało się obsłużyć zakończenia gry.",
+  });
 }
