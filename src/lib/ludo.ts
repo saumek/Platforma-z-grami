@@ -128,6 +128,10 @@ function getTargetProgress(currentProgress: number, roll: number) {
   return nextProgress;
 }
 
+function isFinishedToken(progress: number) {
+  return progress >= TRACK_LENGTH && progress <= FINISH_PROGRESS;
+}
+
 function getMovableTokenIndexes(
   ownTokens: number[],
   ownColor: LudoColor | null,
@@ -150,7 +154,7 @@ function getMovableTokenIndexes(
       (tokenProgress, tokenIndex) => tokenIndex !== index && tokenProgress === targetProgress,
     );
 
-    if (ownOccupied && targetProgress !== FINISH_PROGRESS) {
+    if (ownOccupied) {
       return [];
     }
 
@@ -419,7 +423,7 @@ export async function getLudoGameState(
           avatarPath: side.currentPlayer.avatarPath,
           color: side.currentColor,
           tokenProgresses: side.currentTokens,
-          finishedTokens: side.currentTokens.filter((progress) => progress === FINISH_PROGRESS).length,
+          finishedTokens: side.currentTokens.filter((progress) => isFinishedToken(progress)).length,
         }
       : null,
     opponent: side.opponent
@@ -429,7 +433,7 @@ export async function getLudoGameState(
           avatarPath: side.opponent.avatarPath,
           color: side.opponentColor,
           tokenProgresses: side.opponentTokens,
-          finishedTokens: side.opponentTokens.filter((progress) => progress === FINISH_PROGRESS).length,
+          finishedTokens: side.opponentTokens.filter((progress) => isFinishedToken(progress)).length,
         }
       : null,
     availableColors: LUDO_COLORS.map((color) => ({
@@ -487,30 +491,21 @@ export async function chooseLudoColor(roomCode: string, userId: string, color: s
       const nextColor = color as LudoColor;
       const isPlayerOne = currentGame.playerOneId === userId;
       const opponentColor = isPlayerOne ? currentGame.playerTwoColor : currentGame.playerOneColor;
+      const colorGuard = {
+        playerOneColor: currentGame.playerOneColor,
+        playerTwoColor: currentGame.playerTwoColor,
+      };
 
       if (opponentColor === nextColor) {
         return { success: false, message: "Ten kolor został już zajęty." };
       }
 
-      const updated = await prisma.ludoGame.findUnique({
-        where: { id: currentGame.id },
-      });
-
-      if (!updated) {
-        return { success: false, message: "Nie udało się znaleźć gry." };
-      }
-
       const colorUpdated = await applyVersionedGameUpdate(
         prisma.ludoGame,
-        updated,
+        currentGame,
         {
           status: { not: "finished" },
-          ...(isPlayerOne
-            ? { playerOneColor: updated.playerOneColor }
-            : { playerTwoColor: updated.playerTwoColor }),
-          ...(isPlayerOne
-            ? { playerTwoColor: { not: nextColor } }
-            : { playerOneColor: { not: nextColor } }),
+          ...colorGuard,
         },
         {
           ...(isPlayerOne ? { playerOneColor: nextColor } : { playerTwoColor: nextColor }),
@@ -703,7 +698,7 @@ export async function moveLudoToken(roomCode: string, userId: string, tokenIndex
         });
       }
 
-      const hasWon = ownTokens.every((progress) => progress === FINISH_PROGRESS);
+      const hasWon = ownTokens.every((progress) => isFinishedToken(progress));
       const shouldGrantRoomPoint = hasWon && !game.rewardGranted;
 
       const moveUpdated = await applyVersionedGameUpdate(
