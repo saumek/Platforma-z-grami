@@ -8,11 +8,13 @@ Next.js app for the Gamely rooms-and-games experience.
 2. Ensure `DATABASE_URL` points at the local SQLite database used by Prisma.
 3. Generate the Prisma client with `npm run db:generate` when schema changes.
 4. Start the app with `npm run dev`.
-5. Set `NEXT_ALLOWED_DEV_ORIGINS` when you need extra local or tunnel origins in development.
+5. Open the app from another device with `http://<twoj-lokalny-ip>:3000`.
+6. `npm run dev` and `npm run start` bind to `0.0.0.0`, and local IPv4 addresses are auto-added to `allowedDevOrigins`.
+7. Set `NEXT_ALLOWED_DEV_ORIGINS` only when you need extra tunnel or custom origins in development.
 
 ## Scripts
 
-- `npm run dev` starts the development server.
+- `npm run dev` starts the development server on all local interfaces.
 - `npm run build` creates a production build.
 - `npm run lint` runs ESLint.
 - `npm test` runs the Vitest suite once.

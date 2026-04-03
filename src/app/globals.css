@@ -81,6 +81,8 @@ button {
 }
 
 .material-symbols-outlined {
+  line-height: 1;
+  vertical-align: middle;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
@@ -135,6 +137,22 @@ button {
 
 .dice-roll {
   animation: dice-roll 900ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.game-reaction-particle {
+  animation: game-reaction-particle 2200ms linear both;
+  will-change: transform, opacity;
+}
+
+.game-reaction-glyph {
+  display: block;
+  transform: scale(var(--reaction-scale, 1)) rotate(var(--reaction-rotate, 0deg));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.game-reaction-flash {
+  animation: game-reaction-flash 1200ms ease-out both;
 }
 
 @keyframes result-bounce-in {
@@ -231,6 +249,40 @@ button {
   }
 }
 
+@keyframes game-reaction-particle {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--particle-x), var(--particle-y), 0);
+  }
+}
+
+@keyframes game-reaction-flash {
+  0% {
+    opacity: 0;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 .mobile-safe-bottom {
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
 }
@@ -247,11 +299,25 @@ button {
   padding-top: calc(env(safe-area-inset-top, 0px) + 8rem);
 }
 
-.profile-screen,
-.profile-screen .font-body,
-.profile-screen .font-label,
-.profile-screen .font-headline {
-  font-family: var(--font-plus-jakarta), sans-serif;
+.game-viewport {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.game-main-viewport {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4.5rem);
+}
+
+.game-main-viewport-compact {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4rem);
 }
 
 input:-webkit-autofill,

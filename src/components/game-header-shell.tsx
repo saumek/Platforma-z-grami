@@ -23,12 +23,12 @@ export function GameHeaderShell({
 }: GameHeaderShellProps) {
   return (
     <header
-      className={`${fixed ? "fixed" : "sticky"} top-0 z-50 w-full mobile-safe-top bg-[#0e0e0e]/80 backdrop-blur-xl shadow-[0_4px_20px_rgba(182,160,255,0.1)]`}
+      className={`${fixed ? "fixed" : "sticky"} top-0 z-50 w-full mobile-safe-top bg-[#0e0e0e]/84 backdrop-blur-xl shadow-[0_4px_20px_rgba(182,160,255,0.08)]`}
     >
       <div className={`mx-auto w-full ${maxWidthClassName}`}>
         {showRoomLabel && roomCode ? (
-          <div className="flex justify-center pb-2 pt-4">
-            <span className="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">
+          <div className="flex justify-center pb-1.5 pt-3">
+            <span className="font-label text-[9px] uppercase tracking-[0.18em] text-on-surface-variant">
               Pokój {formatRoomCode(roomCode)}
             </span>
           </div>
@@ -41,4 +41,3 @@ export function GameHeaderShell({
     </header>
   );
 }
-

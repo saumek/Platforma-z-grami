@@ -39,7 +39,7 @@ export async function GET(request: Request) {
       send("ready", { roomCode, at: Date.now() });
 
       const unsubscribe = subscribeToGameEvents(roomCode, (payload) => {
-        send("state", payload);
+        send(payload.type === "reaction" ? "reaction" : "state", payload);
       });
 
       const heartbeatId = setInterval(() => {

@@ -5,12 +5,21 @@ import Link from "next/link";
 type AppBottomNavProps = {
   active: "games" | "friends" | "profile";
   hasJoinedRoom: boolean;
+  compact?: boolean;
 };
 
-export function AppBottomNav({ active, hasJoinedRoom }: AppBottomNavProps) {
+export function AppBottomNav({ active, hasJoinedRoom, compact = false }: AppBottomNavProps) {
   return (
-    <nav className="fixed bottom-0 w-full z-50 rounded-t-[3rem] bg-[#0e0e0e]/90 backdrop-blur-2xl shadow-[0_-10px_40px_-15px_rgba(182,160,255,0.2)]">
-      <div className="flex justify-around items-center h-20 px-8 pb-4 w-full max-w-md mx-auto">
+    <nav
+      className={`fixed bottom-0 w-full z-50 rounded-t-[2.5rem] bg-[#0e0e0e]/90 backdrop-blur-2xl shadow-[0_-10px_40px_-15px_rgba(182,160,255,0.2)] mobile-safe-bottom ${
+        compact ? "border-t border-white/6" : ""
+      }`}
+    >
+      <div
+        className={`flex justify-around items-center w-full max-w-md mx-auto ${
+          compact ? "h-16 px-6 pb-1" : "h-20 px-8 pb-4"
+        }`}
+      >
         {hasJoinedRoom ? (
           <Link
             className={`flex flex-col items-center justify-center transition-colors active:scale-90 duration-200 ${
@@ -26,12 +35,12 @@ export function AppBottomNav({ active, hasJoinedRoom }: AppBottomNavProps) {
             >
               sports_esports
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-widest mt-1">Gry</span>
+            <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Gry</span>
           </Link>
         ) : (
           <button className="flex flex-col items-center justify-center text-slate-500/50 cursor-not-allowed" disabled>
             <span className="material-symbols-outlined">sports_esports</span>
-            <span className="text-[10px] font-bold uppercase tracking-widest mt-1">Gry</span>
+            <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Gry</span>
           </button>
         )}
 
@@ -49,7 +58,7 @@ export function AppBottomNav({ active, hasJoinedRoom }: AppBottomNavProps) {
           >
             group
           </span>
-          <span className="text-[10px] font-bold uppercase tracking-widest mt-1">Znajomi</span>
+          <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Znajomi</span>
         </Link>
 
         <Link
@@ -66,7 +75,7 @@ export function AppBottomNav({ active, hasJoinedRoom }: AppBottomNavProps) {
           >
             person
           </span>
-          <span className="text-[10px] font-bold uppercase tracking-widest mt-1">Profil</span>
+          <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Profil</span>
         </Link>
       </div>
     </nav>

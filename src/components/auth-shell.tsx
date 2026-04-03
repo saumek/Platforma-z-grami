@@ -41,7 +41,10 @@ export function AuthShell({
             <Image
               alt=""
               className="w-full h-full object-contain rotate-12"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnjOxhjwWdvKrrh-arC-knZRYsaaUYHGm4Pbd_NwBQCXnbCjz-tYaHXyQAtykVC5qSQGSWGH4sId-qxQMH8WlRqE-EQoglDJ1AAxPh8poKZnrndki_gCYmuv89p176J7dswHv0yzwkPyKud6vjmn-g4gC1jADvoq0znawcS4yFlzW7ogyMr5xMx1BS6lY_i7sNWx-ZlK4pzJ8sAFlxO-n0ODnPs_1__IXb4ODUiYLv5igUDncg1T1Wn8Dc_SIsM7zqRtXMHY_enQ"
+              fetchPriority="high"
+              loading="eager"
+              priority
+              src="/images/auth-orb.png"
               width={512}
               height={512}
             />

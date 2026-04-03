@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { publishGameEvent, subscribeToGameEvents } from "./game-events";
+import { publishGameEvent, publishGameReaction, subscribeToGameEvents } from "./game-events";
 
 describe("game events", () => {
   it("publishes only to listeners in the same room", () => {
@@ -31,5 +31,24 @@ describe("game events", () => {
     publishGameEvent("ROOM-3");
 
     expect(listener).not.toHaveBeenCalled();
+  });
+
+  it("publishes reaction payloads to the same room", () => {
+    const listener = vi.fn();
+    const unsubscribe = subscribeToGameEvents("ROOM-4", listener);
+
+    publishGameReaction("ROOM-4", "hearts", "user-1");
+
+    expect(listener).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: "reaction",
+        roomCode: "ROOM-4",
+        reaction: "hearts",
+        actorId: "user-1",
+        at: expect.any(Number),
+      }),
+    );
+
+    unsubscribe();
   });
 });

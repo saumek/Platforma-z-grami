@@ -1,9 +1,23 @@
 import { EventEmitter } from "node:events";
 
-type GameEventPayload = {
+export type GameReactionKind = "confetti" | "hearts" | "sad" | "fire";
+
+type BaseGameEventPayload = {
   roomCode: string;
   at: number;
 };
+
+export type GameStateEventPayload = BaseGameEventPayload & {
+  type: "state";
+};
+
+export type GameReactionEventPayload = BaseGameEventPayload & {
+  type: "reaction";
+  reaction: GameReactionKind;
+  actorId: string;
+};
+
+export type GameEventPayload = GameStateEventPayload | GameReactionEventPayload;
 
 const GAME_EVENT_NAME = "game-state-changed";
 
@@ -23,9 +37,24 @@ function getGameEventEmitter() {
 
 export function publishGameEvent(roomCode: string) {
   getGameEventEmitter().emit(GAME_EVENT_NAME, {
+    type: "state",
     roomCode,
     at: Date.now(),
   } satisfies GameEventPayload);
+}
+
+export function publishGameReaction(
+  roomCode: string,
+  reaction: GameReactionKind,
+  actorId: string,
+) {
+  getGameEventEmitter().emit(GAME_EVENT_NAME, {
+    type: "reaction",
+    roomCode,
+    reaction,
+    actorId,
+    at: Date.now(),
+  } satisfies GameReactionEventPayload);
 }
 
 export function subscribeToGameEvents(

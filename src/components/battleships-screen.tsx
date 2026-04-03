@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { GameHeaderShell } from "@/components/game-header-shell";
+import { GameReactionDrawer } from "@/components/game-reaction-drawer";
 import { useGameStateSync } from "@/components/use-game-state-sync";
 import { useGameSessionControls } from "@/components/use-game-session-controls";
 import {
@@ -143,22 +144,24 @@ function BoardSection({
   onCellClick,
   disabled = false,
   clickableStates,
+  compact = false,
 }: {
   title: string;
   cells: BattleshipCellState[];
   onCellClick?: (index: number) => void;
   disabled?: boolean;
   clickableStates?: BattleshipCellState[];
+  compact?: boolean;
 }) {
   return (
-    <section className="space-y-3">
-      <h2 className="font-headline text-xl font-extrabold tracking-tight">{title}</h2>
-      <div className="aspect-square w-full bg-surface-container rounded-xl p-4 grid grid-cols-5 gap-3 relative shadow-2xl">
+    <section className={compact ? "space-y-2" : "space-y-3"}>
+      <h2 className={`font-headline font-extrabold tracking-tight ${compact ? "text-lg" : "text-xl"}`}>{title}</h2>
+      <div className={`aspect-square w-full bg-surface-container rounded-xl grid grid-cols-5 relative shadow-2xl ${compact ? "p-2.5 gap-1.5" : "p-4 gap-3"}`}>
         <div
           className="absolute inset-0 opacity-10 pointer-events-none rounded-xl"
           style={{
             backgroundImage: "radial-gradient(circle at 2px 2px, #484847 1px, transparent 0)",
-            backgroundSize: "24px 24px",
+            backgroundSize: compact ? "18px 18px" : "24px 24px",
           }}
         />
         {cells.map((cell, index) => (
@@ -478,9 +481,9 @@ export function BattleshipsScreen({
             : "Ruch przeciwnika";
 
   return (
-    <div className="bg-background text-on-background font-body min-h-screen pb-32">
+    <div className="game-viewport bg-background text-on-background font-body">
       <GameHeaderShell roomCode={roomCode} fixed={false} maxWidthClassName="max-w-md">
-        <div className="flex items-center justify-between px-6 py-4">
+        <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
           <div className="flex items-center gap-4">
           <button
             className="active:scale-95 duration-200 hover:opacity-80 transition-opacity"
@@ -490,7 +493,7 @@ export function BattleshipsScreen({
             <span className="material-symbols-outlined text-[#b6a0ff] text-2xl">arrow_back</span>
           </button>
           <div className="flex flex-col">
-            <h1 className="font-headline text-xl font-bold tracking-tighter text-[#b6a0ff]">
+            <h1 className="font-headline text-lg font-bold tracking-tighter text-[#b6a0ff] sm:text-xl">
               Statki 5x5
             </h1>
             <span className="text-[10px] font-bold tracking-[0.2em] text-outline-variant uppercase">
@@ -501,7 +504,7 @@ export function BattleshipsScreen({
         <div className="flex items-center gap-3">
           {gameSessionControls.pauseButtonVisible ? (
             <button
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
               type="button"
               onClick={gameSessionControls.requestPause}
               disabled={gameSessionControls.pauseButtonDisabled}
@@ -517,39 +520,40 @@ export function BattleshipsScreen({
       </div>
       </GameHeaderShell>
 
-      <main className="px-6 pt-8 space-y-8 max-w-md mx-auto">
-        <section className="flex items-center justify-between gap-4">
-          <div className="flex-1 bg-surface-container-low p-4 rounded-lg flex flex-col items-center gap-1 relative overflow-hidden">
+      <main className="game-main-viewport-compact max-w-md mx-auto w-full min-h-0 px-3 pt-3 sm:px-6 sm:pt-5">
+        <div className={`flex h-full min-h-0 flex-col ${state?.status === "playing" ? "gap-3" : "gap-5"}`}>
+        <section className="flex shrink-0 items-center justify-between gap-3">
+          <div className="flex-1 bg-surface-container-low p-3 rounded-lg flex flex-col items-center gap-0.5 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-            <span className="font-label text-[10px] font-black uppercase tracking-widest text-primary-dim">
+            <span className="font-label text-[9px] font-black uppercase tracking-widest text-primary-dim">
               Ja
             </span>
-            <span className="font-headline text-3xl font-extrabold text-on-surface">
+            <span className="font-headline text-2xl font-extrabold text-on-surface">
               {String(state?.currentPlayer?.score ?? 0).padStart(2, "0")}
             </span>
           </div>
           <div className="flex flex-col items-center">
-            <div className="w-px h-6 bg-outline-variant opacity-30" />
+            <div className="w-px h-4 bg-outline-variant opacity-30" />
             <span className="font-headline text-xs font-black italic text-outline px-2 py-1">VS</span>
-            <div className="w-px h-6 bg-outline-variant opacity-30" />
+            <div className="w-px h-4 bg-outline-variant opacity-30" />
           </div>
-          <div className="flex-1 bg-surface-container-low p-4 rounded-lg flex flex-col items-center gap-1 relative overflow-hidden">
+          <div className="flex-1 bg-surface-container-low p-3 rounded-lg flex flex-col items-center gap-0.5 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1 h-full bg-secondary" />
-            <span className="font-label text-[10px] font-black uppercase tracking-widest text-secondary-dim">
+            <span className="font-label text-[9px] font-black uppercase tracking-widest text-secondary-dim">
               Przeciwnik
             </span>
-            <span className="font-headline text-3xl font-extrabold text-on-surface">
+            <span className="font-headline text-2xl font-extrabold text-on-surface">
               {String(state?.opponent?.score ?? 0).padStart(2, "0")}
             </span>
           </div>
         </section>
 
-        <div className="bg-secondary-container/10 border border-secondary/20 rounded-full py-3 px-6 flex items-center justify-center gap-3 self-center shadow-[0_0_18px_rgba(0,227,253,0.15)]">
+        <div className="shrink-0 bg-secondary-container/10 border border-secondary/20 rounded-full py-2.5 px-4 flex items-center justify-center gap-3 self-center shadow-[0_0_18px_rgba(0,227,253,0.15)]">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary" />
           </span>
-          <span className="font-label text-xs font-bold tracking-[0.15em] text-secondary uppercase">
+          <span className="font-label text-[11px] font-bold tracking-[0.15em] text-secondary uppercase">
             {statusLabel}
           </span>
         </div>
@@ -565,7 +569,7 @@ export function BattleshipsScreen({
           />
         ) : state?.status === "waiting" || state?.status === "setup" ? (
           <>
-            <section className="rounded-xl bg-surface-container p-5 space-y-4">
+            <section className="shrink-0 rounded-xl bg-surface-container p-4 space-y-4">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <h2 className="font-headline text-2xl font-extrabold tracking-tight">
@@ -594,7 +598,7 @@ export function BattleshipsScreen({
                   return (
                     <button
                       key={`ship-${shipLength}-${index}`}
-                      className={`rounded-xl px-4 py-3 text-left transition-colors ${
+                      className={`rounded-xl px-3 py-2.5 text-left transition-colors ${
                         selectedShipIndex === index
                           ? "bg-primary/15 text-primary"
                           : isPlaced
@@ -608,7 +612,7 @@ export function BattleshipsScreen({
                       <span className="block text-[10px] font-bold uppercase tracking-[0.18em] opacity-80">
                         Statek
                       </span>
-                      <span className="font-headline text-2xl font-extrabold">{shipLength}</span>
+                      <span className="font-headline text-xl font-extrabold">{shipLength}</span>
                     </button>
                   );
                 })}
@@ -621,11 +625,12 @@ export function BattleshipsScreen({
               onCellClick={handleCellClick}
               clickableStates={["empty", "ship"]}
               disabled={isSetupLocked || state?.status === "waiting"}
+              compact
             />
 
-            <section className="space-y-3">
+            <section className="shrink-0 space-y-2">
               <button
-                className="w-full h-14 bg-gradient-to-r from-primary to-primary-dim rounded-full flex items-center justify-center gap-3 active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20 disabled:opacity-60"
+                className="w-full h-12 bg-gradient-to-r from-primary to-primary-dim rounded-full flex items-center justify-center gap-3 active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20 disabled:opacity-60"
                 type="button"
                 onClick={handleReady}
                 disabled={isSaving || isSetupLocked || state?.status === "waiting"}
@@ -647,23 +652,28 @@ export function BattleshipsScreen({
           </>
         ) : (
           <>
+            <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden">
             <BoardSection
               title={state?.opponent?.name ?? "Przeciwnik"}
               cells={state?.opponentBoard ?? []}
               onCellClick={state?.status === "playing" ? handleShoot : undefined}
               disabled={isShooting || !state?.isCurrentUserTurn}
+              compact
             />
 
-            <BoardSection title="Twoja plansza" cells={state?.ownBoard ?? []} />
+            <BoardSection title="Twoja plansza" cells={state?.ownBoard ?? []} compact />
 
-            {statusMessage ? <p className="text-sm text-secondary">{statusMessage}</p> : null}
+            {statusMessage ? <p className="shrink-0 text-sm text-secondary">{statusMessage}</p> : null}
+            </div>
           </>
         )}
+        </div>
       </main>
 
       {gameSessionControls.overlay}
+      <GameReactionDrawer />
 
-      <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} />
+      <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} compact />
     </div>
   );
 }

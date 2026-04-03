@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { GameHeaderShell } from "@/components/game-header-shell";
+import { GameReactionDrawer } from "@/components/game-reaction-drawer";
 import { useGameStateSync } from "@/components/use-game-state-sync";
 import { useGameSessionControls } from "@/components/use-game-session-controls";
 import type { AuthResponse } from "@/types/auth";
@@ -344,28 +345,31 @@ export function CoupleQaScreen({
 
   if (state?.status === "finished") {
     return (
-      <ResultScreen
-        score={state.compatibilityScore}
-        totalRounds={state.totalRounds}
-        isEligibleForBonus={state.isEligibleForBonus}
-        onRematch={handleRestart}
-        onBackToMenu={handleBackToMenu}
-        isRestarting={isRestarting}
-      />
+      <>
+        <ResultScreen
+          score={state.compatibilityScore}
+          totalRounds={state.totalRounds}
+          isEligibleForBonus={state.isEligibleForBonus}
+          onRematch={handleRestart}
+          onBackToMenu={handleBackToMenu}
+          isRestarting={isRestarting}
+        />
+        <GameReactionDrawer />
+      </>
     );
   }
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-surface-dim font-body text-on-surface">
       <GameHeaderShell roomCode={roomCode} showRoomLabel divider fixed>
-        <div className="relative flex h-16 items-center justify-between px-6">
+        <div className="relative flex h-14 items-center justify-between px-4 sm:px-6">
           <div className="flex flex-col items-center gap-1">
             <Avatar
               src={state?.currentPlayer?.avatarPath ?? null}
               alt={state?.currentPlayer?.name ?? "Ty"}
               accent="cyan"
             />
-            <span className="font-label text-[10px] font-bold tracking-tight text-primary">
+            <span className="font-label text-[9px] font-bold tracking-tight text-primary">
               {state?.currentPlayer?.name ?? "Użytkownik 1"}
             </span>
           </div>
@@ -378,14 +382,14 @@ export function CoupleQaScreen({
               alt={state?.opponent?.name ?? "Druga osoba"}
               accent="pink"
             />
-            <span className="font-label text-[10px] font-bold tracking-tight text-error">
+            <span className="font-label text-[9px] font-bold tracking-tight text-error">
               {state?.opponent?.name ?? "Użytkownik 2"}
             </span>
           </div>
 
           {gameSessionControls.pauseButtonVisible ? (
             <button
-              className="absolute right-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
+              className="absolute right-0 top-0 flex h-9 w-9 items-center justify-center rounded-full bg-surface-container-high text-primary shadow-[0_0_14px_rgba(182,160,255,0.18)] active:scale-95"
               type="button"
               onClick={gameSessionControls.requestPause}
               disabled={gameSessionControls.pauseButtonDisabled}
@@ -396,20 +400,20 @@ export function CoupleQaScreen({
         </div>
       </GameHeaderShell>
 
-      <main className="mobile-safe-top-offset-lg flex min-h-screen flex-col items-center justify-center px-8 pb-32">
+      <main className="mobile-safe-top-offset-lg flex min-h-screen flex-col items-center justify-center px-6 pb-28 sm:px-8">
         <div className="relative mb-12 w-full max-w-md">
           <div className="absolute -left-10 -top-20 h-40 w-40 rounded-full bg-primary/10 blur-[80px]" />
           <div className="absolute -bottom-20 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-[80px]" />
 
           <div className="relative z-10 text-center">
-            <div className="mb-6 inline-block rounded-full bg-surface-container-high px-4 py-1">
-              <span className="font-label text-[11px] font-bold uppercase tracking-[0.15em] text-secondary">
+            <div className="mb-5 inline-block rounded-full bg-surface-container-high px-3.5 py-1">
+              <span className="font-label text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
                 Runda {Math.min(state?.roundIndex ?? 1, state?.totalRounds ?? 10)} /{" "}
                 {state?.totalRounds ?? 10}
               </span>
             </div>
 
-            <h1 className="px-2 font-headline text-3xl font-bold leading-tight tracking-tight text-on-surface">
+            <h1 className="px-1 font-headline text-[1.95rem] font-bold leading-[1.08] tracking-tight text-on-surface sm:text-3xl">
               {state?.status === "waiting"
                 ? "Czekamy, aż druga osoba wejdzie do gry"
                 : state?.question?.text ?? "Ładowanie pytania..."}
@@ -426,7 +430,7 @@ export function CoupleQaScreen({
             </p>
           </div>
         ) : (
-          <div className="grid w-full max-w-md grid-cols-2 gap-4">
+          <div className="grid w-full max-w-md grid-cols-2 gap-3">
             {state?.question?.options.map((option, index) => {
               const isSelected = state.currentAnswer === index;
               const isDisabled =
@@ -435,7 +439,7 @@ export function CoupleQaScreen({
               return (
                 <button
                   key={`${state.roundIndex}-${index}`}
-                  className={`group relative flex h-32 items-center justify-center rounded-lg bg-surface-container-low p-4 transition-all duration-300 active:scale-95 ${
+                  className={`group relative flex h-30 items-center justify-center rounded-[1.1rem] bg-surface-container-low p-4 transition-all duration-300 active:scale-95 ${
                     isSelected ? "bg-surface-container-high shadow-[0_0_0_1px_rgba(0,227,253,0.25)]" : ""
                   }`}
                   type="button"
@@ -444,7 +448,7 @@ export function CoupleQaScreen({
                 >
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-secondary/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                   <div className="relative z-10 text-center">
-                    <span className="font-body text-sm font-semibold text-on-surface">{option}</span>
+                    <span className="font-body text-[15px] font-semibold leading-snug text-on-surface">{option}</span>
                   </div>
                 </button>
               );
@@ -452,7 +456,7 @@ export function CoupleQaScreen({
           </div>
         )}
 
-        <div className="mt-12 w-full max-w-md">
+        <div className="mt-10 w-full max-w-md">
           <div className="mb-2 flex items-center justify-between px-2">
             <span className="font-label text-[10px] font-medium uppercase tracking-widest text-on-surface-variant">
               Czas odpowiedzi
@@ -515,8 +519,9 @@ export function CoupleQaScreen({
       </main>
 
       {gameSessionControls.overlay}
+      <GameReactionDrawer />
 
-      <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} />
+      <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} compact />
     </div>
   );
 }

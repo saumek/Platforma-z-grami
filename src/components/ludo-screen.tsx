@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { GameHeaderShell } from "@/components/game-header-shell";
+import { GameReactionDrawer } from "@/components/game-reaction-drawer";
 import { useGameStateSync } from "@/components/use-game-state-sync";
 import { useGameSessionControls } from "@/components/use-game-session-controls";
 import {
@@ -474,6 +475,7 @@ function PlayerPanel({
   isRolling,
   canRoll,
   onRoll,
+  compact = false,
 }: {
   player: LudoState["currentPlayer"] | LudoState["opponent"];
   isCurrentTurn: boolean;
@@ -481,11 +483,12 @@ function PlayerPanel({
   isRolling: boolean;
   canRoll: boolean;
   onRoll?: () => void;
+  compact?: boolean;
 }) {
   if (!player) {
     return (
-      <div className="rounded-[1.75rem] border border-white/8 bg-white/5 p-4">
-        <div className="h-20 animate-pulse rounded-[1.2rem] bg-white/5" />
+      <div className={`rounded-[1.5rem] border border-white/8 bg-white/5 ${compact ? "p-3" : "p-4"}`}>
+        <div className={`${compact ? "h-16" : "h-20"} animate-pulse rounded-[1.2rem] bg-white/5`} />
       </div>
     );
   }
@@ -493,18 +496,22 @@ function PlayerPanel({
   const palette = player.color ? LUDO_COLOR_STYLES[player.color] : null;
 
   return (
-    <div className="rounded-[1.75rem] border border-white/8 bg-white/5 p-4 backdrop-blur-sm">
+    <div className={`rounded-[1.5rem] border border-white/8 bg-white/5 backdrop-blur-sm ${compact ? "p-3" : "p-4"}`}>
       <div className="flex items-start justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <Avatar src={player.avatarPath} alt={player.name} />
+        <div className={`flex items-center ${compact ? "gap-2.5" : "gap-3"}`}>
+          <div className={compact ? "scale-[0.84] origin-left" : ""}>
+            <Avatar src={player.avatarPath} alt={player.name} />
+          </div>
           <div>
-            <p className="text-sm font-semibold text-on-surface">{player.name}</p>
-            <div className="mt-1 flex items-center gap-2">
+            <p className={`${compact ? "text-[13px]" : "text-sm"} font-semibold text-on-surface leading-tight`}>
+              {player.name}
+            </p>
+            <div className={`flex items-center gap-2 ${compact ? "mt-0.5" : "mt-1"}`}>
               <span
-                className="h-2.5 w-2.5 rounded-full"
+                className={`${compact ? "h-2 w-2" : "h-2.5 w-2.5"} rounded-full`}
                 style={{ backgroundColor: palette?.token ?? "#555555" }}
               />
-              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-on-surface-variant">
+              <p className={`${compact ? "text-[9px]" : "text-[10px]"} font-bold uppercase tracking-[0.16em] text-on-surface-variant`}>
                 {player.color ? LUDO_COLOR_LABELS[player.color] : "Bez koloru"}
               </p>
             </div>
@@ -512,32 +519,34 @@ function PlayerPanel({
         </div>
 
         <div className="text-right">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-on-surface-variant">
+          <p className={`${compact ? "text-[9px]" : "text-[10px]"} font-bold uppercase tracking-[0.16em] text-on-surface-variant`}>
             W domu
           </p>
-          <p className="mt-1 font-headline text-2xl font-bold text-on-surface">
+          <p className={`${compact ? "mt-0.5 text-xl" : "mt-1 text-2xl"} font-headline font-bold text-on-surface`}>
             {player.finishedTokens}/4
           </p>
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between rounded-[1.25rem] bg-black/20 px-3 py-3">
+      <div className={`flex items-center justify-between rounded-[1.15rem] bg-black/20 ${compact ? "mt-3 px-3 py-2.5" : "mt-4 px-3 py-3"}`}>
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-on-surface-variant">
+          <p className={`${compact ? "text-[9px]" : "text-[10px]"} font-bold uppercase tracking-[0.16em] text-on-surface-variant`}>
             Kostka
           </p>
           {isCurrentTurn ? (
-            <p className="mt-1 text-xs text-on-surface-variant">Rzucasz teraz</p>
+            <p className={`${compact ? "mt-0.5 text-[11px]" : "mt-1 text-xs"} text-on-surface-variant`}>Rzucasz teraz</p>
           ) : null}
         </div>
 
-        <DiceFace
-          value={diceValue}
-          isRolling={isRolling}
-          active={canRoll || isCurrentTurn}
-          accentColor={palette?.token ?? "#b6a0ff"}
-          onClick={canRoll ? onRoll : undefined}
-        />
+        <div className={compact ? "scale-[0.82] origin-right" : ""}>
+          <DiceFace
+            value={diceValue}
+            isRolling={isRolling}
+            active={canRoll || isCurrentTurn}
+            accentColor={palette?.token ?? "#b6a0ff"}
+            onClick={canRoll ? onRoll : undefined}
+          />
+        </div>
       </div>
     </div>
   );
@@ -878,21 +887,22 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
           onBackToMenu={() => void handleRestart("menu")}
           isRestarting={isRestarting}
         />
+        <GameReactionDrawer />
         {overlay}
       </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background text-on-background">
+    <div className="game-viewport bg-background text-on-background">
       <GameHeaderShell roomCode={roomCode} fixed={false} maxWidthClassName="max-w-2xl">
-        <div className="mx-auto flex items-center justify-between gap-4 px-6 py-4">
+        <div className="mx-auto flex items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4">
           <div className="flex items-center gap-4">
             <button type="button" onClick={() => router.push("/games")}>
               <span className="material-symbols-outlined text-primary">arrow_back</span>
             </button>
             <div>
-              <p className="font-headline text-xl font-black tracking-tight text-on-surface">
+              <p className="font-headline text-lg font-black tracking-tight text-on-surface sm:text-xl">
                 Chińczyk
               </p>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">
@@ -903,7 +913,7 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
 
           {pauseButtonVisible ? (
             <button
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/8 bg-white/5 disabled:opacity-50"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/8 bg-white/5 disabled:opacity-50"
               type="button"
               disabled={pauseButtonDisabled}
               onClick={requestPause}
@@ -921,8 +931,8 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
           isSubmitting={isSubmitting}
         />
       ) : (
-        <main className="mx-auto flex w-full max-w-2xl flex-col px-4 pb-32 pt-6 sm:px-6">
-          <section>
+        <main className="game-main-viewport-compact mx-auto flex w-full max-w-2xl min-h-0 flex-col px-3 pt-3 sm:px-6 sm:pt-4">
+          <section className="shrink-0">
             <PlayerPanel
               player={state.currentPlayer}
               isCurrentTurn={isCurrentTurn}
@@ -930,20 +940,22 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
               isRolling={currentRolling}
               canRoll={Boolean(isCurrentTurn && !state.diceValue && !isSubmitting)}
               onRoll={() => void handleRoll()}
+              compact
             />
           </section>
 
-          <section className="mt-5">
+          <section className="mt-3 flex min-h-0 flex-1 items-center justify-center">
             <LudoBoard state={state} onMoveToken={handleMoveToken} />
           </section>
 
-          <section className="mt-5">
+          <section className="mt-3 shrink-0">
             <PlayerPanel
               player={state.opponent}
               isCurrentTurn={!isCurrentTurn}
               diceValue={opponentDiceValue}
               isRolling={opponentRolling}
               canRoll={false}
+              compact
             />
           </section>
         </main>
@@ -957,7 +969,8 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
         </div>
       ) : null}
 
-      <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} />
+      <AppBottomNav active="games" hasJoinedRoom={hasJoinedRoom} compact />
+      <GameReactionDrawer />
       {overlay}
     </div>
   );
