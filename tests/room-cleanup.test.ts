@@ -21,6 +21,9 @@ const mocks = vi.hoisted(() => {
     ludoGame: {
       deleteMany: vi.fn(),
     },
+    dopowiedzeniaGame: {
+      deleteMany: vi.fn(),
+    },
     room: {
       deleteMany: vi.fn(),
     },
@@ -67,6 +70,9 @@ describe("room cleanup", () => {
       where: { roomCode: "ROOM-2" },
     });
     expect(mocks.prisma.ludoGame.deleteMany).toHaveBeenCalledWith({
+      where: { roomCode: "ROOM-2" },
+    });
+    expect(mocks.prisma.dopowiedzeniaGame.deleteMany).toHaveBeenCalledWith({
       where: { roomCode: "ROOM-2" },
     });
     expect(mocks.prisma.room.deleteMany).toHaveBeenCalledWith({

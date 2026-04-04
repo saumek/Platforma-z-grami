@@ -1,1002 +1,1502 @@
 [
   {
-    "text": "Równanie 2x^2-5x-3=0 ma dwa rozwiązania rzeczywiste. Która liczba jest większym z nich?",
-    "options": ["1/2", "5/2", "-1/2", "3"],
+    "text": "Który wykres opisuje funkcję liniową?",
+    "options": [
+      "prostej",
+      "paraboli",
+      "okręgu",
+      "sinusoidy"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jaką postać ma wykres funkcji liniowej?",
+    "options": [
+      "paraboli",
+      "okręgu",
+      "sinusoidy",
+      "prostej"
+    ],
     "correctIndex": 3
   },
   {
-    "text": "Dla jakiej wartości parametru m równanie x^2+4x+m=0 ma dokładnie jedno rozwiązanie rzeczywiste?",
-    "options": ["0", "2", "4", "8"],
+    "text": "Funkcja liniowa ma na wykresie kształt",
+    "options": [
+      "okręgu",
+      "sinusoidy",
+      "prostej",
+      "paraboli"
+    ],
     "correctIndex": 2
   },
   {
-    "text": "Uprość wyrażenie (x^3y^-2)^2/(xy^-1) dla x!=0 i y!=0.",
-    "options": ["x^5/y^3", "x^6/y^3", "x^5/y^2", "x^4/y^3"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Liczby a i b są pierwiastkami równania x^2-7x+10=0. Ile wynosi a^2+b^2?",
-    "options": ["21", "29", "39", "49"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Rozwiąż nierówność |2x-3|<5.",
-    "options": ["-1<x<4", "-4<x<1", "x<-1 lub x>4", "x<1 lub x>4"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Ile liczb całkowitych spełnia nierówność x^2-5x+6<=0?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wyznacz x z równania 3^(x+1)=27√3.",
-    "options": ["2", "5/2", "3", "7/2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Rozwiąż równanie log2(x-1)+log2(x+1)=3.",
-    "options": ["2", "3", "4", "5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dana jest funkcja f(x)=1/(x-2). Ile wynosi f(f(4))?",
-    "options": ["-2/3", "-1/2", "1/2", "2/3"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jeżeli x+1/x=3, to ile wynosi x^2+1/x^2?",
-    "options": ["5", "6", "7", "8"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Liczby x i y spełniają układ x+y=5 oraz x^2+y^2=13. Ile wynosi iloczyn xy?",
-    "options": ["4", "5", "6", "7"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jaka jest największa wartość funkcji y=-x^2+4x+1?",
-    "options": ["4", "5", "6", "7"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dla jakiego k prosta y=2x+k jest styczna do paraboli y=x^2?",
-    "options": ["-1", "0", "1", "2"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Rozwiąż równanie 5^(2x)=125^(x-1).",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile rozwiązań w przedziale [0,2π) ma równanie sin x=1/2?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wiadomo, że cos 2α=1/3 oraz α jest kątem ostrym. Ile wynosi tan α?",
-    "options": ["√2/2", "1/2", "√3/3", "1"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Pole trójkąta o wierzchołkach (0,0), (4,0) i (1,3) jest równe:",
-    "options": ["4", "5", "6", "7"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Oblicz odległość punktu (1,-2) od prostej 3x-4y+5=0.",
-    "options": ["11/5", "16/5", "21/5", "26/5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jaki jest środek odcinka łączącego punkty (-3,5) i (7,-1)?",
-    "options": ["(1,2)", "(2,1)", "(2,2)", "(3,2)"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Współczynnik kierunkowy prostej prostopadłej do prostej 2x-3y+7=0 jest równy:",
-    "options": ["-3/2", "-2/3", "2/3", "3/2"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Długość wektora [2,-1,2] wynosi:",
-    "options": ["2", "3", "√7", "√10"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Iloczyn skalarny wektorów [1,2] oraz [3,-4] jest równy:",
-    "options": ["-5", "-2", "2", "5"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Które równanie opisuje okrąg o środku w punkcie (2,-1) i promieniu 3?",
-    "options": ["(x+2)^2+(y-1)^2=9", "(x-2)^2+(y+1)^2=9", "(x-2)^2+(y-1)^2=3", "(x+2)^2+(y+1)^2=3"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Punkt leżący w I ćwiartce na prostej y=2x-1 i w równej odległości od obu osi ma współrzędne:",
-    "options": ["(1/3,1/3)", "(1,1)", "(2,2)", "(3,3)"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jaki jest punkt przecięcia z osią OY prostej przechodzącej przez punkty (-1,2) i (3,6)?",
-    "options": ["0", "1", "2", "3"],
+    "text": "Funkcja kwadratowa ma na wykresie kształt",
+    "options": [
+      "prosta",
+      "okrąg",
+      "hiperbola",
+      "paraboli"
+    ],
     "correctIndex": 3
   },
   {
-    "text": "Dziedziną funkcji √(5-2x)+ln(x-1) jest:",
-    "options": ["(1,5/2]", "[1,5/2)", "(1,∞)", "(-∞,5/2]"],
+    "text": "Jak wygląda wykres funkcji kwadratowej?",
+    "options": [
+      "okrąg",
+      "hiperbola",
+      "paraboli",
+      "prosta"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Wykres funkcji kwadratowej to",
+    "options": [
+      "hiperbola",
+      "paraboli",
+      "prosta",
+      "okrąg"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Dziedziną funkcji jest zbiór",
+    "options": [
+      "miejsc zerowych",
+      "punktów przecięcia z osią OY",
+      "argumentów, dla których funkcja ma sens",
+      "jej największych wartości"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Co oznacza dziedzina funkcji?",
+    "options": [
+      "punktów przecięcia z osią OY",
+      "argumentów, dla których funkcja ma sens",
+      "jej największych wartości",
+      "miejsc zerowych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Mówiąc o dziedzinie funkcji, mamy na myśli zbiór",
+    "options": [
+      "argumentów, dla których funkcja ma sens",
+      "jej największych wartości",
+      "miejsc zerowych",
+      "punktów przecięcia z osią OY"
+    ],
     "correctIndex": 0
   },
   {
-    "text": "Ile asymptot ma funkcja f(x)=(2x+1)/(x-3)?",
-    "options": ["0", "1", "2", "3"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Dla funkcji liniowej f(x)=ax+b wiadomo, że f(1)=3 oraz f(4)=15. Ile wynosi a?",
-    "options": ["3", "4", "5", "6"],
+    "text": "Zbiór wartości funkcji to zbiór",
+    "options": [
+      "wyłącznie miejsca zerowe",
+      "wszystkich wartości, jakie funkcja może przyjmować",
+      "tylko wartości dodatnie",
+      "same argumenty"
+    ],
     "correctIndex": 1
   },
   {
-    "text": "Na jakim przedziale funkcja f(x)=x^2-6x+5 jest malejąca?",
-    "options": ["(-∞,3]", "[3,∞)", "(-∞,-3]", "[-3,∞)"],
+    "text": "Co opisuje zbiór wartości funkcji?",
+    "options": [
+      "wszystkich wartości, jakie funkcja może przyjmować",
+      "tylko wartości dodatnie",
+      "same argumenty",
+      "wyłącznie miejsca zerowe"
+    ],
     "correctIndex": 0
   },
   {
-    "text": "Zbiorem wartości funkcji f(x)=1-(x-2)^2 jest:",
-    "options": ["[1,∞)", "(-∞,1]", "(-∞,2]", "[0,1]"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeżeli f(x)=2x-1 oraz g(x)=x^2, to ile wynosi (f∘g)(-3)?",
-    "options": ["15", "16", "17", "18"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Rozwiąż równanie 2^(x+2)-2^x=12.",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Zbiór rozwiązań nierówności log1/2(x+1)>-1 to:",
-    "options": ["-1<x<1", "0<x<1", "x>1", "x<0"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dla jakiego argumentu funkcja f(x)=|x-4| osiąga minimum?",
-    "options": ["0", "2", "4", "8"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Wiadomo, że liczba 3 jest pierwiastkiem równania x^2+px+9=0. Ile wynosi p?",
-    "options": ["-9", "-6", "6", "9"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Zbiorem rozwiązań nierówności (x-1)(x+3)>0 jest:",
-    "options": ["-3<x<1", "x<-3 lub x>1", "x<-1 lub x>3", "x>3"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Oblicz wartość wyrażenia (√50-√8)/√2.",
-    "options": ["2", "3", "4", "5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "W ciągu arytmetycznym a1=7 oraz a5=19. Ile wynosi różnica tego ciągu?",
-    "options": ["2", "3", "4", "5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Suma pierwszych 20 wyrazów ciągu arytmetycznego 5,8,11,... jest równa:",
-    "options": ["570", "620", "670", "720"],
-    "correctIndex": 2
-  },
-  {
-    "text": "W ciągu geometrycznym a1=81 oraz q=1/3. Ile wynosi a5?",
-    "options": ["1/3", "1", "3", "9"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeżeli an=2n^2-3n, to ile wynosi a(n+1)-an?",
-    "options": ["2n-1", "3n-1", "4n-1", "4n+1"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Suma nieskończonego szeregu geometrycznego o pierwszym wyrazie 6 i ilorazie -1/3 wynosi:",
-    "options": ["4", "9/2", "6", "18/5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile różnych anagramów można utworzyć ze słowa \"LICEUM\"?",
-    "options": ["720", "1440", "5040", "10080"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile jest 3-elementowych podzbiorów zbioru 8-elementowego?",
-    "options": ["28", "56", "64", "84"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jakie jest prawdopodobieństwo wyrzucenia sumy 8 przy rzucie dwiema uczciwymi kostkami?",
-    "options": ["1/9", "5/36", "1/6", "7/36"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jakie jest prawdopodobieństwo uzyskania dokładnie dwóch orłów w czterech rzutach symetryczną monetą?",
-    "options": ["1/4", "3/8", "1/2", "5/8"],
-    "correctIndex": 1
-  },
-  {
-    "text": "W urnie są 3 kule czerwone, 2 niebieskie i 1 zielona. Jakie jest prawdopodobieństwo wylosowania kuli niebieskiej lub zielonej?",
-    "options": ["1/3", "1/2", "2/3", "5/6"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Zdarzenia A i B są niezależne, P(A)=0,4 i P(B)=0,5. Ile wynosi P(A∩B)?",
-    "options": ["0,1", "0,2", "0,4", "0,9"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi C(10,0)+C(10,1)?",
-    "options": ["10", "11", "12", "20"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jaka jest mediana liczb 2, 5, 7, 9, 11?",
-    "options": ["5", "6", "7", "8"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jeżeli tan α=3/4 i α jest ostry, to sin α jest równe:",
-    "options": ["3/5", "4/5", "5/4", "4/3"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Na przedziale [0,2π) równanie 2sin x-1=0 ma dwa rozwiązania. Ile wynosi ich suma?",
-    "options": ["2π/3", "π", "4π/3", "2π"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wartość dokładna cos 15° to:",
-    "options": ["(√6+√2)/4", "(√6-√2)/4", "(√3+1)/2", "√2/2"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jeżeli sin α=-3/5 i kąt α leży w III ćwiartce, to cos α jest równe:",
-    "options": ["4/5", "-4/5", "3/5", "-3/5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi sin^2 x+cos^2 x+tan x·cot x dla wszystkich dopuszczalnych x?",
-    "options": ["1", "2", "3", "Zależy od x"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeżeli cos x=-1/2 i x należy do II ćwiartki, to sin 2x jest równe:",
-    "options": ["√3/2", "-√3/2", "1/2", "-1/2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Najmniejszym dodatnim rozwiązaniem równania cos x=0 jest:",
-    "options": ["π/6", "π/4", "π/2", "π"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Kąt 225° w mierze łukowej ma postać:",
-    "options": ["3π/4", "5π/4", "7π/6", "9π/8"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pole trójkąta o bokach 5 i 7 oraz kącie zawartym 60° jest równe:",
-    "options": ["35√3/2", "35√3/4", "21√3/2", "21√3/4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Długość łuku okręgu o promieniu 6 i kącie środkowym 120° wynosi:",
-    "options": ["2π", "3π", "4π", "6π"],
-    "correctIndex": 2
-  },
-  {
-    "text": "W trójkącie prostokątnym sin α=12/13. Ile wynosi cot α?",
-    "options": ["5/12", "12/5", "5/13", "13/5"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jedynym rozwiązaniem równania sin x=cos x w przedziale (0,π) jest:",
-    "options": ["π/6", "π/4", "π/3", "π/2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Oblicz wartość 2cos^2 30°-sin 60°.",
-    "options": ["(3-√3)/2", "(3+√3)/2", "(1+√3)/2", "(1-√3)/2"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jeżeli sec α=5/4 i α jest kątem ostrym, to tan α jest równe:",
-    "options": ["1/4", "3/5", "3/4", "4/3"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile rozwiązań w przedziale [0,2π) ma równanie 4cos^2 x-1=0?",
-    "options": ["2", "3", "4", "6"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jeżeli α+β=90° oraz sin α=5/13, to sin β jest równe:",
-    "options": ["5/13", "12/13", "13/5", "13/12"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Promień okręgu wpisanego w trójkąt równoboczny o boku 6 jest równy:",
-    "options": ["√3", "2√3", "3", "3√3"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Przekątna kwadratu o polu 18 jest równa:",
-    "options": ["3√2", "6", "6√2", "9"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Objętość kuli o promieniu 3 wynosi:",
-    "options": ["18π", "27π", "36π", "48π"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Pole powierzchni sześcianu o objętości 64 jest równe:",
-    "options": ["64", "80", "96", "128"],
-    "correctIndex": 2
-  },
-  {
-    "text": "W trójkącie równoramiennym o ramionach 5 i podstawie 6 wysokość opuszczona na podstawę ma długość:",
-    "options": ["3", "4", "5", "2√5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pole równoległoboku o bokach 5 i 8 oraz kącie 30° wynosi:",
-    "options": ["10", "20", "25", "40"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Obwód okręgu o polu 49π jest równy:",
-    "options": ["7π", "14π", "21π", "28π"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Które równanie opisuje prostą równoległą do y=-3x+2 i przechodzącą przez punkt (1,1)?",
-    "options": ["y=-3x+4", "y=3x-2", "y=-3x+2", "y=3x+4"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Odległość między prostymi równoległymi y=2x+1 oraz y=2x-5 jest równa:",
-    "options": ["6/√5", "3/√5", "2√5", "6√5"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jaka jest reszta z dzielenia wielomianu x^3-2x^2+5x-7 przez dwumian x-2?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Wielomian x^3+ax^2+bx+6 ma pierwiastki 1, 2 i 3. Ile wynosi a?",
-    "options": ["-6", "-5", "5", "6"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Ile wynosi suma pierwiastków równania x^3-6x^2+11x-6=0?",
-    "options": ["3", "5", "6", "11"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile pierwiastków rzeczywistych ma równanie x^4+1=0?",
-    "options": ["0", "1", "2", "4"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jeżeli x^2+x+1=0 oraz x!=1, to x^3 jest równe:",
-    "options": ["-1", "0", "1", "3"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Rozwiąż równanie √(x+9)=x-3.",
-    "options": ["3", "5", "7", "9"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Uproszczona postać liczby 1/(1+√2) to:",
-    "options": ["√2-1", "1-√2", "√2+1", "2-√2"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jeżeli loga 16=4 dla a>0 i a!=1, to podstawa a jest równa:",
-    "options": ["2", "4", "8", "16"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Rozwiązaniem równania ln(x)=0 jest liczba:",
-    "options": ["0", "1", "e", "10"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Z równania e^(2x)=7 otrzymujemy:",
-    "options": ["x=ln 7", "x=7/2", "x=(1/2)ln 7", "x=e^7/2"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Najmniejsza wartość funkcji f(x)=|x+2|+|x-2| jest równa:",
-    "options": ["2", "4", "6", "8"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile liczb całkowitych spełnia równanie |x|+|x-1|=5?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Prosta y=4 przecina parabolę y=x^2 w dwóch punktach. Jaka jest odległość między tymi punktami?",
-    "options": ["2", "4", "2√2", "4√2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dla funkcji f(x)=(x-3)^2+2 suma rozwiązań równania f(x)=11 jest równa:",
-    "options": ["0", "3", "6", "9"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Wykres funkcji odwrotnie proporcjonalnej y=k/x przechodzi przez punkt (4,-3). Ile wynosi k?",
-    "options": ["-12", "-7", "7", "12"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Środek okręgu opisanego równaniem x^2+y^2-6x+8y-11=0 ma współrzędne:",
-    "options": ["(-3,4)", "(3,4)", "(-3,-4)", "(3,-4)"],
+    "text": "Zbiór wartości funkcji zawiera",
+    "options": [
+      "tylko wartości dodatnie",
+      "same argumenty",
+      "wyłącznie miejsca zerowe",
+      "wszystkich wartości, jakie funkcja może przyjmować"
+    ],
     "correctIndex": 3
   },
   {
-    "text": "Oblicz odległość punktu (3,-4) od prostej x+y-1=0.",
-    "options": ["1", "√2", "2√2", "3"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jaki jest obraz punktu (2,-5) w symetrii względem osi OX?",
-    "options": ["(-2,-5)", "(2,5)", "(-2,5)", "(5,2)"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jaki punkt otrzymamy po odbiciu punktu (-1,4) względem prostej y=x?",
-    "options": ["(4,-1)", "(-4,1)", "(1,-4)", "(-1,4)"],
+    "text": "Miejsce zerowe funkcji to taki argument, dla którego wartość funkcji jest równa",
+    "options": [
+      "0",
+      "1",
+      "-1",
+      "nieskończoność"
+    ],
     "correctIndex": 0
   },
   {
-    "text": "Pole trapezu o podstawach 5 i 11 oraz wysokości 4 jest równe:",
-    "options": ["24", "28", "32", "40"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Objętość graniastosłupa prostego o polu podstawy 12 i wysokości 7 wynosi:",
-    "options": ["72", "84", "96", "112"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Prostokąt ma obwód 26, a jeden bok długości 5. Ile wynosi długość jego przekątnej?",
-    "options": ["√73", "√80", "√89", "10"],
-    "correctIndex": 2
-  },
-  {
-    "text": "W trójkącie prostokątnym przeciwprostokątna ma długość 10, a jedna przyprostokątna 6. Druga przyprostokątna ma długość:",
-    "options": ["4", "6", "8", "10"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jaki jest kąt między wektorami [1,1] i [1,-1]?",
-    "options": ["45°", "60°", "90°", "120°"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Pole sześciokąta foremnego o boku 2 jest równe:",
-    "options": ["3√3", "4√3", "6√3", "12√3"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile wynosi granica lim(x→2) (x^2-4)/(x-2)?",
-    "options": ["2", "4", "6", "8"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi granica lim(x→0) sin(3x)/x?",
-    "options": ["1", "3", "0", "∞"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Oblicz granicę lim(x→∞) (5x^2-1)/(2x^2+7).",
-    "options": ["2", "5/2", "7/2", "5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pochodna funkcji f(x)=x^3-4x w punkcie x=2 jest równa:",
-    "options": ["4", "6", "8", "10"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Pochodna funkcji f(x)=√x w punkcie x=9 ma wartość:",
-    "options": ["1/3", "1/6", "1/9", "1/18"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Równanie stycznej do paraboli y=x^2 w punkcie o odciętej 1 ma postać:",
-    "options": ["y=x+1", "y=2x-1", "y=2x+1", "y=x-1"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dla funkcji f(x)=3x^2+2x-5 rozwiązaniem równania f'(x)=0 jest:",
-    "options": ["-1", "-1/2", "-1/3", "1/3"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Która funkcja jest jedną z funkcji pierwotnych funkcji 2x+1?",
-    "options": ["x^2+x+C", "2x^2+x+C", "x^2+1+C", "2x+1+C"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Pole obszaru pod wykresem y=x na przedziale od 0 do 2 wynosi:",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi granica lim(x→0) (1-cos x)/x^2?",
-    "options": ["0", "1/4", "1/2", "1"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jakie jest nachylenie stycznej do wykresu y=1/x w punkcie o odciętej -2?",
-    "options": ["-1/4", "1/4", "-1/2", "1/2"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jaki jest współczynnik kierunkowy siecznej wykresu y=x^3 przechodzącej przez punkty o odciętych 1 i 2?",
-    "options": ["3", "5", "7", "9"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Funkcja y=2x^2-8x+1 ma wierzchołek o odciętej:",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi granica lim(x→1) (x^3-1)/(x-1)?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Pochodna funkcji ln x w punkcie x=e jest równa:",
-    "options": ["1/e", "1", "e", "ln e"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Ile wynosi całka oznaczona ∫[1,4] 5 dx?",
-    "options": ["10", "12", "15", "20"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jeżeli s(t)=t^2-6t+8 opisuje położenie, to prędkość chwilowa w chwili t=3 jest równa:",
-    "options": ["-3", "0", "3", "6"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Na którym przedziale funkcja y=-x^2+6x-5 jest malejąca?",
-    "options": ["(-∞,3)", "(-∞,3]", "(3,∞)", "[3,∞)"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Oblicz granicę lim(x→∞) (√(x^2+3x)-x).",
-    "options": ["0", "1", "3/2", "3"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Zbiorem rozwiązań nierówności x/(x-1)>1 jest:",
-    "options": ["x<1", "x>1", "x<0", "0<x<1"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile rozwiązań rzeczywistych ma równanie |x^2-4|=0?",
-    "options": ["0", "1", "2", "4"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jeżeli x i y są dodatnie, x+y=8 oraz xy=12, to ile wynosi x^2+y^2?",
-    "options": ["28", "32", "36", "40"],
+    "text": "Kiedy mówimy, że liczba jest miejscem zerowym funkcji?",
+    "options": [
+      "1",
+      "-1",
+      "nieskończoność",
+      "0"
+    ],
     "correctIndex": 3
   },
   {
-    "text": "Najmniejsza liczba całkowita większa od log2 20 to:",
-    "options": ["4", "5", "6", "8"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi 27^(2/3)?",
-    "options": ["6", "9", "12", "18"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wartość liczby 9^(-1/2) jest równa:",
-    "options": ["1/9", "1/6", "1/3", "3"],
+    "text": "Miejsce zerowe funkcji spełnia warunek",
+    "options": [
+      "-1",
+      "nieskończoność",
+      "0",
+      "1"
+    ],
     "correctIndex": 2
   },
   {
-    "text": "Trójkąt ma boki w stosunku 3:4:5, a jego obwód wynosi 36. Ile ma najdłuższy bok?",
-    "options": ["12", "15", "18", "20"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Promień okręgu opisanego na trójkącie prostokątnym o przeciwprostokątnej 14 wynosi:",
-    "options": ["5", "6", "7", "14"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Wysokość trójkąta równobocznego o boku 8 jest równa:",
-    "options": ["2√3", "4√3", "6√3", "8√3"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Objętość stożka o promieniu podstawy 3 i wysokości 4 wynosi:",
-    "options": ["8π", "12π", "16π", "36π"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pole powierzchni całkowitej walca o promieniu 2 i wysokości 5 jest równe:",
-    "options": ["20π", "24π", "28π", "40π"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Przekątna sześcianu o krawędzi 3 ma długość:",
-    "options": ["3√2", "3√3", "6", "6√3"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pole koła wpisanego w kwadrat o boku 10 wynosi:",
-    "options": ["10π", "20π", "25π", "50π"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Suma miar kątów wewnętrznych dziesięciokąta wynosi:",
-    "options": ["1260°", "1440°", "1620°", "1800°"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Miara kąta zewnętrznego pięciokąta foremnego jest równa:",
-    "options": ["60°", "72°", "90°", "108°"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile przekątnych ma siedmiokąt?",
-    "options": ["7", "9", "14", "21"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Trójkąt równoboczny ma pole 9√3. Jaką długość ma jego bok?",
-    "options": ["3", "4", "6", "9"],
-    "correctIndex": 2
-  },
-  {
-    "text": "W rombie przekątne mają długości 10 i 24. Długość boku tego rombu wynosi:",
-    "options": ["11", "12", "13", "14"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Pole rombu o boku 10 i kącie ostrym 30° jest równe:",
-    "options": ["25", "50", "75", "100"],
-    "correctIndex": 1
-  },
-  {
-    "text": "W trójkącie równobocznym promień okręgu wpisanego ma długość 2. Ile wynosi wysokość trójkąta?",
-    "options": ["4", "6", "2√3", "4√3"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Długość środkowej poprowadzonej na przeciwprostokątną w trójkącie prostokątnym o przeciwprostokątnej 18 jest równa:",
-    "options": ["6", "8", "9", "12"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jakie jest prawdopodobieństwo wylosowania dokładnie jednego asa przy losowaniu dwóch kart bez zwracania z pełnej talii 52 kart?",
-    "options": ["16/221", "32/221", "4/13", "1/17"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile pięciocyfrowych liczb parzystych można utworzyć z cyfr 1,2,3,4,5 bez powtórzeń?",
-    "options": ["24", "36", "48", "60"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Losujemy jedną liczbę całkowitą z przedziału od 1 do 100. Jakie jest prawdopodobieństwo, że będzie podzielna przez 6 lub przez 15?",
-    "options": ["17/100", "18/100", "19/100", "20/100"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Na ile sposobów można usadzić 4 różne osoby przy okrągłym stole, jeśli układy obrócone uznajemy za takie same?",
-    "options": ["4", "6", "12", "24"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Z grupy 10 uczniów wybieramy przewodniczącego i zastępcę. Na ile sposobów można to zrobić?",
-    "options": ["45", "80", "90", "100"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jaki jest współczynnik przy x^4 w rozwinięciu dwumianu (x+2)^5?",
-    "options": ["5", "10", "20", "40"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi suma wszystkich współczynników w rozwinięciu (a+b)^8?",
-    "options": ["128", "256", "512", "1024"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jakie jest prawdopodobieństwo, że przy rzucie dwiema kostkami iloczyn oczek będzie parzysty?",
-    "options": ["1/2", "2/3", "3/4", "5/6"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Wartość oczekiwana zmiennej losowej opisującej wynik pojedynczego rzutu uczciwą sześcienną kostką to:",
-    "options": ["3", "7/2", "4", "9/2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wariancja rozkładu Bernoulliego dla p=1/2 jest równa:",
-    "options": ["1/8", "1/4", "1/2", "3/4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Rozwiązaniem równania 2^x=1/8 jest:",
-    "options": ["-3", "-2", "2", "3"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Ile wynosi log3 81-log3 3?",
-    "options": ["2", "3", "4", "5"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeżeli x=log2 3, to log2 12 jest równe:",
-    "options": ["x+1", "x+2", "2x+1", "2x+2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Rozwiązaniem równania 4^x=8 jest liczba:",
-    "options": ["3/4", "1", "3/2", "2"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile liczb rzeczywistych należy wykluczyć z dziedziny funkcji 1/(x^2-5x+6)?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Funkcja f(x)=3/x jest:",
-    "options": ["parzysta", "nieparzysta", "okresowa", "stała"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi f(-2) dla funkcji f(x)=x^3-2x?",
-    "options": ["-8", "-4", "4", "8"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Rozwiąż nierówność |x-2|<3.",
-    "options": ["(-1,5)", "(-1,3)", "(2,5)", "(-3,1)"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Przesunięcie wykresu y=|x| o 2 w prawo i o 3 w górę daje wykres funkcji:",
-    "options": ["|x+2|+3", "|x-2|+3", "|x+2|-3", "|x-3|+2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Oś symetrii paraboli y=2x^2+8x-1 ma równanie:",
-    "options": ["x=-4", "x=-2", "x=2", "x=4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Najmniejsza wartość wyrażenia x^2+6x+13 wynosi:",
-    "options": ["1", "2", "4", "13"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile punktów wspólnych mają wykresy y=x^2 oraz y=2x+3?",
-    "options": ["0", "1", "2", "3"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Iloczyn pierwiastków równania 3x^2-7x+2=0 jest równy:",
-    "options": ["1/3", "2/3", "3/2", "7/3"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wielomian stopnia drugiego o pierwiastkach 2 i -5 oraz współczynniku wiodącym 1 ma wyraz wolny równy:",
-    "options": ["-10", "-7", "7", "10"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jeżeli x-2 jest czynnikiem wielomianu x^3+ax^2-5x+6, to a jest równe:",
-    "options": ["-2", "-1", "1", "2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jaka jest reszta z dzielenia x^4+2x+1 przez x+1?",
-    "options": ["-2", "-1", "0", "1"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Najmniejsza wartość wielomianu x^2+1 na zbiorze liczb rzeczywistych wynosi:",
-    "options": ["0", "1", "2", "Nie istnieje"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dodatnim rozwiązaniem równania 1/x=x/4 jest liczba:",
-    "options": ["1", "2", "4", "8"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeżeli x+y=10 i xy=21, to większa z liczb x,y jest równa:",
-    "options": ["6", "7", "8", "9"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Uprość wyrażenie (a^0b^-1)^-1 dla a!=0 i b!=0.",
-    "options": ["a", "1/b", "b", "ab"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Wielkość wzrosła o 20%, a potem spadła o 20%. Jaka była łączna zmiana względem wartości początkowej?",
-    "options": ["spadek o 4%", "wzrost o 4%", "spadek o 8%", "bez zmiany"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Populacja podwaja się co 5 lat. Ile razy większa będzie po 15 latach?",
-    "options": ["4", "6", "8", "16"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Kapitał 1000 zł rośnie według oprocentowania prostego 5% rocznie. Ile będzie wynosił po 3 latach?",
-    "options": ["1050 zł", "1100 zł", "1150 zł", "1157,63 zł"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jeżeli log10 N=3,2, to liczba N należy do przedziału:",
-    "options": ["(10,100)", "(100,1000)", "(1000,10000)", "(10000,100000)"],
-    "correctIndex": 2
-  },
-  {
-    "text": "Rozwiązaniem równania |x+1|=|x-5| jest:",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Moduł liczby zespolonej 1-i jest równy:",
-    "options": ["1", "√2", "2", "2√2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Kwadrat liczby zespolonej 2+i jest równy:",
-    "options": ["3+4i", "3-4i", "5+2i", "5-2i"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Iloczyn z·z sprzężonego dla liczby z=3-4i jest równy:",
-    "options": ["7", "12", "24", "25"],
+    "text": "Jeśli współczynnik kierunkowy prostej jest dodatni, to funkcja",
+    "options": [
+      "maleje",
+      "jest stała",
+      "nie ma wykresu",
+      "rośnie"
+    ],
     "correctIndex": 3
   },
   {
-    "text": "Ile rozwiązań rzeczywistych ma równanie x^4=16?",
-    "options": ["1", "2", "3", "4"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wartość wyrażenia (1+i)^4 jest równa:",
-    "options": ["-4", "-2", "2", "4"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jaki jest iloraz wielomianu x^3-1 przez x-1?",
-    "options": ["x^2-1", "x^2+x+1", "x^2-x+1", "x^2+1"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Równanie x^2-2mx+9=0 ma podwójny pierwiastek. Ile wynosi suma wszystkich możliwych wartości m?",
-    "options": ["-6", "0", "6", "9"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Które równanie opisuje prostą przechodzącą przez punkt (2,1) i równoległą do prostej 3x+4y-12=0?",
-    "options": ["3x+4y-10=0", "3x-4y-10=0", "4x+3y-10=0", "3x+4y+10=0"],
-    "correctIndex": 0
-  },
-  {
-    "text": "Odległość między punktami (-2,5) i (1,1) jest równa:",
-    "options": ["4", "5", "√13", "√17"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Środek ciężkości trójkąta o wierzchołkach (0,0), (6,0) i (0,3) ma współrzędne:",
-    "options": ["(1,1)", "(2,1)", "(2,2)", "(3,1)"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pole koła o środku w początku układu i przechodzącego przez punkt (3,4) wynosi:",
-    "options": ["16π", "20π", "25π", "49π"],
+    "text": "Dodatni współczynnik kierunkowy oznacza, że prosta",
+    "options": [
+      "jest stała",
+      "nie ma wykresu",
+      "rośnie",
+      "maleje"
+    ],
     "correctIndex": 2
   },
   {
-    "text": "Współczynnik kierunkowy prostej przechodzącej przez punkty (-2,1) i (4,-2) jest równy:",
-    "options": ["-1/2", "-1/3", "1/2", "2"],
+    "text": "Co dzieje się z funkcją liniową przy dodatnim współczynniku kierunkowym?",
+    "options": [
+      "nie ma wykresu",
+      "rośnie",
+      "maleje",
+      "jest stała"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jeśli współczynnik kierunkowy prostej jest ujemny, to funkcja",
+    "options": [
+      "jest stała",
+      "zawsze przecina oś OX w zerze",
+      "maleje",
+      "rośnie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Ujemny współczynnik kierunkowy oznacza, że prosta",
+    "options": [
+      "zawsze przecina oś OX w zerze",
+      "maleje",
+      "rośnie",
+      "jest stała"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak zachowuje się funkcja liniowa przy ujemnym współczynniku kierunkowym?",
+    "options": [
+      "maleje",
+      "rośnie",
+      "jest stała",
+      "zawsze przecina oś OX w zerze"
+    ],
     "correctIndex": 0
   },
   {
-    "text": "Punkt dzielący odcinek od A=(0,0) do B=(8,12) w stosunku 1:3 licząc od punktu A ma współrzędne:",
-    "options": ["(1,2)", "(2,3)", "(4,6)", "(6,9)"],
+    "text": "Wyraz wolny w równaniu y = ax + b wskazuje punkt przecięcia z osią",
+    "options": [
+      "liczb rzeczywistych",
+      "OY",
+      "OX",
+      "symetrii"
+    ],
     "correctIndex": 1
   },
   {
-    "text": "Symetralna odcinka o końcach (0,0) i (4,0) ma równanie:",
-    "options": ["x=1", "x=2", "y=2", "y=0"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeżeli u=[2,3] oraz v=[-1,4], to suma u+v jest równa:",
-    "options": ["[1,7]", "[1,1]", "[3,7]", "[3,-1]"],
+    "text": "W równaniu funkcji liniowej liczba b mówi o przecięciu z osią",
+    "options": [
+      "OY",
+      "OX",
+      "symetrii",
+      "liczb rzeczywistych"
+    ],
     "correctIndex": 0
   },
   {
-    "text": "Ile wynosi granica lim(x→0) (e^x-1)/x?",
-    "options": ["0", "1", "e", "∞"],
-    "correctIndex": 1
+    "text": "Co określa wyraz wolny w funkcji liniowej?",
+    "options": [
+      "OX",
+      "symetrii",
+      "liczb rzeczywistych",
+      "OY"
+    ],
+    "correctIndex": 3
   },
   {
-    "text": "Pochodna funkcji sin x w punkcie x=0 jest równa:",
-    "options": ["0", "1", "-1", "π/2"],
-    "correctIndex": 1
+    "text": "Proste równoległe mają",
+    "options": [
+      "taki sam współczynnik kierunkowy",
+      "wyraz wolny równy zero",
+      "zawsze dodatnie nachylenie",
+      "iloczyn współczynników równy -1"
+    ],
+    "correctIndex": 0
   },
   {
-    "text": "Pochodna funkcji cos x w punkcie x=π ma wartość:",
-    "options": ["-1", "0", "1", "π"],
-    "correctIndex": 1
+    "text": "Jaką cechę mają proste równoległe w układzie współrzędnych?",
+    "options": [
+      "wyraz wolny równy zero",
+      "zawsze dodatnie nachylenie",
+      "iloczyn współczynników równy -1",
+      "taki sam współczynnik kierunkowy"
+    ],
+    "correctIndex": 3
   },
   {
-    "text": "Ile wynosi całka oznaczona ∫[1,e] (1/x) dx?",
-    "options": ["0", "1", "e-1", "ln e^2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeżeli pochodna funkcji jest dodatnia na całym przedziale, to funkcja na tym przedziale jest:",
-    "options": ["malejąca", "stała", "rosnąca", "okresowa"],
+    "text": "Dla prostych równoległych współczynniki kierunkowe są",
+    "options": [
+      "zawsze dodatnie nachylenie",
+      "iloczyn współczynników równy -1",
+      "taki sam współczynnik kierunkowy",
+      "wyraz wolny równy zero"
+    ],
     "correctIndex": 2
   },
   {
-    "text": "Które twierdzenie gwarantuje istnienie miejsca zerowego funkcji ciągłej, która na końcach przedziału przyjmuje wartości różnych znaków?",
-    "options": ["Twierdzenie Pitagorasa", "Twierdzenie Bolzana", "Twierdzenie Talesa", "Twierdzenie de Moivre'a"],
-    "correctIndex": 1
+    "text": "Proste prostopadłe mają współczynniki kierunkowe, których iloczyn jest równy",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "-1"
+    ],
+    "correctIndex": 3
   },
   {
-    "text": "Granica lim(x→∞) (1+1/x)^x jest równa:",
-    "options": ["1", "2", "e", "∞"],
+    "text": "Jaki warunek spełniają współczynniki kierunkowe prostych prostopadłych?",
+    "options": [
+      "1",
+      "2",
+      "-1",
+      "0"
+    ],
     "correctIndex": 2
   },
   {
-    "text": "Pochodna funkcji e^(2x) w punkcie x=0 ma wartość:",
-    "options": ["1", "2", "e", "2e"],
+    "text": "Dla prostych prostopadłych iloczyn współczynników kierunkowych wynosi",
+    "options": [
+      "2",
+      "-1",
+      "0",
+      "1"
+    ],
     "correctIndex": 1
   },
   {
-    "text": "Ile wynosi całka oznaczona ∫[0,π/2] cos x dx?",
-    "options": ["0", "1", "π/2", "2"],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile punktów krytycznych ma funkcja f(x)=x^3-3x?",
-    "options": ["0", "1", "2", "3"],
+    "text": "Wierzchołek paraboli to punkt, w którym funkcja kwadratowa osiąga",
+    "options": [
+      "równej zero",
+      "nieoznaczonej",
+      "największej lub najmniejszej",
+      "zawsze dodatniej"
+    ],
     "correctIndex": 2
+  },
+  {
+    "text": "Co jest szczególnego w wierzchołku paraboli?",
+    "options": [
+      "nieoznaczonej",
+      "największej lub najmniejszej",
+      "zawsze dodatniej",
+      "równej zero"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wierzchołek paraboli to punkt wartości",
+    "options": [
+      "największej lub najmniejszej",
+      "zawsze dodatniej",
+      "równej zero",
+      "nieoznaczonej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jeżeli delta równania kwadratowego jest równa zero, to równanie ma",
+    "options": [
+      "nieskończenie wiele rozwiązań",
+      "jedno rozwiązanie rzeczywiste",
+      "dwa różne rozwiązania",
+      "brak rozwiązań rzeczywistych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co oznacza delta równa zero?",
+    "options": [
+      "jedno rozwiązanie rzeczywiste",
+      "dwa różne rozwiązania",
+      "brak rozwiązań rzeczywistych",
+      "nieskończenie wiele rozwiązań"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Równanie kwadratowe z deltą równą zero ma",
+    "options": [
+      "dwa różne rozwiązania",
+      "brak rozwiązań rzeczywistych",
+      "nieskończenie wiele rozwiązań",
+      "jedno rozwiązanie rzeczywiste"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jeżeli delta równania kwadratowego jest dodatnia, to równanie ma",
+    "options": [
+      "dwa rozwiązania rzeczywiste",
+      "jedno rozwiązanie",
+      "brak rozwiązań rzeczywistych",
+      "same rozwiązania urojone"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Dodatnia delta oznacza",
+    "options": [
+      "jedno rozwiązanie",
+      "brak rozwiązań rzeczywistych",
+      "same rozwiązania urojone",
+      "dwa rozwiązania rzeczywiste"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Równanie kwadratowe z deltą większą od zera ma",
+    "options": [
+      "brak rozwiązań rzeczywistych",
+      "same rozwiązania urojone",
+      "dwa rozwiązania rzeczywiste",
+      "jedno rozwiązanie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jeżeli delta równania kwadratowego jest ujemna, to w liczbach rzeczywistych równanie ma",
+    "options": [
+      "jedno rozwiązanie",
+      "dwa rozwiązania",
+      "nieskończenie wiele rozwiązań",
+      "brak rozwiązań"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Ujemna delta oznacza, że równanie kwadratowe",
+    "options": [
+      "dwa rozwiązania",
+      "nieskończenie wiele rozwiązań",
+      "brak rozwiązań",
+      "jedno rozwiązanie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W zbiorze liczb rzeczywistych równanie z deltą ujemną ma",
+    "options": [
+      "nieskończenie wiele rozwiązań",
+      "brak rozwiązań",
+      "jedno rozwiązanie",
+      "dwa rozwiązania"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Suma kątów wewnętrznych trójkąta wynosi",
+    "options": [
+      "270°",
+      "360°",
+      "180°",
+      "90°"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Ile wynosi suma kątów w trójkącie?",
+    "options": [
+      "360°",
+      "180°",
+      "90°",
+      "270°"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Każdy trójkąt ma sumę kątów równą",
+    "options": [
+      "180°",
+      "90°",
+      "270°",
+      "360°"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jeżeli dwa kąty są dopełniające, to ich suma wynosi",
+    "options": [
+      "360°",
+      "90°",
+      "120°",
+      "180°"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Kąty dopełniające mają razem",
+    "options": [
+      "90°",
+      "120°",
+      "180°",
+      "360°"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Suma kątów dopełniających to",
+    "options": [
+      "120°",
+      "180°",
+      "360°",
+      "90°"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jeżeli dwa kąty są przyległe i tworzą linię prostą, to ich suma wynosi",
+    "options": [
+      "180°",
+      "90°",
+      "270°",
+      "360°"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Kąty przyległe na prostej dają razem",
+    "options": [
+      "90°",
+      "270°",
+      "360°",
+      "180°"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Na jednej prostej kąty przyległe mają sumę",
+    "options": [
+      "270°",
+      "360°",
+      "180°",
+      "90°"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W trójkącie prostokątnym najdłuższy bok to",
+    "options": [
+      "przyprostokątna",
+      "wysokość",
+      "podstawa",
+      "przeciwprostokątna"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się najdłuższy bok trójkąta prostokątnego?",
+    "options": [
+      "wysokość",
+      "podstawa",
+      "przeciwprostokątna",
+      "przyprostokątna"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Najdłuższym bokiem w trójkącie prostokątnym jest",
+    "options": [
+      "podstawa",
+      "przeciwprostokątna",
+      "przyprostokątna",
+      "wysokość"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Twierdzenie Pitagorasa dotyczy",
+    "options": [
+      "rozwartokątnego",
+      "dowolnego bez warunków",
+      "trójkąta prostokątnego",
+      "równobocznego"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W jakim trójkącie stosujemy twierdzenie Pitagorasa?",
+    "options": [
+      "dowolnego bez warunków",
+      "trójkąta prostokątnego",
+      "równobocznego",
+      "rozwartokątnego"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Twierdzenie Pitagorasa wykorzystuje się w trójkącie",
+    "options": [
+      "trójkąta prostokątnego",
+      "równobocznego",
+      "rozwartokątnego",
+      "dowolnego bez warunków"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Sinus kąta ostrego w trójkącie prostokątnym to stosunek",
+    "options": [
+      "jednej przyprostokątnej do drugiej",
+      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
+      "przyprostokątnej przyległej do przeciwprostokątnej",
+      "przeciwprostokątnej do przyprostokątnej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak definiujemy sinus kąta ostrego?",
+    "options": [
+      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
+      "przyprostokątnej przyległej do przeciwprostokątnej",
+      "przeciwprostokątnej do przyprostokątnej",
+      "jednej przyprostokątnej do drugiej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Sinus to stosunek boku",
+    "options": [
+      "przyprostokątnej przyległej do przeciwprostokątnej",
+      "przeciwprostokątnej do przyprostokątnej",
+      "jednej przyprostokątnej do drugiej",
+      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Cosinus kąta ostrego w trójkącie prostokątnym to stosunek",
+    "options": [
+      "przyprostokątnej przyległej do przeciwprostokątnej",
+      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
+      "przeciwprostokątnej do przyprostokątnej",
+      "jednej przyprostokątnej do drugiej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak definiujemy cosinus kąta ostrego?",
+    "options": [
+      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
+      "przeciwprostokątnej do przyprostokątnej",
+      "jednej przyprostokątnej do drugiej",
+      "przyprostokątnej przyległej do przeciwprostokątnej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Cosinus to stosunek boku",
+    "options": [
+      "przeciwprostokątnej do przyprostokątnej",
+      "jednej przyprostokątnej do drugiej",
+      "przyprostokątnej przyległej do przeciwprostokątnej",
+      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Tangens kąta ostrego w trójkącie prostokątnym to stosunek",
+    "options": [
+      "przeciwprostokątnej do przyprostokątnej",
+      "przyprostokątnej przyległej do przeciwprostokątnej",
+      "sumy boków do przeciwprostokątnej",
+      "przyprostokątnej naprzeciw kąta do przyprostokątnej przyległej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak definiujemy tangens kąta ostrego?",
+    "options": [
+      "przyprostokątnej przyległej do przeciwprostokątnej",
+      "sumy boków do przeciwprostokątnej",
+      "przyprostokątnej naprzeciw kąta do przyprostokątnej przyległej",
+      "przeciwprostokątnej do przyprostokątnej"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Tangens to stosunek",
+    "options": [
+      "sumy boków do przeciwprostokątnej",
+      "przyprostokątnej naprzeciw kąta do przyprostokątnej przyległej",
+      "przeciwprostokątnej do przyprostokątnej",
+      "przyprostokątnej przyległej do przeciwprostokątnej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pole prostokąta obliczamy jako",
+    "options": [
+      "a + b",
+      "a² + b²",
+      "a · b",
+      "2a + 2b"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jaki wzór opisuje pole prostokąta?",
+    "options": [
+      "a² + b²",
+      "a · b",
+      "2a + 2b",
+      "a + b"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pole prostokąta to",
+    "options": [
+      "a · b",
+      "2a + 2b",
+      "a + b",
+      "a² + b²"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Obwód prostokąta obliczamy jako",
+    "options": [
+      "a + b",
+      "2a + 2b",
+      "a · b",
+      "a² + b²"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jaki wzór opisuje obwód prostokąta?",
+    "options": [
+      "2a + 2b",
+      "a · b",
+      "a² + b²",
+      "a + b"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Obwód prostokąta to",
+    "options": [
+      "a · b",
+      "a² + b²",
+      "a + b",
+      "2a + 2b"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Pole trójkąta obliczamy jako",
+    "options": [
+      "a · h / 2",
+      "a + h",
+      "2a + 2h",
+      "a · h"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który wzór daje pole trójkąta?",
+    "options": [
+      "a + h",
+      "2a + 2h",
+      "a · h",
+      "a · h / 2"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Pole trójkąta wynosi",
+    "options": [
+      "2a + 2h",
+      "a · h",
+      "a · h / 2",
+      "a + h"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pole koła wyraża wzór",
+    "options": [
+      "2πr",
+      "πd",
+      "r²/π",
+      "πr²"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak obliczamy pole koła?",
+    "options": [
+      "πd",
+      "r²/π",
+      "πr²",
+      "2πr"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pole koła to",
+    "options": [
+      "r²/π",
+      "πr²",
+      "2πr",
+      "πd"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Obwód okręgu wyraża wzór",
+    "options": [
+      "πd²",
+      "2r²",
+      "2πr",
+      "πr²"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak obliczamy długość okręgu?",
+    "options": [
+      "2r²",
+      "2πr",
+      "πr²",
+      "πd²"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Obwód okręgu to",
+    "options": [
+      "2πr",
+      "πr²",
+      "πd²",
+      "2r²"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Okrąg i koło to pojęcia",
+    "options": [
+      "okrąg ma pole, a koło nie",
+      "okrąg jest brzegiem, a koło obszarem",
+      "oznaczają dokładnie to samo",
+      "koło jest tylko w geometrii przestrzennej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Które zdanie poprawnie odróżnia okrąg od koła?",
+    "options": [
+      "okrąg jest brzegiem, a koło obszarem",
+      "oznaczają dokładnie to samo",
+      "koło jest tylko w geometrii przestrzennej",
+      "okrąg ma pole, a koło nie"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Różnica między okręgiem a kołem polega na tym, że",
+    "options": [
+      "oznaczają dokładnie to samo",
+      "koło jest tylko w geometrii przestrzennej",
+      "okrąg ma pole, a koło nie",
+      "okrąg jest brzegiem, a koło obszarem"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Sześcian ma wszystkie krawędzie",
+    "options": [
+      "równej długości",
+      "parami prostopadłe tylko w podstawie",
+      "różnej długości",
+      "zawsze dwa razy dłuższe od przekątnej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co jest charakterystyczne dla sześcianu?",
+    "options": [
+      "parami prostopadłe tylko w podstawie",
+      "różnej długości",
+      "zawsze dwa razy dłuższe od przekątnej",
+      "równej długości"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W sześcianie wszystkie krawędzie są",
+    "options": [
+      "różnej długości",
+      "zawsze dwa razy dłuższe od przekątnej",
+      "równej długości",
+      "parami prostopadłe tylko w podstawie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Prostopadłościan różni się od sześcianu tym, że",
+    "options": [
+      "nie ma ścian prostokątnych",
+      "wszystkie ściany są trójkątami",
+      "nie ma objętości",
+      "nie wszystkie muszą mieć tę samą długość"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jaka cecha odróżnia prostopadłościan od sześcianu?",
+    "options": [
+      "wszystkie ściany są trójkątami",
+      "nie ma objętości",
+      "nie wszystkie muszą mieć tę samą długość",
+      "nie ma ścian prostokątnych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W prostopadłościanie krawędzie",
+    "options": [
+      "nie ma objętości",
+      "nie wszystkie muszą mieć tę samą długość",
+      "nie ma ścian prostokątnych",
+      "wszystkie ściany są trójkątami"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Walec ma w podstawie",
+    "options": [
+      "kwadratów",
+      "rombów",
+      "kół",
+      "trójkątów"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jakie figury są podstawami walca?",
+    "options": [
+      "rombów",
+      "kół",
+      "trójkątów",
+      "kwadratów"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Walec składa się z dwóch podstaw w kształcie",
+    "options": [
+      "kół",
+      "trójkątów",
+      "kwadratów",
+      "rombów"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Romb to czworokąt, w którym",
+    "options": [
+      "zawsze tylko dwa boki są równe",
+      "wszystkie boki są równe",
+      "wszystkie kąty są proste",
+      "tylko przekątne są równe"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Co jest najważniejszą cechą rombu?",
+    "options": [
+      "wszystkie boki są równe",
+      "wszystkie kąty są proste",
+      "tylko przekątne są równe",
+      "zawsze tylko dwa boki są równe"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "W rombie wszystkie boki są",
+    "options": [
+      "wszystkie kąty są proste",
+      "tylko przekątne są równe",
+      "zawsze tylko dwa boki są równe",
+      "wszystkie boki są równe"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Prostokąt to czworokąt, w którym",
+    "options": [
+      "wszystkie kąty są proste",
+      "wszystkie boki są równe",
+      "przekątne są prostopadłe zawsze",
+      "ma tylko jedną parę boków równoległych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co wyróżnia prostokąt?",
+    "options": [
+      "wszystkie boki są równe",
+      "przekątne są prostopadłe zawsze",
+      "ma tylko jedną parę boków równoległych",
+      "wszystkie kąty są proste"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W prostokącie wszystkie kąty są",
+    "options": [
+      "przekątne są prostopadłe zawsze",
+      "ma tylko jedną parę boków równoległych",
+      "wszystkie kąty są proste",
+      "wszystkie boki są równe"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Trapez to czworokąt mający",
+    "options": [
+      "wszystkie boki równe",
+      "cztery kąty proste",
+      "brak przekątnych",
+      "co najmniej jedną parę boków równoległych"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak rozpoznasz trapez?",
+    "options": [
+      "cztery kąty proste",
+      "brak przekątnych",
+      "co najmniej jedną parę boków równoległych",
+      "wszystkie boki równe"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Cechą trapezu jest",
+    "options": [
+      "brak przekątnych",
+      "co najmniej jedną parę boków równoległych",
+      "wszystkie boki równe",
+      "cztery kąty proste"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wartość bezwzględna liczby oznacza jej",
+    "options": [
+      "przeciwny znak",
+      "położenie względem jedynki",
+      "odległość od zera na osi liczbowej",
+      "największy dzielnik"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Co opisuje wartość bezwzględna?",
+    "options": [
+      "położenie względem jedynki",
+      "odległość od zera na osi liczbowej",
+      "największy dzielnik",
+      "przeciwny znak"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wartość bezwzględna liczby to odległość od",
+    "options": [
+      "odległość od zera na osi liczbowej",
+      "największy dzielnik",
+      "przeciwny znak",
+      "położenie względem jedynki"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Liczba podniesiona do potęgi zerowej jest równa",
+    "options": [
+      "-1",
+      "1",
+      "0",
+      "a"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Ile wynosi a⁰ dla a ≠ 0?",
+    "options": [
+      "1",
+      "0",
+      "a",
+      "-1"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Potęga zerowa liczby niezerowej daje",
+    "options": [
+      "0",
+      "a",
+      "-1",
+      "1"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Potęga o wykładniku ujemnym oznacza",
+    "options": [
+      "odwrotność odpowiedniej potęgi dodatniej",
+      "liczbę przeciwną",
+      "zawsze zero",
+      "to samo co potęga dodatnia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak rozumiemy ujemny wykładnik potęgi?",
+    "options": [
+      "liczbę przeciwną",
+      "zawsze zero",
+      "to samo co potęga dodatnia",
+      "odwrotność odpowiedniej potęgi dodatniej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "a do potęgi -1 to",
+    "options": [
+      "zawsze zero",
+      "to samo co potęga dodatnia",
+      "odwrotność odpowiedniej potęgi dodatniej",
+      "liczbę przeciwną"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pierwiastek kwadratowy z liczby rzeczywistej istnieje wtedy, gdy liczba pod pierwiastkiem jest",
+    "options": [
+      "ujemna",
+      "nieparzysta",
+      "większa od 10",
+      "nieujemna"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Kiedy w liczbach rzeczywistych można obliczyć pierwiastek kwadratowy?",
+    "options": [
+      "nieparzysta",
+      "większa od 10",
+      "nieujemna",
+      "ujemna"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pod pierwiastkiem kwadratowym w liczbach rzeczywistych może stać tylko liczba",
+    "options": [
+      "większa od 10",
+      "nieujemna",
+      "ujemna",
+      "nieparzysta"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Logarytm odpowiada na pytanie, do jakiej potęgi trzeba podnieść podstawę, aby otrzymać",
+    "options": [
+      "resztę z dzielenia",
+      "największy wspólny dzielnik",
+      "daną liczbę",
+      "sumę dwóch liczb"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Co mówi logarytm liczby?",
+    "options": [
+      "największy wspólny dzielnik",
+      "daną liczbę",
+      "sumę dwóch liczb",
+      "resztę z dzielenia"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Logarytm informuje, jaki wykładnik daje",
+    "options": [
+      "daną liczbę",
+      "sumę dwóch liczb",
+      "resztę z dzielenia",
+      "największy wspólny dzielnik"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Średnia arytmetyczna liczb to ich suma podzielona przez",
+    "options": [
+      "liczbę dodatnich elementów",
+      "liczbę wszystkich elementów",
+      "największy element",
+      "2"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak obliczamy średnią arytmetyczną?",
+    "options": [
+      "liczbę wszystkich elementów",
+      "największy element",
+      "2",
+      "liczbę dodatnich elementów"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Aby policzyć średnią arytmetyczną, dzielimy sumę przez",
+    "options": [
+      "największy element",
+      "2",
+      "liczbę dodatnich elementów",
+      "liczbę wszystkich elementów"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Mediana po uporządkowaniu danych to wartość",
+    "options": [
+      "środkowa",
+      "największa",
+      "najczęstsza",
+      "pierwsza dodatnia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co oznacza mediana?",
+    "options": [
+      "największa",
+      "najczęstsza",
+      "pierwsza dodatnia",
+      "środkowa"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Mediana jest elementem leżącym",
+    "options": [
+      "najczęstsza",
+      "pierwsza dodatnia",
+      "środkowa",
+      "największa"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Dominanta w zestawie danych to wartość, która występuje",
+    "options": [
+      "pośrodku",
+      "na końcu",
+      "dokładnie dwa razy",
+      "najczęściej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co oznacza dominanta?",
+    "options": [
+      "na końcu",
+      "dokładnie dwa razy",
+      "najczęściej",
+      "pośrodku"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Dominanta to liczba pojawiająca się",
+    "options": [
+      "dokładnie dwa razy",
+      "najczęściej",
+      "pośrodku",
+      "na końcu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Prawdopodobieństwo zdarzenia niemożliwego jest równe",
+    "options": [
+      "1",
+      "2",
+      "0",
+      "1/2"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jakie prawdopodobieństwo ma zdarzenie niemożliwe?",
+    "options": [
+      "2",
+      "0",
+      "1/2",
+      "1"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Zdarzenie niemożliwe ma prawdopodobieństwo",
+    "options": [
+      "0",
+      "1/2",
+      "1",
+      "2"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Prawdopodobieństwo zdarzenia pewnego jest równe",
+    "options": [
+      "2",
+      "1",
+      "0",
+      "1/2"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jakie prawdopodobieństwo ma zdarzenie pewne?",
+    "options": [
+      "1",
+      "0",
+      "1/2",
+      "2"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Zdarzenie pewne ma prawdopodobieństwo",
+    "options": [
+      "0",
+      "1/2",
+      "2",
+      "1"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "W ciągu arytmetycznym każdy kolejny wyraz powstaje przez",
+    "options": [
+      "dodanie tej samej liczby",
+      "pomnożenie przez tę samą liczbę",
+      "podzielenie przez numer wyrazu",
+      "zmianę znaku"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Co charakteryzuje ciąg arytmetyczny?",
+    "options": [
+      "pomnożenie przez tę samą liczbę",
+      "podzielenie przez numer wyrazu",
+      "zmianę znaku",
+      "dodanie tej samej liczby"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Kolejne wyrazy ciągu arytmetycznego otrzymujemy przez",
+    "options": [
+      "podzielenie przez numer wyrazu",
+      "zmianę znaku",
+      "dodanie tej samej liczby",
+      "pomnożenie przez tę samą liczbę"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "W ciągu geometrycznym każdy kolejny wyraz powstaje przez",
+    "options": [
+      "dodanie tej samej liczby",
+      "odjęcie tej samej liczby",
+      "podniesienie do kwadratu",
+      "pomnożenie przez tę samą liczbę"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Co charakteryzuje ciąg geometryczny?",
+    "options": [
+      "odjęcie tej samej liczby",
+      "podniesienie do kwadratu",
+      "pomnożenie przez tę samą liczbę",
+      "dodanie tej samej liczby"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Kolejne wyrazy ciągu geometrycznego otrzymujemy przez",
+    "options": [
+      "podniesienie do kwadratu",
+      "pomnożenie przez tę samą liczbę",
+      "dodanie tej samej liczby",
+      "odjęcie tej samej liczby"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "1% oznacza",
+    "options": [
+      "jedną tysięczną całości",
+      "całą wartość",
+      "jedną setną całości",
+      "jedną dziesiątą całości"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jak rozumieć zapis 1%?",
+    "options": [
+      "całą wartość",
+      "jedną setną całości",
+      "jedną dziesiątą całości",
+      "jedną tysięczną całości"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jeden procent to",
+    "options": [
+      "jedną setną całości",
+      "jedną dziesiątą całości",
+      "jedną tysięczną całości",
+      "całą wartość"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "1‰ oznacza",
+    "options": [
+      "sto procent",
+      "jedną tysięczną całości",
+      "jedną setną całości",
+      "jedną dziesiątą całości"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jak rozumieć zapis 1 promil?",
+    "options": [
+      "jedną tysięczną całości",
+      "jedną setną całości",
+      "jedną dziesiątą całości",
+      "sto procent"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jeden promil to",
+    "options": [
+      "jedną setną całości",
+      "jedną dziesiątą całości",
+      "sto procent",
+      "jedną tysięczną całości"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Na układzie współrzędnych oś OX jest osią",
+    "options": [
+      "poziomą",
+      "pionowa",
+      "symetrii",
+      "liczb ujemnych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jak nazywa się oś OX?",
+    "options": [
+      "pionowa",
+      "symetrii",
+      "liczb ujemnych",
+      "poziomą"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Oś OX to oś",
+    "options": [
+      "symetrii",
+      "liczb ujemnych",
+      "poziomą",
+      "pionowa"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Na układzie współrzędnych oś OY jest osią",
+    "options": [
+      "pozioma",
+      "nachylenia",
+      "kątów",
+      "pionową"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jak nazywa się oś OY?",
+    "options": [
+      "nachylenia",
+      "kątów",
+      "pionową",
+      "pozioma"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Oś OY to oś",
+    "options": [
+      "kątów",
+      "pionową",
+      "pozioma",
+      "nachylenia"
+    ],
+    "correctIndex": 1
   }
 ]

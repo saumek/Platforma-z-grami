@@ -8,21 +8,16 @@ type AppBottomNavProps = {
   compact?: boolean;
 };
 
-export function AppBottomNav({ active, hasJoinedRoom, compact = false }: AppBottomNavProps) {
+export function AppBottomNav({ active, hasJoinedRoom }: AppBottomNavProps) {
   return (
     <nav
-      className={`fixed bottom-0 w-full z-50 rounded-t-[2.5rem] bg-[#0e0e0e]/90 backdrop-blur-2xl shadow-[0_-10px_40px_-15px_rgba(182,160,255,0.2)] mobile-safe-bottom ${
-        compact ? "border-t border-white/6" : ""
-      }`}
+      className="fixed bottom-0 left-0 right-0 z-50 w-full rounded-t-[2.35rem] border-t border-white/[0.08] bg-[linear-gradient(180deg,rgba(29,29,34,0.74)_0%,rgba(12,12,15,0.68)_100%)] backdrop-blur-[26px] shadow-[0_-14px_42px_-18px_rgba(182,160,255,0.24),0_-2px_0_rgba(255,255,255,0.04)]"
+      style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) * 0.55)" }}
     >
-      <div
-        className={`flex justify-around items-center w-full max-w-md mx-auto ${
-          compact ? "h-16 px-6 pb-1" : "h-20 px-8 pb-4"
-        }`}
-      >
+      <div className="mx-auto flex h-[4.2rem] w-full max-w-md items-center justify-around px-7 pb-1">
         {hasJoinedRoom ? (
           <Link
-            className={`flex flex-col items-center justify-center transition-colors active:scale-90 duration-200 ${
+            className={`flex flex-col items-center justify-center transition-colors duration-200 active:scale-90 ${
               active === "games"
                 ? "text-[#b6a0ff] drop-shadow-[0_0_8px_rgba(182,160,255,0.5)]"
                 : "text-slate-500 hover:text-[#b6a0ff]"
@@ -35,17 +30,17 @@ export function AppBottomNav({ active, hasJoinedRoom, compact = false }: AppBott
             >
               sports_esports
             </span>
-            <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Gry</span>
+            <span className="mt-0.5 text-[9px] font-bold uppercase tracking-widest">Gry</span>
           </Link>
         ) : (
-          <button className="flex flex-col items-center justify-center text-slate-500/50 cursor-not-allowed" disabled>
+          <button className="flex cursor-not-allowed flex-col items-center justify-center text-slate-500/50" disabled type="button">
             <span className="material-symbols-outlined">sports_esports</span>
-            <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Gry</span>
+            <span className="mt-0.5 text-[9px] font-bold uppercase tracking-widest">Gry</span>
           </button>
         )}
 
         <Link
-          className={`flex flex-col items-center justify-center transition-colors active:scale-90 duration-200 ${
+          className={`flex flex-col items-center justify-center transition-colors duration-200 active:scale-90 ${
             active === "friends"
               ? "text-[#00ffff] drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]"
               : "text-slate-500 hover:text-[#00ffff]"
@@ -58,11 +53,11 @@ export function AppBottomNav({ active, hasJoinedRoom, compact = false }: AppBott
           >
             group
           </span>
-          <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Znajomi</span>
+          <span className="mt-0.5 text-[9px] font-bold uppercase tracking-widest">Znajomi</span>
         </Link>
 
         <Link
-          className={`flex flex-col items-center justify-center transition-colors active:scale-90 duration-200 ${
+          className={`flex flex-col items-center justify-center transition-colors duration-200 active:scale-90 ${
             active === "profile"
               ? "text-[#b6a0ff] drop-shadow-[0_0_8px_rgba(182,160,255,0.5)]"
               : "text-slate-500 hover:text-[#b6a0ff]"
@@ -75,7 +70,7 @@ export function AppBottomNav({ active, hasJoinedRoom, compact = false }: AppBott
           >
             person
           </span>
-          <span className={`font-bold uppercase tracking-widest mt-1 ${compact ? "text-[9px]" : "text-[10px]"}`}>Profil</span>
+          <span className="mt-0.5 text-[9px] font-bold uppercase tracking-widest">Profil</span>
         </Link>
       </div>
     </nav>

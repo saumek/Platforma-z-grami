@@ -171,7 +171,7 @@ export function ProfileScreen({
   }
 
   return (
-    <div className="profile-screen bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
+    <div className="profile-screen app-screen-root bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/12 blur-[110px]" />
         <div className="absolute top-[34%] -left-16 h-56 w-56 rounded-full bg-secondary/8 blur-[100px]" />
@@ -205,7 +205,7 @@ export function ProfileScreen({
         }
       />
 
-      <main className="pt-8 pb-32 px-6 max-w-md mx-auto min-h-screen space-y-8">
+      <main className="app-main-with-nav max-w-md mx-auto min-h-screen space-y-8 px-6 pt-8">
         {isNotificationsOpen ? (
           <section className="rounded-[2rem] border border-outline-variant/15 bg-surface-container-low px-4 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.24)]">
             <div className="mb-4 flex items-center justify-between">

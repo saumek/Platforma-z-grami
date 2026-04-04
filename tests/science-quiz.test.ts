@@ -53,7 +53,7 @@ describe("submitScienceQuizAnswer", () => {
       playerTwoId: "user-2",
       questionOrder: JSON.stringify([0, 1, 2]),
       roundIndex: 0,
-      playerOneAnswer: 1,
+      playerOneAnswer: 0,
       playerTwoAnswer: null,
       questionStartedAt: new Date(Date.now() + 60_000),
     };
@@ -84,8 +84,8 @@ describe("submitScienceQuizAnswer", () => {
       },
       data: {
         status: "round_result",
-        playerOneScore: undefined,
-        playerTwoScore: { increment: 1 },
+        playerOneScore: { increment: 1 },
+        playerTwoScore: undefined,
         questionStartedAt: null,
         roundResolvedAt: expect.any(Date),
         version: { increment: 1 },

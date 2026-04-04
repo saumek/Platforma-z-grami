@@ -82,7 +82,7 @@ export function ProfileEditScreen({
   }
 
   return (
-    <div className="profile-screen bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
+    <div className="profile-screen app-screen-root bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
       <AppSectionHeader
         title="Edycja"
         leftSlot={
@@ -101,7 +101,7 @@ export function ProfileEditScreen({
         }
       />
 
-      <main className="pt-8 pb-12 px-6 max-w-md mx-auto min-h-screen">
+      <main className="app-main-with-nav max-w-md mx-auto min-h-screen px-6 pt-8">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <section className="p-6 rounded-xl bg-surface-container-low relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl" />

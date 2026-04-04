@@ -284,7 +284,7 @@ button {
 }
 
 .mobile-safe-bottom {
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .mobile-safe-top {
@@ -297,6 +297,32 @@ button {
 
 .mobile-safe-top-offset-lg {
   padding-top: calc(env(safe-area-inset-top, 0px) + 8rem);
+}
+
+.app-screen-root {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.app-main-with-nav {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 6.9rem);
+}
+
+.app-main-with-nav-compact {
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 5.8rem);
+}
+
+.app-auth-header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.app-auth-main {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 5rem);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 3rem);
+}
+
+.app-auth-bottom-handle {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .game-viewport {

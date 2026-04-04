@@ -81,7 +81,7 @@ export function RegisterScreen() {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl flex items-center justify-between px-6 h-16">
+      <header className="app-auth-header fixed top-0 right-0 left-0 z-50 flex h-16 w-full items-center justify-between bg-[#0e0e0e]/80 px-6 backdrop-blur-xl">
         <Link
           href="/"
           className="flex items-center justify-center p-2 text-primary active:scale-95 transition-transform duration-200"
@@ -94,7 +94,7 @@ export function RegisterScreen() {
         <div className="w-10" />
       </header>
 
-      <main className="min-h-screen flex flex-col pt-24 pb-12 px-8 overflow-x-hidden relative">
+      <main className="app-auth-main app-screen-root relative flex flex-col px-8 overflow-x-hidden">
         <div className="absolute top-[-10%] right-[-20%] w-[80%] h-[40%] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-[5%] left-[-15%] w-[70%] h-[35%] bg-secondary/10 blur-[100px] rounded-full pointer-events-none" />
 

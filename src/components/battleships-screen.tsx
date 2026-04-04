@@ -197,7 +197,7 @@ function ResultScreen({
   rematchPending: boolean;
 }) {
   return (
-    <section className="relative pt-10 pb-28 px-6 flex flex-col items-center justify-center min-h-[calc(100dvh-12rem)] overflow-hidden mobile-safe-bottom">
+    <section className="app-screen-root app-main-with-nav-compact relative flex flex-col items-center justify-center overflow-hidden px-6 pt-10">
       <div className="absolute inset-0 result-screen-glow pointer-events-none" />
       <div className={`absolute -top-20 -left-20 w-72 h-72 blur-[100px] rounded-full ${won ? "bg-primary/10" : "bg-error-dim/10"}`} />
       <div className="absolute bottom-24 -right-20 w-72 h-72 bg-secondary/10 blur-[100px] rounded-full" />

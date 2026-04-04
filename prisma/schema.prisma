@@ -36,6 +36,8 @@ model User {
   scienceQuizGamesAsPlayerTwo ScienceQuizGame[] @relation("ScienceQuizPlayerTwo")
   ludoGamesAsPlayerOne       LudoGame[]       @relation("LudoPlayerOne")
   ludoGamesAsPlayerTwo       LudoGame[]       @relation("LudoPlayerTwo")
+  dopowiedzeniaGamesAsPlayerOne DopowiedzeniaGame[] @relation("DopowiedzeniaPlayerOne")
+  dopowiedzeniaGamesAsPlayerTwo DopowiedzeniaGame[] @relation("DopowiedzeniaPlayerTwo")
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
@@ -234,6 +236,36 @@ model LudoGame {
   updatedAt           DateTime @updatedAt
   playerOne           User?    @relation("LudoPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
   playerTwo           User?    @relation("LudoPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
+
+  @@index([playerOneId])
+  @@index([playerTwoId])
+}
+
+model DopowiedzeniaGame {
+  id                  String   @id @default(cuid())
+  roomCode            String   @unique
+  status              String
+  version             Int      @default(0)
+  isPaused            Boolean  @default(false)
+  pausedAt            DateTime?
+  pauseRequestedById  String?
+  exitRequestedById   String?
+  terminatedAt        DateTime?
+  terminationReason   String?
+  playerOneId         String?
+  playerTwoId         String?
+  playerOneJoined     Boolean  @default(false)
+  playerTwoJoined     Boolean  @default(false)
+  roundIndex          Int      @default(0)
+  playerOneStory      String   @default("")
+  playerTwoStory      String   @default("")
+  playerOneSubmission String?
+  playerTwoSubmission String?
+  roundResolvedAt     DateTime?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  playerOne           User?    @relation("DopowiedzeniaPlayerOne", fields: [playerOneId], references: [id], onDelete: SetNull)
+  playerTwo           User?    @relation("DopowiedzeniaPlayerTwo", fields: [playerTwoId], references: [id], onDelete: SetNull)
 
   @@index([playerOneId])
   @@index([playerTwoId])

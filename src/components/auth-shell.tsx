@@ -24,7 +24,7 @@ export function AuthShell({
   const isLogin = background === "login";
 
   return (
-    <div className="min-h-screen flex flex-col justify-between selection:bg-secondary selection:text-on-secondary">
+    <div className="app-screen-root flex flex-col justify-between selection:bg-secondary selection:text-on-secondary">
       <div className="fixed inset-0 -z-10">
         <div
           className={`absolute ${
@@ -53,7 +53,7 @@ export function AuthShell({
       </div>
 
       {brand === "register" ? (
-        <header className="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl flex items-center justify-between px-6 h-16">
+        <header className="app-auth-header fixed top-0 right-0 left-0 z-50 flex h-16 w-full items-center justify-between bg-[#0e0e0e]/80 px-6 backdrop-blur-xl">
           {backHref ? (
             <Link
               href={backHref}
@@ -72,8 +72,8 @@ export function AuthShell({
       ) : null}
 
       <main
-        className={`flex-grow flex flex-col w-full ${
-          isLogin ? "px-8 pt-20 pb-12 max-w-md mx-auto" : "pt-24 pb-12 px-8 overflow-x-hidden relative"
+        className={`app-auth-main flex-grow flex w-full flex-col ${
+          isLogin ? "max-w-md mx-auto px-8" : "relative overflow-x-hidden px-8"
         }`}
       >
         {brand === "login" ? (
@@ -105,8 +105,8 @@ export function AuthShell({
         {footer}
       </main>
 
-      <div className="fixed bottom-0 w-full h-8 bg-surface">
-        <div className="w-32 h-1.5 bg-on-surface-variant/30 rounded-full mx-auto mt-4" />
+      <div className="app-auth-bottom-handle fixed right-0 bottom-0 left-0 h-8 w-full bg-surface">
+        <div className="mx-auto mt-4 h-1.5 w-32 rounded-full bg-on-surface-variant/30" />
       </div>
     </div>
   );

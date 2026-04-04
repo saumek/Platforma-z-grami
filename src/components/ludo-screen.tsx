@@ -562,7 +562,7 @@ function ColorSelectionScreen({
   isSubmitting: boolean;
 }) {
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-6 pb-32 pt-10">
+    <main className="app-main-with-nav mx-auto flex w-full max-w-2xl flex-1 flex-col px-6 pt-10">
       <section className="rounded-[2.25rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">
           Chińczyk
@@ -662,7 +662,7 @@ function ResultScreen({
   const palette = winnerColor ? LUDO_COLOR_STYLES[winnerColor] : null;
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-8 pb-32 pt-28">
+    <main className="app-screen-root app-main-with-nav mobile-safe-top mx-auto flex w-full max-w-md flex-col justify-center px-8 pt-28">
       <div className="rounded-[2.5rem] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(182,160,255,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] px-6 py-8">
         <div
           className="result-bounce-in mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-white/10"
@@ -870,8 +870,8 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
 
   if (!state) {
     return (
-      <div className="min-h-screen bg-background text-on-background">
-        <div className="flex min-h-screen items-center justify-center">
+      <div className="app-screen-root bg-background text-on-background">
+        <div className="app-screen-root flex items-center justify-center">
           <div className="h-14 w-14 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
         </div>
       </div>

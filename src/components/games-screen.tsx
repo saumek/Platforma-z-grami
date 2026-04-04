@@ -98,7 +98,7 @@ export function GamesScreen({
   }, []);
 
   return (
-    <div className="bg-background text-on-background font-body min-h-screen pb-32">
+    <div className="app-screen-root bg-background text-on-background font-body">
       <AppSectionHeader
         title="Gry"
         subtitle={`Pokój ${formatRoomCode(roomState.roomCode)}`}
@@ -124,7 +124,7 @@ export function GamesScreen({
 
       <div className="bg-gradient-to-b from-[#131313] to-transparent h-4 w-full" />
 
-      <main className="px-6 space-y-8 max-w-2xl mx-auto">
+      <main className="app-main-with-nav mx-auto max-w-2xl space-y-8 px-6">
         <section className="flex flex-col gap-3">
           <div className="flex items-center justify-between p-4 rounded-lg bg-surface-container-low border-l-2 border-primary">
             <div className="flex flex-col">
@@ -286,6 +286,34 @@ export function GamesScreen({
                   title="Chińczyk"
                   type="button"
                   onClick={() => router.push("/games/ludo")}
+                >
+                  <span className="material-symbols-outlined">play_arrow</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10 hover:border-secondary/30 transition-all duration-300">
+              <div className="aspect-[21/9] w-full relative">
+                <Image
+                  alt=""
+                  className="w-full h-full object-cover opacity-55 group-hover:scale-105 transition-transform duration-500"
+                  src="/images/game-dopowiedzenia.png"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 768px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-transparent" />
+              </div>
+              <div className="p-5 flex justify-between items-end">
+                <div>
+                  <h3 className="font-headline text-xl font-bold text-on-surface">Dopowiedzenia</h3>
+                  <p className="text-sm text-on-surface-variant">Twórz śmieszne historie</p>
+                </div>
+                <button
+                  aria-label="Dopowiedzenia"
+                  className="bg-primary hover:bg-primary-dim text-on-primary p-3 rounded-full active:scale-90 duration-200 shadow-lg shadow-primary/20"
+                  title="Dopowiedzenia"
+                  type="button"
+                  onClick={() => router.push("/games/dopowiedzenia")}
                 >
                   <span className="material-symbols-outlined">play_arrow</span>
                 </button>

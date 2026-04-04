@@ -94,13 +94,13 @@ export function LoginScreen({
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-between selection:bg-secondary selection:text-on-secondary">
+    <div className="app-screen-root flex flex-col justify-between selection:bg-secondary selection:text-on-secondary">
       <div className="fixed inset-0 -z-10">
         <div className="absolute top-[-10%] left-[-20%] w-[80%] h-[60%] rounded-full bg-primary/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-20%] w-[80%] h-[60%] rounded-full bg-secondary/5 blur-[120px]" />
       </div>
 
-      <main className="flex-grow flex flex-col px-8 pt-20 pb-12 max-w-md mx-auto w-full">
+      <main className="app-auth-main mx-auto flex w-full max-w-md flex-grow flex-col px-8">
         <header className="mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-dim flex items-center justify-center shadow-[0_0_30px_rgba(182,160,255,0.3)]">

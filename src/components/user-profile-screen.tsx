@@ -22,7 +22,7 @@ export function UserProfileScreen({
   const router = useRouter();
 
   return (
-    <div className="profile-screen bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
+    <div className="profile-screen app-screen-root bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
       <AppSectionHeader
         title="Profil"
         leftSlot={
@@ -41,7 +41,7 @@ export function UserProfileScreen({
         }
       />
 
-      <main className="pt-8 pb-32 px-6 max-w-md mx-auto min-h-screen">
+      <main className="app-main-with-nav max-w-md mx-auto min-h-screen px-6 pt-8">
         <section className="mb-10">
           <div className="flex flex-col items-center">
             <div className="relative group">

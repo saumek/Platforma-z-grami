@@ -19,7 +19,7 @@ function getLocalDevOrigins() {
 //const allowedDevOrigins = process.env.NEXT_ALLOWED_DEV_ORIGINS
 //  ? process.env.NEXT_ALLOWED_DEV_ORIGINS.split(",").map((origin) => origin.trim()).filter(Boolean)
 //  : getLocalDevOrigins();
-const allowedDevOrigins=['nonfulminating-unpredictively-mardell.ngrok-free.dev']
+const allowedDevOrigins=['nonfulminating-unpredictively-mardell.ngrok-free.dev','172.20.10.2']
 const nextConfig = {
   turbopack: {
     root: __dirname,

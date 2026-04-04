@@ -148,7 +148,7 @@ function ResultScreen({
       : "Tym razem przeciwnik zdobył więcej punktów.";
 
   return (
-    <main className="flex min-h-screen flex-col bg-surface-dim px-8 pb-32 pt-28 text-on-surface">
+    <main className="app-screen-root app-main-with-nav mobile-safe-top flex flex-col bg-surface-dim px-8 pt-28 text-on-surface">
       <div className="mx-auto flex w-full max-w-md flex-1 flex-col items-center justify-center">
         <div className="relative mb-8 flex h-28 w-28 items-center justify-center rounded-full bg-surface-container-low">
           <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(0,227,253,0.18),transparent_68%)] blur-xl" />
@@ -365,7 +365,7 @@ export function ScienceQuizScreen({
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-surface-dim font-body text-on-surface">
+    <div className="app-screen-root bg-surface-dim font-body text-on-surface">
       <GameHeaderShell roomCode={roomCode} showRoomLabel divider fixed>
         <div className="relative flex h-14 items-center justify-between px-4 sm:px-6">
           <div className="flex flex-col items-center gap-1">
@@ -408,7 +408,7 @@ export function ScienceQuizScreen({
         </div>
       </GameHeaderShell>
 
-      <main className="mobile-safe-top-offset-lg flex min-h-screen flex-col items-center justify-center px-6 pb-28 sm:px-8">
+      <main className="mobile-safe-top-offset-lg app-main-with-nav-compact flex min-h-screen flex-col items-center justify-center px-6 sm:px-8">
         <div className="relative mb-12 w-full max-w-md">
           <div className="absolute -left-10 -top-20 h-40 w-40 rounded-full bg-primary/10 blur-[80px]" />
           <div className="absolute -bottom-20 -right-10 h-40 w-40 rounded-full bg-secondary/10 blur-[80px]" />

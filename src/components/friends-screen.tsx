@@ -134,7 +134,7 @@ export function FriendsScreen({
   }
 
   return (
-    <div className="bg-background text-on-background min-h-screen">
+    <div className="app-screen-root bg-background text-on-background">
       <AppSectionHeader
         title="Znajomi"
         leftSlot={
@@ -153,7 +153,7 @@ export function FriendsScreen({
         }
       />
 
-      <main className="pt-8 px-6 max-w-md mx-auto space-y-8 pb-32">
+      <main className="app-main-with-nav max-w-md mx-auto space-y-8 px-6 pt-8">
         {roommate ? (
           <section className="p-6 rounded-xl bg-surface-container relative overflow-hidden">
             <div className="flex items-end justify-between mb-4">
