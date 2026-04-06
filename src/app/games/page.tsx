@@ -2,9 +2,8 @@ import { redirect } from "next/navigation";
 
 import { GamesScreen } from "@/components/games-screen";
 import { getCurrentSession } from "@/lib/auth";
-import { getRoomScoreTotals } from "@/lib/couple-qa";
-import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
+import { getRoomUsersWithScores } from "@/lib/room-scoreboard";
 
 export default async function GamesPage() {
   const session = await getCurrentSession();
@@ -17,8 +16,6 @@ export default async function GamesPage() {
     where: { id: session.user.id },
     select: {
       currentRoomCode: true,
-      email: true,
-      displayName: true,
     },
   });
 
@@ -26,28 +23,13 @@ export default async function GamesPage() {
     redirect("/profile");
   }
 
-  const roomUsers = await prisma.user.findMany({
-    where: { currentRoomCode: currentUser.currentRoomCode },
-    select: {
-      email: true,
-      displayName: true,
-    },
-    orderBy: { createdAt: "asc" },
-    take: 2,
-  });
-
-  const labels = roomUsers.map((user) => user.displayName ?? defaultDisplayName(user.email));
-  const fallbackCurrentName = currentUser.displayName ?? defaultDisplayName(currentUser.email);
-  const roomScores = await getRoomScoreTotals(currentUser.currentRoomCode);
+  const roomState = await getRoomUsersWithScores(currentUser.currentRoomCode);
 
   return (
     <GamesScreen
       roomCode={currentUser.currentRoomCode}
-      activeUsersCount={roomUsers.length}
-      userOne={labels[0] ?? fallbackCurrentName}
-      userTwo={labels[1] ?? "Oczekiwanie..."}
-      userOneWins={roomScores.userOnePoints}
-      userTwoWins={roomScores.userTwoPoints}
+      activeUsersCount={roomState.activeUsersCount}
+      users={roomState.users}
     />
   );
 }

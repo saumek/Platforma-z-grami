@@ -24,6 +24,18 @@ type LudoState = {
   roomCode: string;
   status: LudoStatus;
   currentUserId: string;
+  minPlayers: number;
+  maxPlayers: number;
+  joinedCount: number;
+  players: Array<{
+    id: string;
+    name: string;
+    avatarPath: string | null;
+    color: LudoColor | null;
+    tokenProgresses: number[];
+    finishedTokens: number;
+    roomPoints: number;
+  }>;
   currentPlayer: {
     id: string;
     name: string;
@@ -31,15 +43,17 @@ type LudoState = {
     color: LudoColor | null;
     tokenProgresses: number[];
     finishedTokens: number;
+    roomPoints: number;
   } | null;
-  opponent: {
+  otherPlayers: Array<{
     id: string;
     name: string;
     avatarPath: string | null;
     color: LudoColor | null;
     tokenProgresses: number[];
     finishedTokens: number;
-  } | null;
+    roomPoints: number;
+  }>;
   availableColors: {
     color: LudoColor;
     label: string;
@@ -171,6 +185,11 @@ const BASE_SLOTS: Record<LudoColor, Array<[number, number]>> = {
     [2.5, 9.5],
   ],
 };
+
+const LUDO_SLOT_LAYOUT: Array<Array<LudoColor>> = [
+  ["green", "yellow"],
+  ["red", "blue"],
+];
 
 function Avatar({
   src,
@@ -375,41 +394,19 @@ function LudoBoard({
   onMoveToken: (tokenIndex: number) => void;
 }) {
   const tokenNodes = useMemo(() => {
-    const players = [
-      state.currentPlayer
-        ? {
-            side: "current" as const,
-            color: state.currentPlayer.color,
-            tokens: state.currentPlayer.tokenProgresses,
-          }
-        : null,
-      state.opponent
-        ? {
-            side: "opponent" as const,
-            color: state.opponent.color,
-            tokens: state.opponent.tokenProgresses,
-          }
-        : null,
-    ].filter(Boolean) as Array<{
-      side: "current" | "opponent";
-      color: LudoColor | null;
-      tokens: number[];
-    }>;
-
-    return players.flatMap((player) =>
+    return state.players.flatMap((player) =>
       player.color
-        ? player.tokens.map((progress, tokenIndex) => ({
-            key: `${player.side}-${player.color}-${tokenIndex}`,
-            side: player.side,
+        ? player.tokenProgresses.map((progress, tokenIndex) => ({
+            key: `${player.id}-${player.color}-${tokenIndex}`,
+            side: player.id === state.currentPlayer?.id ? "current" as const : "other" as const,
             color: player.color!,
             tokenIndex,
             coord: getTokenCoord(player.color!, progress, tokenIndex),
-            isMovable:
-              player.side === "current" && state.movableTokenIndexes.includes(tokenIndex),
+            isMovable: player.id === state.currentPlayer?.id && state.movableTokenIndexes.includes(tokenIndex),
           }))
         : [],
     );
-  }, [state.currentPlayer, state.movableTokenIndexes, state.opponent]);
+  }, [state.currentPlayer?.id, state.movableTokenIndexes, state.players]);
 
   return (
     <div className="mx-auto w-full max-w-[34rem]">
@@ -477,7 +474,7 @@ function PlayerPanel({
   onRoll,
   compact = false,
 }: {
-  player: LudoState["currentPlayer"] | LudoState["opponent"];
+  player: LudoState["players"][number] | null;
   isCurrentTurn: boolean;
   diceValue: number | null;
   isRolling: boolean;
@@ -525,6 +522,9 @@ function PlayerPanel({
           <p className={`${compact ? "mt-0.5 text-xl" : "mt-1 text-2xl"} font-headline font-bold text-on-surface`}>
             {player.finishedTokens}/4
           </p>
+          <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-on-surface-variant">
+            Pkt {player.roomPoints}
+          </p>
         </div>
       </div>
 
@@ -552,6 +552,58 @@ function PlayerPanel({
   );
 }
 
+function MinimalPlayerSlot({
+  color,
+  player,
+  diceValue,
+  isRolling,
+  canRoll,
+  onRoll,
+}: {
+  color: LudoColor;
+  player: LudoState["players"][number] | undefined;
+  diceValue: number | null;
+  isRolling: boolean;
+  canRoll: boolean;
+  onRoll?: () => void;
+}) {
+  if (!player) {
+    return null;
+  }
+
+  const palette = LUDO_COLOR_STYLES[color];
+
+  return (
+    <div className="flex min-w-0 items-center justify-between gap-3">
+      <div className="flex min-w-0 items-center gap-2.5">
+        <div className="relative">
+          <Avatar src={player.avatarPath} alt={player.name} />
+          <span
+            className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border border-black/30"
+            style={{
+              backgroundColor: palette.token,
+              boxShadow: `0 0 10px ${palette.glow}`,
+            }}
+          />
+        </div>
+        <p className="truncate text-sm font-semibold leading-tight text-on-surface">
+          {player.name}
+        </p>
+      </div>
+
+      <div className="shrink-0">
+        <DiceFace
+          value={diceValue}
+          isRolling={isRolling}
+          active={canRoll}
+          accentColor={palette.token}
+          onClick={canRoll ? onRoll : undefined}
+        />
+      </div>
+    </div>
+  );
+}
+
 function ColorSelectionScreen({
   state,
   onSelectColor,
@@ -571,7 +623,7 @@ function ColorSelectionScreen({
           Wybierz swój kolor
         </h1>
         <p className="mt-3 max-w-md text-sm leading-6 text-on-surface-variant">
-          Każda osoba wybiera inny kolor. Gdy obie strony potwierdzą wybór, plansza ruszy od razu.
+          Do tej gry mogą wejść od {state.minPlayers} do {state.maxPlayers} osób. Każda osoba wybiera inny kolor, a plansza rusza dopiero wtedy, gdy każdy uczestnik gry ma już swój kolor.
         </p>
       </section>
 
@@ -627,20 +679,21 @@ function ColorSelectionScreen({
       </section>
 
       <section className="mt-6 grid gap-4 md:grid-cols-2">
-        <PlayerPanel
-          player={state.currentPlayer}
-          isCurrentTurn={false}
-          diceValue={null}
-          isRolling={false}
-          canRoll={false}
-        />
-        <PlayerPanel
-          player={state.opponent}
-          isCurrentTurn={false}
-          diceValue={null}
-          isRolling={false}
-          canRoll={false}
-        />
+        {state.players.map((player) => (
+          <PlayerPanel
+            key={player.id}
+            player={player}
+            isCurrentTurn={false}
+            diceValue={null}
+            isRolling={false}
+            canRoll={false}
+          />
+        ))}
+        {state.joinedCount < state.minPlayers ? (
+          <div className="rounded-[1.5rem] border border-dashed border-white/10 bg-white/5 px-5 py-5 text-sm text-on-surface-variant">
+            Czekamy na kolejne osoby. Gdy w grze będą przynajmniej {state.minPlayers} osoby, wszyscy będą mogli wybrać kolory.
+          </div>
+        ) : null}
       </section>
     </main>
   );
@@ -658,7 +711,7 @@ function ResultScreen({
   isRestarting: boolean;
 }) {
   const won = state.currentPlayer?.id === state.winnerId;
-  const winnerColor = won ? state.currentPlayer?.color : state.opponent?.color;
+  const winnerColor = state.players.find((player) => player.id === state.winnerId)?.color ?? null;
   const palette = winnerColor ? LUDO_COLOR_STYLES[winnerColor] : null;
 
   return (
@@ -692,18 +745,32 @@ function ResultScreen({
           </p>
           <div className="mt-3 flex items-center justify-between">
             <div>
-              <p className="text-xs text-on-surface-variant">{state.currentPlayer?.name}</p>
+              <p className="text-xs text-on-surface-variant">Lider</p>
               <p className="font-headline text-3xl font-bold text-on-surface">
-                {state.currentPlayer?.finishedTokens ?? 0}/4
+                {state.players.find((player) => player.id === state.winnerId)?.name ?? "Brak"}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-on-surface-variant">{state.opponent?.name}</p>
+              <p className="text-xs text-on-surface-variant">Gracze</p>
               <p className="font-headline text-3xl font-bold text-on-surface">
-                {state.opponent?.finishedTokens ?? 0}/4
+                {state.players.length}
               </p>
             </div>
           </div>
+        </div>
+
+        <div className="mt-4 grid gap-3">
+          {state.players.map((player) => (
+            <div
+              key={player.id}
+              className="flex items-center justify-between rounded-[1.25rem] bg-black/20 px-4 py-3"
+            >
+              <span className="text-sm text-on-surface">{player.name}</span>
+              <span className="text-sm font-semibold text-on-surface-variant">
+                {player.finishedTokens}/4
+              </span>
+            </div>
+          ))}
         </div>
 
         <div className="mt-8 flex flex-col gap-4">
@@ -850,23 +917,19 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
   }
 
   const isCurrentTurn = state?.currentTurnUserId === state?.currentPlayer?.id;
-  const currentPlayerId = state?.currentPlayer?.id ?? null;
-  const opponentId = state?.opponent?.id ?? null;
-  const currentRolling =
-    Boolean(state?.lastRollAt) &&
-    Boolean(currentPlayerId) &&
-    state?.lastRollByUserId === currentPlayerId &&
-    (state?.lastRollAt ?? 0) + 1100 > now;
-  const opponentRolling =
-    Boolean(state?.lastRollAt) &&
-    Boolean(opponentId) &&
-    state?.lastRollByUserId === opponentId &&
-    (state?.lastRollAt ?? 0) + 1100 > now;
 
-  const currentDiceValue =
-    state?.lastRollByUserId === currentPlayerId ? state.lastRollValue : null;
-  const opponentDiceValue =
-    state?.lastRollByUserId === opponentId ? state.lastRollValue : null;
+  function isPlayerRolling(playerId: string | null | undefined) {
+    return (
+      Boolean(state?.lastRollAt) &&
+      Boolean(playerId) &&
+      state?.lastRollByUserId === playerId &&
+      (state?.lastRollAt ?? 0) + 1100 > now
+    );
+  }
+
+  function getPlayerDiceValue(playerId: string | null | undefined) {
+    return state?.lastRollByUserId === playerId ? state?.lastRollValue ?? null : null;
+  }
 
   if (!state) {
     return (
@@ -931,32 +994,45 @@ export function LudoScreen({ roomCode, hasJoinedRoom, initialState }: LudoScreen
           isSubmitting={isSubmitting}
         />
       ) : (
-        <main className="game-main-viewport-compact mx-auto flex w-full max-w-2xl min-h-0 flex-col px-3 pt-3 sm:px-6 sm:pt-4">
-          <section className="shrink-0">
-            <PlayerPanel
-              player={state.currentPlayer}
-              isCurrentTurn={isCurrentTurn}
-              diceValue={currentDiceValue}
-              isRolling={currentRolling}
-              canRoll={Boolean(isCurrentTurn && !state.diceValue && !isSubmitting)}
-              onRoll={() => void handleRoll()}
-              compact
-            />
+        <main className="game-main-viewport-compact mx-auto flex w-full max-w-2xl min-h-0 flex-col px-3 pt-2 sm:px-6 sm:pt-2.5">
+          <section className="grid shrink-0 grid-cols-2 gap-2.5">
+            {LUDO_SLOT_LAYOUT[0].map((color) => {
+              const player = state.players.find((entry) => entry.color === color);
+
+              return (
+                <MinimalPlayerSlot
+                  key={color}
+                  color={color}
+                  player={player}
+                  diceValue={getPlayerDiceValue(player?.id)}
+                  isRolling={isPlayerRolling(player?.id)}
+                  canRoll={Boolean(player?.id === state.currentPlayer?.id && isCurrentTurn && !state.diceValue && !isSubmitting)}
+                  onRoll={player?.id === state.currentPlayer?.id ? () => void handleRoll() : undefined}
+                />
+              );
+            })}
           </section>
 
-          <section className="mt-3 flex min-h-0 flex-1 items-center justify-center">
+          <section className="mt-1.5 flex min-h-0 flex-1 items-center justify-center">
             <LudoBoard state={state} onMoveToken={handleMoveToken} />
           </section>
 
-          <section className="mt-3 shrink-0">
-            <PlayerPanel
-              player={state.opponent}
-              isCurrentTurn={!isCurrentTurn}
-              diceValue={opponentDiceValue}
-              isRolling={opponentRolling}
-              canRoll={false}
-              compact
-            />
+          <section className="mt-1.5 grid shrink-0 grid-cols-2 gap-2.5">
+            {LUDO_SLOT_LAYOUT[1].map((color) => {
+              const player = state.players.find((entry) => entry.color === color);
+
+              return (
+                <MinimalPlayerSlot
+                  key={color}
+                  color={color}
+                  player={player}
+                  diceValue={getPlayerDiceValue(player?.id)}
+                  isRolling={isPlayerRolling(player?.id)}
+                  canRoll={Boolean(player?.id === state.currentPlayer?.id && isCurrentTurn && !state.diceValue && !isSubmitting)}
+                  onRoll={player?.id === state.currentPlayer?.id ? () => void handleRoll() : undefined}
+                />
+              );
+            })}
           </section>
         </main>
       )}

@@ -211,6 +211,11 @@ model LudoGame {
   roomCode            String   @unique
   status              String
   version             Int      @default(0)
+  joinedPlayerIds     String   @default("[]")
+  playerOrder         String   @default("[]")
+  selectedColors      String   @default("{}")
+  tokenProgresses     String   @default("{}")
+  roomPointsByUser    String   @default("{}")
   isPaused            Boolean  @default(false)
   pausedAt            DateTime?
   pauseRequestedById  String?
@@ -246,6 +251,10 @@ model DopowiedzeniaGame {
   roomCode            String   @unique
   status              String
   version             Int      @default(0)
+  joinedPlayerIds     String   @default("[]")
+  playerOrder         String   @default("[]")
+  stories             String   @default("{}")
+  submissions         String   @default("{}")
   isPaused            Boolean  @default(false)
   pausedAt            DateTime?
   pauseRequestedById  String?

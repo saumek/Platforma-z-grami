@@ -13,6 +13,13 @@ import type { AuthResponse } from "@/types/auth";
 
 type DopowiedzeniaStatus = "waiting" | "writing" | "reveal" | "finished";
 
+type DopowiedzeniaPlayer = {
+  id: string;
+  name: string;
+  avatarPath: string | null;
+  submitted: boolean;
+};
+
 type DopowiedzeniaState = {
   roomCode: string;
   status: DopowiedzeniaStatus;
@@ -20,27 +27,22 @@ type DopowiedzeniaState = {
   roundIndex: number;
   totalRounds: number;
   isInitialRound: boolean;
-  playerOneName: string | null;
-  playerTwoName: string | null;
+  minPlayers: number;
+  maxPlayers: number;
+  joinedCount: number;
   promptWords: string[];
   promptSourceName: string | null;
-  currentPlayer: {
-    id: string;
-    name: string;
-    avatarPath: string | null;
-    submitted: boolean;
-  } | null;
-  opponent: {
-    id: string;
-    name: string;
-    avatarPath: string | null;
-    submitted: boolean;
-  } | null;
+  players: DopowiedzeniaPlayer[];
+  currentPlayer: DopowiedzeniaPlayer | null;
+  otherPlayers: DopowiedzeniaPlayer[];
   currentInput: string;
-  otherSubmitted: boolean;
+  otherSubmittedCount: number;
   revealEndsAt: number | null;
-  playerOneStory: string;
-  playerTwoStory: string;
+  stories: Array<{
+    ownerId: string;
+    ownerName: string;
+    text: string;
+  }>;
   isPaused: boolean;
   pausedAt: number | null;
   pauseRequestedByName: string | null;
@@ -86,6 +88,49 @@ function Avatar({
   );
 }
 
+function PlayerBadge({
+  player,
+  accent,
+}: {
+  player: DopowiedzeniaPlayer;
+  accent: "cyan" | "pink";
+}) {
+  return (
+    <div className="flex min-w-0 flex-col items-center gap-1">
+      <Avatar src={player.avatarPath} alt={player.name} accent={accent} />
+      <span
+        className={`max-w-[4.8rem] truncate text-center font-label text-[9px] font-bold tracking-tight ${
+          accent === "cyan" ? "text-primary" : "text-error"
+        }`}
+      >
+        {player.name}
+      </span>
+    </div>
+  );
+}
+
+function WaitingRoster({ players }: { players: DopowiedzeniaPlayer[] }) {
+  if (!players.length) {
+    return null;
+  }
+
+  return (
+    <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
+      {players.map((player, index) => (
+        <div
+          key={player.id}
+          className="flex items-center gap-2 text-xs text-on-surface-variant"
+        >
+          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-on-surface-variant/60">
+            {index + 1}
+          </span>
+          <span>{player.name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function ResultScreen({
   state,
   onRematch,
@@ -105,31 +150,31 @@ function ResultScreen({
             Finał historii
           </p>
           <h1 className="mt-3 font-headline text-4xl font-bold tracking-tight text-on-surface">
-            Dwie wersje tej samej zabawy
+            Gotowe opowieści
           </h1>
           <p className="mt-4 text-sm leading-6 text-on-surface-variant">
             Oto pełne historie, które zbudowaliście naprzemiennie przez wszystkie rundy.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4">
-          <article className="rounded-[1.75rem] bg-surface-container-low px-5 py-5">
-            <p className="font-label text-[10px] uppercase tracking-[0.18em] text-secondary">
-              Historia rozpoczęta przez {state.playerOneName ?? "Użytkownika 1"}
-            </p>
-            <p className="mt-3 text-sm leading-7 text-on-surface">
-              {state.playerOneStory || "Ta historia nie została jeszcze ułożona."}
-            </p>
-          </article>
-
-          <article className="rounded-[1.75rem] bg-surface-container-low px-5 py-5">
-            <p className="font-label text-[10px] uppercase tracking-[0.18em] text-error">
-              Historia rozpoczęta przez {state.playerTwoName ?? "Użytkownika 2"}
-            </p>
-            <p className="mt-3 text-sm leading-7 text-on-surface">
-              {state.playerTwoStory || "Ta historia nie została jeszcze ułożona."}
-            </p>
-          </article>
+        <div className="mt-8 space-y-6">
+          {state.stories.map((story, index) => (
+            <article
+              key={story.ownerId}
+              className={`${index > 0 ? "border-t border-white/8 pt-6" : ""}`}
+            >
+              <p
+                className={`font-label text-[10px] uppercase tracking-[0.18em] ${
+                  index % 2 === 0 ? "text-secondary" : "text-error"
+                }`}
+              >
+                Historia rozpoczęta przez {story.ownerName}
+              </p>
+              <p className="mt-3 text-[15px] leading-8 text-on-surface">
+                {story.text || "Ta historia nie została jeszcze ułożona."}
+              </p>
+            </article>
+          ))}
         </div>
 
         <div className="mt-8 flex flex-col gap-4">
@@ -194,6 +239,10 @@ export function DopowiedzeniaScreen({
 
     return state.promptWords.join(" ");
   }, [state?.promptWords]);
+
+  const currentPlayer = state?.currentPlayer ?? null;
+  const otherPlayers = state?.otherPlayers ?? [];
+  const roundLabel = `${Math.min(state?.roundIndex ?? 1, state?.totalRounds ?? 5)} / ${state?.totalRounds ?? 5}`;
 
   async function handleSubmit() {
     if (!state || state.status !== "writing" || isSubmitting) {
@@ -277,36 +326,26 @@ export function DopowiedzeniaScreen({
   return (
     <div className="app-screen-root bg-surface-dim font-body text-on-surface">
       <GameHeaderShell roomCode={roomCode} showRoomLabel divider fixed>
-        <div className="relative flex h-14 items-center justify-between px-4 sm:px-6">
-          <div className="flex flex-col items-center gap-1">
-            <Avatar
-              src={state?.currentPlayer?.avatarPath ?? null}
-              alt={state?.currentPlayer?.name ?? "Ty"}
-              accent="cyan"
-            />
-            <span className="font-label text-[9px] font-bold tracking-tight text-primary">
-              {state?.currentPlayer?.name ?? "Użytkownik 1"}
-            </span>
+        <div className="relative flex h-14 items-center justify-between gap-3 px-4 sm:px-6">
+          <div className="flex min-w-0 flex-1 items-start gap-2">
+            {currentPlayer ? <PlayerBadge player={currentPlayer} accent="cyan" /> : null}
           </div>
 
-          <div className="flex flex-col items-center gap-1 text-center">
+          <div className="flex shrink-0 flex-col items-center gap-1 text-center">
             <div className="rounded-full bg-surface-container-high px-3 py-1">
               <span className="font-label text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
-                Runda {Math.min(state?.roundIndex ?? 1, state?.totalRounds ?? 5)} /{" "}
-                {state?.totalRounds ?? 5}
+                Runda {roundLabel}
               </span>
             </div>
+            <span className="font-label text-[9px] uppercase tracking-[0.16em] text-on-surface-variant">
+              {state?.joinedCount ?? 0}/{state?.maxPlayers ?? 4} osób
+            </span>
           </div>
 
-          <div className="flex flex-col items-center gap-1">
-            <Avatar
-              src={state?.opponent?.avatarPath ?? null}
-              alt={state?.opponent?.name ?? "Druga osoba"}
-              accent="pink"
-            />
-            <span className="font-label text-[9px] font-bold tracking-tight text-error">
-              {state?.opponent?.name ?? "Użytkownik 2"}
-            </span>
+          <div className="flex min-w-0 flex-1 items-start justify-end gap-2">
+            {otherPlayers.slice(0, 3).map((player) => (
+              <PlayerBadge key={player.id} player={player} accent="pink" />
+            ))}
           </div>
 
           {gameSessionControls.pauseButtonVisible ? (
@@ -331,7 +370,7 @@ export function DopowiedzeniaScreen({
             <div className="text-center">
               <h1 className="font-headline text-[1.95rem] font-bold leading-[1.08] tracking-tight text-on-surface sm:text-3xl">
                 {state?.status === "waiting"
-                  ? "Czekamy, aż druga osoba wejdzie do Dopowiedzeń"
+                  ? "Czekamy, aż dołączą kolejne osoby do Dopowiedzeń"
                   : state?.isInitialRound
                     ? "Napisz początek historii"
                     : state?.status === "reveal"
@@ -342,39 +381,44 @@ export function DopowiedzeniaScreen({
             </div>
 
             {state?.status === "waiting" ? (
-              <div className="mt-10 rounded-[2rem] bg-surface-container-low px-6 py-7 text-center">
+              <div className="mt-10 text-center">
                 <p className="text-sm leading-6 text-on-surface-variant">
-                  Gdy druga osoba otworzy tę grę, oboje od razu zaczniecie pisać własne początki historii.
+                  Gdy w tej grze będą przynajmniej {state.minPlayers} osoby, wszyscy od razu zaczną pisać własne początki historii.
                 </p>
+                <WaitingRoster players={state.players} />
               </div>
             ) : state?.status === "reveal" ? (
-              <div className="mt-10 rounded-[2rem] bg-surface-container-low px-6 py-7 text-center shadow-[0_16px_40px_rgba(0,0,0,0.22)]">
+              <div className="mt-10 text-center">
                 <p className="font-label text-[10px] uppercase tracking-[0.18em] text-secondary">
-                  Kolejna podpowiedź od {state.promptSourceName ?? "drugiej osoby"}
+                  Kolejna podpowiedź od {state.promptSourceName ?? "kolejnej osoby"}
                 </p>
-                <p className="mt-5 font-headline text-2xl font-bold tracking-tight text-on-surface">
-                  {promptLine ? `"${promptLine}"` : "Historia zmienia kierunek"}
-                </p>
+                <div className="mt-6">
+                  <p className="font-headline text-[2rem] font-bold tracking-tight text-on-surface">
+                    {promptLine ? `"${promptLine}"` : "Historia zmienia kierunek"}
+                  </p>
+                  <div className="mx-auto mt-4 h-px w-24 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                </div>
                 <p className="mt-4 text-sm leading-6 text-on-surface-variant">
                   Za chwilę zobaczysz pole do kolejnego dopowiedzenia.
                 </p>
               </div>
             ) : (
-              <div className="mt-8 space-y-4">
+              <div className="mt-8 space-y-5">
                 {state?.promptWords.length ? (
-                  <div className="rounded-[1.5rem] bg-surface-container-low px-5 py-4">
-                    <p className="font-label text-[10px] uppercase tracking-[0.18em] text-secondary">
-                      Ostatnie 3 słowa od {state.promptSourceName ?? "drugiej osoby"}
+                  <div className="text-center">
+                    <p className="font-label text-[10px] uppercase tracking-[0.18em] text-secondary/90">
+                      Ostatnie 3 słowa od {state.promptSourceName ?? "kolejnej osoby"}
                     </p>
-                    <p className="mt-3 font-headline text-xl font-bold tracking-tight text-on-surface">
+                    <p className="mt-3 font-headline text-[1.85rem] font-bold tracking-tight text-on-surface">
                       {promptLine}
                     </p>
+                    <div className="mx-auto mt-4 h-px w-20 bg-gradient-to-r from-transparent via-secondary/45 to-transparent" />
                   </div>
                 ) : null}
 
-                <div className="rounded-[2rem] bg-surface-container-low p-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+                <div className="rounded-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] px-4 py-4 backdrop-blur-md">
                   <textarea
-                    className="min-h-[13.5rem] w-full resize-none rounded-[1.4rem] border border-outline-variant/12 bg-surface-container px-4 py-4 text-[15px] leading-7 text-on-surface outline-none transition-colors placeholder:text-on-surface-variant/70 focus:border-primary/30"
+                    className="min-h-[13rem] w-full resize-none bg-transparent px-1 py-2 text-[15px] leading-8 text-on-surface outline-none placeholder:text-on-surface-variant/55"
                     value={draft}
                     onChange={(event) => setDraft(event.target.value)}
                     placeholder={
@@ -385,13 +429,15 @@ export function DopowiedzeniaScreen({
                     disabled={isSubmitting || state?.currentPlayer?.submitted}
                   />
 
+                  <div className="mt-3 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
                   <div className="mt-4 flex items-center justify-between gap-4">
-                    <p className="text-xs leading-5 text-on-surface-variant">
+                    <p className="text-xs leading-5 text-on-surface-variant/85">
                       {state?.currentPlayer?.submitted
-                        ? "Twoja część historii jest już zapisana. Czekamy na drugą osobę."
-                        : state?.otherSubmitted
-                          ? `${state.opponent?.name ?? "Druga osoba"} już skończyła pisać.`
-                          : "Druga osoba jeszcze pisze."}
+                        ? "Twoja część historii jest już zapisana. Czekamy na pozostałe osoby."
+                        : (state?.otherSubmittedCount ?? 0) > 0
+                          ? `${state?.otherSubmittedCount} ${(state?.otherSubmittedCount ?? 0) === 1 ? "osoba już skończyła" : "osoby już skończyły"} pisać.`
+                          : "Pozostałe osoby jeszcze piszą."}
                     </p>
 
                     <button
@@ -412,7 +458,7 @@ export function DopowiedzeniaScreen({
             )}
 
             {statusMessage ? (
-              <p className="mt-4 text-center text-sm text-on-surface-variant">{statusMessage}</p>
+              <p className="mt-4 text-center text-sm text-on-surface-variant/90">{statusMessage}</p>
             ) : null}
           </div>
         </div>

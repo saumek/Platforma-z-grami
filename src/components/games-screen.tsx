@@ -16,28 +16,23 @@ import {
 type GamesScreenProps = {
   roomCode: string;
   activeUsersCount: number;
-  userOne: string;
-  userTwo: string;
-  userOneWins: number;
-  userTwoWins: number;
+  users: Array<{
+    id: string;
+    name: string;
+    points: number;
+  }>;
 };
 
 export function GamesScreen({
   roomCode,
   activeUsersCount,
-  userOne,
-  userTwo,
-  userOneWins,
-  userTwoWins,
+  users,
 }: GamesScreenProps) {
   const router = useRouter();
   const [roomState, setRoomState] = useState({
     roomCode,
     activeUsersCount,
-    userOne,
-    userTwo,
-    userOneWins,
-    userTwoWins,
+    users,
   });
   const [scienceCategory, setScienceCategory] = useState<ScienceQuizCategory>("matma");
 
@@ -59,20 +54,18 @@ export function GamesScreen({
           success: boolean;
           roomCode?: string;
           activeUsersCount?: number;
-          userOne?: string;
-          userTwo?: string;
-          userOneWins?: number;
-          userTwoWins?: number;
+          users?: Array<{
+            id: string;
+            name: string;
+            points: number;
+          }>;
         };
 
         if (!isCancelled && data.success && data.roomCode) {
           setRoomState({
             roomCode: data.roomCode,
             activeUsersCount: data.activeUsersCount ?? 0,
-            userOne: data.userOne ?? "Użytkownik 1",
-            userTwo: data.userTwo ?? "Oczekiwanie...",
-            userOneWins: data.userOneWins ?? 0,
-            userTwoWins: data.userTwoWins ?? 0,
+            users: data.users ?? [],
           });
         }
       } catch {
@@ -126,22 +119,23 @@ export function GamesScreen({
 
       <main className="app-main-with-nav mx-auto max-w-2xl space-y-8 px-6">
         <section className="flex flex-col gap-3">
-          <div className="flex items-center justify-between p-4 rounded-lg bg-surface-container-low border-l-2 border-primary">
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-semibold text-on-surface">{roomState.userOne}</span>
-              </div>
+          <div className="rounded-lg border-l-2 border-primary bg-surface-container-low p-4">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {roomState.users.map((user) => (
+                <div
+                  key={user.id}
+                  className="flex items-center justify-between rounded-xl bg-surface-container-high/60 px-3 py-2"
+                >
+                  <span className="text-sm font-semibold text-on-surface">{user.name}</span>
+                  <span className="font-headline text-sm font-bold tracking-widest text-on-surface-variant">
+                    {user.points}
+                  </span>
+                </div>
+              ))}
             </div>
-            <div className="mx-4 min-w-14 text-center">
-              <span className="font-headline text-sm font-bold tracking-widest text-on-surface-variant">
-                {roomState.userOneWins} - {roomState.userTwoWins}
-              </span>
-            </div>
-            <div className="flex flex-col text-right">
-              <div className="flex items-center justify-end gap-2">
-                <span className="text-sm font-semibold text-on-surface">{roomState.userTwo}</span>
-              </div>
-            </div>
+            {roomState.users.length === 0 ? (
+              <p className="text-sm text-on-surface-variant">Brak aktywnych osób w pokoju.</p>
+            ) : null}
           </div>
         </section>
 

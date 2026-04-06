@@ -1,6 +1,5 @@
 import {
   applyVersionedGameUpdate,
-  isGameParticipant,
   runGameCommand,
 } from "@/lib/game-command";
 import { defaultDisplayName } from "@/lib/profile";
@@ -10,14 +9,30 @@ import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
 const TOTAL_ROUNDS = 5;
 const MIN_WORDS = 6;
 const REVEAL_MS = 1800;
+const MIN_PLAYERS = 2;
+const MAX_PLAYERS = 4;
 
 type DopowiedzeniaStatus = "waiting" | "writing" | "reveal" | "finished";
+
+type RoomUser = {
+  id: string;
+  email: string;
+  displayName: string | null;
+  avatarPath: string | null;
+  createdAt: Date;
+};
 
 type DopowiedzeniaPlayer = {
   id: string;
   name: string;
   avatarPath: string | null;
   submitted: boolean;
+};
+
+type DopowiedzeniaStory = {
+  ownerId: string;
+  ownerName: string;
+  text: string;
 };
 
 export type DopowiedzeniaState = {
@@ -27,17 +42,18 @@ export type DopowiedzeniaState = {
   roundIndex: number;
   totalRounds: number;
   isInitialRound: boolean;
-  playerOneName: string | null;
-  playerTwoName: string | null;
+  minPlayers: number;
+  maxPlayers: number;
+  joinedCount: number;
   promptWords: string[];
   promptSourceName: string | null;
+  players: DopowiedzeniaPlayer[];
   currentPlayer: DopowiedzeniaPlayer | null;
-  opponent: DopowiedzeniaPlayer | null;
+  otherPlayers: DopowiedzeniaPlayer[];
   currentInput: string;
-  otherSubmitted: boolean;
+  otherSubmittedCount: number;
   revealEndsAt: number | null;
-  playerOneStory: string;
-  playerTwoStory: string;
+  stories: DopowiedzeniaStory[];
   isPaused: boolean;
   pausedAt: number | null;
   pauseRequestedByName: string | null;
@@ -80,7 +96,7 @@ function getName(user: { email: string; displayName: string | null }) {
   return user.displayName ?? defaultDisplayName(user.email);
 }
 
-async function getRoomPlayers(roomCode: string) {
+async function getRoomUsers(roomCode: string) {
   await pruneInactiveUsersFromRoom(roomCode);
 
   return prisma.user.findMany({
@@ -93,87 +109,139 @@ async function getRoomPlayers(roomCode: string) {
       createdAt: true,
     },
     orderBy: { createdAt: "asc" },
-    take: 2,
+    take: MAX_PLAYERS,
   });
 }
 
-function haveBothJoined(game: {
-  playerOneId: string | null;
-  playerTwoId: string | null;
-  playerOneJoined: boolean;
-  playerTwoJoined: boolean;
-}) {
-  return Boolean(game.playerOneId && game.playerTwoId && game.playerOneJoined && game.playerTwoJoined);
+function parseStringArray(value: string | null | undefined) {
+  if (!value) {
+    return [] as string[];
+  }
+
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === "string") : [];
+  } catch {
+    return [];
+  }
 }
 
-function getPlayerName(
-  requestedById: string | null,
-  players: {
-    playerOneId: string | null;
-    playerTwoId: string | null;
-    playerOne?: { email: string; displayName: string | null } | null;
-    playerTwo?: { email: string; displayName: string | null } | null;
+function serializeStringArray(value: string[]) {
+  return JSON.stringify(value);
+}
+
+function parseStringMap(value: string | null | undefined) {
+  if (!value) {
+    return {} as Record<string, string>;
+  }
+
+  try {
+    const parsed = JSON.parse(value) as unknown;
+
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {} as Record<string, string>;
+    }
+
+    return Object.fromEntries(
+      Object.entries(parsed).flatMap(([key, nextValue]) =>
+        typeof nextValue === "string" ? [[key, nextValue]] : [],
+      ),
+    );
+  } catch {
+    return {} as Record<string, string>;
+  }
+}
+
+function serializeStringMap(value: Record<string, string>) {
+  return JSON.stringify(value);
+}
+
+function sanitizeParticipantIds(participantIds: string[], roomUsers: RoomUser[]) {
+  const roomUserIdSet = new Set(roomUsers.map((user) => user.id));
+  const uniqueIds = [] as string[];
+
+  participantIds.forEach((userId) => {
+    if (roomUserIdSet.has(userId) && !uniqueIds.includes(userId)) {
+      uniqueIds.push(userId);
+    }
+  });
+
+  return uniqueIds.slice(0, MAX_PLAYERS);
+}
+
+function getLegacyParticipantFields(participantIds: string[]) {
+  return {
+    playerOneId: participantIds[0] ?? null,
+    playerTwoId: participantIds[1] ?? null,
+  };
+}
+
+function getResetRoundState(
+  participantIds: string[],
+  options?: {
+    status?: DopowiedzeniaStatus;
+    clearParticipants?: boolean;
+    terminatedAt?: Date | null;
+    terminationReason?: string | null;
   },
 ) {
+  const nextParticipantIds = options?.clearParticipants ? [] : participantIds;
+
+  return {
+    joinedPlayerIds: serializeStringArray(nextParticipantIds),
+    playerOrder: serializeStringArray(nextParticipantIds),
+    stories: serializeStringMap({}),
+    submissions: serializeStringMap({}),
+    ...getLegacyParticipantFields(nextParticipantIds),
+    playerOneJoined: false,
+    playerTwoJoined: false,
+    roundIndex: 0,
+    playerOneStory: "",
+    playerTwoStory: "",
+    playerOneSubmission: null,
+    playerTwoSubmission: null,
+    roundResolvedAt: null,
+    isPaused: false,
+    pausedAt: null,
+    pauseRequestedById: null,
+    exitRequestedById: null,
+    terminatedAt: options?.terminatedAt ?? null,
+    terminationReason: options?.terminationReason ?? null,
+    status:
+      options?.status ??
+      (nextParticipantIds.length >= MIN_PLAYERS ? "writing" : "waiting"),
+  };
+}
+
+function isParticipant(game: { joinedPlayerIds: string }, userId: string) {
+  return parseStringArray(game.joinedPlayerIds).includes(userId);
+}
+
+function getPlayerName(requestedById: string | null, roomUsers: RoomUser[]) {
   if (!requestedById) {
     return null;
   }
 
-  if (requestedById === players.playerOneId && players.playerOne) {
-    return getName(players.playerOne);
-  }
-
-  if (requestedById === players.playerTwoId && players.playerTwo) {
-    return getName(players.playerTwo);
-  }
-
-  return "Drugi gracz";
+  const player = roomUsers.find((user) => user.id === requestedById);
+  return player ? getName(player) : "Drugi gracz";
 }
 
-function shouldWriteToSwappedStory(roundIndex: number) {
-  return roundIndex > 0 && roundIndex % 2 === 1;
-}
-
-function getPromptStoryByRound(
+function getTargetStoryOwnerId(
+  participantIds: string[],
+  currentUserId: string,
   roundIndex: number,
-  isPlayerOne: boolean,
-  stories: { playerOneStory: string; playerTwoStory: string },
 ) {
-  if (roundIndex <= 0) {
-    return "";
+  if (roundIndex <= 0 || participantIds.length === 0) {
+    return null;
   }
 
-  const useSwappedStory = shouldWriteToSwappedStory(roundIndex);
+  const playerIndex = participantIds.indexOf(currentUserId);
 
-  if (isPlayerOne) {
-    return useSwappedStory ? stories.playerTwoStory : stories.playerOneStory;
+  if (playerIndex < 0) {
+    return null;
   }
 
-  return useSwappedStory ? stories.playerOneStory : stories.playerTwoStory;
-}
-
-function getPreservedJoinedFlag(
-  nextPlayerId: string | null,
-  existing: {
-    playerOneId: string | null;
-    playerTwoId: string | null;
-    playerOneJoined: boolean;
-    playerTwoJoined: boolean;
-  },
-) {
-  if (!nextPlayerId) {
-    return false;
-  }
-
-  if (existing.playerOneId === nextPlayerId) {
-    return existing.playerOneJoined;
-  }
-
-  if (existing.playerTwoId === nextPlayerId) {
-    return existing.playerTwoJoined;
-  }
-
-  return false;
+  return participantIds[(playerIndex + roundIndex) % participantIds.length] ?? null;
 }
 
 async function advanceRevealRound(roomCode: string) {
@@ -219,10 +287,7 @@ export async function ensureDopowiedzeniaGame(
     resetTerminated?: boolean;
   },
 ) {
-  const roomPlayers = await getRoomPlayers(roomCode);
-  const playerOneId = roomPlayers[0]?.id ?? null;
-  const playerTwoId = roomPlayers[1]?.id ?? null;
-
+  const roomUsers = await getRoomUsers(roomCode);
   const existing = await prisma.dopowiedzeniaGame.findUnique({
     where: { roomCode },
   });
@@ -231,70 +296,41 @@ export async function ensureDopowiedzeniaGame(
     return prisma.dopowiedzeniaGame.create({
       data: {
         roomCode,
-        status: "waiting",
-        playerOneId,
-        playerTwoId,
+        ...getResetRoundState([]),
       },
     });
   }
 
-  const playersChanged =
-    existing.playerOneId !== playerOneId || existing.playerTwoId !== playerTwoId;
+  const participantIds = sanitizeParticipantIds(parseStringArray(existing.joinedPlayerIds), roomUsers);
+  const storedOrder = parseStringArray(existing.playerOrder);
+  const shouldResetForParticipants =
+    JSON.stringify(participantIds) !== JSON.stringify(parseStringArray(existing.joinedPlayerIds)) ||
+    JSON.stringify(participantIds) !== JSON.stringify(storedOrder);
 
   if (existing.terminatedAt && options?.resetTerminated) {
     return prisma.dopowiedzeniaGame.update({
       where: { id: existing.id },
+      data: getResetRoundState([], { status: "waiting" }),
+    });
+  }
+
+  if (shouldResetForParticipants) {
+    return prisma.dopowiedzeniaGame.update({
+      where: { id: existing.id },
+      data: getResetRoundState(participantIds),
+    });
+  }
+
+  if (existing.status === "waiting" && participantIds.length >= MIN_PLAYERS) {
+    return prisma.dopowiedzeniaGame.update({
+      where: { id: existing.id },
       data: {
-        status: "waiting",
-        playerOneId,
-        playerTwoId,
-        playerOneJoined: false,
-        playerTwoJoined: false,
-        roundIndex: 0,
-        playerOneStory: "",
-        playerTwoStory: "",
-        playerOneSubmission: null,
-        playerTwoSubmission: null,
-        roundResolvedAt: null,
-        isPaused: false,
-        pausedAt: null,
-        pauseRequestedById: null,
-        exitRequestedById: null,
-        terminatedAt: null,
-        terminationReason: null,
+        status: "writing",
       },
     });
   }
 
-  if (!playersChanged) {
-    return advanceRevealRound(roomCode);
-  }
-
-  const nextPlayerOneJoined = getPreservedJoinedFlag(playerOneId, existing);
-  const nextPlayerTwoJoined = getPreservedJoinedFlag(playerTwoId, existing);
-
-  return prisma.dopowiedzeniaGame.update({
-    where: { id: existing.id },
-    data: {
-      status: "waiting",
-      playerOneId,
-      playerTwoId,
-      playerOneJoined: nextPlayerOneJoined,
-      playerTwoJoined: nextPlayerTwoJoined,
-      roundIndex: 0,
-      playerOneStory: "",
-      playerTwoStory: "",
-      playerOneSubmission: null,
-      playerTwoSubmission: null,
-      roundResolvedAt: null,
-      isPaused: false,
-      pausedAt: null,
-      pauseRequestedById: null,
-      exitRequestedById: null,
-      terminatedAt: null,
-      terminationReason: null,
-    },
-  });
+  return advanceRevealRound(roomCode);
 }
 
 export async function getDopowiedzeniaState(
@@ -306,49 +342,56 @@ export async function getDopowiedzeniaState(
 ) {
   await ensureDopowiedzeniaGame(roomCode, options);
 
-  const game = await prisma.dopowiedzeniaGame.findUnique({
-    where: { roomCode },
-    include: {
-      playerOne: {
-        select: {
-          id: true,
-          email: true,
-          displayName: true,
-          avatarPath: true,
-        },
-      },
-      playerTwo: {
-        select: {
-          id: true,
-          email: true,
-          displayName: true,
-          avatarPath: true,
-        },
-      },
-    },
-  });
+  const [game, roomUsers] = await Promise.all([
+    prisma.dopowiedzeniaGame.findUnique({
+      where: { roomCode },
+    }),
+    getRoomUsers(roomCode),
+  ]);
 
   if (!game) {
     return null;
   }
 
-  const isPlayerOne = game.playerOneId === currentUserId;
-  const currentPlayer = isPlayerOne
-    ? game.playerOne
-    : game.playerTwoId === currentUserId
-      ? game.playerTwo
-      : null;
-  const opponent = isPlayerOne
-    ? game.playerTwo
-    : game.playerTwoId === currentUserId
-      ? game.playerOne
-      : null;
-  const currentInput = isPlayerOne ? game.playerOneSubmission : game.playerTwoSubmission;
-  const otherInput = isPlayerOne ? game.playerTwoSubmission : game.playerOneSubmission;
-  const promptStory = getPromptStoryByRound(game.roundIndex, isPlayerOne, {
-    playerOneStory: game.playerOneStory,
-    playerTwoStory: game.playerTwoStory,
-  });
+  const participantIds = sanitizeParticipantIds(parseStringArray(game.joinedPlayerIds), roomUsers);
+  const storiesMap = parseStringMap(game.stories);
+  const submissionsMap = parseStringMap(game.submissions);
+  const players = participantIds
+    .map((participantId) => {
+      const user = roomUsers.find((candidate) => candidate.id === participantId);
+
+      if (!user) {
+        return null;
+      }
+
+      return {
+        id: participantId,
+        name: getName(user),
+        avatarPath: user.avatarPath,
+        submitted: Boolean(submissionsMap[participantId]),
+      } satisfies DopowiedzeniaPlayer;
+    })
+    .filter(Boolean) as DopowiedzeniaPlayer[];
+  const currentPlayer = players.find((player) => player.id === currentUserId) ?? null;
+  const otherPlayers = players.filter((player) => player.id !== currentUserId);
+  const targetStoryOwnerId = getTargetStoryOwnerId(participantIds, currentUserId, game.roundIndex);
+  const promptStory = targetStoryOwnerId ? storiesMap[targetStoryOwnerId] ?? "" : "";
+  const promptSource = players.find((player) => player.id === targetStoryOwnerId) ?? null;
+  const stories = participantIds
+    .map((ownerId) => {
+      const player = players.find((candidate) => candidate.id === ownerId);
+
+      if (!player) {
+        return null;
+      }
+
+      return {
+        ownerId,
+        ownerName: player.name,
+        text: storiesMap[ownerId] ?? "",
+      } satisfies DopowiedzeniaStory;
+    })
+    .filter(Boolean) as DopowiedzeniaStory[];
   const displayRound =
     game.status === "reveal" && game.roundIndex < TOTAL_ROUNDS - 1
       ? game.roundIndex + 2
@@ -361,47 +404,25 @@ export async function getDopowiedzeniaState(
     roundIndex: displayRound,
     totalRounds: TOTAL_ROUNDS,
     isInitialRound: game.status === "writing" && game.roundIndex === 0,
-    playerOneName: game.playerOne ? getName(game.playerOne) : null,
-    playerTwoName: game.playerTwo ? getName(game.playerTwo) : null,
-    promptWords: game.roundIndex > 0 || game.status === "reveal" || game.status === "finished"
-      ? getLastStoryWords(promptStory)
-      : [],
-    promptSourceName: opponent ? getName(opponent) : null,
-    currentPlayer: currentPlayer
-      ? {
-          id: currentPlayer.id,
-          name: getName(currentPlayer),
-          avatarPath: currentPlayer.avatarPath,
-          submitted: Boolean(currentInput),
-        }
-      : null,
-    opponent: opponent
-      ? {
-          id: opponent.id,
-          name: getName(opponent),
-          avatarPath: opponent.avatarPath,
-          submitted: Boolean(otherInput),
-        }
-      : null,
-    currentInput: currentInput ?? "",
-    otherSubmitted: Boolean(otherInput),
+    minPlayers: MIN_PLAYERS,
+    maxPlayers: MAX_PLAYERS,
+    joinedCount: participantIds.length,
+    promptWords:
+      game.roundIndex > 0 || game.status === "reveal" || game.status === "finished"
+        ? getLastStoryWords(promptStory)
+        : [],
+    promptSourceName: promptSource?.name ?? null,
+    players,
+    currentPlayer,
+    otherPlayers,
+    currentInput: submissionsMap[currentUserId] ?? "",
+    otherSubmittedCount: otherPlayers.filter((player) => player.submitted).length,
     revealEndsAt: game.roundResolvedAt ? game.roundResolvedAt.getTime() + REVEAL_MS : null,
-    playerOneStory: game.playerOneStory,
-    playerTwoStory: game.playerTwoStory,
+    stories,
     isPaused: game.isPaused,
     pausedAt: game.pausedAt ? game.pausedAt.getTime() : null,
-    pauseRequestedByName: getPlayerName(game.pauseRequestedById, {
-      playerOneId: game.playerOneId,
-      playerTwoId: game.playerTwoId,
-      playerOne: game.playerOne,
-      playerTwo: game.playerTwo,
-    }),
-    exitRequestedByName: getPlayerName(game.exitRequestedById, {
-      playerOneId: game.playerOneId,
-      playerTwoId: game.playerTwoId,
-      playerOne: game.playerOne,
-      playerTwo: game.playerTwo,
-    }),
+    pauseRequestedByName: getPlayerName(game.pauseRequestedById, roomUsers),
+    exitRequestedByName: getPlayerName(game.exitRequestedById, roomUsers),
     isCurrentUserExitRequester: game.exitRequestedById === currentUserId,
     canRespondToExit: Boolean(game.exitRequestedById && game.exitRequestedById !== currentUserId),
     shouldReturnToMenu: game.terminationReason === "agreed_exit",
@@ -419,54 +440,47 @@ export async function startDopowiedzeniaGame(roomCode: string, currentUserId: st
       }),
     missingMessage: "Nie znaleziono gry.",
     execute: async ({ game, staleResult }) => {
-      if (game.isPaused || game.terminatedAt || !isGameParticipant(game, currentUserId)) {
-        return { success: true as const, message: "Stan gry został odświeżony." };
+      const roomUsers = await getRoomUsers(roomCode);
+
+      if (!roomUsers.some((user) => user.id === currentUserId)) {
+        return { success: false as const, message: "Najpierw dołącz do pokoju." };
       }
 
-      const isPlayerOne = game.playerOneId === currentUserId;
-      const joinedUpdated = await applyVersionedGameUpdate(
+      const participantIds = sanitizeParticipantIds(parseStringArray(game.joinedPlayerIds), roomUsers);
+
+      if (participantIds.includes(currentUserId)) {
+        return {
+          success: true as const,
+          message:
+            participantIds.length >= MIN_PLAYERS
+              ? "Można zaczynać kolejną rundę historii."
+              : "Czekamy na kolejne osoby.",
+        };
+      }
+
+      if (participantIds.length >= MAX_PLAYERS) {
+        return { success: false as const, message: "Do tej gry może wejść maksymalnie 4 osoby." };
+      }
+
+      const nextParticipantIds = [...participantIds, currentUserId];
+      const updated = await applyVersionedGameUpdate(
         prisma.dopowiedzeniaGame,
         game,
-        {
-          isPaused: false,
-          terminatedAt: null,
-          ...(isPlayerOne ? { playerOneJoined: false } : { playerTwoJoined: false }),
-        },
-        {
-          ...(isPlayerOne ? { playerOneJoined: true } : { playerTwoJoined: true }),
-        },
+        {},
+        getResetRoundState(nextParticipantIds),
       );
 
-      const joinedGame = await prisma.dopowiedzeniaGame.findUnique({
-        where: { id: game.id },
-      });
-
-      if (!joinedGame) {
-        return staleResult("Nie znaleziono gry.");
+      if (!updated) {
+        return staleResult();
       }
 
-      if (!joinedUpdated) {
-        return { success: true as const, message: "Stan gry został odświeżony." };
-      }
-
-      if (joinedGame.status === "waiting" && haveBothJoined(joinedGame)) {
-        await applyVersionedGameUpdate(
-          prisma.dopowiedzeniaGame,
-          joinedGame,
-          {
-            status: "waiting",
-            playerOneJoined: true,
-            playerTwoJoined: true,
-          },
-          {
-            status: "writing",
-          },
-        );
-
-        return { success: true as const, message: "Dopowiedzenia wystartowały." };
-      }
-
-      return { success: true as const, message: "Czekamy na drugą osobę." };
+      return {
+        success: true as const,
+        message:
+          nextParticipantIds.length >= MIN_PLAYERS
+            ? "Można zaczynać historię."
+            : "Do gry dołączyła pierwsza osoba.",
+      };
     },
   });
 }
@@ -493,7 +507,7 @@ export async function submitDopowiedzeniaText(
       }),
     missingMessage: "Nie znaleziono gry.",
     execute: async ({ game, staleResult }) => {
-      if (!isGameParticipant(game, currentUserId)) {
+      if (!isParticipant(game, currentUserId)) {
         return { success: false as const, message: "Nie należysz do tej gry." };
       }
 
@@ -505,22 +519,28 @@ export async function submitDopowiedzeniaText(
         return { success: false as const, message: "Poczekaj na swoją kolej pisania." };
       }
 
-      const isPlayerOne = game.playerOneId === currentUserId;
-      const currentSubmission = isPlayerOne ? game.playerOneSubmission : game.playerTwoSubmission;
+      const roomUsers = await getRoomUsers(roomCode);
+      const participantIds = sanitizeParticipantIds(parseStringArray(game.joinedPlayerIds), roomUsers);
+      const submissionsMap = parseStringMap(game.submissions);
 
-      if (currentSubmission) {
+      if (submissionsMap[currentUserId]) {
         return { success: false as const, message: "Ta część historii została już wysłana." };
       }
 
+      const nextSubmissions = {
+        ...submissionsMap,
+        [currentUserId]: normalizedText,
+      };
       const saved = await applyVersionedGameUpdate(
         prisma.dopowiedzeniaGame,
         game,
         {
           status: "writing",
-          ...(isPlayerOne ? { playerOneSubmission: null } : { playerTwoSubmission: null }),
         },
         {
-          ...(isPlayerOne ? { playerOneSubmission: normalizedText } : { playerTwoSubmission: normalizedText }),
+          submissions: serializeStringMap(nextSubmissions),
+          playerOneSubmission: participantIds[0] ? nextSubmissions[participantIds[0]] ?? null : null,
+          playerTwoSubmission: participantIds[1] ? nextSubmissions[participantIds[1]] ?? null : null,
         },
       );
 
@@ -536,28 +556,38 @@ export async function submitDopowiedzeniaText(
         return staleResult("Nie znaleziono gry.");
       }
 
-      if (!updated.playerOneSubmission || !updated.playerTwoSubmission) {
+      const refreshedSubmissions = parseStringMap(updated.submissions);
+
+      if (!participantIds.every((participantId) => Boolean(refreshedSubmissions[participantId]))) {
         return {
           success: true as const,
           message: "Tekst zapisany. Czekamy na drugą osobę.",
         };
       }
 
-      const isLastRound = updated.roundIndex >= TOTAL_ROUNDS - 1;
-      let nextPlayerOneStory = updated.playerOneStory;
-      let nextPlayerTwoStory = updated.playerTwoStory;
+      const storiesMap = parseStringMap(updated.stories);
+      const nextStories = { ...storiesMap };
 
       if (updated.roundIndex === 0) {
-        nextPlayerOneStory = normalizeStoryText(updated.playerOneSubmission);
-        nextPlayerTwoStory = normalizeStoryText(updated.playerTwoSubmission);
-      } else if (shouldWriteToSwappedStory(updated.roundIndex)) {
-        nextPlayerOneStory = appendStorySegment(updated.playerOneStory, updated.playerTwoSubmission);
-        nextPlayerTwoStory = appendStorySegment(updated.playerTwoStory, updated.playerOneSubmission);
+        participantIds.forEach((participantId) => {
+          nextStories[participantId] = normalizeStoryText(refreshedSubmissions[participantId] ?? "");
+        });
       } else {
-        nextPlayerOneStory = appendStorySegment(updated.playerOneStory, updated.playerOneSubmission);
-        nextPlayerTwoStory = appendStorySegment(updated.playerTwoStory, updated.playerTwoSubmission);
+        participantIds.forEach((participantId, playerIndex) => {
+          const targetOwnerId = participantIds[(playerIndex + updated.roundIndex) % participantIds.length];
+
+          if (!targetOwnerId) {
+            return;
+          }
+
+          nextStories[targetOwnerId] = appendStorySegment(
+            nextStories[targetOwnerId] ?? "",
+            refreshedSubmissions[participantId] ?? "",
+          );
+        });
       }
 
+      const isLastRound = updated.roundIndex >= TOTAL_ROUNDS - 1;
       const resolved = await applyVersionedGameUpdate(
         prisma.dopowiedzeniaGame,
         updated,
@@ -566,8 +596,10 @@ export async function submitDopowiedzeniaText(
         },
         {
           status: isLastRound ? "finished" : "reveal",
-          playerOneStory: nextPlayerOneStory,
-          playerTwoStory: nextPlayerTwoStory,
+          stories: serializeStringMap(nextStories),
+          submissions: serializeStringMap({}),
+          playerOneStory: participantIds[0] ? nextStories[participantIds[0]] ?? "" : "",
+          playerTwoStory: participantIds[1] ? nextStories[participantIds[1]] ?? "" : "",
           playerOneSubmission: null,
           playerTwoSubmission: null,
           roundResolvedAt: isLastRound ? null : new Date(),
@@ -595,31 +627,17 @@ export async function restartDopowiedzeniaGame(roomCode: string, currentUserId: 
       }),
     missingMessage: "Nie znaleziono gry do restartu.",
     execute: async ({ game, staleResult }) => {
-      if (!isGameParticipant(game, currentUserId)) {
+      if (!isParticipant(game, currentUserId)) {
         return { success: false as const, message: "Nie należysz do tej gry." };
       }
 
+      const roomUsers = await getRoomUsers(roomCode);
+      const participantIds = sanitizeParticipantIds(parseStringArray(game.joinedPlayerIds), roomUsers);
       const restarted = await applyVersionedGameUpdate(
         prisma.dopowiedzeniaGame,
         game,
         {},
-        {
-          status: game.playerOneId && game.playerTwoId ? "writing" : "waiting",
-          playerOneJoined: Boolean(game.playerOneId),
-          playerTwoJoined: Boolean(game.playerTwoId),
-          roundIndex: 0,
-          playerOneStory: "",
-          playerTwoStory: "",
-          playerOneSubmission: null,
-          playerTwoSubmission: null,
-          roundResolvedAt: null,
-          isPaused: false,
-          pausedAt: null,
-          pauseRequestedById: null,
-          exitRequestedById: null,
-          terminatedAt: null,
-          terminationReason: null,
-        },
+        getResetRoundState(participantIds),
       );
 
       if (!restarted) {
@@ -640,7 +658,7 @@ export async function pauseDopowiedzeniaGame(roomCode: string, currentUserId: st
       }),
     missingMessage: "Nie znaleziono gry.",
     execute: async ({ game, staleResult }) => {
-      if (!isGameParticipant(game, currentUserId)) {
+      if (!isParticipant(game, currentUserId)) {
         return { success: false as const, message: "Nie należysz do tej gry." };
       }
 
@@ -678,7 +696,7 @@ export async function resumeDopowiedzeniaGame(roomCode: string, currentUserId: s
       }),
     missingMessage: "Nie znaleziono gry.",
     execute: async ({ game, staleResult }) => {
-      if (!isGameParticipant(game, currentUserId)) {
+      if (!isParticipant(game, currentUserId)) {
         return { success: false as const, message: "Nie należysz do tej gry." };
       }
 
@@ -721,7 +739,7 @@ export async function requestDopowiedzeniaExit(roomCode: string, currentUserId: 
       }),
     missingMessage: "Nie znaleziono gry.",
     execute: async ({ game, staleResult }) => {
-      if (!isGameParticipant(game, currentUserId)) {
+      if (!isParticipant(game, currentUserId)) {
         return { success: false as const, message: "Nie należysz do tej gry." };
       }
 
@@ -760,7 +778,7 @@ export async function respondDopowiedzeniaExit(
       }),
     missingMessage: "Nie znaleziono gry.",
     execute: async ({ game, staleResult }) => {
-      if (!isGameParticipant(game, currentUserId)) {
+      if (!isParticipant(game, currentUserId)) {
         return { success: false as const, message: "Nie należysz do tej gry." };
       }
 
@@ -790,21 +808,11 @@ export async function respondDopowiedzeniaExit(
         game,
         { exitRequestedById: game.exitRequestedById },
         {
-          status: "waiting",
-          playerOneJoined: false,
-          playerTwoJoined: false,
-          roundIndex: 0,
-          playerOneStory: "",
-          playerTwoStory: "",
-          playerOneSubmission: null,
-          playerTwoSubmission: null,
-          roundResolvedAt: null,
-          isPaused: false,
-          pausedAt: null,
-          pauseRequestedById: null,
-          exitRequestedById: null,
-          terminatedAt: new Date(),
-          terminationReason: "agreed_exit",
+          ...getResetRoundState([], {
+            status: "waiting",
+            terminatedAt: new Date(),
+            terminationReason: "agreed_exit",
+          }),
         },
       );
 
@@ -812,7 +820,7 @@ export async function respondDopowiedzeniaExit(
         return staleResult();
       }
 
-      return { success: true as const, message: "Gra została zakończona za zgodą obu osób." };
+      return { success: true as const, message: "Gra została zakończona za zgodą wszystkich stron." };
     },
   });
 }

@@ -47,7 +47,7 @@ export async function assignUserToRoom(userId: string, roomCode: string): Promis
       where: { currentRoomCode: normalizedRoomCode },
     });
 
-    if (roomUsersCount >= 2) {
+    if (roomUsersCount >= 4) {
       return {
         success: false as const,
         previousRoomCode: currentUser.currentRoomCode,

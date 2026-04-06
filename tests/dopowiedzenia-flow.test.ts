@@ -34,10 +34,20 @@ vi.mock("@/lib/room-cleanup", () => ({
 }));
 
 import {
-  ensureDopowiedzeniaGame,
   getDopowiedzeniaState,
+  startDopowiedzeniaGame,
   submitDopowiedzeniaText,
 } from "@/lib/dopowiedzenia";
+
+function createUser(id: string, order: number) {
+  return {
+    id,
+    email: `${id}@example.com`,
+    displayName: id.replace("user-", "Uzytkownik "),
+    avatarPath: null,
+    createdAt: new Date(`2024-01-01T00:00:0${order}.000Z`),
+  };
+}
 
 describe("dopowiedzenia flow", () => {
   beforeEach(() => {
@@ -45,58 +55,54 @@ describe("dopowiedzenia flow", () => {
     mocks.pruneInactiveUsersFromRoom.mockResolvedValue(undefined);
   });
 
-  it("keeps the first player's joined flag when the second player enters later", async () => {
+  it("keeps existing participant and allows the second user to join without rejoining first", async () => {
     mocks.prisma.user.findMany.mockResolvedValue([
-      {
-        id: "user-1",
-        email: "user1@example.com",
-        displayName: "Uzytkownik 1",
-        avatarPath: null,
-        createdAt: new Date("2024-01-01T00:00:00.000Z"),
-      },
-      {
-        id: "user-2",
-        email: "user2@example.com",
-        displayName: "Uzytkownik 2",
-        avatarPath: null,
-        createdAt: new Date("2024-01-01T00:00:01.000Z"),
-      },
+      createUser("user-1", 0),
+      createUser("user-2", 1),
     ]);
 
-    mocks.prisma.dopowiedzeniaGame.findUnique.mockResolvedValueOnce({
+    const game = {
       id: "dop-1",
       roomCode: "ROOM-1",
+      version: 3,
       status: "waiting",
-      playerOneId: "user-1",
-      playerTwoId: null,
-      playerOneJoined: true,
-      playerTwoJoined: false,
+      joinedPlayerIds: JSON.stringify(["user-1"]),
+      playerOrder: JSON.stringify(["user-1"]),
+      stories: JSON.stringify({}),
+      submissions: JSON.stringify({}),
       terminatedAt: null,
-    });
-    mocks.prisma.dopowiedzeniaGame.update.mockResolvedValue({
-      id: "dop-1",
-      roomCode: "ROOM-1",
-      status: "waiting",
-      playerOneId: "user-1",
-      playerTwoId: "user-2",
-      playerOneJoined: true,
-      playerTwoJoined: false,
-    });
+    };
 
-    await ensureDopowiedzeniaGame("ROOM-1");
+    mocks.prisma.dopowiedzeniaGame.findUnique.mockResolvedValue(game);
+    mocks.prisma.dopowiedzeniaGame.updateMany.mockResolvedValueOnce({ count: 1 });
 
-    expect(mocks.prisma.dopowiedzeniaGame.update).toHaveBeenCalledWith({
-      where: { id: "dop-1" },
+    const result = await startDopowiedzeniaGame("ROOM-1", "user-2");
+
+    expect(result).toEqual({
+      success: true,
+      message: "Można zaczynać historię.",
+    });
+    expect(mocks.prisma.dopowiedzeniaGame.updateMany).toHaveBeenCalledWith({
+      where: {
+        id: "dop-1",
+        version: 3,
+      },
       data: expect.objectContaining({
-        playerOneId: "user-1",
-        playerTwoId: "user-2",
-        playerOneJoined: true,
-        playerTwoJoined: false,
+        joinedPlayerIds: JSON.stringify(["user-1", "user-2"]),
+        playerOrder: JSON.stringify(["user-1", "user-2"]),
+        status: "writing",
       }),
     });
   });
 
-  it("appends each continuation to the other player's story", async () => {
+  it("passes continuations in a circle for four players", async () => {
+    mocks.prisma.user.findMany.mockResolvedValue([
+      createUser("user-1", 0),
+      createUser("user-2", 1),
+      createUser("user-3", 2),
+      createUser("user-4", 3),
+    ]);
+
     const game = {
       id: "dop-2",
       roomCode: "ROOM-2",
@@ -104,13 +110,20 @@ describe("dopowiedzenia flow", () => {
       status: "writing",
       isPaused: false,
       terminatedAt: null,
-      playerOneId: "user-1",
-      playerTwoId: "user-2",
       roundIndex: 1,
-      playerOneStory: "Pierwsza historia zaczęła się bardzo spokojnie",
-      playerTwoStory: "Druga historia pachniała dymem i lawendą",
-      playerOneSubmission: "i nagle zgasły wszystkie latarnie w mieście",
-      playerTwoSubmission: null,
+      joinedPlayerIds: JSON.stringify(["user-1", "user-2", "user-3", "user-4"]),
+      playerOrder: JSON.stringify(["user-1", "user-2", "user-3", "user-4"]),
+      stories: JSON.stringify({
+        "user-1": "Historia A start",
+        "user-2": "Historia B start",
+        "user-3": "Historia C start",
+        "user-4": "Historia D start",
+      }),
+      submissions: JSON.stringify({
+        "user-1": "dopisek od jeden prowadził wszystkich przez stare kino",
+        "user-2": "dopisek od dwa rozświetlił nocne schody przy rynku",
+        "user-3": "dopisek od trzy otworzył tajemniczą szafę za sceną",
+      }),
     };
 
     mocks.prisma.dopowiedzeniaGame.findUnique
@@ -118,7 +131,12 @@ describe("dopowiedzenia flow", () => {
       .mockResolvedValueOnce({
         ...game,
         version: 6,
-        playerTwoSubmission: "a potem z sufitu spadł wielki tort weselny",
+        submissions: JSON.stringify({
+          "user-1": "dopisek od jeden prowadził wszystkich przez stare kino",
+          "user-2": "dopisek od dwa rozświetlił nocne schody przy rynku",
+          "user-3": "dopisek od trzy otworzył tajemniczą szafę za sceną",
+          "user-4": "dopisek od cztery zatrzymał zegary w całym ratuszu",
+        }),
       });
     mocks.prisma.dopowiedzeniaGame.updateMany
       .mockResolvedValueOnce({ count: 1 })
@@ -126,8 +144,8 @@ describe("dopowiedzenia flow", () => {
 
     const result = await submitDopowiedzeniaText(
       "ROOM-2",
-      "user-2",
-      "a potem z sufitu spadł wielki tort weselny",
+      "user-4",
+      "dopisek od cztery zatrzymał zegary w całym ratuszu",
     );
 
     expect(result).toEqual({
@@ -140,33 +158,41 @@ describe("dopowiedzenia flow", () => {
         version: 6,
         status: "writing",
       },
-      data: {
+      data: expect.objectContaining({
         status: "reveal",
-        playerOneStory:
-          "Pierwsza historia zaczęła się bardzo spokojnie a potem z sufitu spadł wielki tort weselny",
-        playerTwoStory:
-          "Druga historia pachniała dymem i lawendą i nagle zgasły wszystkie latarnie w mieście",
-        playerOneSubmission: null,
-        playerTwoSubmission: null,
-        roundResolvedAt: expect.any(Date),
-        version: { increment: 1 },
-      },
+        stories: JSON.stringify({
+          "user-1": "Historia A start dopisek od cztery zatrzymał zegary w całym ratuszu",
+          "user-2": "Historia B start dopisek od jeden prowadził wszystkich przez stare kino",
+          "user-3": "Historia C start dopisek od dwa rozświetlił nocne schody przy rynku",
+          "user-4": "Historia D start dopisek od trzy otworzył tajemniczą szafę za sceną",
+        }),
+      }),
     });
   });
 
-  it("alternates the visible story between players on consecutive continuation rounds", async () => {
+  it("rotates prompt owners from player to player on later rounds", async () => {
+    mocks.prisma.user.findMany.mockResolvedValue([
+      createUser("user-1", 0),
+      createUser("user-2", 1),
+      createUser("user-3", 2),
+      createUser("user-4", 3),
+    ]);
+
     const game = {
       id: "dop-3",
       roomCode: "ROOM-3",
       status: "writing",
       version: 8,
       roundIndex: 2,
-      playerOneId: "user-1",
-      playerTwoId: "user-2",
-      playerOneStory: "Historia A dostała właśnie dopisek od użytkownika B",
-      playerTwoStory: "Historia B dostała właśnie dopisek od użytkownika A",
-      playerOneSubmission: null,
-      playerTwoSubmission: null,
+      joinedPlayerIds: JSON.stringify(["user-1", "user-2", "user-3", "user-4"]),
+      playerOrder: JSON.stringify(["user-1", "user-2", "user-3", "user-4"]),
+      stories: JSON.stringify({
+        "user-1": "Historia A dostała nowy zwrot",
+        "user-2": "Historia B pachniała kawą z rana",
+        "user-3": "Historia C uciekła nagle w ciemność",
+        "user-4": "Historia D zatańczyła pod neonami",
+      }),
+      submissions: JSON.stringify({}),
       roundResolvedAt: null,
       isPaused: false,
       pausedAt: null,
@@ -174,42 +200,16 @@ describe("dopowiedzenia flow", () => {
       exitRequestedById: null,
       terminatedAt: null,
       terminationReason: null,
-      playerOne: {
-        id: "user-1",
-        email: "user1@example.com",
-        displayName: "Uzytkownik 1",
-        avatarPath: null,
-      },
-      playerTwo: {
-        id: "user-2",
-        email: "user2@example.com",
-        displayName: "Uzytkownik 2",
-        avatarPath: null,
-      },
     };
 
-    mocks.prisma.user.findMany.mockResolvedValue([
-      {
-        id: "user-1",
-        email: "user1@example.com",
-        displayName: "Uzytkownik 1",
-        avatarPath: null,
-        createdAt: new Date("2024-01-01T00:00:00.000Z"),
-      },
-      {
-        id: "user-2",
-        email: "user2@example.com",
-        displayName: "Uzytkownik 2",
-        avatarPath: null,
-        createdAt: new Date("2024-01-01T00:00:01.000Z"),
-      },
-    ]);
     mocks.prisma.dopowiedzeniaGame.findUnique.mockResolvedValue(game);
 
     const playerOneState = await getDopowiedzeniaState("ROOM-3", "user-1");
-    const playerTwoState = await getDopowiedzeniaState("ROOM-3", "user-2");
+    const playerFourState = await getDopowiedzeniaState("ROOM-3", "user-4");
 
-    expect(playerOneState?.promptWords).toEqual(["dopisek", "od", "użytkownika", "B"].slice(-3));
-    expect(playerTwoState?.promptWords).toEqual(["dopisek", "od", "użytkownika", "A"].slice(-3));
+    expect(playerOneState?.promptWords).toEqual(["uciekła", "nagle", "w", "ciemność"].slice(-3));
+    expect(playerOneState?.promptSourceName).toBe("Uzytkownik 3");
+    expect(playerFourState?.promptWords).toEqual(["pachniała", "kawą", "z", "rana"].slice(-3));
+    expect(playerFourState?.promptSourceName).toBe("Uzytkownik 2");
   });
 });

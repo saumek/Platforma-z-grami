@@ -1,30 +1,26 @@
 import { NextResponse } from "next/server";
 
 import { getCurrentSession } from "@/lib/auth";
-import { getRoomScoreTotals } from "@/lib/couple-qa";
-import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
-import { pruneInactiveUsersFromRoom } from "@/lib/room-cleanup";
+import { getRoomUsersWithScores } from "@/lib/room-scoreboard";
 import type { AuthResponse } from "@/types/auth";
 
 type RoomStateResponse =
   | (AuthResponse & {
       roomCode?: undefined;
       activeUsersCount?: undefined;
-      userOne?: undefined;
-      userTwo?: undefined;
-      userOneWins?: undefined;
-      userTwoWins?: undefined;
+      users?: undefined;
     })
   | {
       success: true;
       message: string;
       roomCode: string;
       activeUsersCount: number;
-      userOne: string;
-      userTwo: string;
-      userOneWins: number;
-      userTwoWins: number;
+      users: Array<{
+        id: string;
+        name: string;
+        points: number;
+      }>;
     };
 
 export async function GET() {
@@ -45,8 +41,6 @@ export async function GET() {
       where: { id: session.user.id },
       select: {
         currentRoomCode: true,
-        email: true,
-        displayName: true,
       },
     });
 
@@ -60,32 +54,14 @@ export async function GET() {
       );
     }
 
-    await pruneInactiveUsersFromRoom(currentUser.currentRoomCode);
-
-    const roomUsers = await prisma.user.findMany({
-      where: { currentRoomCode: currentUser.currentRoomCode },
-      select: {
-        email: true,
-        displayName: true,
-      },
-      orderBy: { createdAt: "asc" },
-      take: 2,
-    });
-
-    const labels = roomUsers.map((user) => user.displayName ?? defaultDisplayName(user.email));
-    const fallbackCurrentName =
-      currentUser.displayName ?? defaultDisplayName(currentUser.email);
-    const roomScores = await getRoomScoreTotals(currentUser.currentRoomCode);
+    const roomState = await getRoomUsersWithScores(currentUser.currentRoomCode);
 
     return NextResponse.json<RoomStateResponse>({
       success: true,
       message: "Pobrano stan pokoju.",
       roomCode: currentUser.currentRoomCode,
-      activeUsersCount: roomUsers.length,
-      userOne: labels[0] ?? fallbackCurrentName,
-      userTwo: labels[1] ?? "Oczekiwanie...",
-      userOneWins: roomScores.userOnePoints,
-      userTwoWins: roomScores.userTwoPoints,
+      activeUsersCount: roomState.activeUsersCount,
+      users: roomState.users,
     });
   } catch {
     return NextResponse.json<RoomStateResponse>(

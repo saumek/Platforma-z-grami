@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 
 import { ScienceQuizScreen } from "@/components/science-quiz-screen";
 import { getCurrentSession } from "@/lib/auth";
+import { isUserWithinRoomPlayerLimit } from "@/lib/game-player-limit";
 import { getScienceQuizState } from "@/lib/science-quiz";
 import { normalizeScienceQuizCategory } from "@/lib/science-quiz-categories";
 import { prisma } from "@/lib/prisma";
@@ -26,6 +27,16 @@ export default async function ScienceQuizPage({
 
   if (!user?.currentRoomCode) {
     redirect("/profile");
+  }
+
+  const isEligiblePlayer = await isUserWithinRoomPlayerLimit(
+    user.currentRoomCode,
+    session.user.id,
+    2,
+  );
+
+  if (!isEligiblePlayer) {
+    redirect("/games");
   }
 
   const { category } = await params;
