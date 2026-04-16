@@ -1,447 +1,607 @@
 [
   {
-    "text": "Który wykres opisuje funkcję liniową?",
+    "text": "Jaki kształt ma wykres funkcji stałej?",
     "options": [
-      "prostej",
-      "paraboli",
-      "okręgu",
-      "sinusoidy"
+      "prosta równoległa do osi OX",
+      "parabola",
+      "okrąg",
+      "sinusoida"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Jaką postać ma wykres funkcji liniowej?",
+    "text": "Jaki kształt ma wykres funkcji liniowej?",
     "options": [
-      "paraboli",
-      "okręgu",
-      "sinusoidy",
-      "prostej"
+      "parabola",
+      "okrąg",
+      "hiperbola",
+      "prosta"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Funkcja liniowa ma na wykresie kształt",
-    "options": [
-      "okręgu",
-      "sinusoidy",
-      "prostej",
-      "paraboli"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Funkcja kwadratowa ma na wykresie kształt",
-    "options": [
-      "prosta",
-      "okrąg",
-      "hiperbola",
-      "paraboli"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Jak wygląda wykres funkcji kwadratowej?",
+    "text": "Jaki kształt ma wykres funkcji kwadratowej?",
     "options": [
       "okrąg",
-      "hiperbola",
-      "paraboli",
+      "elipsa",
+      "parabola",
       "prosta"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Wykres funkcji kwadratowej to",
+    "text": "Czym jest dziedzina funkcji?",
     "options": [
-      "hiperbola",
-      "paraboli",
-      "prosta",
-      "okrąg"
+      "zbiór współczynników",
+      "zbiór argumentów, dla których wyrażenie ma sens",
+      "zbiór miejsc zerowych",
+      "zbiór największych wartości"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Dziedziną funkcji jest zbiór",
+    "text": "Czym jest zbiór wartości funkcji?",
     "options": [
-      "miejsc zerowych",
-      "punktów przecięcia z osią OY",
-      "argumentów, dla których funkcja ma sens",
-      "jej największych wartości"
+      "zbiorem wartości przyjmowanych przez funkcję",
+      "zbiorem argumentów funkcji",
+      "zbiorem jej miejsc zerowych",
+      "zbiorem współczynników wykresu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Czym jest miejsce zerowe funkcji?",
+    "options": [
+      "punktem przecięcia wykresu z osią OY",
+      "największą wartością funkcji",
+      "współczynnikiem kierunkowym prostej",
+      "argumentem, dla którego wartość funkcji jest równa zero"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Funkcja rosnąca to taka, dla której",
+    "options": [
+      "wszystkie wartości są równe zero",
+      "wykres zawsze przecina oś OX",
+      "wraz ze wzrostem argumentu wartości funkcji rosną",
+      "wraz ze wzrostem argumentu wartości funkcji maleją"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Co oznacza dziedzina funkcji?",
+    "text": "Funkcja malejąca to taka, dla której",
     "options": [
-      "punktów przecięcia z osią OY",
-      "argumentów, dla których funkcja ma sens",
-      "jej największych wartości",
-      "miejsc zerowych"
+      "wartości zawsze są dodatnie",
+      "wraz ze wzrostem argumentu wartości funkcji maleją",
+      "wraz ze wzrostem argumentu wartości funkcji rosną",
+      "dziedzina jest pusta"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Mówiąc o dziedzinie funkcji, mamy na myśli zbiór",
+    "text": "Wyraz wolny b w równaniu y = ax + b oznacza",
     "options": [
-      "argumentów, dla których funkcja ma sens",
-      "jej największych wartości",
-      "miejsc zerowych",
-      "punktów przecięcia z osią OY"
+      "punkt przecięcia wykresu z osią OY",
+      "nachylenie wykresu do osi OX",
+      "liczbę miejsc zerowych",
+      "długość odcinka na osi OX"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Zbiór wartości funkcji to zbiór",
+    "text": "Funkcja wprost proporcjonalna ma wykres, który",
     "options": [
-      "wyłącznie miejsca zerowe",
-      "wszystkich wartości, jakie funkcja może przyjmować",
-      "tylko wartości dodatnie",
-      "same argumenty"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Co opisuje zbiór wartości funkcji?",
-    "options": [
-      "wszystkich wartości, jakie funkcja może przyjmować",
-      "tylko wartości dodatnie",
-      "same argumenty",
-      "wyłącznie miejsca zerowe"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Zbiór wartości funkcji zawiera",
-    "options": [
-      "tylko wartości dodatnie",
-      "same argumenty",
-      "wyłącznie miejsca zerowe",
-      "wszystkich wartości, jakie funkcja może przyjmować"
+      "zawsze jest parabolą",
+      "nie przecina osi OX",
+      "ma dwa wierzchołki",
+      "przechodzi przez początek układu współrzędnych"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Miejsce zerowe funkcji to taki argument, dla którego wartość funkcji jest równa",
-    "options": [
-      "0",
-      "1",
-      "-1",
-      "nieskończoność"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Kiedy mówimy, że liczba jest miejscem zerowym funkcji?",
-    "options": [
-      "1",
-      "-1",
-      "nieskończoność",
-      "0"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Miejsce zerowe funkcji spełnia warunek",
-    "options": [
-      "-1",
-      "nieskończoność",
-      "0",
-      "1"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jeśli współczynnik kierunkowy prostej jest dodatni, to funkcja",
-    "options": [
-      "maleje",
-      "jest stała",
-      "nie ma wykresu",
-      "rośnie"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Dodatni współczynnik kierunkowy oznacza, że prosta",
+    "text": "Jeżeli współczynnik kierunkowy prostej jest dodatni, to funkcja",
     "options": [
       "jest stała",
-      "nie ma wykresu",
+      "nie ma dziedziny",
       "rośnie",
       "maleje"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Co dzieje się z funkcją liniową przy dodatnim współczynniku kierunkowym?",
+    "text": "Jeżeli współczynnik kierunkowy prostej wynosi zero, to funkcja",
     "options": [
-      "nie ma wykresu",
-      "rośnie",
-      "maleje",
-      "jest stała"
+      "jest kwadratowa",
+      "jest stała",
+      "jest malejąca",
+      "ma dwa miejsca zerowe"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Jeśli współczynnik kierunkowy prostej jest ujemny, to funkcja",
+    "text": "Wartość bezwzględna liczby opisuje",
     "options": [
-      "jest stała",
-      "zawsze przecina oś OX w zerze",
-      "maleje",
-      "rośnie"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ujemny współczynnik kierunkowy oznacza, że prosta",
-    "options": [
-      "zawsze przecina oś OX w zerze",
-      "maleje",
-      "rośnie",
-      "jest stała"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jak zachowuje się funkcja liniowa przy ujemnym współczynniku kierunkowym?",
-    "options": [
-      "maleje",
-      "rośnie",
-      "jest stała",
-      "zawsze przecina oś OX w zerze"
+      "odległość liczby od zera na osi liczbowej",
+      "jej znak algebraiczny",
+      "jej odwrotność",
+      "liczbę cyfr po przecinku"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Wyraz wolny w równaniu y = ax + b wskazuje punkt przecięcia z osią",
+    "text": "Liczba przeciwna do danej liczby ma",
     "options": [
-      "liczb rzeczywistych",
-      "OY",
-      "OX",
-      "symetrii"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "W równaniu funkcji liniowej liczba b mówi o przecięciu z osią",
-    "options": [
-      "OY",
-      "OX",
-      "symetrii",
-      "liczb rzeczywistych"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Co określa wyraz wolny w funkcji liniowej?",
-    "options": [
-      "OX",
-      "symetrii",
-      "liczb rzeczywistych",
-      "OY"
+      "taką samą wartość i ten sam znak",
+      "zawsze większą wartość",
+      "zawsze dodatni znak",
+      "taką samą wartość bezwzględną i przeciwny znak"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Proste równoległe mają",
+    "text": "Liczba odwrotna do liczby niezerowej to",
     "options": [
-      "taki sam współczynnik kierunkowy",
-      "wyraz wolny równy zero",
-      "zawsze dodatnie nachylenie",
-      "iloczyn współczynników równy -1"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jaką cechę mają proste równoległe w układzie współrzędnych?",
-    "options": [
-      "wyraz wolny równy zero",
-      "zawsze dodatnie nachylenie",
-      "iloczyn współczynników równy -1",
-      "taki sam współczynnik kierunkowy"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Dla prostych równoległych współczynniki kierunkowe są",
-    "options": [
-      "zawsze dodatnie nachylenie",
-      "iloczyn współczynników równy -1",
-      "taki sam współczynnik kierunkowy",
-      "wyraz wolny równy zero"
+      "jej pierwiastek kwadratowy",
+      "jej wartość bezwzględna",
+      "liczba, która po pomnożeniu przez daną liczbę daje 1",
+      "liczba przeciwna"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Proste prostopadłe mają współczynniki kierunkowe, których iloczyn jest równy",
+    "text": "Każda liczba niezerowa podniesiona do potęgi zerowej jest równa",
+    "options": [
+      "-1",
+      "1",
+      "0",
+      "samej sobie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Każda liczba podniesiona do potęgi pierwszej jest równa",
+    "options": [
+      "samej sobie",
+      "1",
+      "0",
+      "swojej odwrotności"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Potęga o wykładniku ujemnym oznacza",
+    "options": [
+      "sumę wykładników",
+      "zmianę znaku podstawy",
+      "brak wyniku w liczbach rzeczywistych",
+      "odwrotność odpowiedniej potęgi dodatniej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Pierwiastek kwadratowy główny z liczby dodatniej to",
+    "options": [
+      "zawsze liczba ujemna",
+      "zawsze liczba całkowita",
+      "nieujemna liczba, której kwadrat daje daną liczbę",
+      "dowolna liczba o tej samej wartości bezwzględnej"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pierwiastek sześcienny z liczby ujemnej jest",
+    "options": [
+      "nieokreślony",
+      "liczbą ujemną",
+      "zawsze liczbą dodatnią",
+      "równy zero"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Logarytm liczby to",
+    "options": [
+      "wykładnik potęgi, do której należy podnieść podstawę",
+      "wynik dodawania podstawy i argumentu",
+      "odwrotność potęgi",
+      "różnica między liczbą a podstawą"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Podstawa logarytmu musi być",
+    "options": [
+      "ujemna i różna od 0",
+      "większa od argumentu",
+      "parzysta",
+      "dodatnia i różna od 1"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jeden procent oznacza",
+    "options": [
+      "jedną tysięczną całości",
+      "sto całości",
+      "jedną setną całości",
+      "jedną dziesiątą całości"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jeden promil oznacza",
+    "options": [
+      "jedną milionową całości",
+      "jedną tysięczną całości",
+      "jedną setną całości",
+      "jedną dziesiątą całości"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Stosunek dwóch wielkości to",
+    "options": [
+      "porównanie ich przez dzielenie",
+      "ich suma",
+      "ich różnica",
+      "ich pole"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Proporcja to",
+    "options": [
+      "suma dwóch ułamków",
+      "różnica dwóch stosunków",
+      "zawsze równanie kwadratowe",
+      "równość dwóch ilorazów"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Największy wspólny dzielnik dwóch liczb to",
+    "options": [
+      "suma wszystkich wspólnych dzielników",
+      "iloraz tych liczb",
+      "największa liczba naturalna dzieląca obie bez reszty",
+      "najmniejsza liczba pierwsza większa od obu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Najmniejsza wspólna wielokrotność dwóch liczb to",
+    "options": [
+      "średnia arytmetyczna tych liczb",
+      "najmniejsza dodatnia liczba będąca wielokrotnością obu",
+      "największy wspólny dzielnik",
+      "różnica tych liczb"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Liczba pierwsza to liczba naturalna, która",
+    "options": [
+      "ma dokładnie dwa dzielniki naturalne",
+      "jest podzielna przez każdą liczbę",
+      "ma tylko jeden dzielnik",
+      "jest zawsze nieparzysta"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Liczba złożona to liczba naturalna, która",
+    "options": [
+      "nie ma żadnego dzielnika",
+      "jest zawsze parzysta",
+      "jest mniejsza od 2",
+      "ma więcej niż dwa dzielniki naturalne"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Liczba parzysta to taka, która",
+    "options": [
+      "jest dodatnia",
+      "ma dwa miejsca zerowe",
+      "dzieli się przez 2 bez reszty",
+      "kończy się cyfrą 5"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Liczba nieparzysta to taka, która",
+    "options": [
+      "ma wartość bezwzględną równą 1",
+      "przy dzieleniu przez 2 daje resztę 1",
+      "zawsze jest liczbą pierwszą",
+      "jest ujemna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Średnia arytmetyczna danych to",
+    "options": [
+      "suma wartości podzielona przez ich liczbę",
+      "wartość występująca najczęściej",
+      "wartość środkowa",
+      "największa wartość w zbiorze"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Mediana danych to",
+    "options": [
+      "średnia wszystkich wartości",
+      "wartość najmniejsza",
+      "najczęściej występująca wartość",
+      "wartość środkowa w uporządkowanym zbiorze"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Dominanta danych to",
+    "options": [
+      "wartość środkowa",
+      "różnica między maksimum i minimum",
+      "wartość występująca najczęściej",
+      "średnia arytmetyczna"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Wariancja opisuje",
+    "options": [
+      "dokładność pomiaru kąta",
+      "miarę rozproszenia danych wokół średniej",
+      "liczbę elementów w zbiorze",
+      "największą obserwację"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Odchylenie standardowe jest",
+    "options": [
+      "pierwiastkiem kwadratowym z wariancji",
+      "sumą wszystkich odchyleń od średniej",
+      "odwrotnością wariancji",
+      "największym odchyleniem w próbie"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Prawdopodobieństwo zdarzenia pewnego wynosi",
     "options": [
       "0",
-      "1",
-      "2",
-      "-1"
+      "1/2",
+      "zawsze więcej niż 1",
+      "1"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Jaki warunek spełniają współczynniki kierunkowe prostych prostopadłych?",
+    "text": "Prawdopodobieństwo zdarzenia niemożliwego wynosi",
     "options": [
-      "1",
-      "2",
-      "-1",
-      "0"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Dla prostych prostopadłych iloczyn współczynników kierunkowych wynosi",
-    "options": [
-      "2",
+      "1/2",
       "-1",
       "0",
       "1"
     ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Prawdopodobieństwa zdarzeń przeciwnych",
+    "options": [
+      "mnożą się do 1",
+      "sumują się do 1",
+      "zawsze są równe",
+      "zawsze wynoszą 0"
+    ],
     "correctIndex": 1
   },
   {
-    "text": "Wierzchołek paraboli to punkt, w którym funkcja kwadratowa osiąga",
+    "text": "Zdarzenia niezależne to takie, dla których",
     "options": [
-      "równej zero",
-      "nieoznaczonej",
-      "największej lub najmniejszej",
-      "zawsze dodatniej"
+      "zajście jednego nie wpływa na prawdopodobieństwo drugiego",
+      "zawsze zachodzą jednocześnie",
+      "nie mogą zajść razem",
+      "mają sumę prawdopodobieństw równą 2"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Suma zbiorów A i B zawiera",
+    "options": [
+      "tylko elementy wspólne",
+      "wyłącznie elementy spoza obu zbiorów",
+      "tylko elementy zbioru A",
+      "elementy należące do co najmniej jednego ze zbiorów"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Część wspólna zbiorów A i B zawiera",
+    "options": [
+      "tylko elementy niebędące w A",
+      "wszystkie liczby naturalne",
+      "elementy wspólne obu zbiorów",
+      "wszystkie elementy obu zbiorów"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Co jest szczególnego w wierzchołku paraboli?",
+    "text": "Podzbiór to",
     "options": [
-      "nieoznaczonej",
-      "największej lub najmniejszej",
-      "zawsze dodatniej",
-      "równej zero"
+      "zbiór nieskończony",
+      "zbiór, którego każdy element należy do drugiego zbioru",
+      "zbiór zawsze mniejszy liczbowo",
+      "zbiór bez części wspólnej"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Wierzchołek paraboli to punkt wartości",
+    "text": "Zbiór pusty to",
     "options": [
-      "największej lub najmniejszej",
-      "zawsze dodatniej",
-      "równej zero",
-      "nieoznaczonej"
+      "zbiór niemający żadnych elementów",
+      "zbiór wszystkich liczb rzeczywistych",
+      "zbiór jednoelementowy",
+      "zbiór równy zero"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Przedział domknięty [a, b]",
+    "options": [
+      "nie zawiera żadnego końca",
+      "zawiera tylko lewy koniec",
+      "zawiera tylko prawy koniec",
+      "zawiera oba końce przedziału"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Przedział otwarty (a, b)",
+    "options": [
+      "zawiera tylko liczby całkowite",
+      "jest zawsze pusty",
+      "nie zawiera końców przedziału",
+      "zawiera oba końce"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Rozwiązaniem nierówności jest",
+    "options": [
+      "wyłącznie liczba dodatnia",
+      "zbiór liczb spełniających nierówność",
+      "jedna ustalona liczba pierwsza",
+      "tylko liczba zero"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Rozwiązaniem równania jest",
+    "options": [
+      "liczba lub liczby spełniające daną równość",
+      "każda liczba rzeczywista",
+      "tylko liczba 1",
+      "zawsze para liczb przeciwnych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Tożsamość algebraiczna jest równością",
+    "options": [
+      "fałszywą dla każdej wartości",
+      "mającą dokładnie jedno rozwiązanie",
+      "zawierającą wyłącznie liczby całkowite",
+      "prawdziwą dla wszystkich dopuszczalnych wartości zmiennych"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Równanie sprzeczne to takie, które",
+    "options": [
+      "ma zawsze dwa rozwiązania",
+      "jest tożsamością",
+      "nie ma żadnego rozwiązania",
+      "ma nieskończenie wiele rozwiązań"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Równanie liniowe ax + b = 0 dla a ≠ 0 ma",
+    "options": [
+      "nieskończenie wiele rozwiązań",
+      "dokładnie jedno rozwiązanie",
+      "zawsze dwa rozwiązania",
+      "brak rozwiązań rzeczywistych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jeżeli delta równania kwadratowego jest dodatnia, to równanie ma",
+    "options": [
+      "dwa różne pierwiastki rzeczywiste",
+      "jeden pierwiastek podwójny",
+      "brak pierwiastków rzeczywistych",
+      "nieskończenie wiele rozwiązań"
     ],
     "correctIndex": 0
   },
   {
     "text": "Jeżeli delta równania kwadratowego jest równa zero, to równanie ma",
     "options": [
+      "dwa różne pierwiastki",
+      "brak pierwiastków",
+      "dokładnie trzy rozwiązania",
+      "jeden pierwiastek podwójny"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jeżeli delta równania kwadratowego jest ujemna, to równanie ma",
+    "options": [
+      "dwa różne pierwiastki rzeczywiste",
       "nieskończenie wiele rozwiązań",
-      "jedno rozwiązanie rzeczywiste",
-      "dwa różne rozwiązania",
-      "brak rozwiązań rzeczywistych"
+      "brak pierwiastków rzeczywistych",
+      "jeden pierwiastek podwójny"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Współczynnik a w funkcji kwadratowej decyduje o",
+    "options": [
+      "wartości sinusa kąta",
+      "kierunku ramion paraboli",
+      "liczbie osi układu",
+      "długości średnicy okręgu"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Co oznacza delta równa zero?",
+    "text": "Oś symetrii paraboli to",
     "options": [
-      "jedno rozwiązanie rzeczywiste",
-      "dwa różne rozwiązania",
-      "brak rozwiązań rzeczywistych",
-      "nieskończenie wiele rozwiązań"
+      "prosta przechodząca przez wierzchołek i dzieląca wykres na dwie symetryczne części",
+      "dowolna prosta pozioma",
+      "odcinek łączący miejsca zerowe",
+      "zawsze oś OX"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Równanie kwadratowe z deltą równą zero ma",
+    "text": "Wierzchołek paraboli jest",
     "options": [
-      "dwa różne rozwiązania",
-      "brak rozwiązań rzeczywistych",
-      "nieskończenie wiele rozwiązań",
-      "jedno rozwiązanie rzeczywiste"
+      "punktem przecięcia obu osi",
+      "punktem zawsze leżącym na osi OX",
+      "środkiem okręgu wpisanego",
+      "punktem ekstremalnym wykresu funkcji kwadratowej"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Jeżeli delta równania kwadratowego jest dodatnia, to równanie ma",
+    "text": "Wielkości wprost proporcjonalne mają",
     "options": [
-      "dwa rozwiązania rzeczywiste",
-      "jedno rozwiązanie",
-      "brak rozwiązań rzeczywistych",
-      "same rozwiązania urojone"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Dodatnia delta oznacza",
-    "options": [
-      "jedno rozwiązanie",
-      "brak rozwiązań rzeczywistych",
-      "same rozwiązania urojone",
-      "dwa rozwiązania rzeczywiste"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Równanie kwadratowe z deltą większą od zera ma",
-    "options": [
-      "brak rozwiązań rzeczywistych",
-      "same rozwiązania urojone",
-      "dwa rozwiązania rzeczywiste",
-      "jedno rozwiązanie"
+      "stałą sumę odpowiednich wartości",
+      "zawsze ujemne współczynniki",
+      "stały iloraz odpowiednich wartości",
+      "stały iloczyn odpowiednich wartości"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Jeżeli delta równania kwadratowego jest ujemna, to w liczbach rzeczywistych równanie ma",
+    "text": "Wielkości odwrotnie proporcjonalne mają",
     "options": [
-      "jedno rozwiązanie",
-      "dwa rozwiązania",
-      "nieskończenie wiele rozwiązań",
-      "brak rozwiązań"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Ujemna delta oznacza, że równanie kwadratowe",
-    "options": [
-      "dwa rozwiązania",
-      "nieskończenie wiele rozwiązań",
-      "brak rozwiązań",
-      "jedno rozwiązanie"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "W zbiorze liczb rzeczywistych równanie z deltą ujemną ma",
-    "options": [
-      "nieskończenie wiele rozwiązań",
-      "brak rozwiązań",
-      "jedno rozwiązanie",
-      "dwa rozwiązania"
+      "zawsze wykres w kształcie prostej",
+      "stały iloczyn odpowiednich wartości",
+      "stały iloraz odpowiednich wartości",
+      "stałą różnicę odpowiednich wartości"
     ],
     "correctIndex": 1
   },
   {
     "text": "Suma kątów wewnętrznych trójkąta wynosi",
     "options": [
-      "270°",
-      "360°",
-      "180°",
-      "90°"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile wynosi suma kątów w trójkącie?",
-    "options": [
-      "360°",
-      "180°",
-      "90°",
-      "270°"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Każdy trójkąt ma sumę kątów równą",
-    "options": [
       "180°",
       "90°",
       "270°",
@@ -450,1053 +610,893 @@
     "correctIndex": 0
   },
   {
-    "text": "Jeżeli dwa kąty są dopełniające, to ich suma wynosi",
+    "text": "Kąt zewnętrzny trójkąta jest równy",
     "options": [
-      "360°",
-      "90°",
-      "120°",
-      "180°"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Kąty dopełniające mają razem",
-    "options": [
-      "90°",
-      "120°",
-      "180°",
-      "360°"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Suma kątów dopełniających to",
-    "options": [
-      "120°",
-      "180°",
-      "360°",
-      "90°"
+      "sumie wszystkich trzech kątów wewnętrznych",
+      "połowie kąta prostego",
+      "różnicy długości boków",
+      "sumie dwóch kątów wewnętrznych nieprzyległych"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Jeżeli dwa kąty są przyległe i tworzą linię prostą, to ich suma wynosi",
+    "text": "Trójkąt prostokątny to taki, w którym",
     "options": [
-      "180°",
-      "90°",
-      "270°",
-      "360°"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Kąty przyległe na prostej dają razem",
-    "options": [
-      "90°",
-      "270°",
-      "360°",
-      "180°"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Na jednej prostej kąty przyległe mają sumę",
-    "options": [
-      "270°",
-      "360°",
-      "180°",
-      "90°"
+      "dwa boki są równoległe",
+      "jeden bok jest okręgiem",
+      "jeden kąt ma 90°",
+      "wszystkie kąty są równe"
     ],
     "correctIndex": 2
   },
   {
-    "text": "W trójkącie prostokątnym najdłuższy bok to",
+    "text": "Trójkąt równoramienny ma",
     "options": [
-      "przyprostokątna",
-      "wysokość",
-      "podstawa",
-      "przeciwprostokątna"
+      "zawsze wszystkie kąty po 60°",
+      "dwa boki tej samej długości",
+      "trzy boki różnej długości",
+      "jeden kąt rozwarty i dwa proste"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trójkąt równoboczny charakteryzuje się tym, że",
+    "options": [
+      "wszystkie boki są równe, a kąty mają po 60°",
+      "ma dokładnie jeden bok dłuższy od pozostałych",
+      "ma jeden kąt prosty",
+      "ma tylko dwa równe kąty"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Figury podobne to figury, które",
+    "options": [
+      "mają dokładnie takie same pole i obwód",
+      "muszą mieć wspólny środek",
+      "są zawsze przystające",
+      "mają ten sam kształt i proporcjonalne wymiary"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Jak nazywa się najdłuższy bok trójkąta prostokątnego?",
+    "text": "Figury przystające to figury, które",
     "options": [
-      "wysokość",
-      "podstawa",
-      "przeciwprostokątna",
-      "przyprostokątna"
+      "mają tylko proporcjonalne boki",
+      "zawsze są okręgami",
+      "mają ten sam kształt i ten sam rozmiar",
+      "mają tylko równe kąty"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Najdłuższym bokiem w trójkącie prostokątnym jest",
+    "text": "Twierdzenie Pitagorasa mówi, że w trójkącie prostokątnym",
     "options": [
-      "podstawa",
-      "przeciwprostokątna",
-      "przyprostokątna",
-      "wysokość"
+      "przeciwprostokątna jest dwa razy dłuższa od każdej przyprostokątnej",
+      "suma kwadratów przyprostokątnych równa się kwadratowi przeciwprostokątnej",
+      "suma boków jest równa 180",
+      "każdy bok ma taką samą długość"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Twierdzenie Pitagorasa dotyczy",
+    "text": "Sinus kąta ostrego w trójkącie prostokątnym to",
     "options": [
-      "rozwartokątnego",
-      "dowolnego bez warunków",
-      "trójkąta prostokątnego",
-      "równobocznego"
+      "stosunek przyprostokątnej przeciwległej do przeciwprostokątnej",
+      "stosunek przyprostokątnej przyległej do przeciwprostokątnej",
+      "stosunek przeciwprostokątnej do przyprostokątnej przyległej",
+      "stosunek sumy przyprostokątnych do przeciwprostokątnej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Cosinus kąta ostrego w trójkącie prostokątnym to",
+    "options": [
+      "stosunek przyprostokątnej przeciwległej do przeciwprostokątnej",
+      "stosunek przeciwprostokątnej do przyprostokątnej przeciwległej",
+      "stosunek pól dwóch trójkątów",
+      "stosunek przyprostokątnej przyległej do przeciwprostokątnej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Tangens kąta ostrego w trójkącie prostokątnym to",
+    "options": [
+      "stosunek przeciwprostokątnej do przyprostokątnej przeciwległej",
+      "stosunek obwodu do pola",
+      "stosunek przyprostokątnej przeciwległej do przyprostokątnej przyległej",
+      "stosunek przyprostokątnej przyległej do przeciwprostokątnej"
     ],
     "correctIndex": 2
   },
   {
-    "text": "W jakim trójkącie stosujemy twierdzenie Pitagorasa?",
+    "text": "Okrąg to",
     "options": [
-      "dowolnego bez warunków",
-      "trójkąta prostokątnego",
-      "równobocznego",
-      "rozwartokątnego"
+      "figura złożona z czterech boków",
+      "zbiór punktów płaszczyzny w tej samej odległości od środka",
+      "obszar wnętrza koła",
+      "dowolna zamknięta krzywa"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Twierdzenie Pitagorasa wykorzystuje się w trójkącie",
+    "text": "Koło to",
     "options": [
-      "trójkąta prostokątnego",
-      "równobocznego",
-      "rozwartokątnego",
-      "dowolnego bez warunków"
+      "obszar ograniczony okręgiem wraz z jego wnętrzem",
+      "wyłącznie linia brzegowa figury",
+      "zbiór punktów odległych od środka o więcej niż r",
+      "wielokąt foremny o nieskończonej liczbie boków"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Sinus kąta ostrego w trójkącie prostokątnym to stosunek",
+    "text": "Promień okręgu to",
     "options": [
-      "jednej przyprostokątnej do drugiej",
-      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
-      "przyprostokątnej przyległej do przeciwprostokątnej",
-      "przeciwprostokątnej do przyprostokątnej"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jak definiujemy sinus kąta ostrego?",
-    "options": [
-      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
-      "przyprostokątnej przyległej do przeciwprostokątnej",
-      "przeciwprostokątnej do przyprostokątnej",
-      "jednej przyprostokątnej do drugiej"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Sinus to stosunek boku",
-    "options": [
-      "przyprostokątnej przyległej do przeciwprostokątnej",
-      "przeciwprostokątnej do przyprostokątnej",
-      "jednej przyprostokątnej do drugiej",
-      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej"
+      "odcinek łączący dwa punkty okręgu bez przechodzenia przez środek",
+      "połowa obwodu koła",
+      "najdłuższa cięciwa nieprzechodząca przez środek",
+      "odcinek łączący środek okręgu z jego punktem"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Cosinus kąta ostrego w trójkącie prostokątnym to stosunek",
+    "text": "Średnica okręgu to",
     "options": [
-      "przyprostokątnej przyległej do przeciwprostokątnej",
-      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
-      "przeciwprostokątnej do przyprostokątnej",
-      "jednej przyprostokątnej do drugiej"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jak definiujemy cosinus kąta ostrego?",
-    "options": [
-      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej",
-      "przeciwprostokątnej do przyprostokątnej",
-      "jednej przyprostokątnej do drugiej",
-      "przyprostokątnej przyległej do przeciwprostokątnej"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Cosinus to stosunek boku",
-    "options": [
-      "przeciwprostokątnej do przyprostokątnej",
-      "jednej przyprostokątnej do drugiej",
-      "przyprostokątnej przyległej do przeciwprostokątnej",
-      "przyprostokątnej naprzeciw kąta do przeciwprostokątnej"
+      "odcinek prostopadły do promienia",
+      "łuk o długości πr",
+      "odcinek przechodzący przez środek i łączący dwa punkty okręgu",
+      "dowolna cięciwa"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Tangens kąta ostrego w trójkącie prostokątnym to stosunek",
+    "text": "Styczna do okręgu w punkcie styczności",
     "options": [
-      "przeciwprostokątnej do przyprostokątnej",
-      "przyprostokątnej przyległej do przeciwprostokątnej",
-      "sumy boków do przeciwprostokątnej",
-      "przyprostokątnej naprzeciw kąta do przyprostokątnej przyległej"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Jak definiujemy tangens kąta ostrego?",
-    "options": [
-      "przyprostokątnej przyległej do przeciwprostokątnej",
-      "sumy boków do przeciwprostokątnej",
-      "przyprostokątnej naprzeciw kąta do przyprostokątnej przyległej",
-      "przeciwprostokątnej do przyprostokątnej"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Tangens to stosunek",
-    "options": [
-      "sumy boków do przeciwprostokątnej",
-      "przyprostokątnej naprzeciw kąta do przyprostokątnej przyległej",
-      "przeciwprostokątnej do przyprostokątnej",
-      "przyprostokątnej przyległej do przeciwprostokątnej"
+      "jest dłuższa od średnicy",
+      "jest prostopadła do promienia poprowadzonego do tego punktu",
+      "jest równoległa do promienia",
+      "zawsze przechodzi przez środek okręgu"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Pole prostokąta obliczamy jako",
+    "text": "Cięciwa okręgu to",
     "options": [
-      "a + b",
-      "a² + b²",
-      "a · b",
-      "2a + 2b"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jaki wzór opisuje pole prostokąta?",
-    "options": [
-      "a² + b²",
-      "a · b",
-      "2a + 2b",
-      "a + b"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pole prostokąta to",
-    "options": [
-      "a · b",
-      "2a + 2b",
-      "a + b",
-      "a² + b²"
+      "odcinek łączący dwa punkty okręgu",
+      "odcinek od środka do punktu okręgu",
+      "linia styczna do okręgu",
+      "obszar wycinka koła"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Obwód prostokąta obliczamy jako",
+    "text": "Łuk okręgu to",
     "options": [
-      "a + b",
-      "2a + 2b",
-      "a · b",
-      "a² + b²"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jaki wzór opisuje obwód prostokąta?",
-    "options": [
-      "2a + 2b",
-      "a · b",
-      "a² + b²",
-      "a + b"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Obwód prostokąta to",
-    "options": [
-      "a · b",
-      "a² + b²",
-      "a + b",
-      "2a + 2b"
+      "odcinek łączący środek z okręgiem",
+      "pole powierzchni koła",
+      "najdłuższa cięciwa",
+      "część okręgu pomiędzy dwoma jego punktami"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Pole trójkąta obliczamy jako",
+    "text": "Obwód okręgu wyraża wzór",
     "options": [
-      "a · h / 2",
-      "a + h",
-      "2a + 2h",
-      "a · h"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Który wzór daje pole trójkąta?",
-    "options": [
-      "a + h",
-      "2a + 2h",
-      "a · h",
-      "a · h / 2"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Pole trójkąta wynosi",
-    "options": [
-      "2a + 2h",
-      "a · h",
-      "a · h / 2",
-      "a + h"
+      "4πr²",
+      "r²",
+      "2πr",
+      "πr²"
     ],
     "correctIndex": 2
   },
   {
     "text": "Pole koła wyraża wzór",
     "options": [
-      "2πr",
       "πd",
-      "r²/π",
-      "πr²"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Jak obliczamy pole koła?",
-    "options": [
-      "πd",
-      "r²/π",
-      "πr²",
-      "2πr"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Pole koła to",
-    "options": [
-      "r²/π",
       "πr²",
       "2πr",
-      "πd"
+      "4/3 πr³"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Obwód okręgu wyraża wzór",
+    "text": "Wycinek koła to",
     "options": [
-      "πd²",
-      "2r²",
-      "2πr",
-      "πr²"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jak obliczamy długość okręgu?",
-    "options": [
-      "2r²",
-      "2πr",
-      "πr²",
-      "πd²"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Obwód okręgu to",
-    "options": [
-      "2πr",
-      "πr²",
-      "πd²",
-      "2r²"
+      "część koła wyznaczona przez dwa promienie i łuk",
+      "połowa okręgu",
+      "każda cięciwa",
+      "obszar pomiędzy dwiema prostymi równoległymi"
     ],
     "correctIndex": 0
-  },
-  {
-    "text": "Okrąg i koło to pojęcia",
-    "options": [
-      "okrąg ma pole, a koło nie",
-      "okrąg jest brzegiem, a koło obszarem",
-      "oznaczają dokładnie to samo",
-      "koło jest tylko w geometrii przestrzennej"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Które zdanie poprawnie odróżnia okrąg od koła?",
-    "options": [
-      "okrąg jest brzegiem, a koło obszarem",
-      "oznaczają dokładnie to samo",
-      "koło jest tylko w geometrii przestrzennej",
-      "okrąg ma pole, a koło nie"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Różnica między okręgiem a kołem polega na tym, że",
-    "options": [
-      "oznaczają dokładnie to samo",
-      "koło jest tylko w geometrii przestrzennej",
-      "okrąg ma pole, a koło nie",
-      "okrąg jest brzegiem, a koło obszarem"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Sześcian ma wszystkie krawędzie",
-    "options": [
-      "równej długości",
-      "parami prostopadłe tylko w podstawie",
-      "różnej długości",
-      "zawsze dwa razy dłuższe od przekątnej"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Co jest charakterystyczne dla sześcianu?",
-    "options": [
-      "parami prostopadłe tylko w podstawie",
-      "różnej długości",
-      "zawsze dwa razy dłuższe od przekątnej",
-      "równej długości"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "W sześcianie wszystkie krawędzie są",
-    "options": [
-      "różnej długości",
-      "zawsze dwa razy dłuższe od przekątnej",
-      "równej długości",
-      "parami prostopadłe tylko w podstawie"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Prostopadłościan różni się od sześcianu tym, że",
-    "options": [
-      "nie ma ścian prostokątnych",
-      "wszystkie ściany są trójkątami",
-      "nie ma objętości",
-      "nie wszystkie muszą mieć tę samą długość"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Jaka cecha odróżnia prostopadłościan od sześcianu?",
-    "options": [
-      "wszystkie ściany są trójkątami",
-      "nie ma objętości",
-      "nie wszystkie muszą mieć tę samą długość",
-      "nie ma ścian prostokątnych"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "W prostopadłościanie krawędzie",
-    "options": [
-      "nie ma objętości",
-      "nie wszystkie muszą mieć tę samą długość",
-      "nie ma ścian prostokątnych",
-      "wszystkie ściany są trójkątami"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Walec ma w podstawie",
-    "options": [
-      "kwadratów",
-      "rombów",
-      "kół",
-      "trójkątów"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jakie figury są podstawami walca?",
-    "options": [
-      "rombów",
-      "kół",
-      "trójkątów",
-      "kwadratów"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Walec składa się z dwóch podstaw w kształcie",
-    "options": [
-      "kół",
-      "trójkątów",
-      "kwadratów",
-      "rombów"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Romb to czworokąt, w którym",
-    "options": [
-      "zawsze tylko dwa boki są równe",
-      "wszystkie boki są równe",
-      "wszystkie kąty są proste",
-      "tylko przekątne są równe"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Co jest najważniejszą cechą rombu?",
-    "options": [
-      "wszystkie boki są równe",
-      "wszystkie kąty są proste",
-      "tylko przekątne są równe",
-      "zawsze tylko dwa boki są równe"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "W rombie wszystkie boki są",
-    "options": [
-      "wszystkie kąty są proste",
-      "tylko przekątne są równe",
-      "zawsze tylko dwa boki są równe",
-      "wszystkie boki są równe"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Prostokąt to czworokąt, w którym",
     "options": [
-      "wszystkie kąty są proste",
       "wszystkie boki są równe",
-      "przekątne są prostopadłe zawsze",
-      "ma tylko jedną parę boków równoległych"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Co wyróżnia prostokąt?",
-    "options": [
-      "wszystkie boki są równe",
-      "przekątne są prostopadłe zawsze",
-      "ma tylko jedną parę boków równoległych",
+      "przekątne są zawsze prostopadłe",
+      "tylko jedna para boków jest równoległa",
       "wszystkie kąty są proste"
     ],
     "correctIndex": 3
   },
   {
-    "text": "W prostokącie wszystkie kąty są",
+    "text": "Kwadrat to figura, która",
     "options": [
-      "przekątne są prostopadłe zawsze",
-      "ma tylko jedną parę boków równoległych",
+      "ma dwa boki równe",
+      "ma zawsze jedną przekątną",
+      "ma wszystkie boki równe i wszystkie kąty proste",
+      "ma tylko jedną parę boków równoległych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Romb to czworokąt, w którym",
+    "options": [
+      "przekątne są równe",
+      "wszystkie boki mają jednakową długość",
       "wszystkie kąty są proste",
-      "wszystkie boki są równe"
+      "tylko jedna para boków jest równoległa"
     ],
-    "correctIndex": 2
+    "correctIndex": 1
   },
   {
-    "text": "Trapez to czworokąt mający",
+    "text": "Równoległobok to czworokąt, w którym",
     "options": [
-      "wszystkie boki równe",
-      "cztery kąty proste",
-      "brak przekątnych",
-      "co najmniej jedną parę boków równoległych"
+      "przeciwległe boki są równoległe",
+      "wszystkie kąty są proste",
+      "wszystkie boki są równe",
+      "żadne boki nie są równoległe"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Trapez to czworokąt, który",
+    "options": [
+      "ma wszystkie boki równe",
+      "ma wszystkie kąty równe",
+      "zawsze jest rombem",
+      "ma co najmniej jedną parę boków równoległych"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Jak rozpoznasz trapez?",
+    "text": "Deltoid to czworokąt, który",
     "options": [
-      "cztery kąty proste",
-      "brak przekątnych",
-      "co najmniej jedną parę boków równoległych",
-      "wszystkie boki równe"
+      "ma tylko kąty proste",
+      "jest zawsze kwadratem",
+      "ma dwie pary równych boków przyległych",
+      "ma wszystkie boki równoległe"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Cechą trapezu jest",
+    "text": "Wielokąt foremny to taki wielokąt, w którym",
     "options": [
-      "brak przekątnych",
-      "co najmniej jedną parę boków równoległych",
-      "wszystkie boki równe",
-      "cztery kąty proste"
+      "tylko kąty są proste",
+      "wszystkie boki i wszystkie kąty są równe",
+      "wszystkie przekątne są prostopadłe",
+      "tylko długości boków są równe"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Wartość bezwzględna liczby oznacza jej",
+    "text": "Pole trójkąta obliczamy jako",
     "options": [
-      "przeciwny znak",
-      "położenie względem jedynki",
-      "odległość od zera na osi liczbowej",
-      "największy dzielnik"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Co opisuje wartość bezwzględna?",
-    "options": [
-      "położenie względem jedynki",
-      "odległość od zera na osi liczbowej",
-      "największy dzielnik",
-      "przeciwny znak"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Wartość bezwzględna liczby to odległość od",
-    "options": [
-      "odległość od zera na osi liczbowej",
-      "największy dzielnik",
-      "przeciwny znak",
-      "położenie względem jedynki"
+      "połowę iloczynu podstawy i wysokości",
+      "iloczyn wszystkich boków",
+      "sumę podstawy i wysokości",
+      "kwadrat obwodu"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Liczba podniesiona do potęgi zerowej jest równa",
+    "text": "Pole równoległoboku obliczamy jako",
     "options": [
-      "-1",
-      "1",
-      "0",
-      "a"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ile wynosi a⁰ dla a ≠ 0?",
-    "options": [
-      "1",
-      "0",
-      "a",
-      "-1"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Potęga zerowa liczby niezerowej daje",
-    "options": [
-      "0",
-      "a",
-      "-1",
-      "1"
+      "połowę sumy podstaw i wysokości",
+      "kwadrat przekątnej",
+      "iloczyn wszystkich boków",
+      "iloczyn podstawy i wysokości"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Potęga o wykładniku ujemnym oznacza",
+    "text": "Pole rombu można obliczyć jako",
     "options": [
-      "odwrotność odpowiedniej potęgi dodatniej",
-      "liczbę przeciwną",
-      "zawsze zero",
-      "to samo co potęga dodatnia"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jak rozumiemy ujemny wykładnik potęgi?",
-    "options": [
-      "liczbę przeciwną",
-      "zawsze zero",
-      "to samo co potęga dodatnia",
-      "odwrotność odpowiedniej potęgi dodatniej"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "a do potęgi -1 to",
-    "options": [
-      "zawsze zero",
-      "to samo co potęga dodatnia",
-      "odwrotność odpowiedniej potęgi dodatniej",
-      "liczbę przeciwną"
+      "iloczyn obwodu i promienia",
+      "kwadrat jego wysokości",
+      "połowę iloczynu długości przekątnych",
+      "sumę długości boków"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Pierwiastek kwadratowy z liczby rzeczywistej istnieje wtedy, gdy liczba pod pierwiastkiem jest",
+    "text": "Pole trapezu obliczamy jako",
     "options": [
-      "ujemna",
-      "nieparzysta",
-      "większa od 10",
-      "nieujemna"
+      "iloczyn krótszej podstawy i ramienia",
+      "połowę sumy długości podstaw pomnożoną przez wysokość",
+      "iloczyn obu przekątnych",
+      "sumę wszystkich boków"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Objętość graniastosłupa to",
+    "options": [
+      "pole podstawy razy wysokość",
+      "obwód podstawy razy wysokość",
+      "połowa pola podstawy razy wysokość",
+      "pole powierzchni bocznej razy wysokość"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Objętość walca obliczamy jako",
+    "options": [
+      "obwód podstawy razy wysokość",
+      "trzykrotność pola podstawy",
+      "sześcian promienia",
+      "pole podstawy razy wysokość"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Kiedy w liczbach rzeczywistych można obliczyć pierwiastek kwadratowy?",
+    "text": "Objętość stożka wynosi",
     "options": [
-      "nieparzysta",
-      "większa od 10",
-      "nieujemna",
-      "ujemna"
+      "dwie trzecie pola podstawy",
+      "suma promienia i wysokości",
+      "jedna trzecia pola podstawy razy wysokość",
+      "pole podstawy razy wysokość"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Pod pierwiastkiem kwadratowym w liczbach rzeczywistych może stać tylko liczba",
+    "text": "Objętość ostrosłupa wynosi",
     "options": [
-      "większa od 10",
-      "nieujemna",
-      "ujemna",
-      "nieparzysta"
+      "iloczyn przekątnych podstawy",
+      "jedna trzecia pola podstawy razy wysokość",
+      "pole podstawy razy wysokość",
+      "połowa pola bocznego"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Logarytm odpowiada na pytanie, do jakiej potęgi trzeba podnieść podstawę, aby otrzymać",
+    "text": "Objętość kuli wyraża wzór",
     "options": [
-      "resztę z dzielenia",
-      "największy wspólny dzielnik",
-      "daną liczbę",
-      "sumę dwóch liczb"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Co mówi logarytm liczby?",
-    "options": [
-      "największy wspólny dzielnik",
-      "daną liczbę",
-      "sumę dwóch liczb",
-      "resztę z dzielenia"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Logarytm informuje, jaki wykładnik daje",
-    "options": [
-      "daną liczbę",
-      "sumę dwóch liczb",
-      "resztę z dzielenia",
-      "największy wspólny dzielnik"
+      "4/3 πr³",
+      "πr²",
+      "2πr",
+      "4πr²"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Średnia arytmetyczna liczb to ich suma podzielona przez",
+    "text": "Objętość sześcianu o krawędzi a wynosi",
     "options": [
-      "liczbę dodatnich elementów",
-      "liczbę wszystkich elementów",
-      "największy element",
-      "2"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jak obliczamy średnią arytmetyczną?",
-    "options": [
-      "liczbę wszystkich elementów",
-      "największy element",
-      "2",
-      "liczbę dodatnich elementów"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Aby policzyć średnią arytmetyczną, dzielimy sumę przez",
-    "options": [
-      "największy element",
-      "2",
-      "liczbę dodatnich elementów",
-      "liczbę wszystkich elementów"
+      "6a²",
+      "4a",
+      "a²/2",
+      "a³"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Mediana po uporządkowaniu danych to wartość",
+    "text": "Objętość prostopadłościanu wynosi",
     "options": [
-      "środkowa",
-      "największa",
-      "najczęstsza",
-      "pierwsza dodatnia"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Co oznacza mediana?",
-    "options": [
-      "największa",
-      "najczęstsza",
-      "pierwsza dodatnia",
-      "środkowa"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Mediana jest elementem leżącym",
-    "options": [
-      "najczęstsza",
-      "pierwsza dodatnia",
-      "środkowa",
-      "największa"
+      "pole jednej ściany",
+      "kwadrat przekątnej",
+      "iloczyn trzech jego wymiarów",
+      "sumę wszystkich krawędzi"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Dominanta w zestawie danych to wartość, która występuje",
+    "text": "Przekątna sześcianu o krawędzi a ma długość",
     "options": [
-      "pośrodku",
-      "na końcu",
-      "dokładnie dwa razy",
-      "najczęściej"
+      "πa",
+      "a√3",
+      "a√2",
+      "3a"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Przekątna prostopadłościanu o krawędziach a, b, c ma długość",
+    "options": [
+      "pierwiastek z sumy kwadratów trzech krawędzi",
+      "sumę długości wszystkich krawędzi",
+      "iloczyn krawędzi",
+      "różnicę największej i najmniejszej krawędzi"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Kąt pełny ma miarę",
+    "options": [
+      "180°",
+      "90°",
+      "270°",
+      "360°"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Co oznacza dominanta?",
+    "text": "Kąt półpełny ma miarę",
     "options": [
-      "na końcu",
-      "dokładnie dwa razy",
-      "najczęściej",
-      "pośrodku"
+      "90°",
+      "45°",
+      "180°",
+      "360°"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Dominanta to liczba pojawiająca się",
+    "text": "Kąty dopełniające sumują się do",
     "options": [
-      "dokładnie dwa razy",
-      "najczęściej",
-      "pośrodku",
-      "na końcu"
+      "270°",
+      "90°",
+      "180°",
+      "360°"
     ],
     "correctIndex": 1
   },
   {
-    "text": "Prawdopodobieństwo zdarzenia niemożliwego jest równe",
+    "text": "Kąty przyległe dopełniające się na prostej sumują się do",
     "options": [
-      "1",
-      "2",
-      "0",
-      "1/2"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jakie prawdopodobieństwo ma zdarzenie niemożliwe?",
-    "options": [
-      "2",
-      "0",
-      "1/2",
-      "1"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Zdarzenie niemożliwe ma prawdopodobieństwo",
-    "options": [
-      "0",
-      "1/2",
-      "1",
-      "2"
+      "180°",
+      "90°",
+      "360°",
+      "60°"
     ],
     "correctIndex": 0
   },
   {
-    "text": "Prawdopodobieństwo zdarzenia pewnego jest równe",
+    "text": "Kąty wierzchołkowe",
     "options": [
-      "2",
-      "1",
-      "0",
-      "1/2"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jakie prawdopodobieństwo ma zdarzenie pewne?",
-    "options": [
-      "1",
-      "0",
-      "1/2",
-      "2"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Zdarzenie pewne ma prawdopodobieństwo",
-    "options": [
-      "0",
-      "1/2",
-      "2",
-      "1"
+      "zawsze sumują się do 90°",
+      "nie mogą być równe",
+      "występują tylko w trójkątach",
+      "są równe"
     ],
     "correctIndex": 3
   },
   {
-    "text": "W ciągu arytmetycznym każdy kolejny wyraz powstaje przez",
+    "text": "Przy dwóch prostych równoległych kąty odpowiadające",
     "options": [
-      "dodanie tej samej liczby",
-      "pomnożenie przez tę samą liczbę",
-      "podzielenie przez numer wyrazu",
-      "zmianę znaku"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Co charakteryzuje ciąg arytmetyczny?",
-    "options": [
-      "pomnożenie przez tę samą liczbę",
-      "podzielenie przez numer wyrazu",
-      "zmianę znaku",
-      "dodanie tej samej liczby"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Kolejne wyrazy ciągu arytmetycznego otrzymujemy przez",
-    "options": [
-      "podzielenie przez numer wyrazu",
-      "zmianę znaku",
-      "dodanie tej samej liczby",
-      "pomnożenie przez tę samą liczbę"
+      "zawsze są rozwarte",
+      "nie istnieją",
+      "mają równe miary",
+      "zawsze są dopełniające"
     ],
     "correctIndex": 2
   },
   {
-    "text": "W ciągu geometrycznym każdy kolejny wyraz powstaje przez",
+    "text": "Środek odcinka",
     "options": [
-      "dodanie tej samej liczby",
-      "odjęcie tej samej liczby",
-      "podniesienie do kwadratu",
-      "pomnożenie przez tę samą liczbę"
+      "jest jednym z końców odcinka",
+      "dzieli odcinek na dwie równe części",
+      "dzieli odcinek w stosunku 2:1",
+      "zawsze leży na osi OY"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Symetralna odcinka jest zbiorem punktów",
+    "options": [
+      "równoodległych od końców tego odcinka",
+      "należących do tego samego okręgu",
+      "mających dodatnią współrzędną x",
+      "leżących na jednej osi"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Środek ciężkości trójkąta to",
+    "options": [
+      "punkt przecięcia wysokości",
+      "punkt przecięcia dwusiecznych",
+      "środek okręgu opisanego",
+      "punkt przecięcia środkowych trójkąta"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Co charakteryzuje ciąg geometryczny?",
+    "text": "Ortocentrum trójkąta to",
     "options": [
-      "odjęcie tej samej liczby",
-      "podniesienie do kwadratu",
-      "pomnożenie przez tę samą liczbę",
-      "dodanie tej samej liczby"
+      "środek okręgu wpisanego",
+      "połowa długości najdłuższego boku",
+      "punkt przecięcia wysokości trójkąta",
+      "punkt przecięcia środkowych"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Kolejne wyrazy ciągu geometrycznego otrzymujemy przez",
+    "text": "Środek okręgu opisanego na trójkącie to",
     "options": [
-      "podniesienie do kwadratu",
-      "pomnożenie przez tę samą liczbę",
-      "dodanie tej samej liczby",
-      "odjęcie tej samej liczby"
+      "punkt przecięcia przekątnych",
+      "punkt przecięcia symetralnych boków trójkąta",
+      "punkt przecięcia wysokości",
+      "punkt przecięcia środkowych"
     ],
     "correctIndex": 1
   },
   {
-    "text": "1% oznacza",
+    "text": "Środek okręgu wpisanego w trójkąt to",
     "options": [
-      "jedną tysięczną całości",
-      "całą wartość",
-      "jedną setną całości",
-      "jedną dziesiątą całości"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jak rozumieć zapis 1%?",
-    "options": [
-      "całą wartość",
-      "jedną setną całości",
-      "jedną dziesiątą całości",
-      "jedną tysięczną całości"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jeden procent to",
-    "options": [
-      "jedną setną całości",
-      "jedną dziesiątą całości",
-      "jedną tysięczną całości",
-      "całą wartość"
+      "punkt przecięcia dwusiecznych kątów trójkąta",
+      "punkt przecięcia symetralnych boków",
+      "punkt przecięcia wysokości",
+      "punkt przecięcia środkowych"
     ],
     "correctIndex": 0
   },
   {
-    "text": "1‰ oznacza",
+    "text": "Oś OX w układzie współrzędnych jest osią",
     "options": [
-      "sto procent",
-      "jedną tysięczną całości",
-      "jedną setną całości",
-      "jedną dziesiątą całości"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jak rozumieć zapis 1 promil?",
-    "options": [
-      "jedną tysięczną całości",
-      "jedną setną całości",
-      "jedną dziesiątą całości",
-      "sto procent"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jeden promil to",
-    "options": [
-      "jedną setną całości",
-      "jedną dziesiątą całości",
-      "sto procent",
-      "jedną tysięczną całości"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Na układzie współrzędnych oś OX jest osią",
-    "options": [
-      "poziomą",
-      "pionowa",
-      "symetrii",
-      "liczb ujemnych"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jak nazywa się oś OX?",
-    "options": [
-      "pionowa",
-      "symetrii",
-      "liczb ujemnych",
+      "pionową",
+      "ukośną",
+      "okrężną",
       "poziomą"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Oś OX to oś",
+    "text": "Oś OY w układzie współrzędnych jest osią",
     "options": [
-      "symetrii",
-      "liczb ujemnych",
-      "poziomą",
-      "pionowa"
+      "równoległą do prostej y = x",
+      "o długości 1",
+      "pionową",
+      "poziomą"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Na układzie współrzędnych oś OY jest osią",
+    "text": "Każdy punkt leżący na osi OY ma",
     "options": [
-      "pozioma",
-      "nachylenia",
-      "kątów",
-      "pionową"
+      "obie współrzędne równe",
+      "współrzędną x równą 0",
+      "współrzędną y równą 0",
+      "obie współrzędne dodatnie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Każdy punkt leżący na osi OX ma",
+    "options": [
+      "współrzędną y równą 0",
+      "współrzędną x równą 0",
+      "wartość bezwzględną równą 1",
+      "zawsze dodatnią pierwszą współrzędną"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Wzór na odległość dwóch punktów w układzie współrzędnych wynika z",
+    "options": [
+      "twierdzenia Talesa",
+      "wzoru skróconego mnożenia",
+      "reguły Cramera",
+      "twierdzenia Pitagorasa"
     ],
     "correctIndex": 3
   },
   {
-    "text": "Jak nazywa się oś OY?",
+    "text": "Współrzędne środka odcinka są",
     "options": [
-      "nachylenia",
-      "kątów",
-      "pionową",
-      "pozioma"
+      "większymi z odpowiednich współrzędnych",
+      "zawsze liczbami całkowitymi",
+      "średnimi arytmetycznymi odpowiednich współrzędnych końców",
+      "sumami odpowiednich współrzędnych"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Oś OY to oś",
+    "text": "Współczynnik kierunkowy prostej wyraża",
     "options": [
-      "kątów",
-      "pionową",
-      "pozioma",
-      "nachylenia"
+      "sumę obu współrzędnych punktu",
+      "iloraz zmiany współrzędnej y do zmiany współrzędnej x",
+      "punkt przecięcia prostej z osią OY",
+      "długość odcinka na osi OX"
     ],
     "correctIndex": 1
+  },
+  {
+    "text": "Pochodna funkcji opisuje",
+    "options": [
+      "chwilowe tempo zmiany funkcji",
+      "całkowite pole pod wykresem",
+      "liczbę miejsc zerowych",
+      "dziedzinę funkcji"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Pochodna funkcji stałej jest równa",
+    "options": [
+      "1",
+      "samej stałej",
+      "nie istnieje",
+      "0"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Całka nieoznaczona oznacza",
+    "options": [
+      "miejsce zerowe funkcji",
+      "wyłącznie wynik liczbowy",
+      "rodzinę funkcji, których pochodna daje daną funkcję",
+      "pole zawsze dodatnie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Całka oznaczona na przedziale interpretuje",
+    "options": [
+      "liczbę wszystkich punktów wykresu",
+      "zorientowane pole pod wykresem na danym przedziale",
+      "współczynnik kierunkowy funkcji",
+      "wartość mediany"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Granica ciągu lub funkcji to",
+    "options": [
+      "wartość, do której wyrazy lub wartości się zbliżają",
+      "największy element zbioru",
+      "pierwszy wyraz ciągu",
+      "współczynnik przy najwyższej potędze"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Funkcja ciągła w punkcie nie ma w nim",
+    "options": [
+      "wartości liczbowej",
+      "pochodnej",
+      "osi symetrii",
+      "przerw, skoków ani dziur"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Ciąg monotoniczny to taki ciąg, który",
+    "options": [
+      "składa się z liczb całkowitych",
+      "zawsze ma granicę równą zero",
+      "nie zmienia kierunku wzrostu lub spadku",
+      "ma wyłącznie liczby dodatnie"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Ciąg arytmetyczny charakteryzuje się",
+    "options": [
+      "tym, że każdy wyraz jest kwadratem poprzedniego",
+      "stałą różnicą między kolejnymi wyrazami",
+      "stałym ilorazem między wyrazami",
+      "stałą sumą dwóch pierwszych wyrazów"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Ciąg geometryczny charakteryzuje się",
+    "options": [
+      "stałym ilorazem kolejnych wyrazów",
+      "stałą różnicą kolejnych wyrazów",
+      "tym, że wszystkie wyrazy są równe",
+      "zawsze malejącym przebiegiem"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Silnia liczby naturalnej n to",
+    "options": [
+      "suma liczb od 1 do n",
+      "kwadrat liczby n",
+      "liczba permutacji tylko dwóch elementów",
+      "iloczyn liczb naturalnych od 1 do n"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Permutacja to",
+    "options": [
+      "suma wszystkich elementów",
+      "zbiór pusty",
+      "uporządkowanie wszystkich elementów zbioru",
+      "wybór elementów bez uwzględniania kolejności"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Kombinacja to",
+    "options": [
+      "funkcja malejąca",
+      "wybór elementów, w którym kolejność nie ma znaczenia",
+      "uporządkowanie wszystkich elementów",
+      "iloczyn liczb naturalnych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wyznacznik macierzy 2×2 [[a,b],[c,d]] jest równy",
+    "options": [
+      "ad - bc",
+      "ab + cd",
+      "ac - bd",
+      "a + b + c + d"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jeżeli wyznacznik macierzy kwadratowej jest równy zero, to macierz",
+    "options": [
+      "jest zawsze diagonalna",
+      "musi mieć same dodatnie elementy",
+      "jest równa macierzy jednostkowej",
+      "nie ma macierzy odwrotnej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Wektor to",
+    "options": [
+      "zawsze odcinek poziomy",
+      "liczba zespolona",
+      "wielkość mająca kierunek, zwrot i wartość",
+      "wielkość opisywana wyłącznie liczbą"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Skalar to",
+    "options": [
+      "para liczb uporządkowanych",
+      "wielkość opisywana wyłącznie liczbą",
+      "wektor długości 1",
+      "wielkość mająca zwrot"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wektor jednostkowy to",
+    "options": [
+      "wektor o długości 1",
+      "wektor o długości 0",
+      "dowolny wektor dodatni",
+      "wektor równoległy do osi OY"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Liczba zespolona składa się z",
+    "options": [
+      "dwóch części rzeczywistych",
+      "tylko części urojonej",
+      "modułu i argumentu bez części rzeczywistej",
+      "części rzeczywistej i urojonej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jednostka urojona i spełnia zależność",
+    "options": [
+      "i = 0",
+      "i = π",
+      "i² = -1",
+      "i² = 1"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Stopień wielomianu to",
+    "options": [
+      "liczba miejsc zerowych",
+      "najwyższy wykładnik przy zmiennej z niezerowym współczynnikiem",
+      "liczba wszystkich wyrazów w wielomianie",
+      "wartość wielomianu dla x = 1"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wielomian liniowy jest wielomianem",
+    "options": [
+      "stopnia pierwszego",
+      "stopnia drugiego",
+      "stopnia zerowego",
+      "bez wyrazu wolnego"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Wielomian kwadratowy jest wielomianem",
+    "options": [
+      "stopnia trzeciego",
+      "stopnia pierwszego",
+      "nieskończonego stopnia",
+      "stopnia drugiego"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Wyrażenie wymierne może być niezdefiniowane wtedy, gdy",
+    "options": [
+      "występuje pierwiastek parzystego stopnia",
+      "ma dwa składniki",
+      "mianownik przyjmuje wartość zero",
+      "licznik jest dodatni"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Dziedziną funkcji logarytmicznej są",
+    "options": [
+      "wyłącznie liczby ujemne",
+      "dodatnie argumenty",
+      "wszystkie liczby rzeczywiste",
+      "wyłącznie liczby całkowite"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Funkcja wykładnicza o podstawie większej od 1 jest",
+    "options": [
+      "rosnąca",
+      "malejąca",
+      "stała",
+      "okresowa"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Funkcja wykładnicza o podstawie z przedziału (0,1) jest",
+    "options": [
+      "rosnąca",
+      "parzysta",
+      "stała",
+      "malejąca"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Funkcja różnowartościowa to taka, która",
+    "options": [
+      "ma zawsze dwa miejsca zerowe",
+      "jest okresowa",
+      "różnym argumentom przyporządkowuje różne wartości",
+      "każdej liczbie przyporządkowuje zero"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Funkcja 'na' to taka, w której",
+    "options": [
+      "wykres przechodzi przez początek układu",
+      "każdy element przeciwdziedziny jest obrazem jakiegoś argumentu",
+      "różne argumenty mają różne obrazy",
+      "dziedzina jest zbiorem pustym"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Funkcja bijektywna jest",
+    "options": [
+      "jednocześnie różnowartościowa i 'na'",
+      "zawsze stała",
+      "zawsze kwadratowa",
+      "okresowa i nieograniczona"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Funkcja okresowa to funkcja, która",
+    "options": [
+      "ma dokładnie jedno miejsce zerowe",
+      "jest zawsze rosnąca",
+      "ma dziedzinę skończoną",
+      "powtarza wartości po dodaniu stałego okresu"
+    ],
+    "correctIndex": 3
   }
 ]

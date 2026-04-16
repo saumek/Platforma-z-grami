@@ -298,56 +298,55 @@ export function ProfileScreen({
           </section>
         ) : null}
 
-        <section className="relative overflow-hidden rounded-[2.25rem] bg-surface-container px-6 py-7 shadow-[0_22px_55px_rgba(0,0,0,0.24)]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(182,160,255,0.16),transparent_46%),linear-gradient(135deg,rgba(255,255,255,0.03),transparent_60%)]" />
-          <div className="relative">
-            <div className="flex items-start justify-between gap-5">
-              <div className="flex-1">
-                <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-primary/75">
-                  Twoje konto
-                </p>
-                <h2 className="mt-3 max-w-[8ch] font-headline text-[2.75rem] leading-[0.95] font-black tracking-[-0.06em] text-on-background">
-                  {displayName}
-                </h2>
-                <div className="mt-5 flex flex-wrap items-center gap-3">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-surface-container-high px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant">
-                    <span className={`h-2.5 w-2.5 rounded-full ${hasJoinedRoom ? "bg-secondary shadow-[0_0_10px_rgba(0,227,253,0.55)]" : "bg-outline-variant"}`} />
-                    {hasJoinedRoom ? `W pokoju${currentRoomCode ? ` ${formatRoomCode(currentRoomCode)}` : ""}` : "Poza pokojem"}
-                  </div>
+        <section className="relative">
+          <div className="flex items-center justify-between gap-5">
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-primary/70">
+                Twoje konto
+              </p>
+              <h2 className="mt-3 max-w-[8ch] font-headline text-[2.75rem] leading-[0.95] font-black tracking-[-0.06em] text-on-background">
+                {displayName}
+              </h2>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 rounded-full bg-surface-container-low px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant">
+                  <span className={`h-2.5 w-2.5 rounded-full ${hasJoinedRoom ? "bg-secondary shadow-[0_0_10px_rgba(0,227,253,0.55)]" : "bg-outline-variant"}`} />
+                  {hasJoinedRoom
+                    ? `W pokoju${currentRoomCode ? ` ${formatRoomCode(currentRoomCode)}` : ""}`
+                    : "Poza pokojem"}
                 </div>
               </div>
 
-              <div className="relative group shrink-0">
-                <div className="absolute -inset-1.5 bg-gradient-to-r from-primary via-secondary to-primary rounded-full blur-md opacity-40 transition duration-500 group-hover:opacity-70" />
-                <div className="relative w-28 h-28 rounded-full overflow-hidden border-4 border-surface-container-high neon-glow-primary bg-surface-container-highest flex items-center justify-center shadow-[0_20px_40px_rgba(0,0,0,0.28)]">
-                  {avatarPath ? (
-                    <Image
-                      alt="Avatar użytkownika"
-                      className="w-full h-full object-cover"
-                      src={avatarPath}
-                      width={112}
-                      height={112}
-                    />
-                  ) : (
-                    <span
-                      className="material-symbols-outlined text-primary text-5xl"
-                      style={{ fontVariationSettings: '"FILL" 1' }}
-                    >
-                      person
-                    </span>
-                  )}
-                </div>
-              </div>
+              <button
+                className="mt-6 inline-flex items-center gap-2 rounded-full px-1 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant transition-colors hover:text-primary active:scale-95"
+                type="button"
+                onClick={() => router.push("/profile/edit")}
+              >
+                <span className="material-symbols-outlined text-base">edit</span>
+                Edytuj profil
+              </button>
             </div>
 
-            <button
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-surface-container-highest px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant border border-outline-variant/20 hover:text-primary transition-colors active:scale-95"
-              type="button"
-              onClick={() => router.push("/profile/edit")}
-            >
-              <span className="material-symbols-outlined text-base">edit</span>
-              Edytuj profil
-            </button>
+            <div className="relative shrink-0">
+              <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-primary/35 via-secondary/25 to-primary/35 blur-lg" />
+              <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-outline-variant/20 bg-surface-container-low">
+                {avatarPath ? (
+                  <Image
+                    alt="Avatar użytkownika"
+                    className="h-full w-full object-cover"
+                    src={avatarPath}
+                    width={112}
+                    height={112}
+                  />
+                ) : (
+                  <span
+                    className="material-symbols-outlined text-primary text-5xl"
+                    style={{ fontVariationSettings: '"FILL" 1' }}
+                  >
+                    person
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
         </section>
 

@@ -207,9 +207,9 @@ describe("dopowiedzenia flow", () => {
     const playerOneState = await getDopowiedzeniaState("ROOM-3", "user-1");
     const playerFourState = await getDopowiedzeniaState("ROOM-3", "user-4");
 
-    expect(playerOneState?.promptWords).toEqual(["uciekła", "nagle", "w", "ciemność"].slice(-3));
+    expect(playerOneState?.promptWords).toEqual(["Historia", "C", "uciekła", "nagle", "w", "ciemność"].slice(-5));
     expect(playerOneState?.promptSourceName).toBe("Uzytkownik 3");
-    expect(playerFourState?.promptWords).toEqual(["pachniała", "kawą", "z", "rana"].slice(-3));
+    expect(playerFourState?.promptWords).toEqual(["Historia", "B", "pachniała", "kawą", "z", "rana"].slice(-5));
     expect(playerFourState?.promptSourceName).toBe("Uzytkownik 2");
   });
 });

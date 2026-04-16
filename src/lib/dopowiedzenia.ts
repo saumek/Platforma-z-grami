@@ -72,7 +72,7 @@ export function countStoryWords(value: string) {
   return matches?.length ?? 0;
 }
 
-export function getLastStoryWords(value: string, count = 3) {
+export function getLastStoryWords(value: string, count = 5) {
   const words = normalizeStoryText(value).split(/\s+/).filter(Boolean);
   return words.slice(-count);
 }

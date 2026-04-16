@@ -1,1502 +1,752 @@
 [
   {
-    "text": "Który kontynent jest największy pod względem powierzchni?",
-    "options": [
-      "Azja",
-      "Afryka",
-      "Europa",
-      "Ameryka Południowa"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Największym kontynentem jest",
-    "options": [
-      "Afryka",
-      "Europa",
-      "Ameryka Południowa",
-      "Azja"
-    ],
-    "correctIndex": 3
-  },
-  {
     "text": "Który kontynent ma największą powierzchnię?",
-    "options": [
-      "Europa",
-      "Ameryka Południowa",
-      "Azja",
-      "Afryka"
-    ],
-    "correctIndex": 2
+    "options": ["Azja", "Afryka", "Europa", "Ameryka Południowa"],
+    "correctIndex": 0
   },
   {
     "text": "Stolicą Kanady jest",
-    "options": [
-      "Toronto",
-      "Montreal",
-      "Vancouver",
-      "Ottawa"
-    ],
+    "options": ["Toronto", "Ottawa", "Montreal", "Vancouver"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Autorem \"Pana Tadeusza\" jest",
+    "options": ["Juliusz Słowacki", "Henryk Sienkiewicz", "Adam Mickiewicz", "Bolesław Prus"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który pierwiastek chemiczny ma symbol Fe?",
+    "options": ["Fluor", "Fosfor", "Franc", "Żelazo"],
     "correctIndex": 3
   },
   {
-    "text": "Jakie miasto jest stolicą Kanady?",
-    "options": [
-      "Montreal",
-      "Vancouver",
-      "Ottawa",
-      "Toronto"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Kanada ma stolicę w mieście",
-    "options": [
-      "Vancouver",
-      "Ottawa",
-      "Toronto",
-      "Montreal"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Autorem „Pana Tadeusza” jest",
-    "options": [
-      "Henryka Sienkiewicza",
-      "Bolesława Prusa",
-      "Adama Mickiewicza",
-      "Juliusza Słowackiego"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Kto napisał „Pana Tadeusza”?",
-    "options": [
-      "Bolesława Prusa",
-      "Adama Mickiewicza",
-      "Juliusza Słowackiego",
-      "Henryka Sienkiewicza"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "„Pan Tadeusz” został napisany przez",
-    "options": [
-      "Adama Mickiewicza",
-      "Juliusza Słowackiego",
-      "Henryka Sienkiewicza",
-      "Bolesława Prusa"
-    ],
+    "text": "Która planeta krąży najbliżej Słońca?",
+    "options": ["Merkury", "Wenus", "Ziemia", "Mars"],
     "correctIndex": 0
   },
   {
-    "text": "Stolicą Włoch jest",
-    "options": [
-      "Neapolu",
-      "Rzymie",
-      "Mediolanie",
-      "Wenecji"
-    ],
+    "text": "Największym oceanem na Ziemi jest",
+    "options": ["Ocean Atlantycki", "Ocean Spokojny", "Ocean Indyjski", "Ocean Arktyczny"],
     "correctIndex": 1
   },
   {
-    "text": "Jakie miasto jest stolicą Włoch?",
-    "options": [
-      "Rzymie",
-      "Mediolanie",
-      "Wenecji",
-      "Neapolu"
-    ],
-    "correctIndex": 0
+    "text": "Ile boków ma sześciokąt?",
+    "options": ["Pięć", "Siedem", "Sześć", "Osiem"],
+    "correctIndex": 2
   },
   {
-    "text": "Włochy mają stolicę w",
-    "options": [
-      "Mediolanie",
-      "Wenecji",
-      "Neapolu",
-      "Rzymie"
-    ],
+    "text": "W którym roku przyjęto chrzest Polski?",
+    "options": ["1025", "1410", "1569", "966"],
     "correctIndex": 3
   },
   {
-    "text": "II wojna światowa wybuchła w wieku",
-    "options": [
-      "XX",
-      "XVIII",
-      "XIX",
-      "XXI"
-    ],
+    "text": "Kto namalował \"Mona Lisę\"?",
+    "options": ["Leonardo da Vinci", "Pablo Picasso", "Claude Monet", "Rembrandt"],
     "correctIndex": 0
   },
   {
-    "text": "W którym wieku rozpoczęła się II wojna światowa?",
-    "options": [
-      "XVIII",
-      "XIX",
-      "XXI",
-      "XX"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "II wojna światowa zaczęła się w",
-    "options": [
-      "XIX",
-      "XXI",
-      "XX",
-      "XVIII"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Instrument mający klawisze i struny to",
-    "options": [
-      "flet",
-      "trąbka",
-      "skrzypce",
-      "fortepian"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Który instrument łączy klawisze i struny?",
-    "options": [
-      "trąbka",
-      "skrzypce",
-      "fortepian",
-      "flet"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Klawisze i struny ma",
-    "options": [
-      "skrzypce",
-      "fortepian",
-      "flet",
-      "trąbka"
-    ],
+    "text": "Podstawową jednostką długości w układzie SI jest",
+    "options": ["Centymetr", "Metr", "Kilometr", "Cal"],
     "correctIndex": 1
   },
   {
-    "text": "Najwięcej rodzimych użytkowników ma język",
-    "options": [
-      "hiszpański",
-      "arabski",
-      "mandaryński",
-      "angielski"
-    ],
+    "text": "Proces przechodzenia cieczy w stan gazowy to",
+    "options": ["Skraplanie", "Sublimacja", "Parowanie", "Krzepnięcie"],
     "correctIndex": 2
   },
   {
-    "text": "Który język ma najwięcej rodzimych użytkowników?",
-    "options": [
-      "arabski",
-      "mandaryński",
-      "angielski",
-      "hiszpański"
-    ],
-    "correctIndex": 1
+    "text": "Największym organem ludzkiego ciała jest",
+    "options": ["Wątroba", "Serce", "Płuco", "Skóra"],
+    "correctIndex": 3
   },
   {
-    "text": "Pod względem liczby rodzimych użytkowników prowadzi język",
-    "options": [
-      "mandaryński",
-      "angielski",
-      "hiszpański",
-      "arabski"
-    ],
+    "text": "Pierwiastek kwadratowy z liczby 81 to",
+    "options": ["9", "8", "7", "6"],
     "correctIndex": 0
   },
   {
-    "text": "„Mona Lisę” namalował",
-    "options": [
-      "Claude Monet",
-      "Leonardo da Vinci",
-      "Vincent van Gogh",
-      "Pablo Picasso"
-    ],
+    "text": "Walutą Japonii jest",
+    "options": ["Won", "Jen", "Juan", "Baht"],
     "correctIndex": 1
   },
   {
-    "text": "Kto jest autorem obrazu „Mona Lisa”?",
-    "options": [
-      "Leonardo da Vinci",
-      "Vincent van Gogh",
-      "Pablo Picasso",
-      "Claude Monet"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Obraz „Mona Lisa” stworzył",
-    "options": [
-      "Vincent van Gogh",
-      "Pablo Picasso",
-      "Claude Monet",
-      "Leonardo da Vinci"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Czerwoną Planetą nazywa się",
-    "options": [
-      "Marsa",
-      "Wenus",
-      "Jowisza",
-      "Merkurego"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Która planeta jest nazywana Czerwoną Planetą?",
-    "options": [
-      "Wenus",
-      "Jowisza",
-      "Merkurego",
-      "Marsa"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Mianem Czerwonej Planety określa się",
-    "options": [
-      "Jowisza",
-      "Merkurego",
-      "Marsa",
-      "Wenus"
-    ],
+    "text": "Kto napisał dramat \"Romeo i Julia\"?",
+    "options": ["Charles Dickens", "Moliere", "William Shakespeare", "Victor Hugo"],
     "correctIndex": 2
   },
   {
-    "text": "Akropol znajduje się w",
-    "options": [
-      "Turcji",
-      "Egiptu",
-      "Cypru",
-      "Grecji"
-    ],
+    "text": "Gazem niezbędnym człowiekowi do oddychania jest",
+    "options": ["Azot", "Hel", "Argon", "Tlen"],
     "correctIndex": 3
   },
   {
-    "text": "Które państwo kojarzy się z Akropolem?",
-    "options": [
-      "Egiptu",
-      "Cypru",
-      "Grecji",
-      "Turcji"
-    ],
-    "correctIndex": 2
+    "text": "Pierwszym człowiekiem na Księżycu był",
+    "options": ["Neil Armstrong", "Jurij Gagarin", "Buzz Aldrin", "Alan Shepard"],
+    "correctIndex": 0
   },
   {
-    "text": "Akropol jest jednym z symboli",
-    "options": [
-      "Cypru",
-      "Grecji",
-      "Turcji",
-      "Egiptu"
-    ],
+    "text": "Przez Paryż przepływa rzeka",
+    "options": ["Tamiza", "Sekwana", "Ren", "Loara"],
     "correctIndex": 1
   },
   {
-    "text": "Ocean leżący między Europą a Ameryką to",
-    "options": [
-      "Indyjski",
-      "Arktyczny",
-      "Atlantycki",
-      "Spokojny"
-    ],
+    "text": "Największym współcześnie żyjącym ssakiem jest",
+    "options": ["Słoń afrykański", "Kaszalot", "Płetwal błękitny", "Żyrafa"],
     "correctIndex": 2
   },
   {
-    "text": "Który ocean oddziela Europę od Ameryki?",
-    "options": [
-      "Arktyczny",
-      "Atlantycki",
-      "Spokojny",
-      "Indyjski"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Między Europą a Ameryką rozciąga się ocean",
-    "options": [
-      "Atlantycki",
-      "Spokojny",
-      "Indyjski",
-      "Arktyczny"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Za wykonywanie obliczeń w komputerze odpowiada głównie",
-    "options": [
-      "głośnik",
-      "procesor",
-      "monitor",
-      "klawiatura"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Która część komputera wykonuje obliczenia?",
-    "options": [
-      "procesor",
-      "monitor",
-      "klawiatura",
-      "głośnik"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Podstawowe obliczenia w komputerze wykonuje",
-    "options": [
-      "monitor",
-      "klawiatura",
-      "głośnik",
-      "procesor"
-    ],
+    "text": "Wzór chemiczny wody to",
+    "options": ["CO2", "O2", "NaCl", "H2O"],
     "correctIndex": 3
   },
   {
-    "text": "Rakiety i lotki używa się w",
-    "options": [
-      "badmintonie",
-      "tenisie stołowym",
-      "squashu",
-      "hokeju"
-    ],
+    "text": "Wielokąt mający osiem boków to",
+    "options": ["Ośmiokąt", "Siedmiokąt", "Dziesięciokąt", "Pięciokąt"],
     "correctIndex": 0
   },
   {
-    "text": "W którym sporcie używa się lotki?",
-    "options": [
-      "tenisie stołowym",
-      "squashu",
-      "hokeju",
-      "badmintonie"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Lotka jest charakterystyczna dla",
-    "options": [
-      "squashu",
-      "hokeju",
-      "badmintonie",
-      "tenisie stołowym"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Polskim astronomem związanym z teorią heliocentryczną był",
-    "options": [
-      "Janem Heweliuszem",
-      "Galileuszem",
-      "Johannesem Keplerem",
-      "Mikołajem Kopernikiem"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Kto sformułował teorię heliocentryczną?",
-    "options": [
-      "Galileuszem",
-      "Johannesem Keplerem",
-      "Mikołajem Kopernikiem",
-      "Janem Heweliuszem"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Teorię heliocentryczną kojarzymy z",
-    "options": [
-      "Johannesem Keplerem",
-      "Mikołajem Kopernikiem",
-      "Janem Heweliuszem",
-      "Galileuszem"
-    ],
+    "text": "Autorem cyklu koncertów \"Cztery pory roku\" jest",
+    "options": ["Johann Sebastian Bach", "Antonio Vivaldi", "Ludwig van Beethoven", "Wolfgang Amadeus Mozart"],
     "correctIndex": 1
   },
   {
-    "text": "Krew w organizmie pompuje",
-    "options": [
-      "żołądek",
-      "płuco",
-      "serce",
-      "wątroba"
-    ],
+    "text": "Polska została członkiem NATO w roku",
+    "options": ["2004", "1991", "1999", "1989"],
     "correctIndex": 2
   },
   {
-    "text": "Który organ pompuje krew?",
-    "options": [
-      "płuco",
-      "serce",
-      "wątroba",
-      "żołądek"
-    ],
-    "correctIndex": 1
+    "text": "Najtwardszym naturalnym minerałem jest",
+    "options": ["Kwarc", "Grafit", "Topaz", "Diament"],
+    "correctIndex": 3
   },
   {
-    "text": "Za pompowanie krwi odpowiada",
-    "options": [
-      "serce",
-      "wątroba",
-      "żołądek",
-      "płuco"
-    ],
+    "text": "Największą gorącą pustynią świata jest",
+    "options": ["Sahara", "Atakama", "Gobi", "Kalahari"],
     "correctIndex": 0
   },
   {
-    "text": "Po połączeniu niebieskiego i żółtego otrzymamy kolor",
-    "options": [
-      "biały",
-      "zielony",
-      "czerwony",
-      "fioletowy"
-    ],
+    "text": "Twórcą teorii względności był",
+    "options": ["Isaac Newton", "Albert Einstein", "Galileusz", "Niels Bohr"],
     "correctIndex": 1
-  },
-  {
-    "text": "Jaki kolor powstaje z połączenia niebieskiego i żółtego?",
-    "options": [
-      "zielony",
-      "czerwony",
-      "fioletowy",
-      "biały"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Niebieski z żółtym daje kolor",
-    "options": [
-      "czerwony",
-      "fioletowy",
-      "biały",
-      "zielony"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Najmniej dni ma miesiąc",
-    "options": [
-      "luty",
-      "styczeń",
-      "kwiecień",
-      "listopad"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Który miesiąc jest najkrótszy?",
-    "options": [
-      "styczeń",
-      "kwiecień",
-      "listopad",
-      "luty"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Miesiącem z najmniejszą liczbą dni jest",
-    "options": [
-      "kwiecień",
-      "listopad",
-      "luty",
-      "styczeń"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ssakiem jest",
-    "options": [
-      "żółw",
-      "rekin",
-      "krokodyl",
-      "delfin"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Które z tych zwierząt jest ssakiem?",
-    "options": [
-      "rekin",
-      "krokodyl",
-      "delfin",
-      "żółw"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Do ssaków należy",
-    "options": [
-      "krokodyl",
-      "delfin",
-      "żółw",
-      "rekin"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "11 listopada w Polsce obchodzimy",
-    "options": [
-      "Święto Konstytucji 3 Maja",
-      "Boże Ciało",
-      "Narodowe Święto Niepodległości",
-      "Dzień Flagi"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jakie święto przypada w Polsce 11 listopada?",
-    "options": [
-      "Boże Ciało",
-      "Narodowe Święto Niepodległości",
-      "Dzień Flagi",
-      "Święto Konstytucji 3 Maja"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "11 listopada to w Polsce",
-    "options": [
-      "Narodowe Święto Niepodległości",
-      "Dzień Flagi",
-      "Święto Konstytucji 3 Maja",
-      "Boże Ciało"
-    ],
-    "correctIndex": 0
   },
   {
     "text": "Stolicą Australii jest",
-    "options": [
-      "Perth",
-      "Canberze",
-      "Sydney",
-      "Melbourne"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jakie miasto jest stolicą Australii?",
-    "options": [
-      "Canberze",
-      "Sydney",
-      "Melbourne",
-      "Perth"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Australia ma stolicę w",
-    "options": [
-      "Sydney",
-      "Melbourne",
-      "Perth",
-      "Canberze"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Ludwig van Beethoven był przede wszystkim",
-    "options": [
-      "kompozytor",
-      "malarz",
-      "astronom",
-      "pisarz"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Kim był Beethoven?",
-    "options": [
-      "malarz",
-      "astronom",
-      "pisarz",
-      "kompozytor"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Beethoven zasłynął jako",
-    "options": [
-      "astronom",
-      "pisarz",
-      "kompozytor",
-      "malarz"
-    ],
+    "options": ["Sydney", "Melbourne", "Canberra", "Perth"],
     "correctIndex": 2
   },
   {
-    "text": "Najdłuższą rzeką Europy jest",
-    "options": [
-      "Dunaj",
-      "Ren",
-      "Sekwana",
-      "Wołga"
-    ],
+    "text": "Metalem ciekłym w temperaturze pokojowej jest",
+    "options": ["Żelazo", "Srebro", "Aluminium", "Rtęć"],
     "correctIndex": 3
   },
   {
-    "text": "Która rzeka jest najdłuższa w Europie?",
-    "options": [
-      "Ren",
-      "Sekwana",
-      "Wołga",
-      "Dunaj"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Najdłuższa rzeka Europy to",
-    "options": [
-      "Sekwana",
-      "Wołga",
-      "Dunaj",
-      "Ren"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Na fladze olimpijskiej znajduje się",
-    "options": [
-      "cztery koła",
-      "sześć kół",
-      "pięć kół",
-      "trzy koła"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Ile kół ma symbol olimpijski?",
-    "options": [
-      "sześć kół",
-      "pięć kół",
-      "trzy koła",
-      "cztery koła"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Symbol igrzysk olimpijskich tworzy",
-    "options": [
-      "pięć kół",
-      "trzy koła",
-      "cztery koła",
-      "sześć kół"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Siedziba ONZ znajduje się w",
-    "options": [
-      "Brukseli",
-      "Nowym Jorku",
-      "Genewie",
-      "Paryżu"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "W jakim mieście mieści się główna siedziba ONZ?",
-    "options": [
-      "Nowym Jorku",
-      "Genewie",
-      "Paryżu",
-      "Brukseli"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Nowojorska siedziba to siedziba",
-    "options": [
-      "Genewie",
-      "Paryżu",
-      "Brukseli",
-      "Nowym Jorku"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Walutą używaną we Francji jest",
-    "options": [
-      "euro",
-      "frankiem szwajcarskim",
-      "dolarem",
-      "funtem"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Jaką walutę ma Francja?",
-    "options": [
-      "frankiem szwajcarskim",
-      "dolarem",
-      "funtem",
-      "euro"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "We Francji płaci się",
-    "options": [
-      "dolarem",
-      "funtem",
-      "euro",
-      "frankiem szwajcarskim"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "„Hamleta” napisał",
-    "options": [
-      "Charles Dickens",
-      "Johann Goethe",
-      "Victor Hugo",
-      "William Shakespeare"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Kto jest autorem „Hamleta”?",
-    "options": [
-      "Johann Goethe",
-      "Victor Hugo",
-      "William Shakespeare",
-      "Charles Dickens"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Dramat „Hamlet” stworzył",
-    "options": [
-      "Victor Hugo",
-      "William Shakespeare",
-      "Charles Dickens",
-      "Johann Goethe"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "„Małego Księcia” napisał",
-    "options": [
-      "Victor Hugo",
-      "Albert Camus",
-      "Antoine de Saint-Exupéry",
-      "Jules Verne"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Kto napisał „Małego Księcia”?",
-    "options": [
-      "Albert Camus",
-      "Antoine de Saint-Exupéry",
-      "Jules Verne",
-      "Victor Hugo"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Autorem „Małego Księcia” jest",
-    "options": [
-      "Antoine de Saint-Exupéry",
-      "Jules Verne",
-      "Victor Hugo",
-      "Albert Camus"
-    ],
+    "text": "Przyrząd służący do pomiaru ciśnienia atmosferycznego to",
+    "options": ["Barometr", "Termometr", "Higrometr", "Anemometr"],
     "correctIndex": 0
   },
   {
     "text": "Największą planetą Układu Słonecznego jest",
-    "options": [
-      "Wenus",
-      "Jowisz",
-      "Mars",
-      "Saturn"
-    ],
+    "options": ["Saturn", "Jowisz", "Neptun", "Uran"],
     "correctIndex": 1
   },
   {
-    "text": "Która planeta jest największa?",
-    "options": [
-      "Jowisz",
-      "Mars",
-      "Saturn",
-      "Wenus"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Największa planeta Układu Słonecznego to",
-    "options": [
-      "Mars",
-      "Saturn",
-      "Wenus",
-      "Jowisz"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Pierwszym miesiącem roku jest",
-    "options": [
-      "styczeń",
-      "luty",
-      "grudzień",
-      "marzec"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Od którego miesiąca zaczyna się rok?",
-    "options": [
-      "luty",
-      "grudzień",
-      "marzec",
-      "styczeń"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Rok kalendarzowy rozpoczyna",
-    "options": [
-      "grudzień",
-      "marzec",
-      "styczeń",
-      "luty"
-    ],
+    "text": "Proces, w którym rośliny wytwarzają związki organiczne z udziałem światła, to",
+    "options": ["Fermentacja", "Oddychanie", "Fotosynteza", "Dyfuzja"],
     "correctIndex": 2
   },
   {
-    "text": "W szachach partię rozpoczynają pionki koloru",
-    "options": [
-      "czarnego",
-      "czerwonego",
-      "dowolnego losowo",
-      "białego"
-    ],
+    "text": "Kąt prosty ma miarę",
+    "options": ["180 stopni", "45 stopni", "60 stopni", "90 stopni"],
     "correctIndex": 3
   },
   {
-    "text": "Który kolor wykonuje pierwszy ruch w szachach?",
-    "options": [
-      "czerwonego",
-      "dowolnego losowo",
-      "białego",
-      "czarnego"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "W szachach jako pierwsze ruszają",
-    "options": [
-      "dowolnego losowo",
-      "białego",
-      "czarnego",
-      "czerwonego"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Nagroda Nobla została nazwana od nazwiska",
-    "options": [
-      "Nielsa Bohra",
-      "Louisa Pasteura",
-      "Alfreda Nobla",
-      "Isaaca Newtona"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Z czyim nazwiskiem wiąże się Nagroda Nobla?",
-    "options": [
-      "Louisa Pasteura",
-      "Alfreda Nobla",
-      "Isaaca Newtona",
-      "Nielsa Bohra"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Fundatorem Nagrody Nobla był",
-    "options": [
-      "Alfreda Nobla",
-      "Isaaca Newtona",
-      "Nielsa Bohra",
-      "Louisa Pasteura"
-    ],
+    "text": "Słowa polskiego hymnu narodowego napisał",
+    "options": ["Józef Wybicki", "Adam Mickiewicz", "Stanisław Moniuszko", "Julian Tuwim"],
     "correctIndex": 0
   },
   {
-    "text": "Twórcą WWW był",
-    "options": [
-      "Alan Turing",
-      "Tim Berners-Lee",
-      "Bill Gates",
-      "Steve Jobs"
-    ],
+    "text": "Która planeta bywa nazywana Czerwoną Planetą?",
+    "options": ["Wenus", "Mars", "Merkury", "Saturn"],
     "correctIndex": 1
   },
   {
-    "text": "Kto stworzył World Wide Web?",
-    "options": [
-      "Tim Berners-Lee",
-      "Bill Gates",
-      "Steve Jobs",
-      "Alan Turing"
-    ],
-    "correctIndex": 0
+    "text": "Które morze nie ma naturalnej linii brzegowej?",
+    "options": ["Morze Czarne", "Morze Karaibskie", "Morze Sargassowe", "Morze Adriatyckie"],
+    "correctIndex": 2
   },
   {
-    "text": "Z powstaniem WWW kojarzy się",
-    "options": [
-      "Bill Gates",
-      "Steve Jobs",
-      "Alan Turing",
-      "Tim Berners-Lee"
-    ],
+    "text": "Najdłuższą rzeką Europy jest",
+    "options": ["Dunaj", "Ren", "Dniepr", "Wołga"],
     "correctIndex": 3
   },
   {
-    "text": "Stolicą Japonii jest",
-    "options": [
-      "Tokio",
-      "Kioto",
-      "Osace",
-      "Hiroshimie"
-    ],
+    "text": "Autorem powieści \"Lalka\" jest",
+    "options": ["Bolesław Prus", "Eliza Orzeszkowa", "Władysław Reymont", "Stefan Żeromski"],
     "correctIndex": 0
   },
   {
-    "text": "Jakie miasto jest stolicą Japonii?",
-    "options": [
-      "Kioto",
-      "Osace",
-      "Hiroshimie",
-      "Tokio"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Japonia ma stolicę w",
-    "options": [
-      "Osace",
-      "Hiroshimie",
-      "Tokio",
-      "Kioto"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Mozart był związany z",
-    "options": [
-      "Włoch",
-      "Niemiec",
-      "Hiszpanii",
-      "Austrią"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Z jakim krajem kojarzy się Mozart?",
-    "options": [
-      "Niemiec",
-      "Hiszpanii",
-      "Austrią",
-      "Włoch"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Wolfgang Amadeus Mozart pochodził z",
-    "options": [
-      "Hiszpanii",
-      "Austrią",
-      "Włoch",
-      "Niemiec"
-    ],
+    "text": "Stolicą Brazylii jest",
+    "options": ["Rio de Janeiro", "Brasilia", "Sao Paulo", "Salvador"],
     "correctIndex": 1
   },
   {
-    "text": "„Gwiaździsta noc” to obraz autorstwa",
-    "options": [
-      "Leonardo da Vinci",
-      "Salvador Dalí",
-      "Vincent van Gogh",
-      "Claude Monet"
-    ],
+    "text": "Jednostką natężenia prądu elektrycznego jest",
+    "options": ["Wolt", "Om", "Amper", "Wat"],
     "correctIndex": 2
   },
   {
-    "text": "Kto namalował „Gwiaździstą noc”?",
-    "options": [
-      "Salvador Dalí",
-      "Vincent van Gogh",
-      "Claude Monet",
-      "Leonardo da Vinci"
-    ],
-    "correctIndex": 1
+    "text": "Narządem pompującym krew w organizmie człowieka jest",
+    "options": ["Wątroba", "Płuco", "Trzustka", "Serce"],
+    "correctIndex": 3
   },
   {
-    "text": "Autorem obrazu „Gwiaździsta noc” jest",
-    "options": [
-      "Vincent van Gogh",
-      "Claude Monet",
-      "Leonardo da Vinci",
-      "Salvador Dalí"
-    ],
+    "text": "II wojna światowa rozpoczęła się w roku",
+    "options": ["1939", "1918", "1945", "1929"],
     "correctIndex": 0
   },
   {
-    "text": "W piłce nożnej na boisku jedna drużyna ma zwykle",
-    "options": [
-      "12 zawodników",
-      "11 zawodników",
-      "9 zawodników",
-      "10 zawodników"
-    ],
+    "text": "Kto namalował obraz \"Słoneczniki\"?",
+    "options": ["Paul Cezanne", "Vincent van Gogh", "Edvard Munch", "Paul Gauguin"],
     "correctIndex": 1
   },
   {
-    "text": "Ilu zawodników jednej drużyny gra zwykle na boisku w piłce nożnej?",
-    "options": [
-      "11 zawodników",
-      "9 zawodników",
-      "10 zawodników",
-      "12 zawodników"
-    ],
+    "text": "Urzędowym językiem Brazylii jest",
+    "options": ["Hiszpański", "Włoski", "Portugalski", "Francuski"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Suma kątów wewnętrznych trójkąta wynosi",
+    "options": ["360 stopni", "270 stopni", "90 stopni", "180 stopni"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jądro atomowe składa się z",
+    "options": ["Protonów i neutronów", "Elektronów i protonów", "Wyłącznie elektronów", "Neutronów i fotonów"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Pierwszą księgą Biblii jest",
+    "options": ["Księga Wyjścia", "Księga Rodzaju", "Księga Psalmów", "Apokalipsa św. Jana"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Państwem słynącym z piramid w Gizie jest",
+    "options": ["Meksyk", "Irak", "Egipt", "Iran"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Przyrząd rejestrujący drgania sejsmiczne to",
+    "options": ["Manometr", "Chronometr", "Spektrometr", "Sejsmograf"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Penicylinę odkrył",
+    "options": ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Gregor Mendel"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Proces przejścia gazu w ciecz to",
+    "options": ["Parowanie", "Skraplanie", "Topnienie", "Sublimacja"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Ile jam ma ludzkie serce?",
+    "options": ["Dwie", "Trzy", "Cztery", "Pięć"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Walutą Stanów Zjednoczonych jest",
+    "options": ["Euro", "Jen", "Peso", "Dolar amerykański"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Za wynalezienie telefonu uznaje się",
+    "options": ["Alexandra Grahama Bella", "Guglielma Marconiego", "Nikole Teslę", "Jamesa Watta"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Najdłuższą kością w ciele człowieka jest",
+    "options": ["Kość ramienna", "Kość udowa", "Kość piszczelowa", "Obojczyk"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Największym jeziorem świata pod względem powierzchni jest",
+    "options": ["Jezioro Górne", "Bajkał", "Morze Kaspijskie", "Wiktorii"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Autorem książki \"Mały Książę\" jest",
+    "options": ["Jules Verne", "Victor Hugo", "Albert Camus", "Antoine de Saint-Exupery"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Najszybszym zwierzęciem lądowym jest",
+    "options": ["Gepard", "Lew", "Antylopa gnu", "Struś"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Który metal najlepiej przewodzi prąd elektryczny?",
+    "options": ["Miedź", "Srebro", "Żelazo", "Aluminium"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pierwszym pierwiastkiem w układzie okresowym jest",
+    "options": ["Hel", "Tlen", "Wodór", "Azot"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Planeta słynąca z najbardziej rozbudowanego systemu pierścieni to",
+    "options": ["Jowisz", "Uran", "Neptun", "Saturn"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Tango wywodzi się z",
+    "options": ["Argentyny", "Hiszpanii", "Meksyku", "Portugalii"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Niższą izbą polskiego parlamentu jest",
+    "options": ["Senat", "Sejm", "Trybunał Stanu", "Rada Ministrów"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Skrzypce mają standardowo",
+    "options": ["Sześć strun", "Pięć strun", "Cztery struny", "Dwie struny"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Walutą Wielkiej Brytanii jest",
+    "options": ["Euro", "Dolar", "Frank", "Funt szterling"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Częścią rośliny pobierającą wodę z gleby jest",
+    "options": ["Korzeń", "Liść", "Łodyga", "Kwiat"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Największym księżycem Układu Słonecznego jest",
+    "options": ["Titan", "Ganimedes", "Europa", "Io"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Twierdzenie dotyczące zależności między bokami trójkąta prostokątnego nosi nazwę twierdzenia",
+    "options": ["Talesa", "Euklidesa", "Pitagorasa", "Fermata"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Autorem powieści \"Rok 1984\" jest",
+    "options": ["Aldous Huxley", "Ray Bradbury", "Franz Kafka", "George Orwell"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Koloseum znajduje się w",
+    "options": ["Rzymie", "Atenach", "Stambule", "Madrycie"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jednostką częstotliwości jest",
+    "options": ["Niuton", "Herc", "Dżul", "Paskal"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Przed nadmiernym promieniowaniem UV chroni Ziemię",
+    "options": ["Jonosfera", "Magnetosfera", "Warstwa ozonowa", "Egzosfera"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Rzymskim bogiem wojny był",
+    "options": ["Neptun", "Merkury", "Apollo", "Mars"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Najdłuższą rzeką Ameryki Południowej jest",
+    "options": ["Amazonka", "Orinoko", "Parana", "Urugwaj"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Autorem powieści \"Quo vadis\" jest",
+    "options": ["Władysław Reymont", "Henryk Sienkiewicz", "Stefan Żeromski", "Bolesław Leśmian"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Przemiana ciała stałego w ciecz to",
+    "options": ["Parowanie", "Resublimacja", "Topnienie", "Krzepnięcie"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jednostką siły w układzie SI jest",
+    "options": ["Dżul", "Wat", "Paskal", "Niuton"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Stolicą Hiszpanii jest",
+    "options": ["Madryt", "Barcelona", "Walencja", "Sewilla"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Największym żyjącym ptakiem jest",
+    "options": ["Emu", "Struś", "Albatros", "Kazuar"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pierwiastkiem niezbędnym do budowy hemoglobiny jest",
+    "options": ["Wapń", "Magnez", "Żelazo", "Potas"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Sufit Kaplicy Sykstyńskiej ozdobił freskami",
+    "options": ["Rafael", "Botticelli", "Donatello", "Michał Anioł"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Ocean leżący między Afryką, Azją i Australią to",
+    "options": ["Ocean Indyjski", "Ocean Arktyczny", "Ocean Atlantycki", "Ocean Południowy"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Rośliny pobierają z powietrza do fotosyntezy",
+    "options": ["Tlen", "Dwutlenek węgla", "Hel", "Azot"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pierwiastki promieniotwórcze polon i rad odkryła",
+    "options": ["Rosalind Franklin", "Ada Lovelace", "Maria Skłodowska-Curie", "Dorothy Hodgkin"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Wielokąt o pięciu bokach to",
+    "options": ["Sześciokąt", "Czworokąt", "Siedmiokąt", "Pięciokąt"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Za odporność organizmu odpowiadają przede wszystkim",
+    "options": ["Leukocyty", "Erytrocyty", "Płytki krwi", "Miofibryle"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Konstytucję 3 maja uchwalono w roku",
+    "options": ["1795", "1791", "1772", "1807"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Kontynentem z największą liczbą państw jest",
+    "options": ["Europa", "Azja", "Afryka", "Ameryka Południowa"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Stolicą Norwegii jest",
+    "options": ["Sztokholm", "Helsinki", "Kopenhaga", "Oslo"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Standardowe pianino ma",
+    "options": ["88 klawiszy", "61 klawiszy", "72 klawisze", "76 klawiszy"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Najmniejszą liczbą pierwszą jest",
+    "options": ["1", "2", "3", "5"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Naturalnym satelitą Ziemi jest",
+    "options": ["Mars", "Wenus", "Księżyc", "Merkury"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Współzałożycielem firmy Microsoft był",
+    "options": ["Steve Jobs", "Larry Page", "Jeff Bezos", "Bill Gates"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Walutą Czech jest",
+    "options": ["Korona czeska", "Euro", "Forint", "Lej"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Magma po wydostaniu się na powierzchnię Ziemi nazywa się",
+    "options": ["Tuf", "Lawą", "Bazaltem", "Popiołem"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Zwierzęciem kojarzonym szczególnie z Australią jest",
+    "options": ["Koala", "Wombat", "Kangur", "Tapir"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Najwyższym szczytem Afryki jest",
+    "options": ["Mount Kenya", "Ruwenzori", "Atlas", "Kilimandżaro"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Papier wynaleziono w starożytnych",
+    "options": ["Chinach", "Indiach", "Grecji", "Egipcie"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Stolicą Grecji są",
+    "options": ["Saloniki", "Ateny", "Patras", "Larnaka"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Osiem bitów tworzy",
+    "options": ["Nibble", "Kilobajt", "Bajt", "Słowo maszynowe"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Podział komórki prowadzący do powstania dwóch identycznych komórek potomnych to",
+    "options": ["Mejoza", "Translacja", "Replikacja", "Mitoza"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Rzeźbę \"Dawid\" wykonał",
+    "options": ["Michał Anioł", "Bernini", "Canova", "Rodin"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Wielka Czerwona Plama znajduje się na",
+    "options": ["Marsie", "Jowiszu", "Saturnie", "Neptunie"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Morzem oddzielającym Europę od Afryki jest",
+    "options": ["Morze Czarne", "Morze Norweskie", "Morze Śródziemne", "Morze Bałtyckie"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pierwiastkiem o symbolu Na jest",
+    "options": ["Nikiel", "Neon", "Azot", "Sód"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Przyrząd do pomiaru temperatury to",
+    "options": ["Termometr", "Altimetr", "Barograf", "Areometr"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Autorem \"Hobbita\" jest",
+    "options": ["C.S. Lewis", "J.R.R. Tolkien", "George R.R. Martin", "Ursula Le Guin"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Stolicą Argentyny jest",
+    "options": ["Montevideo", "Lima", "Buenos Aires", "Santiago"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Krajem nazywanym Krajem Kwitnącej Wiśni jest",
+    "options": ["Chiny", "Korea Południowa", "Tajlandia", "Japonia"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Zbiorem punktów płaszczyzny równoodległych od jednego punktu jest",
+    "options": ["Okrąg", "Elipsa", "Prosta", "Parabola"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jednostką mocy jest",
+    "options": ["Amper", "Wat", "Wolt", "Niuton"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wielki Mur Chiński znajduje się w",
+    "options": ["Mongolii", "Nepalu", "Chinach", "Japonii"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Prawa dynamiki sformułował",
+    "options": ["Albert Einstein", "Galileusz", "Nikola Tesla", "Isaac Newton"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Narządami filtrującymi krew i wytwarzającymi mocz są",
+    "options": ["Nerki", "Płuca", "Jelita", "Nadnercza"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Włochy leżą na Półwyspie",
+    "options": ["Iberyjskim", "Apenińskim", "Bałkańskim", "Skandynawskim"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Klucz muzyczny umieszczany na drugiej linii pięciolinii to",
+    "options": ["Klucz basowy", "Klucz altowy", "Klucz wiolinowy", "Klucz tenorowy"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Symbolem chemicznym złota jest",
+    "options": ["Ag", "Pt", "Pb", "Au"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Największą wyspą Morza Śródziemnego jest",
+    "options": ["Sycylia", "Kreta", "Cypr", "Sardynia"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Traktat kończący I wojnę światową podpisano w",
+    "options": ["Locarno", "Wersalu", "Jałcie", "Poczdamie"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Autorem powieści \"Zbrodnia i kara\" jest",
+    "options": ["Lew Tołstoj", "Anton Czechow", "Fiodor Dostojewski", "Iwan Turgieniew"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Który z tych ptaków nie potrafi latać?",
+    "options": ["Jaskółka", "Sokół", "Mewa", "Pingwin"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Na której planecie doba trwa dłużej niż rok?",
+    "options": ["Wenus", "Merkury", "Mars", "Saturn"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Liść klonowy znajduje się na fladze",
+    "options": ["Niemiec", "Kanady", "Australii", "Finlandii"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Druk z ruchomych czcionek upowszechnił",
+    "options": ["James Watt", "Galileusz", "Johannes Gutenberg", "Benjamin Franklin"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Oddychanie komórkowe zachodzi głównie w",
+    "options": ["Rybosomach", "Jądrze komórkowym", "Aparacie Golgiego", "Mitochondriach"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Autorem eposu \"Eneida\" był",
+    "options": ["Wergiliusz", "Owidiusz", "Homer", "Sofokles"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Walutą Indii jest",
+    "options": ["Dinar", "Rupia", "Ringgit", "Real"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Teorię heliocentryczną rozwinął",
+    "options": ["Tycho Brahe", "Johannes Kepler", "Mikołaj Kopernik", "Edmond Halley"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Największym z Wielkich Jezior Ameryki Północnej jest Jezioro",
+    "options": ["Michigan", "Huron", "Erie", "Górne"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Największym lądowym drapieżnikiem jest",
+    "options": ["Niedźwiedź polarny", "Tygrys syberyjski", "Lew", "Niedźwiedź brunatny"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Gazem stanowiącym największą część atmosfery Ziemi jest",
+    "options": ["Tlen", "Azot", "Argon", "Dwutlenek węgla"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Stolicą Turcji jest",
+    "options": ["Stambuł", "Izmir", "Ankara", "Bursa"],
+    "correctIndex": 2
+  },
+  {
+    "text": "Sport, w którym używa się floretu, szpady i szablowego ostrza, to",
+    "options": ["Łucznictwo", "Boks", "Zapasy", "Szermierka"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Autorem obrazu \"Guernica\" jest",
+    "options": ["Pablo Picasso", "Salvador Dali", "Joan Miro", "Francisco Goya"],
     "correctIndex": 0
   },
   {
     "text": "Drużyna piłkarska na boisku liczy",
-    "options": [
-      "9 zawodników",
-      "10 zawodników",
-      "12 zawodników",
-      "11 zawodników"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Weekend trwa zwykle",
-    "options": [
-      "dwa dni",
-      "jeden dzień",
-      "trzy dni",
-      "cztery dni"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Ile dni ma typowy weekend?",
-    "options": [
-      "jeden dzień",
-      "trzy dni",
-      "cztery dni",
-      "dwa dni"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Najczęściej weekend obejmuje",
-    "options": [
-      "trzy dni",
-      "cztery dni",
-      "dwa dni",
-      "jeden dzień"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Temperaturę mierzy się przy pomocy",
-    "options": [
-      "barometru",
-      "stoperu",
-      "mikroskopu",
-      "termometru"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Jak nazywa się przyrząd do mierzenia temperatury?",
-    "options": [
-      "stoperu",
-      "mikroskopu",
-      "termometru",
-      "barometru"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Do pomiaru temperatury służy",
-    "options": [
-      "mikroskopu",
-      "termometru",
-      "barometru",
-      "stoperu"
-    ],
+    "options": ["Dziesięciu zawodników", "Jedenastu zawodników", "Dziewięciu zawodników", "Dwunastu zawodników"],
     "correctIndex": 1
   },
   {
-    "text": "Tradycyjnie w tęczy wyróżnia się",
-    "options": [
-      "sześć",
-      "dziewięć",
-      "siedem",
-      "pięć"
-    ],
+    "text": "Energia Słońca powstaje głównie dzięki",
+    "options": ["Spalaniu gazów", "Rozszczepieniu uranu", "Syntezie jądrowej", "Ruchowi plazmy wokół Ziemi"],
     "correctIndex": 2
   },
   {
-    "text": "Ile kolorów ma tradycyjna tęcza?",
-    "options": [
-      "dziewięć",
-      "siedem",
-      "pięć",
-      "sześć"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "W szkolnym ujęciu tęcza ma kolorów",
-    "options": [
-      "siedem",
-      "pięć",
-      "sześć",
-      "dziewięć"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Stolicą Hiszpanii jest",
-    "options": [
-      "Walencji",
-      "Madrycie",
-      "Barcelonie",
-      "Sewilli"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jakie miasto jest stolicą Hiszpanii?",
-    "options": [
-      "Madrycie",
-      "Barcelonie",
-      "Sewilli",
-      "Walencji"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Hiszpania ma stolicę w",
-    "options": [
-      "Barcelonie",
-      "Sewilli",
-      "Walencji",
-      "Madrycie"
-    ],
+    "text": "Ojcem geometrii bywa nazywany",
+    "options": ["Archimedes", "Pitagoras", "Tales", "Euklides"],
     "correctIndex": 3
   },
   {
-    "text": "Na fladze Unii Europejskiej znajduje się",
-    "options": [
-      "12 gwiazd",
-      "10 gwiazd",
-      "15 gwiazd",
-      "27 gwiazd"
-    ],
+    "text": "Najmniejszym kontynentem jest",
+    "options": ["Australia", "Europa", "Antarktyda", "Ameryka Południowa"],
     "correctIndex": 0
   },
   {
-    "text": "Ile gwiazd jest na fladze UE?",
-    "options": [
-      "10 gwiazd",
-      "15 gwiazd",
-      "27 gwiazd",
-      "12 gwiazd"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Flaga Unii Europejskiej ma",
-    "options": [
-      "15 gwiazd",
-      "27 gwiazd",
-      "12 gwiazd",
-      "10 gwiazd"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Dorosły człowiek ma zwykle",
-    "options": [
-      "28",
-      "30",
-      "36",
-      "32"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Ile zębów ma zwykle dorosły człowiek?",
-    "options": [
-      "30",
-      "36",
-      "32",
-      "28"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "U dorosłego człowieka typowa liczba zębów to",
-    "options": [
-      "36",
-      "32",
-      "28",
-      "30"
-    ],
+    "text": "W mitologii greckiej bogiem mórz był",
+    "options": ["Zeus", "Posejdon", "Ares", "Hermes"],
     "correctIndex": 1
   },
   {
-    "text": "Kraków leży nad rzeką",
-    "options": [
-      "Wartą",
-      "Bugiem",
-      "Wisłą",
-      "Odrą"
-    ],
+    "text": "Przez Kair przepływa rzeka",
+    "options": ["Tygrys", "Jordan", "Nil", "Eufrat"],
     "correctIndex": 2
   },
   {
-    "text": "Nad jaką rzeką leży Kraków?",
-    "options": [
-      "Bugiem",
-      "Wisłą",
-      "Odrą",
-      "Wartą"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Przez Kraków płynie",
-    "options": [
-      "Wisłą",
-      "Odrą",
-      "Wartą",
-      "Bugiem"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Klawiatura służy głównie do",
-    "options": [
-      "chłodzenia procesora",
-      "wprowadzania tekstu i poleceń",
-      "wyświetlania obrazu",
-      "drukowania dokumentów"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Do czego służy klawiatura komputerowa?",
-    "options": [
-      "wprowadzania tekstu i poleceń",
-      "wyświetlania obrazu",
-      "drukowania dokumentów",
-      "chłodzenia procesora"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Podstawową funkcją klawiatury jest",
-    "options": [
-      "wyświetlania obrazu",
-      "drukowania dokumentów",
-      "chłodzenia procesora",
-      "wprowadzania tekstu i poleceń"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Ostatnim dniem roku jest",
-    "options": [
-      "31 grudnia",
-      "24 grudnia",
-      "1 stycznia",
-      "30 listopada"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Która data kończy rok kalendarzowy?",
-    "options": [
-      "24 grudnia",
-      "1 stycznia",
-      "30 listopada",
-      "31 grudnia"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Rok kalendarzowy kończy się dnia",
-    "options": [
-      "1 stycznia",
-      "30 listopada",
-      "31 grudnia",
-      "24 grudnia"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Kaplicę Sykstyńską malował między innymi",
-    "options": [
-      "Rafaelem",
-      "Donatellem",
-      "Caravaggiem",
-      "Michałem Aniołem"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Z którym artystą kojarzy się sklepienie Kaplicy Sykstyńskiej?",
-    "options": [
-      "Donatellem",
-      "Caravaggiem",
-      "Michałem Aniołem",
-      "Rafaelem"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Sklepienie Kaplicy Sykstyńskiej kojarzymy z",
-    "options": [
-      "Caravaggiem",
-      "Michałem Aniołem",
-      "Rafaelem",
-      "Donatellem"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Flaga Polski ma kolory",
-    "options": [
-      "biało-zielona",
-      "biało-żółta",
-      "biało-czerwona",
-      "czerwono-niebieska"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Jakie kolory ma flaga Polski?",
-    "options": [
-      "biało-żółta",
-      "biało-czerwona",
-      "czerwono-niebieska",
-      "biało-zielona"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Polska flaga jest",
-    "options": [
-      "biało-czerwona",
-      "czerwono-niebieska",
-      "biało-zielona",
-      "biało-żółta"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Stolicą Niemiec jest",
-    "options": [
-      "Frankfurcie",
-      "Berlinie",
-      "Monachium",
-      "Hamburgu"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Jakie miasto jest stolicą Niemiec?",
-    "options": [
-      "Berlinie",
-      "Monachium",
-      "Hamburgu",
-      "Frankfurcie"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Niemcy mają stolicę w",
-    "options": [
-      "Monachium",
-      "Hamburgu",
-      "Frankfurcie",
-      "Berlinie"
-    ],
+    "text": "Przemiana gazu w ciało stałe to",
+    "options": ["Parowanie", "Sublimacja", "Topnienie", "Resublimacja"],
     "correctIndex": 3
   },
   {
     "text": "Stolicą Portugalii jest",
-    "options": [
-      "Lizbonie",
-      "Porto",
-      "Madrycie",
-      "Coimbrze"
-    ],
+    "options": ["Lizbona", "Porto", "Braga", "Coimbra"],
     "correctIndex": 0
   },
   {
-    "text": "Jakie miasto jest stolicą Portugalii?",
-    "options": [
-      "Porto",
-      "Madrycie",
-      "Coimbrze",
-      "Lizbonie"
-    ],
-    "correctIndex": 3
+    "text": "Promienie X odkrył",
+    "options": ["Michael Faraday", "Wilhelm Conrad Rontgen", "Max Planck", "Henri Becquerel"],
+    "correctIndex": 1
   },
   {
-    "text": "Portugalia ma stolicę w",
-    "options": [
-      "Madrycie",
-      "Coimbrze",
-      "Lizbonie",
-      "Porto"
-    ],
+    "text": "Podstawą chemii organicznej są związki",
+    "options": ["Krystaliczne", "Jonowe", "Węgla", "Metali ciężkich"],
     "correctIndex": 2
   },
   {
-    "text": "Stolicą Szwecji jest",
-    "options": [
-      "Oslo",
-      "Göteborgu",
-      "Helsinkach",
-      "Sztokholmie"
-    ],
+    "text": "Kontynentem bez stałej rdzennej ludności jest",
+    "options": ["Azja", "Afryka", "Europa", "Antarktyda"],
     "correctIndex": 3
   },
   {
-    "text": "Jakie miasto jest stolicą Szwecji?",
-    "options": [
-      "Göteborgu",
-      "Helsinkach",
-      "Sztokholmie",
-      "Oslo"
-    ],
+    "text": "Autorem powieści \"Proces\" jest",
+    "options": ["Franz Kafka", "Thomas Mann", "Hermann Hesse", "Bertolt Brecht"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Główną tętnicą odprowadzającą krew z serca do ciała jest",
+    "options": ["Żyła główna", "Aorta", "Tętnica płucna", "Tętnica szyjna"],
+    "correctIndex": 1
+  },
+  {
+    "text": "Język polski należy do grupy języków",
+    "options": ["Germańskich", "Romańskich", "Słowiańskich", "Ugrofińskich"],
     "correctIndex": 2
   },
   {
-    "text": "Szwecja ma stolicę w",
-    "options": [
-      "Helsinkach",
-      "Sztokholmie",
-      "Oslo",
-      "Göteborgu"
-    ],
+    "text": "Letnie igrzyska olimpijskie w 2016 roku odbyły się w",
+    "options": ["Londynie", "Tokio", "Pekinie", "Rio de Janeiro"],
+    "correctIndex": 3
+  },
+  {
+    "text": "Autorem utworu \"Eine kleine Nachtmusik\" jest",
+    "options": ["Wolfgang Amadeus Mozart", "Joseph Haydn", "Ludwig van Beethoven", "Franz Schubert"],
+    "correctIndex": 0
+  },
+  {
+    "text": "Stolicą Szwajcarii jest",
+    "options": ["Zurich", "Berno", "Genewa", "Lozanna"],
     "correctIndex": 1
   }
 ]

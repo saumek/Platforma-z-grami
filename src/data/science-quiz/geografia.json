@@ -10,26 +10,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak nazywa się największy ocean świata?",
-    "options": [
-      "Ocean Atlantycki",
-      "Ocean Indyjski",
-      "Ocean Arktyczny",
-      "Ocean Spokojny"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Największym oceanem na Ziemi jest",
-    "options": [
-      "Ocean Indyjski",
-      "Ocean Arktyczny",
-      "Ocean Spokojny",
-      "Ocean Atlantycki"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Równik dzieli Ziemię na półkulę",
     "options": [
       "wschodnią i zachodnią",
@@ -38,26 +18,6 @@
       "północną i południową"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Jakie półkule oddziela równik?",
-    "options": [
-      "lądową i oceaniczną",
-      "zimną i ciepłą",
-      "północną i południową",
-      "wschodnią i zachodnią"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Równik rozdziela Ziemię na półkulę",
-    "options": [
-      "zimną i ciepłą",
-      "północną i południową",
-      "wschodnią i zachodnią",
-      "lądową i oceaniczną"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Południk 0° przebiega przez",
@@ -70,26 +30,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Południk zerowy przechodzi przez",
-    "options": [
-      "Warszawę",
-      "Greenwich",
-      "Paryż",
-      "Rzym"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Za południk początkowy uznaje się południk przechodzący przez",
-    "options": [
-      "Greenwich",
-      "Paryż",
-      "Rzym",
-      "Warszawę"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Klimat morski cechuje się przede wszystkim",
     "options": [
       "upalne lato i bardzo mroźna zima",
@@ -98,26 +38,6 @@
       "skrajnie niskie opady przez cały rok"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co najlepiej opisuje klimat morski?",
-    "options": [
-      "łagodniejsze zimy i chłodniejsze lata",
-      "bardzo duże amplitudy temperatury",
-      "skrajnie niskie opady przez cały rok",
-      "upalne lato i bardzo mroźna zima"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "W klimacie morskim typowe są",
-    "options": [
-      "bardzo duże amplitudy temperatury",
-      "skrajnie niskie opady przez cały rok",
-      "upalne lato i bardzo mroźna zima",
-      "łagodniejsze zimy i chłodniejsze lata"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Klimat kontynentalny występuje zwykle tam, gdzie",
@@ -130,26 +50,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co sprzyja klimatowi kontynentalnemu?",
-    "options": [
-      "położonych nad samym oceanem",
-      "z dominacją bryzy morskiej",
-      "wyłącznie górskich",
-      "położonych daleko od mórz i oceanów"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Klimat kontynentalny pojawia się częściej na obszarach",
-    "options": [
-      "z dominacją bryzy morskiej",
-      "wyłącznie górskich",
-      "położonych daleko od mórz i oceanów",
-      "położonych nad samym oceanem"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Delta rzeki tworzy się najczęściej wtedy, gdy",
     "options": [
       "gwałtownie przyspiesza",
@@ -158,26 +58,6 @@
       "odkłada dużo materiału przy ujściu"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Kiedy najłatwiej powstaje delta?",
-    "options": [
-      "całkowicie zamarza",
-      "ma bardzo wąskie koryto",
-      "odkłada dużo materiału przy ujściu",
-      "gwałtownie przyspiesza"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Delta powstaje zwykle tam, gdzie rzeka",
-    "options": [
-      "ma bardzo wąskie koryto",
-      "odkłada dużo materiału przy ujściu",
-      "gwałtownie przyspiesza",
-      "całkowicie zamarza"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Meandry są typowe głównie dla rzek",
@@ -190,26 +70,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Które rzeki najczęściej tworzą meandry?",
-    "options": [
-      "lodowcowych",
-      "nizinnych",
-      "górskich",
-      "okresowych"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Meandry najczęściej spotyka się na rzekach",
-    "options": [
-      "nizinnych",
-      "górskich",
-      "okresowych",
-      "lodowcowych"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Największa pustynia gorąca świata to",
     "options": [
       "Atakama",
@@ -218,26 +78,6 @@
       "Kalahari"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Jak nazywa się największa pustynia gorąca?",
-    "options": [
-      "Sahara",
-      "Gobi",
-      "Kalahari",
-      "Atakama"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Największą gorącą pustynią świata jest",
-    "options": [
-      "Gobi",
-      "Kalahari",
-      "Atakama",
-      "Sahara"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Strefa przejściowa między Saharą a sawanną to",
@@ -250,26 +90,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak nazywa się pas przejściowy na południe od Sahary?",
-    "options": [
-      "Amazonia",
-      "Tybet",
-      "Patagonia",
-      "Sahel"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Między Saharą a sawanną leży",
-    "options": [
-      "Tybet",
-      "Patagonia",
-      "Sahel",
-      "Amazonia"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Monsoon to wiatr, który",
     "options": [
       "wieje wyłącznie z zachodu",
@@ -278,26 +98,6 @@
       "zmienia kierunek zależnie od pory roku"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Co jest najważniejszą cechą monsunu?",
-    "options": [
-      "występuje tylko nad pustynią",
-      "nie wpływa na opady",
-      "zmienia kierunek zależnie od pory roku",
-      "wieje wyłącznie z zachodu"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Monsun to wiatr zmieniający",
-    "options": [
-      "nie wpływa na opady",
-      "zmienia kierunek zależnie od pory roku",
-      "wieje wyłącznie z zachodu",
-      "występuje tylko nad pustynią"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Tsunami jest najczęściej skutkiem",
@@ -310,26 +110,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Co najczęściej wywołuje tsunami?",
-    "options": [
-      "erozji rzecznej",
-      "silnym trzęsieniu dna morskiego",
-      "długiej suszy",
-      "silnym wietrze nad lądem"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Tsunami zwykle powstaje po",
-    "options": [
-      "silnym trzęsieniu dna morskiego",
-      "długiej suszy",
-      "silnym wietrze nad lądem",
-      "erozji rzecznej"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Granice płyt litosfery wiążą się zwykle z",
     "options": [
       "wyłącznie niziny",
@@ -338,26 +118,6 @@
       "same obszary rolnicze"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co często występuje na granicach płyt litosfery?",
-    "options": [
-      "dużą aktywność sejsmiczną i wulkaniczną",
-      "całkowity brak ruchów skorupy",
-      "same obszary rolnicze",
-      "wyłącznie niziny"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Na styku płyt litosfery najczęściej obserwuje się",
-    "options": [
-      "całkowity brak ruchów skorupy",
-      "same obszary rolnicze",
-      "wyłącznie niziny",
-      "dużą aktywność sejsmiczną i wulkaniczną"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Największa wyspa świata to",
@@ -370,26 +130,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak nazywa się największa wyspa świata?",
-    "options": [
-      "Islandia",
-      "Madagaskar",
-      "Nowa Gwinea",
-      "Grenlandia"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Największą wyspą świata jest",
-    "options": [
-      "Madagaskar",
-      "Nowa Gwinea",
-      "Grenlandia",
-      "Islandia"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Polska leży w strefie klimatów",
     "options": [
       "równikowej",
@@ -398,26 +138,6 @@
       "umiarkowanej"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Do jakiej strefy klimatycznej należy Polska?",
-    "options": [
-      "zwrotnikowej",
-      "okołobiegunowej",
-      "umiarkowanej",
-      "równikowej"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "W Polsce dominuje klimat strefy",
-    "options": [
-      "okołobiegunowej",
-      "umiarkowanej",
-      "równikowej",
-      "zwrotnikowej"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Najdłuższą rzeką Polski jest",
@@ -430,26 +150,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Która rzeka jest najdłuższa w Polsce?",
-    "options": [
-      "Bug",
-      "Wisła",
-      "Odra",
-      "Warta"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Najdłuższa rzeka Polski to",
-    "options": [
-      "Wisła",
-      "Odra",
-      "Warta",
-      "Bug"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Gęstość zaludnienia oznacza liczbę osób przypadającą na",
     "options": [
       "100 km dróg",
@@ -458,26 +158,6 @@
       "jedno miasto"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Jak rozumiemy gęstość zaludnienia?",
-    "options": [
-      "1 km² powierzchni",
-      "jedno województwo",
-      "jedno miasto",
-      "100 km dróg"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Gęstość zaludnienia liczy się jako liczbę mieszkańców na",
-    "options": [
-      "jedno województwo",
-      "jedno miasto",
-      "100 km dróg",
-      "1 km² powierzchni"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Przyrost naturalny to różnica między",
@@ -490,26 +170,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak oblicza się przyrost naturalny?",
-    "options": [
-      "imigracją a emigracją",
-      "eksportem a importem",
-      "liczbą kobiet i mężczyzn",
-      "urodzeniami a zgonami"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Przyrost naturalny jest różnicą pomiędzy",
-    "options": [
-      "eksportem a importem",
-      "liczbą kobiet i mężczyzn",
-      "urodzeniami a zgonami",
-      "imigracją a emigracją"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Saldo migracji to różnica między",
     "options": [
       "urodzeniami a zgonami",
@@ -518,26 +178,6 @@
       "imigracją a emigracją"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Czym jest saldo migracji?",
-    "options": [
-      "miastem a wsią",
-      "eksportem a importem",
-      "imigracją a emigracją",
-      "urodzeniami a zgonami"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Saldo migracji obliczamy jako różnicę między",
-    "options": [
-      "eksportem a importem",
-      "imigracją a emigracją",
-      "urodzeniami a zgonami",
-      "miastem a wsią"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Suburbanizacja oznacza",
@@ -550,26 +190,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Co oznacza suburbanizacja?",
-    "options": [
-      "łączenia państw w jedno",
-      "przenoszenia się ludzi i funkcji miasta do strefy podmiejskiej",
-      "zaniku miast portowych",
-      "spadku liczby ludności na wsi niezależnie od miasta"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Suburbanizacja to proces",
-    "options": [
-      "przenoszenia się ludzi i funkcji miasta do strefy podmiejskiej",
-      "zaniku miast portowych",
-      "spadku liczby ludności na wsi niezależnie od miasta",
-      "łączenia państw w jedno"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Poziomice na mapie służą do przedstawiania",
     "options": [
       "szlaków lotniczych",
@@ -578,26 +198,6 @@
       "rodzajów roślin"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Do czego na mapie służą poziomice?",
-    "options": [
-      "ukształtowania terenu",
-      "granic państw",
-      "rodzajów roślin",
-      "szlaków lotniczych"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Poziomice pokazują na mapie",
-    "options": [
-      "granic państw",
-      "rodzajów roślin",
-      "szlaków lotniczych",
-      "ukształtowania terenu"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Skala mapy informuje o",
@@ -610,26 +210,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co mówi skala mapy?",
-    "options": [
-      "wysokości gór do poziomu morza",
-      "liczbie miast na mapie",
-      "kierunku północy",
-      "stosunku odległości na mapie do odległości w terenie"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Skala mapy pokazuje stosunek",
-    "options": [
-      "liczbie miast na mapie",
-      "kierunku północy",
-      "stosunku odległości na mapie do odległości w terenie",
-      "wysokości gór do poziomu morza"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Szerokość geograficzna określa odległość od",
     "options": [
       "południka zerowego",
@@ -638,26 +218,6 @@
       "równika"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Szerokość geograficzna mówi o odległości od",
-    "options": [
-      "bieguna północnego wyłącznie",
-      "oceanu",
-      "równika",
-      "południka zerowego"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Punkty o tej samej szerokości geograficznej leżą na tym samym",
-    "options": [
-      "oceanu",
-      "równika",
-      "południka zerowego",
-      "bieguna północnego wyłącznie"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Długość geograficzna określa odległość od",
@@ -670,26 +230,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Długość geograficzna liczona jest od",
-    "options": [
-      "strefy klimatycznej",
-      "południka zerowego",
-      "równika",
-      "Zwrotnika Raka"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Punkty o tej samej długości geograficznej leżą na tym samym",
-    "options": [
-      "południka zerowego",
-      "równika",
-      "Zwrotnika Raka",
-      "strefy klimatycznej"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Klimat śródziemnomorski charakteryzuje się",
     "options": [
       "brak różnic między porami roku",
@@ -698,26 +238,6 @@
       "opady równomierne i brak suchych miesięcy"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co jest typowe dla klimatu śródziemnomorskiego?",
-    "options": [
-      "gorące suche lato i łagodna wilgotna zima",
-      "mroźna zima i chłodne lato",
-      "opady równomierne i brak suchych miesięcy",
-      "brak różnic między porami roku"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "W klimacie śródziemnomorskim występują",
-    "options": [
-      "mroźna zima i chłodne lato",
-      "opady równomierne i brak suchych miesięcy",
-      "brak różnic między porami roku",
-      "gorące suche lato i łagodna wilgotna zima"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Lasy równikowe rosną przede wszystkim tam, gdzie",
@@ -730,26 +250,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co sprzyja występowaniu lasów równikowych?",
-    "options": [
-      "zimy są mroźne",
-      "dominuje skrajna susza",
-      "lato jest krótkie i chłodne",
-      "przez cały rok jest ciepło i wilgotno"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Lasy równikowe występują zwykle na obszarach",
-    "options": [
-      "dominuje skrajna susza",
-      "lato jest krótkie i chłodne",
-      "przez cały rok jest ciepło i wilgotno",
-      "zimy są mroźne"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Step to formacja roślinna typowa dla",
     "options": [
       "wiecznie wilgotnych lasów równikowych",
@@ -758,26 +258,6 @@
       "suchych trawiastych obszarów strefy umiarkowanej"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Gdzie najczęściej spotyka się step?",
-    "options": [
-      "obszarów polarnych",
-      "mokradeł nadmorskich",
-      "suchych trawiastych obszarów strefy umiarkowanej",
-      "wiecznie wilgotnych lasów równikowych"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Step jest charakterystyczny dla obszarów",
-    "options": [
-      "mokradeł nadmorskich",
-      "suchych trawiastych obszarów strefy umiarkowanej",
-      "wiecznie wilgotnych lasów równikowych",
-      "obszarów polarnych"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Tundra występuje głównie w strefie",
@@ -790,26 +270,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Gdzie najczęściej spotykamy tundrę?",
-    "options": [
-      "śródziemnomorskiej",
-      "okołobiegunowej",
-      "równikowej",
-      "zwrotnikowej"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Tundra to formacja roślinna typowa dla strefy",
-    "options": [
-      "okołobiegunowej",
-      "równikowej",
-      "zwrotnikowej",
-      "śródziemnomorskiej"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Fjord to",
     "options": [
       "sucha dolina pustynna",
@@ -818,26 +278,6 @@
       "wydma śródlądowa"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Jak najlepiej opisać fiord?",
-    "options": [
-      "wąska morska zatoka o stromych brzegach, powstała w dawnej dolinie lodowcowej",
-      "piaszczysta mierzeja",
-      "wydma śródlądowa",
-      "sucha dolina pustynna"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Fiord jest to",
-    "options": [
-      "piaszczysta mierzeja",
-      "wydma śródlądowa",
-      "sucha dolina pustynna",
-      "wąska morska zatoka o stromych brzegach, powstała w dawnej dolinie lodowcowej"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Dolina U-kształtna jest typowym śladem działalności",
@@ -850,26 +290,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co najczęściej tworzy dolinę U-kształtną?",
-    "options": [
-      "rzeki górskiej",
-      "wiatru na pustyni",
-      "fal morskich",
-      "lodowca"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Dolina U-kształtna powstaje zwykle wskutek działania",
-    "options": [
-      "wiatru na pustyni",
-      "fal morskich",
-      "lodowca",
-      "rzeki górskiej"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Urbanizacja oznacza",
     "options": [
       "wyludniania wszystkich miast",
@@ -878,26 +298,6 @@
       "wzrostu znaczenia miast i udziału ludności miejskiej"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Co oznacza urbanizacja?",
-    "options": [
-      "powstawania samych wsi",
-      "spadku liczby usług",
-      "wzrostu znaczenia miast i udziału ludności miejskiej",
-      "wyludniania wszystkich miast"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Urbanizacja to proces",
-    "options": [
-      "spadku liczby usług",
-      "wzrostu znaczenia miast i udziału ludności miejskiej",
-      "wyludniania wszystkich miast",
-      "powstawania samych wsi"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Niż baryczny to obszar, w którym powietrze",
@@ -910,26 +310,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Co dzieje się z powietrzem w niżu barycznym?",
-    "options": [
-      "zawsze płynie z północy",
-      "unosi się ku górze",
-      "opada ku dołowi",
-      "stoi nieruchomo"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "W niżu barycznym powietrze zwykle",
-    "options": [
-      "unosi się ku górze",
-      "opada ku dołowi",
-      "stoi nieruchomo",
-      "zawsze płynie z północy"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Wyż baryczny to obszar, w którym powietrze",
     "options": [
       "tworzy monsuny",
@@ -938,26 +318,6 @@
       "zawsze powoduje burze"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co dzieje się z powietrzem w wyżu barycznym?",
-    "options": [
-      "opada ku dołowi",
-      "wznosi się szybko",
-      "zawsze powoduje burze",
-      "tworzy monsuny"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "W wyżu barycznym powietrze zwykle",
-    "options": [
-      "wznosi się szybko",
-      "zawsze powoduje burze",
-      "tworzy monsuny",
-      "opada ku dołowi"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Strefy czasowe wynikają przede wszystkim z",
@@ -970,26 +330,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Dlaczego na Ziemi istnieją strefy czasowe?",
-    "options": [
-      "ruchem obiegowym Księżyca",
-      "przebiegiem gór",
-      "prądami morskimi",
-      "ruchem obrotowym Ziemi"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Strefy czasowe wiążą się z",
-    "options": [
-      "przebiegiem gór",
-      "prądami morskimi",
-      "ruchem obrotowym Ziemi",
-      "ruchem obiegowym Księżyca"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Prądy morskie wpływają na klimat, ponieważ",
     "options": [
       "tworzą pustynie bez udziału innych czynników",
@@ -998,26 +338,6 @@
       "przenoszą ciepło lub chłód między obszarami"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Dlaczego prądy morskie są ważne dla klimatu?",
-    "options": [
-      "zmieniają położenie kontynentów",
-      "zatrzymują obrót Ziemi",
-      "przenoszą ciepło lub chłód między obszarami",
-      "tworzą pustynie bez udziału innych czynników"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Znaczenie prądów morskich polega na tym, że",
-    "options": [
-      "zatrzymują obrót Ziemi",
-      "przenoszą ciepło lub chłód między obszarami",
-      "tworzą pustynie bez udziału innych czynników",
-      "zmieniają położenie kontynentów"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Najwyższe góry świata to",
@@ -1030,26 +350,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Jak nazywa się najwyższy system górski świata?",
-    "options": [
-      "Karpaty",
-      "Himalaje",
-      "Andy",
-      "Alpy"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Najwyższym łańcuchem górskim świata są",
-    "options": [
-      "Himalaje",
-      "Andy",
-      "Alpy",
-      "Karpaty"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Andy leżą w",
     "options": [
       "Afryce",
@@ -1058,26 +358,6 @@
       "Europie"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Na którym kontynencie leżą Andy?",
-    "options": [
-      "Ameryce Południowej",
-      "Azji",
-      "Europie",
-      "Afryce"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Andy są łańcuchem górskim w",
-    "options": [
-      "Azji",
-      "Europie",
-      "Afryce",
-      "Ameryce Południowej"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Nil znajduje się w",
@@ -1090,26 +370,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Na jakim kontynencie leży Nil?",
-    "options": [
-      "Europie",
-      "Azji",
-      "Ameryce Południowej",
-      "Afryce"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Rzeka Nil płynie w",
-    "options": [
-      "Azji",
-      "Ameryce Południowej",
-      "Afryce",
-      "Europie"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Amazonka słynie przede wszystkim z tego, że",
     "options": [
       "największej wysokości źródła w Europie",
@@ -1118,26 +378,6 @@
       "bardzo dużym przepływie wody"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Z czego najbardziej znana jest Amazonka?",
-    "options": [
-      "położeniu w Australii",
-      "ujściu do Morza Śródziemnego",
-      "bardzo dużym przepływie wody",
-      "największej wysokości źródła w Europie"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Amazonka to rzeka o",
-    "options": [
-      "ujściu do Morza Śródziemnego",
-      "bardzo dużym przepływie wody",
-      "największej wysokości źródła w Europie",
-      "położeniu w Australii"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Największym kontynentem jest",
@@ -1150,26 +390,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Który kontynent ma największą powierzchnię?",
-    "options": [
-      "Australia",
-      "Azja",
-      "Afryka",
-      "Europa"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Pod względem powierzchni największa jest",
-    "options": [
-      "Azja",
-      "Afryka",
-      "Europa",
-      "Australia"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Najmniejszym kontynentem jest",
     "options": [
       "Antarktyda",
@@ -1178,26 +398,6 @@
       "Ameryka Południowa"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Który kontynent jest najmniejszy?",
-    "options": [
-      "Australia",
-      "Europa",
-      "Ameryka Południowa",
-      "Antarktyda"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Najmniejszą powierzchnię ma",
-    "options": [
-      "Europa",
-      "Ameryka Południowa",
-      "Antarktyda",
-      "Australia"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Bałtyk jest morzem",
@@ -1210,26 +410,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak najlepiej opisać Morze Bałtyckie?",
-    "options": [
-      "otwarte oceaniczne",
-      "wyłącznie tropikalne",
-      "położone na półkuli południowej",
-      "śródlądowe"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Morze Bałtyckie to morze",
-    "options": [
-      "wyłącznie tropikalne",
-      "położone na półkuli południowej",
-      "śródlądowe",
-      "otwarte oceaniczne"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Odnawialnym źródłem energii jest",
     "options": [
       "węgiel kamienny",
@@ -1238,26 +418,6 @@
       "wiatr"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Które źródło energii jest odnawialne?",
-    "options": [
-      "ropę naftową",
-      "gaz ziemny",
-      "wiatr",
-      "węgiel kamienny"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Do odnawialnych źródeł energii zaliczamy",
-    "options": [
-      "gaz ziemny",
-      "wiatr",
-      "węgiel kamienny",
-      "ropę naftową"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Estuarium to typ ujścia rzeki, które ma zwykle kształt",
@@ -1270,26 +430,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Jak wygląda estuarium?",
-    "options": [
-      "całkowicie podziemny",
-      "lejkowaty",
-      "trójkątny jak delta",
-      "zamknięty przez wydmy"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Estuarium jest ujściem rzeki zwykle",
-    "options": [
-      "lejkowaty",
-      "trójkątny jak delta",
-      "zamknięty przez wydmy",
-      "całkowicie podziemny"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Wyspa ciepła w mieście oznacza, że",
     "options": [
       "temperatura jest wszędzie taka sama",
@@ -1298,26 +438,6 @@
       "w centrum zawsze pada śnieg"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co oznacza miejska wyspa ciepła?",
-    "options": [
-      "w mieście bywa cieplej niż na obrzeżach",
-      "miasto leży na wyspie",
-      "w centrum zawsze pada śnieg",
-      "temperatura jest wszędzie taka sama"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Miejska wyspa ciepła polega na tym, że",
-    "options": [
-      "miasto leży na wyspie",
-      "w centrum zawsze pada śnieg",
-      "temperatura jest wszędzie taka sama",
-      "w mieście bywa cieplej niż na obrzeżach"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Demografia zajmuje się badaniem",
@@ -1330,26 +450,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Czym zajmuje się demografia?",
-    "options": [
-      "tylko skał i minerałów",
-      "wyłącznie pogody",
-      "budowy oceanów",
-      "ludności i jej zmian"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Demografia bada głównie",
-    "options": [
-      "wyłącznie pogody",
-      "budowy oceanów",
-      "ludności i jej zmian",
-      "tylko skał i minerałów"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Piramida wieku pokazuje",
     "options": [
       "wysokości gór",
@@ -1358,26 +458,6 @@
       "strukturę ludności według wieku i płci"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Co można odczytać z piramidy wieku?",
-    "options": [
-      "rodzaje gleb",
-      "rozmieszczenie opadów",
-      "strukturę ludności według wieku i płci",
-      "wysokości gór"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Piramida wieku przedstawia",
-    "options": [
-      "rozmieszczenie opadów",
-      "strukturę ludności według wieku i płci",
-      "wysokości gór",
-      "rodzaje gleb"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Najwięcej ludności świata mieszka obecnie w",
@@ -1390,26 +470,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Który kontynent ma największą liczbę ludności?",
-    "options": [
-      "Antarktyda",
-      "Azja",
-      "Europa",
-      "Australia"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Najludniejszym kontynentem jest",
-    "options": [
-      "Azja",
-      "Europa",
-      "Australia",
-      "Antarktyda"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Bryza to wiatr lokalny związany z różnicą nagrzewania między",
     "options": [
       "lodowcem i sawanną",
@@ -1418,26 +478,6 @@
       "dwoma górami"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Skąd bierze się bryza?",
-    "options": [
-      "lądem i wodą",
-      "dwoma pustyniami",
-      "dwoma górami",
-      "lodowcem i sawanną"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Bryza powstaje dzięki różnemu nagrzewaniu",
-    "options": [
-      "dwoma pustyniami",
-      "dwoma górami",
-      "lodowcem i sawanną",
-      "lądem i wodą"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Cień opadowy po zawietrznej stronie gór tworzy się dlatego, że",
@@ -1450,26 +490,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Dlaczego po zawietrznej stronie gór jest sucho?",
-    "options": [
-      "słońce tam nie dociera",
-      "góry przyciągają pustynie",
-      "rzeki płyną tylko po stronie dowietrznej",
-      "powietrze po przejściu przez grzbiet traci część wilgoci"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Cień opadowy wynika z tego, że",
-    "options": [
-      "góry przyciągają pustynie",
-      "rzeki płyną tylko po stronie dowietrznej",
-      "powietrze po przejściu przez grzbiet traci część wilgoci",
-      "słońce tam nie dociera"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Aglomeracja to",
     "options": [
       "obszar wyłącznie rolniczy",
@@ -1480,23 +500,1003 @@
     "correctIndex": 3
   },
   {
-    "text": "Co oznacza pojęcie aglomeracja?",
+    "text": "Łuk wyspowy powstaje najczęściej",
     "options": [
-      "jedną samotną wieś",
-      "pustynię z jednym miastem",
-      "duży zespół miejski i jego otoczenie",
-      "obszar wyłącznie rolniczy"
+      "na granicy zbieżnej dwóch płyt oceanicznych",
+      "w centrum stabilnej płyty kontynentalnej",
+      "wyłącznie w strefie klimatu polarnego",
+      "na obszarze pozbawionym aktywności wulkanicznej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Atol to",
+    "options": [
+      "stożek wulkaniczny z kraterem szczytowym",
+      "pierścieniowa wyspa lub rafa otaczająca lagunę",
+      "wysokie wybrzeże z licznymi klifami",
+      "rozległa równina zalewowa dużej rzeki"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Laguna to zwykle",
+    "options": [
+      "głęboki rów oceaniczny przy brzegu kontynentu",
+      "słone jezioro na obszarze pustynnym",
+      "płytki zbiornik oddzielony od morza mierzeją lub rafą",
+      "sztuczny kanał łączący dwa morza"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Aglomeracją nazywamy",
+    "text": "Dorzecze rzeki oznacza obszar",
     "options": [
-      "pustynię z jednym miastem",
-      "duży zespół miejski i jego otoczenie",
-      "obszar wyłącznie rolniczy",
-      "jedną samotną wieś"
+      "na którym występuje tylko roślinność bagienna",
+      "zbudowany wyłącznie z osadów polodowcowych",
+      "regularnie zalewany przez pływy morskie",
+      "z którego wody spływają do tej rzeki i jej dopływów"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Dział wodny to",
+    "options": [
+      "granica oddzielająca sąsiednie dorzecza",
+      "najgłębszy fragment koryta rzeki",
+      "sztuczny wał chroniący przed powodzią",
+      "obszar ujścia rzeki do morza"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Abrazja morska polega na",
+    "options": [
+      "osadzaniu piasku przez wiatr na pustyni",
+      "niszczeniu brzegu przez fale morskie",
+      "powolnym topnieniu lodowca górskiego",
+      "podnoszeniu się lądu po ustąpieniu lądolodu"
     ],
     "correctIndex": 1
+  },
+  {
+    "text": "Zjawiska krasowe rozwijają się najłatwiej na obszarach zbudowanych z",
+    "options": [
+      "granitów i bazaltów",
+      "piasków eolicznych",
+      "wapieni i innych skał łatwo rozpuszczalnych",
+      "iłowców nieprzepuszczalnych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Less to osad",
+    "options": [
+      "powstający wyłącznie na dnie oceanów",
+      "tworzony przez lawę zastygającą na powierzchni",
+      "budujący rafy koralowe",
+      "pyłowy nanoszony i odkładany przez wiatr"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Gejzer wyrzuca okresowo gorącą wodę i parę, ponieważ",
+    "options": [
+      "wody podziemne są podgrzewane przez energię geotermalną",
+      "działa jak pompa napędzana przypływem morza",
+      "jest zasilany wyłącznie wodą opadową z lodowca",
+      "tworzy go działalność organizmów morskich"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Wysokość bezwzględna jest mierzona względem",
+    "options": [
+      "najbliższej rzeki",
+      "średniego poziomu morza",
+      "podstawy danej góry",
+      "lokalnej równiny zalewowej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wysokość względna określa",
+    "options": [
+      "odległość od równika",
+      "położenie względem południka 0°",
+      "różnicę wysokości między dwoma punktami",
+      "średnią wysokość kontynentu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Energia geotermalna pochodzi z",
+    "options": [
+      "ruchu fal morskich",
+      "promieniowania Księżyca",
+      "siły Coriolisa",
+      "wnętrza Ziemi"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Oaza na pustyni powstaje tam, gdzie",
+    "options": [
+      "dostępna jest woda umożliwiająca rozwój roślinności",
+      "przez cały rok zalega lód",
+      "występują wyłącznie skały wulkaniczne",
+      "brak jakichkolwiek osadów mineralnych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Tajga to formacja roślinna zdominowana przez",
+    "options": [
+      "wiecznie zielone lasy równikowe",
+      "lasy iglaste strefy chłodnej",
+      "trawy sawanny",
+      "krzewy śródziemnomorskie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Sawanna charakteryzuje się przede wszystkim",
+    "options": [
+      "całoroczną pokrywą śnieżną",
+      "przewagą mchów i porostów strefy polarnej",
+      "występowaniem traw i pojedynczych drzew w klimacie tropikalnym",
+      "gęstym lasem liściastym klimatu umiarkowanego"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pampa jest typową formacją roślinną",
+    "options": [
+      "Azji monsunowej",
+      "Antarktydy",
+      "Europy Północnej",
+      "Ameryki Południowej"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Preria to rozległa formacja trawiasta charakterystyczna dla",
+    "options": [
+      "Ameryki Północnej",
+      "wschodniej Australii",
+      "Grenlandii",
+      "Półwyspu Arabskiego"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Polder to",
+    "options": [
+      "wysokie pasmo górskie pochodzenia fałdowego",
+      "teren odebrany morzu lub jezioru i chroniony wałami",
+      "rów tektoniczny w dnie oceanu",
+      "wyspa koralowa wokół laguny"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Kanał Sueski łączy",
+    "options": [
+      "Ocean Atlantycki z Oceanem Indyjskim",
+      "Morze Czarne z Morzem Bałtyckim",
+      "Morze Śródziemne z Morzem Czerwonym",
+      "Ocean Spokojny z Oceanem Arktycznym"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Kanał Panamski umożliwia połączenie",
+    "options": [
+      "Morza Północnego z Morzem Bałtyckim",
+      "Morza Śródziemnego z Oceanem Indyjskim",
+      "Oceanu Spokojnego z Oceanem Arktycznym",
+      "Oceanu Atlantyckiego z Oceanem Spokojnym"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Morena czołowa powstaje przez",
+    "options": [
+      "gromadzenie materiału skalnego u czoła lodowca",
+      "wypłukiwanie lessu przez deszcz",
+      "osadzanie mułu przez fale morskie",
+      "krystalizację lawy bazaltowej"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Stalaktyt rośnie",
+    "options": [
+      "od dna jaskini ku górze",
+      "od stropu jaskini ku dołowi",
+      "na powierzchni wydmy ku wschodowi",
+      "wyłącznie na dnie oceanu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Stalagmit tworzy się",
+    "options": [
+      "na suficie jaskini",
+      "na powierzchni lodowca",
+      "od dna jaskini ku górze",
+      "w kraterze czynnego wulkanu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pasaty wieją zazwyczaj",
+    "options": [
+      "od biegunów ku zwrotnikom",
+      "z kontynentu ku oceanowi tylko zimą",
+      "wyłącznie w wysokich górach",
+      "od wyżów zwrotnikowych ku niżowi równikowemu"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Pustynnienie oznacza",
+    "options": [
+      "degradację terenów suchych prowadzącą do zaniku ich produktywności",
+      "zamianę pustyni w las monsunowy",
+      "stałe zalewanie wybrzeża przez morze",
+      "powstawanie nowych lodowców górskich"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Tarasowanie stoków w rolnictwie służy głównie do",
+    "options": [
+      "zwiększania zasolenia pól",
+      "ograniczania spływu wody i erozji gleby",
+      "przyspieszania osuwisk",
+      "tworzenia głębokich kanionów"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wskaźnik HDI uwzględnia między innymi",
+    "options": [
+      "wyłącznie liczbę mieszkańców",
+      "jedynie wysokość gór na obszarze państwa",
+      "długość życia, edukację i dochód",
+      "tylko produkcję energii z węgla"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Spis powszechny to",
+    "options": [
+      "pomiar zasobów wód podziemnych",
+      "wykres przedstawiający klimat",
+      "zestaw norm budowy map",
+      "badanie obejmujące całą ludność danego kraju"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Migracje wahadłowe polegają na",
+    "options": [
+      "regularnych dojazdach między miejscem zamieszkania a miejscem pracy lub nauki",
+      "stałym przenoszeniu się ludności za granicę",
+      "ucieczce ludności z obszarów górskich na niziny",
+      "przesiedleniach wymuszonych przez erupcję wulkanu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Metropolia to miasto",
+    "options": [
+      "liczące mniej niż 10 tysięcy mieszkańców",
+      "pełniące funkcje o znaczeniu ponadregionalnym lub międzynarodowym",
+      "położone wyłącznie nad morzem",
+      "zabudowane wyłącznie domami jednorodzinnymi"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Megalopolis oznacza",
+    "options": [
+      "pojedynczą wieś o zwartej zabudowie",
+      "obszar pustynny bez osadnictwa",
+      "pas współzależnych aglomeracji tworzących rozległy układ miejski",
+      "wyłącznie stolicę państwa federalnego"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Archipelag to",
+    "options": [
+      "wąska cieśnina między kontynentami",
+      "rozległa równina aluwialna",
+      "pasmo górskie o ostrych szczytach",
+      "grupa wysp położonych blisko siebie"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Półwysep to obszar lądu",
+    "options": [
+      "otoczony wodą z trzech stron",
+      "całkowicie otoczony wodą",
+      "położony zawsze poniżej poziomu morza",
+      "oddzielający dwa dorzecza"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Przesmyk to",
+    "options": [
+      "szeroka dolina polodowcowa",
+      "wąski pas lądu łączący większe obszary lądowe",
+      "rzeka okresowa na pustyni",
+      "zatoka głęboko wciskająca się w ląd"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Płaskowyż to",
+    "options": [
+      "najniższa część doliny rzecznej",
+      "forma dna oceanicznego przy rowie oceanicznym",
+      "rozległy, wyniesiony i względnie płaski obszar",
+      "każdy obszar położony poniżej poziomu morza"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Kanion jest najczęściej",
+    "options": [
+      "pagórkiem wydmowym na pustyni",
+      "podłużnym jeziorem polodowcowym",
+      "wypiętrzeniem dna oceanu",
+      "głęboką doliną o stromych zboczach wyciętą przez rzekę"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Front ciepły zwykle przynosi",
+    "options": [
+      "długotrwałe opady i rozległe zachmurzenie warstwowe",
+      "wyłącznie bezchmurne niebo",
+      "gwałtowny spadek temperatury bez chmur",
+      "stałe wiatry monsunowe przez cały rok"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Front chłodny najczęściej wiąże się z",
+    "options": [
+      "długim okresem bezwietrznej pogody",
+      "gwałtowniejszymi opadami i szybkim ochłodzeniem",
+      "zanikiem wszelkiego zachmurzenia",
+      "występowaniem nocy polarnej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "W troposferze temperatura powietrza zazwyczaj",
+    "options": [
+      "rośnie liniowo aż do granicy kosmosu",
+      "nie zależy od wysokości",
+      "spada wraz ze wzrostem wysokości",
+      "jest najwyższa przy powierzchni lodowca"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Najwyższe albedo spośród podanych powierzchni ma zwykle",
+    "options": [
+      "ciemna gleba",
+      "las iglasty",
+      "asfaltowa droga",
+      "świeży śnieg"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Efekt cieplarniany jest związany z tym, że niektóre gazy atmosferyczne",
+    "options": [
+      "pochłaniają część promieniowania cieplnego wypromieniowanego przez Ziemię",
+      "blokują całkowicie dopływ światła słonecznego",
+      "zatrzymują ruch płyt litosfery",
+      "powodują zanik obiegu wody w przyrodzie"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Pogoda różni się od klimatu przede wszystkim tym, że",
+    "options": [
+      "dotyczy wyłącznie oceanów",
+      "opisuje krótkotrwały stan atmosfery",
+      "jest stała przez setki lat",
+      "nie zależy od temperatury i opadów"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Izobary na mapie pogody łączą punkty o takim samym",
+    "options": [
+      "zasoleniu wody",
+      "natężeniu promieniowania słonecznego",
+      "ciśnieniu atmosferycznym",
+      "spadku terenu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Wilgotność względna powietrza informuje o",
+    "options": [
+      "prędkości wiatru przy powierzchni ziemi",
+      "liczbie chmur na niebie",
+      "zasobach wód podziemnych",
+      "stopniu nasycenia powietrza parą wodną"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Punkt rosy to temperatura, przy której powietrze",
+    "options": [
+      "osiąga stan nasycenia parą wodną",
+      "nagrzewa się najszybciej w ciągu dnia",
+      "zmienia kierunek wiatru z zachodniego na wschodni",
+      "zawsze spada poniżej 0°C"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Rafy koralowe rozwijają się najlepiej w wodach",
+    "options": [
+      "zimnych i bardzo głębokich",
+      "ciepłych, płytkich i przejrzystych",
+      "słodkich i szybko płynących",
+      "trwale skrytych pod lądolodem"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Namorzyny rosną najczęściej",
+    "options": [
+      "na stokach wysokich gór",
+      "w strefie tundry",
+      "na tropikalnych, błotnistych wybrzeżach słonawych",
+      "na pustyniach kamienistych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Wieloletnia zmarzlina to grunt",
+    "options": [
+      "zalewany codziennie przez pływy",
+      "powstały wyłącznie z lawy",
+      "całkowicie pozbawiony lodu",
+      "pozostający zamarznięty przez co najmniej dwa lata"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Góra lodowa powstaje najczęściej przez",
+    "options": [
+      "oderwanie fragmentu lodowca lub lądolodu do morza",
+      "wybuch podmorskiego wulkanu",
+      "nagłe zasolenie wody oceanicznej",
+      "osadzanie piasku przez fale"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Szelf kontynentalny to",
+    "options": [
+      "najgłębsza część rowu oceanicznego",
+      "płytka, podmorska część obrzeża kontynentu",
+      "pas wydm na wybrzeżu",
+      "obszar wiecznej zmarzliny na lądzie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Stok kontynentalny jest",
+    "options": [
+      "najwyższą częścią gór fałdowych",
+      "rodzajem deltowego ujścia rzeki",
+      "stromym przejściem między szelfem a głębokim dnem oceanu",
+      "obszarem występowania raf koralowych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Równina abisalna to",
+    "options": [
+      "sucha równina w centrum pustyni",
+      "strefa przybrzeżnych klifów",
+      "wysokogórska kotlina śródgórska",
+      "rozległa, płaska część dna oceanicznego na dużych głębokościach"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Rów ryftowy tworzy się najczęściej tam, gdzie",
+    "options": [
+      "skorupa ziemska jest rozciągana i pęka",
+      "dwie płyty oceaniczne zderzają się bez subdukcji",
+      "na lądzie osadza się materiał rzeczny",
+      "wiatr nawiewa piasek na wybrzeże"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Góry fałdowe powstają głównie w wyniku",
+    "options": [
+      "działalności lodowca w dolinie U-kształtnej",
+      "ściskania i fałdowania warstw skalnych",
+      "rozmywania terenu przez deszcze zenitalne",
+      "osuszania bagien nadmorskich"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wulkan tarczowy cechuje się zwykle",
+    "options": [
+      "bardzo stromymi zboczami z samych osadów rzecznych",
+      "powstawaniem wyłącznie na lądolodzie",
+      "łagodnymi stokami i mało lepką lawą",
+      "brakiem związku z magmą"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Stratowulkan ma zazwyczaj",
+    "options": [
+      "idealnie płaską powierzchnię szczytową",
+      "budowę wyłącznie z piasków eolicznych",
+      "pochodzenie wyłącznie krasowe",
+      "stromy kształt i budowę z naprzemiennych warstw lawy oraz materiału piroklastycznego"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Hipocentrum trzęsienia ziemi to",
+    "options": [
+      "miejsce uwolnienia energii we wnętrzu Ziemi",
+      "punkt na powierzchni bezpośrednio nad ogniskiem",
+      "stacja meteorologiczna rejestrująca wstrząsy",
+      "obszar występowania wysp koralowych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Epicentrum trzęsienia ziemi znajduje się",
+    "options": [
+      "w jądrze Ziemi",
+      "na powierzchni Ziemi nad hipocentrum",
+      "wyłącznie na dnie oceanów",
+      "w miejscu przecięcia izobar"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Sejsmograf służy do",
+    "options": [
+      "mierzenia zasolenia oceanów",
+      "określania wysokości względnej",
+      "rejestrowania fal sejsmicznych",
+      "tworzenia map glebowych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Magnituda trzęsienia ziemi opisuje przede wszystkim",
+    "options": [
+      "liczbę ludności w strefie wstrząsów",
+      "wysokość fali pływowej na oceanie",
+      "rodzaj skał na powierzchni",
+      "ilość uwolnionej energii"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Hydrosfera obejmuje",
+    "options": [
+      "całość wód występujących na Ziemi",
+      "wyłącznie wody oceaniczne",
+      "tylko lodowce i śnieg",
+      "same wody podziemne"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Najniższą warstwą atmosfery jest",
+    "options": [
+      "stratosfera",
+      "troposfera",
+      "mezosfera",
+      "egzosfera"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Warstwa ozonowa znajduje się głównie w",
+    "options": [
+      "troposferze",
+      "hydrosferze",
+      "stratosferze",
+      "litosferze"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Biosfera obejmuje",
+    "options": [
+      "wyłącznie oceany i morza",
+      "tylko obszary leśne",
+      "same skały magmowe i osadowe",
+      "wszystkie organizmy żywe i środowiska ich życia"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Litosfera to",
+    "options": [
+      "sztywna zewnętrzna powłoka Ziemi",
+      "strefa wiecznych lodów",
+      "warstwa chmur burzowych",
+      "całość wód podziemnych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Dzień polarny występuje dlatego, że",
+    "options": [
+      "Ziemia zatrzymuje obrót wokół własnej osi",
+      "na obszarach okołobiegunowych Słońce przez pewien czas nie zachodzi za horyzont",
+      "nad biegunami stale wieją monsuny",
+      "powierzchnia lądu odbija całe promieniowanie słoneczne"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Międzynarodowa linia zmiany daty przebiega w przybliżeniu wzdłuż południka",
+    "options": [
+      "0°",
+      "90°E",
+      "180°",
+      "90°W"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Miejsca położone bardziej na wschód mają zazwyczaj czas lokalny",
+    "options": [
+      "wcześniejszy o całą dobę",
+      "taki sam niezależnie od długości geograficznej",
+      "zawsze opóźniony o godzinę względem Greenwich",
+      "późniejszy niż miejsca położone bardziej na zachód"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "System GPS określa położenie dzięki",
+    "options": [
+      "sygnałom wysyłanym przez satelity",
+      "wyłącznie kierunkowi wiatru",
+      "pomiarowi zasolenia mórz",
+      "porównaniu opadów w stacjach terenowych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Teledetekcja polega na",
+    "options": [
+      "mierzeniu tylko głębokości oceanów z pokładu statku",
+      "pozyskiwaniu informacji o obiektach bez bezpośredniego kontaktu z nimi",
+      "sporządzaniu map wyłącznie metodą szkicu terenowego",
+      "wykonywaniu spisów ludności w miastach"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Każde odwzorowanie kartograficzne powoduje zniekształcenia, ponieważ",
+    "options": [
+      "mapy są tworzone tylko na podstawie fotografii lotniczych",
+      "Ziemia nie ma żadnego kształtu",
+      "nie da się bezbłędnie przenieść powierzchni kuli na płaszczyznę",
+      "skala mapy zawsze wynosi 1:1"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Odwzorowanie równopowierzchniowe zachowuje przede wszystkim",
+    "options": [
+      "kąty i kierunki bez wyjątku",
+      "wszystkie odległości na całej mapie",
+      "jednakową wysokość terenu",
+      "powierzchnię obszarów"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Mapa topograficzna przedstawia",
+    "options": [
+      "rzeźbę terenu i wiele szczegółów powierzchni",
+      "wyłącznie granice państw świata",
+      "tylko prognozę pogody",
+      "sam rozkład temperatur na oceanach"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Mapa tematyczna pokazuje głównie",
+    "options": [
+      "wyłącznie sieć dróg lokalnych",
+      "jedno wybrane zjawisko lub grupę zjawisk",
+      "każdy element terenu z jednakową dokładnością",
+      "tylko nazwy miejscowości bez treści liczbowej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Kartogram przedstawia natężenie zjawiska za pomocą",
+    "options": [
+      "poziomic wysokościowych",
+      "symboli wiatrów stałych",
+      "zróżnicowanego cieniowania lub barw w granicach jednostek administracyjnych",
+      "profilu geologicznego terenu"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Irygacja oznacza",
+    "options": [
+      "mechaniczne zalesianie pustyń",
+      "budowę portów morskich",
+      "pomiar prędkości przepływu rzek",
+      "sztuczne nawadnianie pól uprawnych"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Lawina to",
+    "options": [
+      "gwałtowne zsunięcie się mas śniegu po stoku",
+      "powolne wietrzenie skał wapiennych",
+      "podmorskie trzęsienie ziemi",
+      "stały kierunek wiatru nad oceanem"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Barchan jest wydmą",
+    "options": [
+      "powstającą wyłącznie pod lodowcem",
+      "sierpowatą, tworzącą się przy stałym kierunku wiatru i niewielkiej ilości piasku",
+      "zawsze porośniętą zwartym lasem",
+      "typową tylko dla terenów wysokogórskich"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wydma paraboliczna jest charakterystyczna zwłaszcza dla",
+    "options": [
+      "rowów oceanicznych",
+      "obszarów tundry bez piasku",
+      "wybrzeży, gdzie piasek bywa częściowo utrwalony roślinnością",
+      "głębokich dolin krasowych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Depresja geograficzna to obszar położony",
+    "options": [
+      "na szczycie wysokiego płaskowyżu",
+      "dokładnie na równiku",
+      "w strefie wiecznego śniegu niezależnie od wysokości",
+      "poniżej poziomu morza"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Gołoborze to",
+    "options": [
+      "stok pokryty rumowiskiem skalnym z ostrych bloków",
+      "podmokła łąka w dolinie rzecznej",
+      "piaszczysta łacha na delcie rzeki",
+      "sztuczny nasyp przeciwpowodziowy"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Wodospad powstaje najczęściej tam, gdzie",
+    "options": [
+      "wiatr osadza pył lessowy",
+      "rzeka pokonuje wyraźny próg skalny",
+      "morze cofa się od brzegu",
+      "na pustyni pojawia się oaza"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Eksport oznacza",
+    "options": [
+      "zakup towarów z zagranicy",
+      "spis ludności w kraju",
+      "sprzedaż towarów i usług za granicę",
+      "wymianę jednej waluty na inną w banku centralnym"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Import to",
+    "options": [
+      "wyłącznie sprzedaż surowców naturalnych",
+      "przewóz ludności z miasta na wieś",
+      "eksploatacja złóż na szelfie",
+      "sprowadzanie towarów i usług z zagranicy"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Bilans handlowy państwa jest różnicą między",
+    "options": [
+      "wartością eksportu a wartością importu",
+      "liczbą urodzeń a liczbą zgonów",
+      "powierzchnią kraju a jego ludnością",
+      "temperaturą dnia a temperaturą nocy"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Rekultywacja terenów polega na",
+    "options": [
+      "powiększaniu pustyń przez wypas",
+      "przywracaniu wartości użytkowych obszarom zdegradowanym",
+      "tworzeniu nowych rowów oceanicznych",
+      "przenoszeniu stolic państw"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Eutrofizacja wód to proces",
+    "options": [
+      "ochładzania oceanów przez prądy morskie",
+      "powstawania klifów abrazacyjnych",
+      "nadmiernego wzbogacania wód w związki biogenne",
+      "gwałtownego wzrostu zasolenia lodowców"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Erozja wąwozowa występuje szczególnie łatwo na obszarach",
+    "options": [
+      "pokrytych zwartą skałą granitową bez zwietrzeliny",
+      "zamarzniętych przez cały rok pod lądolodem",
+      "całkowicie zalanych przez morze",
+      "lessowych, gdzie spływająca woda wcina się w podłoże"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Jezioro rynnowe jest zwykle",
+    "options": [
+      "długie, wąskie i głębokie",
+      "okrągłe i płytkie jak starorzecze",
+      "słone i bezodpływowe z definicji",
+      "powstałe wyłącznie w kraterze wulkanu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Jezioro morenowe powstaje w wyniku",
+    "options": [
+      "wyłącznie ruchów płyt oceanicznych",
+      "akumulacyjnej działalności lodowca lub lądolodu",
+      "zalania doliny przez pływy morskie",
+      "parowania wody w klimacie zwrotnikowym"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Mierzeja to",
+    "options": [
+      "głęboka dolina rzeczna w górach",
+      "wyłącznie betonowy falochron portowy",
+      "wąski pas piasku oddzielający część zatoki lub lagunę od morza",
+      "podziemny ciek krasowy"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Klif jest brzegiem",
+    "options": [
+      "niskim i bagnistym, tworzonym przez deltę",
+      "powstającym wyłącznie od działalności lodowca",
+      "zawsze porośniętym rafą koralową",
+      "stromym, podcinanym przez morze"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Mady to gleby",
+    "options": [
+      "powstałe z osadów nanoszonych przez rzeki",
+      "typowe wyłącznie dla tundry",
+      "tworzące się z popiołów wulkanicznych bez udziału wody",
+      "powstające tylko na skałach wapiennych"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Czarnoziemy należą do gleb",
+    "options": [
+      "ubogich i kamienistych gleb pustynnych",
+      "bardzo żyznych, typowych dla obszarów stepowych",
+      "wiecznie zamarzniętych gleb tundrowych",
+      "gleb słonych powstających wyłącznie na wybrzeżu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Lateryty są glebami charakterystycznymi dla",
+    "options": [
+      "strefy subpolarnej i tundry",
+      "obszarów pustyń lodowych",
+      "gorącego i wilgotnego klimatu międzyzwrotnikowego",
+      "regionów śródziemnomorskich z suchym latem"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Stożek napływowy tworzy się tam, gdzie",
+    "options": [
+      "lodowiec zaczyna się cofać do cyrku",
+      "morze zalewa ujście estuariowe",
+      "wiatr napotyka wysoki klif",
+      "rzeka po wyjściu z gór gwałtownie traci zdolność transportową"
+    ],
+    "correctIndex": 3
+  },
+  {
+    "text": "Wybrzeże dalmatyńskie powstaje wtedy, gdy",
+    "options": [
+      "morze zalewa pasma górskie ułożone równolegle do linii brzegowej",
+      "rzeka buduje rozległą deltę wachlarzową",
+      "lodowiec wycina liczne fiordy prostopadle do brzegu",
+      "na brzegu rosną tylko namorzyny"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Rolnictwo ekstensywne cechuje się zwykle",
+    "options": [
+      "bardzo dużą wydajnością z małego areału dzięki wysokim nakładom",
+      "niskimi nakładami pracy i kapitału na jednostkę powierzchni",
+      "całkowitym brakiem zależności od warunków przyrodniczych",
+      "prowadzeniem wyłącznie w miastach"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Rolnictwo intensywne oznacza zazwyczaj",
+    "options": [
+      "wypas koczowniczy na pustyni bez upraw",
+      "uprawę prowadzoną tylko w klimacie polarnym",
+      "wysokie nakłady i dużą produkcję z jednostki powierzchni",
+      "całkowite uzależnienie od opadów monsunowych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Jezioro bezodpływowe to takie, które",
+    "options": [
+      "jest zawsze pochodzenia polodowcowego",
+      "musi leżeć nad poziomem morza",
+      "łączy się z oceanem szeroką cieśniną",
+      "nie ma naturalnego odpływu powierzchniowego"
+    ],
+    "correctIndex": 3
   }
 ]

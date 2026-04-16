@@ -17,13 +17,14 @@ describe("dopowiedzenia text helpers", () => {
     expect(countStoryWords("To był post-rock i someone's plan dzisiaj")).toBe(7);
   });
 
-  it("returns only the last three words of the current story prompt", () => {
+  it("returns only the last five words of the current story prompt", () => {
     expect(getLastStoryWords("Mały smok zgubił czerwony kapelusz na rynku")).toEqual([
+      "zgubił",
       "czerwony",
       "kapelusz",
       "na",
       "rynku",
-    ].slice(-3));
+    ].slice(-5));
     expect(getLastStoryWords("Krótka historia")).toEqual(["Krótka", "historia"]);
   });
 

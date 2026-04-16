@@ -20,6 +20,7 @@ export function UserProfileScreen({
   hasJoinedRoom,
 }: UserProfileScreenProps) {
   const router = useRouter();
+  const displayedBio = bio.trim() ? bio : "Użytkownik nie dodał jeszcze biogramu.";
 
   return (
     <div className="profile-screen app-screen-root bg-background text-on-background font-body selection:bg-primary selection:text-on-primary-container">
@@ -79,7 +80,7 @@ export function UserProfileScreen({
           <h3 className="font-headline text-sm font-bold text-primary mb-3 flex items-center gap-2">
             <span className="material-symbols-outlined text-lg">info</span> Bio
           </h3>
-          <p className="text-on-surface-variant leading-relaxed text-sm font-body">{bio}</p>
+          <p className="text-on-surface-variant leading-relaxed text-sm font-body">{displayedBio}</p>
         </section>
       </main>
 

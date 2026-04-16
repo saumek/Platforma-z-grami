@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 
 import { UserProfileScreen } from "@/components/user-profile-screen";
 import { requireUserSession } from "@/lib/auth";
-import { defaultBio, defaultDisplayName } from "@/lib/profile";
+import { defaultDisplayName } from "@/lib/profile";
 import { prisma } from "@/lib/prisma";
 
 type UserProfilePageProps = {
@@ -42,7 +42,7 @@ export default async function UserProfilePage({ params }: UserProfilePageProps) 
   return (
     <UserProfileScreen
       displayName={targetUser.displayName ?? defaultDisplayName(targetUser.email)}
-      bio={targetUser.bio?.trim() ? targetUser.bio : defaultBio()}
+      bio={targetUser.bio ?? ""}
       avatarPath={targetUser.avatarPath}
       hasJoinedRoom={Boolean(currentUser?.currentRoomCode)}
     />

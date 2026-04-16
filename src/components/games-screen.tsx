@@ -91,7 +91,20 @@ export function GamesScreen({
   }, []);
 
   return (
-    <div className="app-screen-root bg-background text-on-background font-body">
+    <div className="app-screen-root relative overflow-hidden bg-background text-on-background font-body">
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          alt=""
+          className="object-cover opacity-[0.18] saturate-[0.8] brightness-[0.42]"
+          src="/images/games-ambient-bg.png"
+          fill
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,9,11,0.78)_0%,rgba(9,9,11,0.52)_26%,rgba(9,9,11,0.62)_58%,rgba(9,9,11,0.88)_100%)]" />
+      </div>
+
+      <div className="relative z-10">
       <AppSectionHeader
         title="Gry"
         subtitle={`Pokój ${formatRoomCode(roomState.roomCode)}`}
@@ -318,6 +331,7 @@ export function GamesScreen({
       </main>
 
       <AppBottomNav active="games" hasJoinedRoom />
+      </div>
     </div>
   );
 }

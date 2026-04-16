@@ -10,26 +10,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak nazywa się jednostka siły?",
-    "options": [
-      "dżulach",
-      "watach",
-      "paskalach",
-      "niutonach"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Siłę mierzymy w",
-    "options": [
-      "watach",
-      "paskalach",
-      "niutonach",
-      "dżulach"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Prędkość światła w próżni jest",
     "options": [
       "mniejsza niż prędkość dźwięku",
@@ -38,26 +18,6 @@
       "większa niż prędkość dźwięku"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Jak prędkość światła ma się do prędkości dźwięku?",
-    "options": [
-      "tak samo szybko jak dźwięk",
-      "z prędkością zerową",
-      "większa niż prędkość dźwięku",
-      "mniejsza niż prędkość dźwięku"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Światło w próżni porusza się",
-    "options": [
-      "z prędkością zerową",
-      "większa niż prędkość dźwięku",
-      "mniejsza niż prędkość dźwięku",
-      "tak samo szybko jak dźwięk"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Atom jest elektrycznie obojętny, gdy liczba protonów i elektronów jest",
@@ -70,26 +30,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Kiedy atom jest obojętny elektrycznie?",
-    "options": [
-      "zawsze tyle co neutronów",
-      "taka sama",
-      "różna",
-      "zawsze dwa razy więcej protonów"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Obojętny atom ma protonów i elektronów",
-    "options": [
-      "taka sama",
-      "różna",
-      "zawsze dwa razy więcej protonów",
-      "zawsze tyle co neutronów"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Fotosynteza zachodzi w komórkach roślin dzięki",
     "options": [
       "lizosomy",
@@ -98,26 +38,6 @@
       "rybosomy"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co umożliwia roślinom fotosyntezę?",
-    "options": [
-      "chloroplasty",
-      "mitochondria",
-      "rybosomy",
-      "lizosomy"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Za fotosyntezę odpowiadają przede wszystkim",
-    "options": [
-      "mitochondria",
-      "rybosomy",
-      "lizosomy",
-      "chloroplasty"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Mitochondria są ważne, ponieważ odpowiadają za",
@@ -130,26 +50,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Za co odpowiadają mitochondria?",
-    "options": [
-      "magazynowanie chlorofilu",
-      "tworzenie ściany komórkowej",
-      "przenoszenie dźwięku",
-      "wytwarzanie energii dla komórki"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Mitochondria nazywa się elektrowniami komórki, bo",
-    "options": [
-      "tworzenie ściany komórkowej",
-      "przenoszenie dźwięku",
-      "wytwarzanie energii dla komórki",
-      "magazynowanie chlorofilu"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Woda wrze w temperaturze 100°C przy ciśnieniu",
     "options": [
       "dowolnego",
@@ -158,26 +58,6 @@
       "normalnym atmosferycznym"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Przy jakim ciśnieniu woda wrze w 100°C?",
-    "options": [
-      "bardzo niskiego zawsze",
-      "wyłącznie w próżni",
-      "normalnym atmosferycznym",
-      "dowolnego"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Temperatura wrzenia 100°C dotyczy ciśnienia",
-    "options": [
-      "wyłącznie w próżni",
-      "normalnym atmosferycznym",
-      "dowolnego",
-      "bardzo niskiego zawsze"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Przemiana z cieczy w gaz to",
@@ -190,26 +70,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Jak nazywa się przejście cieczy w gaz?",
-    "options": [
-      "resublimacja",
-      "parowanie",
-      "skraplanie",
-      "krzepnięcie"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Zmiana stanu skupienia z cieczy w gaz to",
-    "options": [
-      "parowanie",
-      "skraplanie",
-      "krzepnięcie",
-      "resublimacja"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Przemiana z gazu w ciecz to",
     "options": [
       "sublimacja",
@@ -218,26 +78,6 @@
       "topnienie"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Jak nazywa się przejście gazu w ciecz?",
-    "options": [
-      "skraplanie",
-      "parowanie",
-      "topnienie",
-      "sublimacja"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Zmiana stanu skupienia z gazu w ciecz to",
-    "options": [
-      "parowanie",
-      "topnienie",
-      "sublimacja",
-      "skraplanie"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Przemiana ze stanu stałego w ciecz to",
@@ -250,26 +90,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak nazywa się przejście ciała stałego w ciecz?",
-    "options": [
-      "parowanie",
-      "krzepnięcie",
-      "resublimacja",
-      "topnienie"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Zmiana stanu skupienia ze stałego w ciekły to",
-    "options": [
-      "krzepnięcie",
-      "resublimacja",
-      "topnienie",
-      "parowanie"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Przemiana z cieczy w ciało stałe to",
     "options": [
       "topnienie",
@@ -278,26 +98,6 @@
       "krzepnięcie"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Jak nazywa się przejście cieczy w stan stały?",
-    "options": [
-      "parowanie",
-      "sublimacja",
-      "krzepnięcie",
-      "topnienie"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Zmiana stanu skupienia z ciekłego w stały to",
-    "options": [
-      "sublimacja",
-      "krzepnięcie",
-      "topnienie",
-      "parowanie"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Prąd elektryczny to uporządkowany ruch",
@@ -310,26 +110,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Co płynie w prądzie elektrycznym?",
-    "options": [
-      "wyłącznie protonów w jądrze",
-      "ładunków elektrycznych",
-      "neutronów",
-      "fal dźwiękowych"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Prąd elektryczny oznacza ruch",
-    "options": [
-      "ładunków elektrycznych",
-      "neutronów",
-      "fal dźwiękowych",
-      "wyłącznie protonów w jądrze"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Jeśli opór rośnie, a napięcie jest stałe, natężenie prądu",
     "options": [
       "staje się ujemne",
@@ -338,26 +118,6 @@
       "nie zmienia się"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co dzieje się z natężeniem przy większym oporze i tym samym napięciu?",
-    "options": [
-      "maleje",
-      "rośnie",
-      "nie zmienia się",
-      "staje się ujemne"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Przy stałym napięciu wzrost oporu powoduje, że natężenie",
-    "options": [
-      "rośnie",
-      "nie zmienia się",
-      "staje się ujemne",
-      "maleje"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Dźwięk nie rozchodzi się w",
@@ -370,26 +130,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Gdzie dźwięk nie może się rozchodzić?",
-    "options": [
-      "wodę",
-      "powietrze",
-      "stal",
-      "próżnię"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Dźwięk nie przenosi się przez",
-    "options": [
-      "powietrze",
-      "stal",
-      "próżnię",
-      "wodę"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Kwasy mają zwykle pH",
     "options": [
       "równe 7",
@@ -398,26 +138,6 @@
       "mniejsze niż 7"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Jakie pH mają kwasy?",
-    "options": [
-      "większe niż 7",
-      "zawsze równe 14",
-      "mniejsze niż 7",
-      "równe 7"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Dla kwasów typowe jest pH",
-    "options": [
-      "zawsze równe 14",
-      "mniejsze niż 7",
-      "równe 7",
-      "większe niż 7"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Zasady mają zwykle pH",
@@ -430,26 +150,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Jakie pH mają zasady?",
-    "options": [
-      "zawsze równe 1",
-      "większe niż 7",
-      "mniejsze niż 7",
-      "równe 7"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dla zasad typowe jest pH",
-    "options": [
-      "większe niż 7",
-      "mniejsze niż 7",
-      "równe 7",
-      "zawsze równe 1"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Tlen jest potrzebny człowiekowi przede wszystkim do",
     "options": [
       "wytwarzanie dźwięku",
@@ -458,26 +158,6 @@
       "budowa kości bez innych procesów"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Po co organizmowi potrzebny jest tlen?",
-    "options": [
-      "oddychanie komórkowe",
-      "trawienie tłuszczów w żołądku",
-      "budowa kości bez innych procesów",
-      "wytwarzanie dźwięku"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Najważniejsza rola tlenu w organizmie to",
-    "options": [
-      "trawienie tłuszczów w żołądku",
-      "budowa kości bez innych procesów",
-      "wytwarzanie dźwięku",
-      "oddychanie komórkowe"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Układ krwionośny transportuje w organizmie",
@@ -490,26 +170,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co przenosi układ krwionośny?",
-    "options": [
-      "tylko wodę",
-      "wyłącznie tlen",
-      "wyłącznie dwutlenek węgla",
-      "tlen, składniki odżywcze i hormony"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Krew dostarcza między innymi",
-    "options": [
-      "wyłącznie tlen",
-      "wyłącznie dwutlenek węgla",
-      "tlen, składniki odżywcze i hormony",
-      "tylko wodę"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "DNA jest nośnikiem",
     "options": [
       "energii cieplnej",
@@ -518,26 +178,6 @@
       "informacji genetycznej"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Co przechowuje DNA?",
-    "options": [
-      "barwy krwi",
-      "wyłącznie witamin",
-      "informacji genetycznej",
-      "energii cieplnej"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "DNA zawiera",
-    "options": [
-      "wyłącznie witamin",
-      "informacji genetycznej",
-      "energii cieplnej",
-      "barwy krwi"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Planety świecą na niebie głównie dlatego, że",
@@ -550,26 +190,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Dlaczego widzimy planety?",
-    "options": [
-      "nieustannie wybuchają",
-      "odbijają światło Słońca",
-      "wytwarzają tyle światła co gwiazdy",
-      "są rozgrzanymi kometami"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Planety są widoczne, bo",
-    "options": [
-      "odbijają światło Słońca",
-      "wytwarzają tyle światła co gwiazdy",
-      "są rozgrzanymi kometami",
-      "nieustannie wybuchają"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Grawitacja Ziemi powoduje, że przedmioty",
     "options": [
       "stają się lżejsze niż powietrze",
@@ -578,26 +198,6 @@
       "zawsze lecą po okręgu"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Jaki skutek ma ziemska grawitacja?",
-    "options": [
-      "spadają w kierunku Ziemi",
-      "tracą masę",
-      "zawsze lecą po okręgu",
-      "stają się lżejsze niż powietrze"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Dzięki grawitacji przedmioty",
-    "options": [
-      "tracą masę",
-      "zawsze lecą po okręgu",
-      "stają się lżejsze niż powietrze",
-      "spadają w kierunku Ziemi"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "W stanie stałym cząsteczki substancji są zwykle",
@@ -610,26 +210,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak zachowują się cząsteczki w ciele stałym?",
-    "options": [
-      "całkowicie swobodne i bardzo odległe",
-      "niewidzialne dla fizyki",
-      "pozbawione energii",
-      "bliżej siebie i bardziej uporządkowane"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "W stanie stałym cząsteczki są",
-    "options": [
-      "niewidzialne dla fizyki",
-      "pozbawione energii",
-      "bliżej siebie i bardziej uporządkowane",
-      "całkowicie swobodne i bardzo odległe"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Szkło powiększające działa jak",
     "options": [
       "soczewka rozpraszająca",
@@ -638,26 +218,6 @@
       "soczewka skupiająca"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Czym jest szkło powiększające?",
-    "options": [
-      "zwierciadło płaskie",
-      "pryzmat",
-      "soczewka skupiająca",
-      "soczewka rozpraszająca"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Lupa to inaczej",
-    "options": [
-      "pryzmat",
-      "soczewka skupiająca",
-      "soczewka rozpraszająca",
-      "zwierciadło płaskie"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Zasada zachowania energii mówi, że energia",
@@ -670,26 +230,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Co mówi zasada zachowania energii?",
-    "options": [
-      "występuje tylko jako ciepło",
-      "nie znika, tylko zmienia postać",
-      "może powstać z niczego",
-      "zawsze maleje do zera"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Energia w układzie zamkniętym",
-    "options": [
-      "nie znika, tylko zmienia postać",
-      "może powstać z niczego",
-      "zawsze maleje do zera",
-      "występuje tylko jako ciepło"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Bezwładność oznacza, że ciało",
     "options": [
       "porusza się tylko po okręgu",
@@ -698,26 +238,6 @@
       "nie ma masy"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co opisuje bezwładność?",
-    "options": [
-      "przeciwstawia się zmianie swojego ruchu",
-      "zawsze samo przyspiesza",
-      "nie ma masy",
-      "porusza się tylko po okręgu"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Zasada bezwładności mówi, że ciało",
-    "options": [
-      "zawsze samo przyspiesza",
-      "nie ma masy",
-      "porusza się tylko po okręgu",
-      "przeciwstawia się zmianie swojego ruchu"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Przyspieszenie opisuje zmianę",
@@ -730,26 +250,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co opisuje przyspieszenie?",
-    "options": [
-      "masy",
-      "temperatury topnienia",
-      "koloru ciała",
-      "prędkości"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Przyspieszenie to tempo zmiany",
-    "options": [
-      "temperatury topnienia",
-      "koloru ciała",
-      "prędkości",
-      "masy"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Masa ciała informuje o",
     "options": [
       "siły grawitacji w każdej sytuacji",
@@ -758,26 +258,6 @@
       "ilości materii i bezwładności"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Co opisuje masa?",
-    "options": [
-      "objętości wyłącznie",
-      "temperatury ciała",
-      "ilości materii i bezwładności",
-      "siły grawitacji w każdej sytuacji"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Masa jest miarą",
-    "options": [
-      "temperatury ciała",
-      "ilości materii i bezwładności",
-      "siły grawitacji w każdej sytuacji",
-      "objętości wyłącznie"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Ciężar ciała zależy od",
@@ -790,26 +270,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Od czego zależy ciężar ciała?",
-    "options": [
-      "temperaturą wrzenia",
-      "oddziaływaniem grawitacyjnym",
-      "wyłącznie kolorem ciała",
-      "rodzajem światła"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Ciężar to siła związana z",
-    "options": [
-      "oddziaływaniem grawitacyjnym",
-      "wyłącznie kolorem ciała",
-      "rodzajem światła",
-      "temperaturą wrzenia"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Parowanie zachodzi szybciej, gdy",
     "options": [
       "całkowitym zamknięciu układu",
@@ -818,26 +278,6 @@
       "braku ruchu powietrza"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co przyspiesza parowanie?",
-    "options": [
-      "wyższej temperaturze",
-      "niższej temperaturze zawsze",
-      "braku ruchu powietrza",
-      "całkowitym zamknięciu układu"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Szybsze parowanie występuje zwykle przy",
-    "options": [
-      "niższej temperaturze zawsze",
-      "braku ruchu powietrza",
-      "całkowitym zamknięciu układu",
-      "wyższej temperaturze"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Dyfuzja to",
@@ -850,26 +290,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jak najlepiej opisać dyfuzję?",
-    "options": [
-      "tworzeniu prądu elektrycznego",
-      "krzepnięciu cieczy",
-      "odbiciu światła od lustra",
-      "samorzutnym mieszaniu się cząsteczek"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Dyfuzja polega na",
-    "options": [
-      "krzepnięciu cieczy",
-      "odbiciu światła od lustra",
-      "samorzutnym mieszaniu się cząsteczek",
-      "tworzeniu prądu elektrycznego"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Osmoza to przepływ",
     "options": [
       "elektronów przez przewodnik",
@@ -878,26 +298,6 @@
       "wody przez błonę półprzepuszczalną"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Co oznacza osmoza?",
-    "options": [
-      "światła przez soczewkę",
-      "ciepła przez metal bez różnicy temperatur",
-      "wody przez błonę półprzepuszczalną",
-      "elektronów przez przewodnik"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Osmoza polega na ruchu",
-    "options": [
-      "ciepła przez metal bez różnicy temperatur",
-      "wody przez błonę półprzepuszczalną",
-      "elektronów przez przewodnik",
-      "światła przez soczewkę"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Czerwone krwinki odpowiadają głównie za",
@@ -910,26 +310,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Jaką funkcję pełnią czerwone krwinki?",
-    "options": [
-      "przewodzenie impulsów nerwowych",
-      "transport tlenu",
-      "trawienie białek",
-      "tworzenie kości"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Głównym zadaniem czerwonych krwinek jest",
-    "options": [
-      "transport tlenu",
-      "trawienie białek",
-      "tworzenie kości",
-      "przewodzenie impulsów nerwowych"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Białe krwinki odgrywają ważną rolę w",
     "options": [
       "widzeniu kolorów",
@@ -938,26 +318,6 @@
       "trawieniu pokarmu w żołądku"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Za co odpowiadają białe krwinki?",
-    "options": [
-      "obronie organizmu",
-      "przenoszeniu tlenu",
-      "trawieniu pokarmu w żołądku",
-      "widzeniu kolorów"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Białe krwinki pomagają przede wszystkim w",
-    "options": [
-      "przenoszeniu tlenu",
-      "trawieniu pokarmu w żołądku",
-      "widzeniu kolorów",
-      "obronie organizmu"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "W fotosyntezie roślina wytwarza przede wszystkim",
@@ -970,26 +330,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Jaki jest efekt fotosyntezy?",
-    "options": [
-      "tylko azot",
-      "wyłącznie sól mineralna",
-      "dwutlenek węgla i wodór",
-      "glukoza i tlen"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Podczas fotosyntezy powstają między innymi",
-    "options": [
-      "wyłącznie sól mineralna",
-      "dwutlenek węgla i wodór",
-      "glukoza i tlen",
-      "tylko azot"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Serce człowieka działa jak",
     "options": [
       "filtr oczyszczający powietrze",
@@ -998,26 +338,6 @@
       "pompa tłocząca krew"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Jaka jest podstawowa rola serca?",
-    "options": [
-      "magazyn tlenu",
-      "narząd trawienia",
-      "pompa tłocząca krew",
-      "filtr oczyszczający powietrze"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Serce przede wszystkim",
-    "options": [
-      "narząd trawienia",
-      "pompa tłocząca krew",
-      "filtr oczyszczający powietrze",
-      "magazyn tlenu"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Płuca odpowiadają głównie za",
@@ -1030,26 +350,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Co jest główną rolą płuc?",
-    "options": [
-      "praca mięśni nóg",
-      "wymiana gazowa",
-      "produkcja krwi",
-      "trawienie tłuszczów"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "W płucach zachodzi przede wszystkim",
-    "options": [
-      "wymiana gazowa",
-      "produkcja krwi",
-      "trawienie tłuszczów",
-      "praca mięśni nóg"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Nerki odpowiadają za",
     "options": [
       "widzenie obrazów",
@@ -1058,26 +358,6 @@
       "przewodzenie impulsów nerwowych"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Jaką ważną funkcję pełnią nerki?",
-    "options": [
-      "filtrowanie krwi i tworzenie moczu",
-      "pompowanie krwi",
-      "przewodzenie impulsów nerwowych",
-      "widzenie obrazów"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Nerki przede wszystkim",
-    "options": [
-      "pompowanie krwi",
-      "przewodzenie impulsów nerwowych",
-      "widzenie obrazów",
-      "filtrowanie krwi i tworzenie moczu"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Układ nerwowy przekazuje informacje dzięki",
@@ -1090,26 +370,6 @@
     "correctIndex": 0
   },
   {
-    "text": "W jaki sposób układ nerwowy przesyła informacje?",
-    "options": [
-      "wyłącznie hormonom tarczycy",
-      "ruchowi czerwonych krwinek",
-      "skurczom mięśni bez udziału neuronów",
-      "impulsom nerwowym"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Podstawą działania układu nerwowego są",
-    "options": [
-      "ruchowi czerwonych krwinek",
-      "skurczom mięśni bez udziału neuronów",
-      "impulsom nerwowym",
-      "wyłącznie hormonom tarczycy"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Przewodnikiem elektrycznym jest zwykle",
     "options": [
       "guma",
@@ -1118,26 +378,6 @@
       "metal"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Który materiał dobrze przewodzi prąd?",
-    "options": [
-      "plastik",
-      "suche drewno",
-      "metal",
-      "guma"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Dobrym przewodnikiem prądu jest zwykle",
-    "options": [
-      "suche drewno",
-      "metal",
-      "guma",
-      "plastik"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Izolatorem elektrycznym jest zwykle",
@@ -1150,26 +390,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Który materiał słabo przewodzi prąd?",
-    "options": [
-      "srebro",
-      "guma",
-      "miedź",
-      "aluminium"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Dobrym izolatorem elektrycznym jest",
-    "options": [
-      "guma",
-      "miedź",
-      "aluminium",
-      "srebro"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "W obwodzie szeregowym przepalenie jednej żarówki zwykle",
     "options": [
       "prąd rośnie do nieskończoności",
@@ -1178,26 +398,6 @@
       "napięcie znika tylko w jednej połowie obwodu"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Co dzieje się w obwodzie szeregowym po przepaleniu jednej żarówki?",
-    "options": [
-      "przerywa działanie całego obwodu",
-      "pozostałe świecą bez zmian",
-      "napięcie znika tylko w jednej połowie obwodu",
-      "prąd rośnie do nieskończoności"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Gdy w obwodzie szeregowym jedna żarówka się przepali, to",
-    "options": [
-      "pozostałe świecą bez zmian",
-      "napięcie znika tylko w jednej połowie obwodu",
-      "prąd rośnie do nieskończoności",
-      "przerywa działanie całego obwodu"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "W obwodzie równoległym przepalenie jednej żarówki zwykle",
@@ -1210,26 +410,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co dzieje się w obwodzie równoległym po przepaleniu jednej żarówki?",
-    "options": [
-      "gaśnie cały obwód",
-      "baterie przestają istnieć",
-      "prąd płynie tylko przez przepaloną żarówkę",
-      "pozostałe mogą nadal świecić"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Gdy jedna żarówka przepali się w układzie równoległym, to",
-    "options": [
-      "baterie przestają istnieć",
-      "prąd płynie tylko przez przepaloną żarówkę",
-      "pozostałe mogą nadal świecić",
-      "gaśnie cały obwód"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Częstotliwość mierzymy w",
     "options": [
       "niutonach",
@@ -1238,26 +418,6 @@
       "hercach"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Jednostką częstotliwości jest",
-    "options": [
-      "paskalach",
-      "dżulach",
-      "hercach",
-      "niutonach"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Częstotliwość podaje się w",
-    "options": [
-      "dżulach",
-      "hercach",
-      "niutonach",
-      "paskalach"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Jeżeli prędkość fali jest stała, a częstotliwość rośnie, to długość fali",
@@ -1270,26 +430,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Co dzieje się z długością fali przy większej częstotliwości i tej samej prędkości?",
-    "options": [
-      "najpierw rośnie, potem maleje",
-      "maleje",
-      "rośnie",
-      "nie zmienia się"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Przy stałej prędkości wzrost częstotliwości powoduje, że długość fali",
-    "options": [
-      "maleje",
-      "rośnie",
-      "nie zmienia się",
-      "najpierw rośnie, potem maleje"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Dźwięk o większej częstotliwości słyszymy jako",
     "options": [
       "wolniejszy",
@@ -1298,26 +438,6 @@
       "niższy"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "Od czego zależy wysokość dźwięku?",
-    "options": [
-      "wyższy",
-      "cichszy",
-      "niższy",
-      "wolniejszy"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Wyższy ton oznacza zwykle",
-    "options": [
-      "cichszy",
-      "niższy",
-      "wolniejszy",
-      "wyższy"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Prawo odbicia światła mówi, że",
@@ -1330,26 +450,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Co mówi prawo odbicia?",
-    "options": [
-      "zawsze dwa razy większy",
-      "zawsze równy 90°",
-      "niezależny od powierzchni",
-      "kąt padania jest równy kątowi odbicia"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Przy odbiciu światła kąt padania jest",
-    "options": [
-      "zawsze równy 90°",
-      "niezależny od powierzchni",
-      "kąt padania jest równy kątowi odbicia",
-      "zawsze dwa razy większy"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Załamanie światła zachodzi, gdy światło",
     "options": [
       "odbija się od lustra płaskiego",
@@ -1358,26 +458,6 @@
       "przechodzi z jednego ośrodka do drugiego"
     ],
     "correctIndex": 3
-  },
-  {
-    "text": "Kiedy dochodzi do załamania światła?",
-    "options": [
-      "porusza się tylko w próżni",
-      "napotyka całkowitą ciemność",
-      "przechodzi z jednego ośrodka do drugiego",
-      "odbija się od lustra płaskiego"
-    ],
-    "correctIndex": 2
-  },
-  {
-    "text": "Załamanie światła pojawia się przy przejściu",
-    "options": [
-      "napotyka całkowitą ciemność",
-      "przechodzi z jednego ośrodka do drugiego",
-      "odbija się od lustra płaskiego",
-      "porusza się tylko w próżni"
-    ],
-    "correctIndex": 1
   },
   {
     "text": "Magnes ma zawsze co najmniej dwa bieguny:",
@@ -1390,26 +470,6 @@
     "correctIndex": 2
   },
   {
-    "text": "Jakie bieguny ma magnes?",
-    "options": [
-      "prosty i skośny",
-      "północny i południowy",
-      "dodatni i ujemny",
-      "ciepły i zimny"
-    ],
-    "correctIndex": 1
-  },
-  {
-    "text": "Każdy magnes ma biegun",
-    "options": [
-      "północny i południowy",
-      "dodatni i ujemny",
-      "ciepły i zimny",
-      "prosty i skośny"
-    ],
-    "correctIndex": 0
-  },
-  {
     "text": "Dwutlenek węgla jest ważny, bo należy do",
     "options": [
       "skał osadowych",
@@ -1418,26 +478,6 @@
       "witamin rozpuszczalnych w wodzie"
     ],
     "correctIndex": 1
-  },
-  {
-    "text": "CO₂ zalicza się do",
-    "options": [
-      "gazów cieplarnianych",
-      "metali lekkich",
-      "witamin rozpuszczalnych w wodzie",
-      "skał osadowych"
-    ],
-    "correctIndex": 0
-  },
-  {
-    "text": "Dwutlenek węgla jest przykładem",
-    "options": [
-      "metali lekkich",
-      "witamin rozpuszczalnych w wodzie",
-      "skał osadowych",
-      "gazów cieplarnianych"
-    ],
-    "correctIndex": 3
   },
   {
     "text": "Fazy Księżyca widzimy dlatego, że",
@@ -1450,26 +490,6 @@
     "correctIndex": 0
   },
   {
-    "text": "Skąd biorą się fazy Księżyca?",
-    "options": [
-      "Księżyc sam zmienia kolor",
-      "Słońce gaśnie co kilka dni",
-      "Ziemia zatrzymuje obrót",
-      "widzimy różnie oświetloną część Księżyca"
-    ],
-    "correctIndex": 3
-  },
-  {
-    "text": "Fazy Księżyca wynikają z",
-    "options": [
-      "Słońce gaśnie co kilka dni",
-      "Ziemia zatrzymuje obrót",
-      "widzimy różnie oświetloną część Księżyca",
-      "Księżyc sam zmienia kolor"
-    ],
-    "correctIndex": 2
-  },
-  {
     "text": "Pory roku wynikają głównie z",
     "options": [
       "zmian odległości od Księżyca",
@@ -1480,23 +500,1003 @@
     "correctIndex": 3
   },
   {
-    "text": "Dlaczego na Ziemi występują pory roku?",
+    "text": "Proton ma ladunek elektryczny",
     "options": [
-      "rotacji planet wokół Jowisza",
-      "samego ruchu obrotowego Ziemi",
-      "nachylenia osi Ziemi i ruchu obiegowego",
-      "zmian odległości od Księżyca"
+      "ujemny",
+      "dodatni",
+      "zerowy",
+      "zmienny"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Neutron to czastka, ktora ma ladunek",
+    "options": [
+      "dodatni",
+      "ujemny",
+      "zerowy",
+      "podwojny"
     ],
     "correctIndex": 2
   },
   {
-    "text": "Główną przyczyną pór roku jest",
+    "text": "Elektrony w atomie znajduja sie",
     "options": [
-      "samego ruchu obrotowego Ziemi",
-      "nachylenia osi Ziemi i ruchu obiegowego",
-      "zmian odległości od Księżyca",
-      "rotacji planet wokół Jowisza"
+      "wylacznie w jadrze",
+      "w chmurze elektronowej wokol jadra",
+      "tylko w neutronach",
+      "poza atomem"
     ],
     "correctIndex": 1
+  },
+  {
+    "text": "Liczba atomowa pierwiastka jest rowna liczbie",
+    "options": [
+      "neutronow",
+      "protonow",
+      "powlok elektronowych",
+      "izotopow"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Zwiazek chemiczny to substancja zbudowana z",
+    "options": [
+      "atomow jednego pierwiastka",
+      "co najmniej dwoch pierwiastkow polaczonych chemicznie",
+      "dowolnej mieszaniny cieczy",
+      "samych jonow dodatnich"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Mieszanina jednorodna charakteryzuje sie tym, ze",
+    "options": [
+      "ma widoczne skladniki",
+      "ma jednakowy sklad w calej objetosci",
+      "zawsze jest gazem",
+      "nie da sie jej rozdzielic fizycznie"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Katalizator przyspiesza reakcje chemiczna, poniewaz",
+    "options": [
+      "zwieksza energie aktywacji",
+      "obniza energie aktywacji",
+      "sam sie zuzywa calkowicie",
+      "zamienia substraty w atomy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Blona komorkowa pelni przede wszystkim funkcje",
+    "options": [
+      "produkcji energii",
+      "kontroli transportu substancji",
+      "przechowywania DNA",
+      "wytwarzania bialek"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Rybosomy sa miejscem",
+    "options": [
+      "syntezy bialek",
+      "oddychania tlenowego",
+      "magazynowania wody",
+      "trawienia tluszczow"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chromosomy w komorkach eukariotycznych znajduja sie glownie w",
+    "options": [
+      "cytoplazmie",
+      "jadrze komorkowym",
+      "mitochondriach",
+      "blonie komorkowej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Mejoza prowadzi do powstania komorek",
+    "options": [
+      "somatycznych",
+      "plciowych o zredukowanej liczbie chromosomow",
+      "wielojadrowych",
+      "bakteryjnych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Oddychanie komorkowe sluzy przede wszystkim do",
+    "options": [
+      "wytwarzania energii uzytecznej dla komorki",
+      "produkcji chlorofilu",
+      "zwiekszania liczby chromosomow",
+      "obnizania temperatury ciala"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Transpiracja u roslin to",
+    "options": [
+      "pobieranie tlenu przez korzenie",
+      "parowanie wody z nadziemnych czesci rosliny",
+      "wytwarzanie cukrow",
+      "zrzucanie lisci"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Drewno roslinne przewodzi glownie",
+    "options": [
+      "produkty fotosyntezy",
+      "wode i sole mineralne",
+      "impulsy nerwowe",
+      "tlen do korzeni"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Lyko w roslinie odpowiada glownie za transport",
+    "options": [
+      "wody z korzeni do lisci",
+      "substancji organicznych z lisci do innych organow",
+      "gazow szlachetnych",
+      "pylku"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Ssaki od innych kregowcow odroznia miedzy innymi obecnosc",
+    "options": [
+      "skrzel przez cale zycie",
+      "gruczolow mlekowych",
+      "pancerza chitynowego",
+      "zdolnosci do fotosyntezy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Plazy zwykle lacza w swoim cyklu zyciowym srodowisko",
+    "options": [
+      "wylacznie morskie",
+      "wodne i ladowe",
+      "wylacznie pustynne",
+      "kosmiczne"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wirus nie jest uznawany za komorke, poniewaz",
+    "options": [
+      "nie zawiera materialu genetycznego",
+      "nie ma budowy komorkowej i namnaża sie tylko w komorkach gospodarza",
+      "jest wiekszy od bakterii",
+      "samodzielnie prowadzi fotosynteze"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Bakterie to organizmy",
+    "options": [
+      "wielokomorkowe z jadrem",
+      "jednokomorkowe bez jadra komorkowego",
+      "zawsze chorobotworcze",
+      "nalezace do grzybow"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Lakmus w roztworze kwasu przyjmuje barwe",
+    "options": [
+      "niebieska",
+      "czerwona",
+      "zielona",
+      "czarna"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Praca mechaniczna jest wykonywana wtedy, gdy sila powoduje",
+    "options": [
+      "zmiane koloru ciala",
+      "przemieszczenie ciala",
+      "zanik masy",
+      "spadek temperatury"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Moc opisuje szybkosc wykonywania",
+    "options": [
+      "energii wewnetrznej",
+      "pracy",
+      "grawitacji",
+      "tarcia"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Gestosc substancji to iloraz",
+    "options": [
+      "objetosci i masy",
+      "masy i objetosci",
+      "sily i pola powierzchni",
+      "energii i czasu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Cisnienie wywierane na podloze zalezy od",
+    "options": [
+      "sily nacisku i pola powierzchni",
+      "tylko masy ciala",
+      "wylacznie temperatury",
+      "koloru materialu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Rozszerzalnosc cieplna cial oznacza, ze przy wzroscie temperatury ich rozmiary",
+    "options": [
+      "zawsze maleja",
+      "moga sie zwiekszac",
+      "pozostaja niezmienne",
+      "znikaja"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Soczewka skupiajaca powoduje, ze rownolegle promienie swiatla po przejsciu przez nia",
+    "options": [
+      "rozchodza sie",
+      "zbiegaja sie",
+      "zatrzymuja sie",
+      "zmieniaja kolor"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Soczewka rozpraszajaca tworzy obraz rzeczywisty",
+    "options": [
+      "zawsze",
+      "nigdy dla pojedynczego przedmiotu rzeczywistego",
+      "tylko przy duzym natezeniu swiatla",
+      "tylko pod woda"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Elektromagnes dziala wtedy, gdy przez cewke",
+    "options": [
+      "przeplywa prad elektryczny",
+      "przeplywa powietrze",
+      "nie plynie zaden ladunek",
+      "przechodzi swiatlo"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Zrodla energii odnawialnej to takie, ktore",
+    "options": [
+      "powstaja wylacznie z ropy",
+      "odtwarzaja sie w stosunkowo krotkim czasie",
+      "moga byc uzyte tylko raz",
+      "zawsze emituja duzo CO2"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Warstwa ozonowa w stratosferze jest wazna, poniewaz",
+    "options": [
+      "zatrzymuje czesc promieniowania UV",
+      "produkuje tlen w oceanach",
+      "powoduje pory roku",
+      "tworzy zorze polarne"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Najwiecej gazu w atmosferze Ziemi stanowi",
+    "options": [
+      "tlen",
+      "azot",
+      "argon",
+      "dwutlenek wegla"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Nastepowanie dnia i nocy jest skutkiem",
+    "options": [
+      "obiegu Ziemi wokol Slonca",
+      "rotacji Ziemi wokol osi",
+      "ruchu Ksiezyca",
+      "zmian por roku"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Rok na Ziemi jest zwiazany z",
+    "options": [
+      "obrotem Ziemi wokol osi",
+      "obiegiem Ziemi wokol Slonca",
+      "obiegiem Ksiezyca wokol Ziemi",
+      "przesileniem letnim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Plywy morz i oceanow sa najsilniej zwiazane z oddzialywaniem grawitacyjnym",
+    "options": [
+      "Ksiezyca",
+      "Marsa",
+      "Wenus",
+      "Merkurego"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Planety roznia sie od gwiazd tym, ze planety",
+    "options": [
+      "wytwarzaja wlasne swiatlo",
+      "swieca glownie dzieki odbiciu swiatla gwiazdy",
+      "sa zawsze wieksze od gwiazd",
+      "nie poruszaja sie po orbitach"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pas planetoid w Ukladzie Slonecznym znajduje sie glownie miedzy orbitami",
+    "options": [
+      "Ziemi i Marsa",
+      "Marsa i Jowisza",
+      "Jowisza i Saturna",
+      "Merkurego i Wenus"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Galaktyka, w ktorej znajduje sie Uklad Sloneczny, to",
+    "options": [
+      "Andromeda",
+      "Droga Mleczna",
+      "Wielki Oblok Magellana",
+      "Orion"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "W DNA adenina laczy sie z",
+    "options": [
+      "cytozyna",
+      "guanina",
+      "tymina",
+      "uracyl"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Insulina jest hormonem, ktory pomaga obnizac poziom",
+    "options": [
+      "tlenu we krwi",
+      "glukozy we krwi",
+      "wapnia w kosciach",
+      "wody w komorkach"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Uklad dokrewny czlowieka dziala dzieki",
+    "options": [
+      "przewodzeniu impulsow w neuronach",
+      "wydzielaniu hormonow do krwi",
+      "pracy miesni",
+      "ruchowi rzesek"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Szkielet czlowieka pelni funkcje",
+    "options": [
+      "wylacznie magazynowania tluszczu",
+      "podporowa i ochronna dla narzadow",
+      "przewodzenia impulsow nerwowych",
+      "trawienia pokarmu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Staw to miejsce, w ktorym",
+    "options": [
+      "lacza sie kosci",
+      "powstaja krwinki biale",
+      "produkowany jest kolagen",
+      "magazynowany jest glikogen"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Przewodnictwo cieplne metali wynika miedzy innymi z obecnosci",
+    "options": [
+      "swobodnych elektronow",
+      "chlorofilu",
+      "wlokien miesniowych",
+      "kwasu nukleinowego"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Fale poprzeczne to takie fale, w ktorych drgania osrodka sa",
+    "options": [
+      "rownolegle do kierunku rozchodzenia sie fali",
+      "prostopadle do kierunku rozchodzenia sie fali",
+      "zawsze kolowe",
+      "niemozliwe do zaobserwowania"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Rezonans wystepuje wtedy, gdy",
+    "options": [
+      "czestotliwosc wymuszajaca jest bliska czestotliwosci wlasnej ukladu",
+      "uklad przestaje drgac",
+      "cialo traci mase",
+      "dzwiek zamienia sie w swiatlo"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Prawo Archimedesa dotyczy",
+    "options": [
+      "zalamania swiatla",
+      "sily wyporu w ciezach i gazach",
+      "rozszerzalnosci cieplnej metali",
+      "pola magnetycznego Ziemi"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Kwas deoksyrybonukleinowy zapisuje informacje genetyczna w postaci",
+    "options": [
+      "sekwencji nukleotydow",
+      "wylacznie tluszczow",
+      "ukladu bialych krwinek",
+      "czestotliwosci fal"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Fotosynteza wymaga obecnosci",
+    "options": [
+      "dwutlenku wegla, wody i swiatla",
+      "azotu i soli kuchennej",
+      "wylacznie wysokiej temperatury",
+      "tylko tlenu i glukozy"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Napiecie elektryczne okresla",
+    "options": [
+      "ilosc ladunku w przewodniku",
+      "roznice potencjalow miedzy dwoma punktami",
+      "moc urzadzenia w czasie",
+      "opor materialu bez przeplywu pradu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Opor elektryczny przewodnika zwykle rosnie, gdy",
+    "options": [
+      "skraca sie jego dlugosc",
+      "rosnie jego temperatura w metalach",
+      "zwieksza sie jego przekroj",
+      "spada liczba zderzen elektronow"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "W przewodzie miedzianym energia elektryczna moze zamieniac sie w cieplo wskutek",
+    "options": [
+      "fotosyntezy",
+      "efektu Joulea",
+      "dyfuzji osmotycznej",
+      "transpiracji"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Predkosc dzwieku w powietrzu jest mniejsza niz w wodzie, poniewaz",
+    "options": [
+      "czasteczki w wodzie sa od siebie dalej",
+      "osrodek ciekly zwykle lepiej przekazuje drgania niz gaz",
+      "woda nie przewodzi fal",
+      "powietrze ma wieksza gestosc od wody"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Jadro atomowe zbudowane jest glownie z",
+    "options": [
+      "protonow i neutronow",
+      "elektronow i protonow",
+      "elektronow i fotonow",
+      "samych neutronow"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Izotopy tego samego pierwiastka roznia sie liczba",
+    "options": [
+      "protonow",
+      "elektronow walencyjnych",
+      "neutronow",
+      "powlok elektronowych"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Wiazanie jonowe powstaje wskutek",
+    "options": [
+      "uwspolnienia pary elektronowej",
+      "przekazania elektronow i przyciagania jonow",
+      "rozpadu jadra atomowego",
+      "oddzialywania grawitacyjnego"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wiazanie kowalencyjne polega na",
+    "options": [
+      "przekazaniu calej powloki elektronowej",
+      "uwspolnieniu pary elektronowej",
+      "zamianie protonow w neutrony",
+      "wymianie ciepla miedzy atomami"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Odczyn obojetny roztworu oznacza pH rowne",
+    "options": [
+      "0",
+      "7",
+      "10",
+      "14"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Gazem szlachetnym jest",
+    "options": [
+      "tlen",
+      "azot",
+      "argon",
+      "chlor"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Pierwiastki w ukladzie okresowym sa uporzadkowane wedlug rosnacej",
+    "options": [
+      "gestosci",
+      "liczby atomowej",
+      "masy molowej",
+      "temperatury wrzenia"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pierwiastki w tej samej grupie ukladu okresowego maja zwykle podobna",
+    "options": [
+      "liczbe powlok elektronowych",
+      "liczbe walencyjna elektronow",
+      "mase jadra",
+      "barwe plomienia zawsze taka sama"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Pierwiastki w tym samym okresie ukladu okresowego maja tyle samo",
+    "options": [
+      "protonow",
+      "powlok elektronowych",
+      "neutronow",
+      "izotopow"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Komorka roslinna od zwierzecej rozni sie miedzy innymi obecnoscia",
+    "options": [
+      "centrioli",
+      "sciany komorkowej z celulozy",
+      "hemoglobiny",
+      "mieliny"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Wakuola w komorce roslinnej sluzy glownie do",
+    "options": [
+      "magazynowania soku komorkowego",
+      "produkcji ATP",
+      "syntezy bialek",
+      "przewodzenia impulsow"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chlorofil wydaje sie zielony, poniewaz",
+    "options": [
+      "pochlania glownie swiatlo zielone",
+      "odbija glownie swiatlo zielone",
+      "wytwarza zielone elektrony",
+      "zawsze miesza sie z karotenem"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Producentami w ekosystemie sa organizmy, ktore",
+    "options": [
+      "odzywiaja sie innymi zwierzetami",
+      "wytwarzaja zwiazki organiczne z nieorganicznych",
+      "rozkładaja martwa materie",
+      "zyja wylacznie w morzu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Destruenci w ekosystemie odpowiadaja glownie za",
+    "options": [
+      "produkcje tlenu",
+      "rozklad szczatek organicznych",
+      "polowanie na roslinozercow",
+      "wytwarzanie warstwy ozonowej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Lancuch pokarmowy zaczyna sie zazwyczaj od",
+    "options": [
+      "drapieznika szczytowego",
+      "producenta",
+      "konsumenta drugiego rzedu",
+      "destruenta"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Dobor naturalny sprzyja osobnikom, ktore",
+    "options": [
+      "maja losowo najwiecej potomstwa bez zwiazku z warunkami",
+      "lepiej sa przystosowane do srodowiska",
+      "sa zawsze najwieksze",
+      "zyja najkrocej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Adrenalina jest hormonem wydzielanym szczegolnie w sytuacji",
+    "options": [
+      "snu",
+      "stresu i zagrozenia",
+      "trawienia skrobi",
+      "regeneracji kosci"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Neuron to komorka wyspecjalizowana w",
+    "options": [
+      "magazynowaniu tluszczu",
+      "przewodzeniu impulsow nerwowych",
+      "produkcji hemoglobiny",
+      "tworzeniu szkliwa"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Odruch to reakcja organizmu, ktora jest zwykle",
+    "options": [
+      "powolna i zawsze swiadoma",
+      "szybka i automatyczna",
+      "mozliwa tylko podczas snu",
+      "zalezna od fotosyntezy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Plytki krwi odgrywaja kluczowa role w procesie",
+    "options": [
+      "trawienia",
+      "krzepniecia krwi",
+      "wymiany gazowej",
+      "przewodzenia impulsow"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Osocze krwi pelni funkcje",
+    "options": [
+      "transportowa dla wielu substancji",
+      "wytwarzania impulsow nerwowych",
+      "magazynu wapnia w kosciach",
+      "jedynie produkcji przeciwcial"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Wymiana gazowa w plucach zachodzi glownie w",
+    "options": [
+      "oskrzelach",
+      "pecherzykach plucnych",
+      "krtani",
+      "jamie nosowej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Watroba odpowiada miedzy innymi za",
+    "options": [
+      "detoksykacje organizmu",
+      "przewodzenie bodzcow wzrokowych",
+      "produkcje neuronow",
+      "powstawanie kosci dlugich"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Trzustka produkuje miedzy innymi",
+    "options": [
+      "adrenaline",
+      "insuline i enzymy trawienne",
+      "hemoglobine",
+      "sole mineralne do kosci"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Glosnosc dzwieku zalezy glownie od",
+    "options": [
+      "amplitudy fali",
+      "barwy obudowy glosnika",
+      "predkosci swiatla",
+      "masy elektronu"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Fala podluzna to taka, w ktorej drgania osrodka sa",
+    "options": [
+      "prostopadle do kierunku rozchodzenia",
+      "rownolegle do kierunku rozchodzenia",
+      "kolowe",
+      "nierownomierne bez kierunku"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trzecia zasada Newtona mowi, ze",
+    "options": [
+      "kazde cialo spoczywa, jesli nie dziala sila",
+      "akcja i reakcja maja rowne wartosci i przeciwne zwroty",
+      "sila jest iloczynem masy i predkosci",
+      "energia zawsze maleje"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Ped ciala jest rowny",
+    "options": [
+      "masie razy predkosci",
+      "sile razy droge",
+      "objetosci razy gestosci",
+      "mocy razy czas"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Energia kinetyczna ciala zalezy od",
+    "options": [
+      "barwy ciala i wilgotnosci",
+      "masy i predkosci",
+      "wylacznie wysokosci nad ziemia",
+      "cisnienia atmosferycznego"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Energia potencjalna grawitacji rosnie wraz ze wzrostem",
+    "options": [
+      "temperatury ciala",
+      "wysokosci polozenia",
+      "ladunku elektrycznego",
+      "stezenia soli"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Zacmienie Slonca zachodzi, gdy",
+    "options": [
+      "Ziemia znajduje sie miedzy Sloncem a Ksiezycem",
+      "Ksiezyc znajduje sie miedzy Ziemia a Sloncem",
+      "Slonce znajduje sie miedzy Ziemia a Ksiezycem",
+      "Mars zaslania Slonce"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Zacmienie Ksiezyca zachodzi, gdy",
+    "options": [
+      "Ksiezyc znajduje sie miedzy Ziemia a Sloncem",
+      "Ziemia znajduje sie miedzy Sloncem a Ksiezycem",
+      "Ksiezyc zaslania Marsa",
+      "Slonce znika za chmurami"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Saturn jest najbardziej znany z",
+    "options": [
+      "duzego czerwonego wiru",
+      "rozbudowanego systemu pierscieni",
+      "braku atmosfery",
+      "najwyzszej temperatury w Ukladzie Slonecznym"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Do planet skalistych nalezy",
+    "options": [
+      "Jowisz",
+      "Saturn",
+      "Mars",
+      "Neptun"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Meteorid, ktory dotrze do powierzchni Ziemi, nazywamy",
+    "options": [
+      "kometa",
+      "planetoida",
+      "meteoryt",
+      "galaktyka"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Kometa podczas zblizania do Slonca tworzy warkocz, poniewaz",
+    "options": [
+      "topnieja i sublimuja jej lotne skladniki",
+      "eksploduje jej jadro atomowe",
+      "wchodzi w atmosfere Ziemi",
+      "zamienia sie w planete"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Rozszczepienie bialego swiatla w pryzmacie jest skutkiem",
+    "options": [
+      "rezonansu",
+      "dyspersji",
+      "indukcji",
+      "osmozy"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Lustro wklesle moze",
+    "options": [
+      "skupiac rownolegle promienie swiatla",
+      "zawsze dawac tylko obraz pozorny pomniejszony",
+      "przepuszczac swiatlo jak soczewka",
+      "usuwac fale dzwiekowe"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Topnienie lodu wymaga",
+    "options": [
+      "oddawania energii do otoczenia",
+      "dostarczenia energii",
+      "zwiekszenia cisnienia do nieskonczonosci",
+      "braku ruchu czasteczek"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Parowanie chlodzi powierzchnie, poniewaz",
+    "options": [
+      "najszybsze czasteczki opuszczaja ciecz",
+      "w cieczy zanika grawitacja",
+      "rosnie liczba protonow",
+      "zmienia sie kolor cieczy"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Energia geotermalna pochodzi glownie z",
+    "options": [
+      "wietrzenia skaly",
+      "wnetrza Ziemi",
+      "promieniowania Ksiezyca",
+      "fal radiowych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Piorun jest skutkiem gwaltownego wyrownania",
+    "options": [
+      "roznicy potencjalow elektrycznych",
+      "cisnienia hydrostatycznego",
+      "temperatury wody w oceanie",
+      "zasolenia powietrza"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Teczowka oka reguluje ilosc swiatla wpadajacego do oka przez zmiane wielkosci",
+    "options": [
+      "siatkowki",
+      "zrenicy",
+      "rogowki",
+      "soczewki"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Kosc dluga rosnie na dlugosc dzieki aktywnosci",
+    "options": [
+      "chrzastek nasadowych",
+      "plazmy krwi",
+      "tkanki tluszczowej",
+      "wlosowatych korzeni"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Fotosynteza prowadzi do magazynowania energii slonecznej w postaci",
+    "options": [
+      "energii jadrowej",
+      "energii chemicznej w zwiazkach organicznych",
+      "energii dzwieku",
+      "energii grawitacyjnej"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Fermentacja to proces uzyskiwania energii",
+    "options": [
+      "wylacznie przy duzym stezeniu tlenu",
+      "bez udzialu tlenu",
+      "jedynie w chloroplastach",
+      "tylko u organizmow wielokomorkowych"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Blyskawica jest widoczna przed grzmotem, poniewaz",
+    "options": [
+      "swiatlo rozchodzi sie szybciej niz dzwiek",
+      "dzwiek nie rozchodzi sie w powietrzu",
+      "grzmot powstaje pozniej od blyskawicy",
+      "oko reaguje wolniej od ucha"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Skamienialosci sa waznym dowodem w nauce, poniewaz",
+    "options": [
+      "pokazuja zapis dawnych form zycia",
+      "powstaja tylko wspolczesnie",
+      "sa wylacznie mineralami bez zwiazku z organizmami",
+      "wystepuja tylko w skałach wulkanicznych"
+    ],
+    "correctIndex": 0
   }
 ]

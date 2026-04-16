@@ -407,7 +407,7 @@ export function DopowiedzeniaScreen({
                 {state?.promptWords.length ? (
                   <div className="text-center">
                     <p className="font-label text-[10px] uppercase tracking-[0.18em] text-secondary/90">
-                      Ostatnie 3 słowa od {state.promptSourceName ?? "kolejnej osoby"}
+                      Ostatnie 5 słów od {state.promptSourceName ?? "kolejnej osoby"}
                     </p>
                     <p className="mt-3 font-headline text-[1.85rem] font-bold tracking-tight text-on-surface">
                       {promptLine}
