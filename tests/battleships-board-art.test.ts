@@ -1,4 +1,32 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+vi.mock("next/image", () => ({
+  default: () => null,
+}));
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push: vi.fn() }),
+}));
+
+vi.mock("@/components/app-bottom-nav", () => ({
+  AppBottomNav: () => null,
+}));
+
+vi.mock("@/components/game-header-shell", () => ({
+  GameHeaderShell: ({ children }: { children: unknown }) => children,
+}));
+
+vi.mock("@/components/game-reaction-drawer", () => ({
+  GameReactionDrawer: () => null,
+}));
+
+vi.mock("@/components/use-game-state-sync", () => ({
+  useGameStateSync: () => ({ state: null, setState: vi.fn(), refreshState: vi.fn() }),
+}));
+
+vi.mock("@/components/use-game-session-controls", () => ({
+  useGameSessionControls: () => ({ overlay: null, pauseButtonVisible: false, pauseButtonDisabled: false }),
+}));
 
 import {
   getBattleshipArtForLength,
@@ -6,6 +34,7 @@ import {
   getBattleshipShipCellArtLayout,
   getBattleshipShipCellArtMapFromShips,
 } from "@/components/battleships-board-art";
+import { getSetupDisplayData } from "@/components/battleships-screen";
 
 describe("getBattleshipArtForLength", () => {
   it("returns the 3-cell ship asset for the long ship", () => {
@@ -113,5 +142,42 @@ describe("getBattleshipShipCellArtMapFromShips", () => {
       15: { length: 2, orientation: "vertical", segmentIndex: 0 },
       20: { length: 2, orientation: "vertical", segmentIndex: 1 },
     });
+  });
+
+  it("ignores malformed or unsupported persisted ship groups safely", () => {
+    expect(
+      getBattleshipShipCellArtMapFromShips([
+        [0, 1, 2],
+        [5, 11],
+        [7],
+        [15, 16, 17, 18],
+      ]),
+    ).toEqual({
+      0: { length: 3, orientation: "horizontal", segmentIndex: 0 },
+      1: { length: 3, orientation: "horizontal", segmentIndex: 1 },
+      2: { length: 3, orientation: "horizontal", segmentIndex: 2 },
+    });
+  });
+});
+
+describe("getSetupDisplayData", () => {
+  it("uses authoritative saved ships and board cells when setup is locked", () => {
+    const result = getSetupDisplayData({
+      isSetupLocked: true,
+      localPlacements: [null, null, null],
+      ownBoard: [
+        "ship", "ship", "empty", "empty", "empty",
+        "empty", "empty", "empty", "empty", "empty",
+        "ship", "empty", "empty", "empty", "empty",
+        "ship", "ship", "empty", "empty", "empty",
+        "empty", "empty", "empty", "empty", "empty",
+      ],
+      ownShips: [[0, 1], [10, 15], [16, 17]],
+      shipLengths: [2, 2, 2],
+    });
+
+    expect(result.board[0]).toBe("ship");
+    expect(result.board[10]).toBe("ship");
+    expect(result.placements).toEqual([[0, 1], [10, 15], [16, 17]]);
   });
 });

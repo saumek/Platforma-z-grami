@@ -1,4 +1,4 @@
-import type { BattleshipCellState } from "@/lib/battleships";
+import { BATTLESHIP_BOARD_SIZE, type BattleshipCellState } from "@/lib/battleships";
 
 export type BattleshipCellTone =
   | "water"
@@ -48,16 +48,34 @@ export function getBattleshipShipCellArtLayout(cellArt: BattleshipShipCellArt) {
   };
 }
 
-function getShipOrientation(cells: number[]): BattleshipShipOrientation {
-  if (cells.length <= 1) {
-    return "horizontal";
-  }
-
-  return cells[1]! - cells[0]! === 1 ? "horizontal" : "vertical";
-}
-
 function normalizeShipCells(cells: number[]) {
   return [...cells].sort((left, right) => left - right);
+}
+
+function getRenderableShipOrientation(cells: number[]) {
+  if (cells.length < 2) {
+    return null;
+  }
+
+  const normalizedCells = normalizeShipCells(cells);
+  const rows = normalizedCells.map((cell) => Math.floor(cell / BATTLESHIP_BOARD_SIZE));
+  const columns = normalizedCells.map((cell) => cell % BATTLESHIP_BOARD_SIZE);
+  const sameRow = rows.every((row) => row === rows[0]);
+  const sameColumn = columns.every((column) => column === columns[0]);
+
+  if (!sameRow && !sameColumn) {
+    return null;
+  }
+
+  const step = sameRow ? 1 : BATTLESHIP_BOARD_SIZE;
+
+  for (let index = 1; index < normalizedCells.length; index += 1) {
+    if (normalizedCells[index]! - normalizedCells[index - 1]! !== step) {
+      return null;
+    }
+  }
+
+  return sameRow ? "horizontal" : "vertical";
 }
 
 export function getBattleshipShipCellArtMapFromShips(ships: number[][]) {
@@ -65,7 +83,17 @@ export function getBattleshipShipCellArtMapFromShips(ships: number[][]) {
 
   ships.forEach((ship) => {
     const cells = normalizeShipCells(ship);
-    const orientation = getShipOrientation(cells);
+    const orientation = getRenderableShipOrientation(cells);
+
+    if (!orientation) {
+      return;
+    }
+
+    try {
+      getBattleshipArtForLength(cells.length);
+    } catch {
+      return;
+    }
 
     cells.forEach((cell, segmentIndex) => {
       shipCellArtMap[cell] = {

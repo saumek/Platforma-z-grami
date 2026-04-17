@@ -114,6 +114,73 @@ describe("getBattleshipState", () => {
     vi.clearAllMocks();
   });
 
+  it("keeps authoritative own board and ship groups during locked setup", async () => {
+    mocks.prisma.battleshipGame.findUnique
+      .mockResolvedValueOnce({
+        roomCode: "ROOM-1",
+      })
+      .mockResolvedValueOnce({
+        roomCode: "ROOM-1",
+        status: "setup",
+        playerOneId: "user-1",
+        playerTwoId: "user-2",
+        playerOneReady: true,
+        playerTwoReady: false,
+        playerOneScore: 0,
+        playerTwoScore: 0,
+        playerOneWins: 0,
+        playerTwoWins: 0,
+        playerOneShots: "[]",
+        playerTwoShots: "[]",
+        playerOneBoard: JSON.stringify([[0, 1, 2], [5, 10], [15, 20]]),
+        playerTwoBoard: null,
+        currentTurnUserId: null,
+        winnerId: null,
+        isPaused: false,
+        pauseRequestedById: null,
+        exitRequestedById: null,
+        terminationReason: null,
+        playerOne: {
+          id: "user-1",
+          email: "one@example.com",
+          displayName: "One",
+          avatarPath: null,
+        },
+        playerTwo: {
+          id: "user-2",
+          email: "two@example.com",
+          displayName: "Two",
+          avatarPath: null,
+        },
+      });
+
+    mocks.prisma.user.findMany.mockResolvedValue([
+      {
+        id: "user-1",
+        email: "one@example.com",
+        displayName: "One",
+        avatarPath: null,
+        createdAt: new Date("2025-01-01"),
+        currentRoomCode: "ROOM-1",
+      },
+      {
+        id: "user-2",
+        email: "two@example.com",
+        displayName: "Two",
+        avatarPath: null,
+        createdAt: new Date("2025-01-02"),
+        currentRoomCode: "ROOM-1",
+      },
+    ]);
+
+    const state = await getBattleshipState("ROOM-1", "user-1");
+
+    expect(state?.currentPlayer?.ready).toBe(true);
+    expect(state?.ownShips).toEqual([[0, 1, 2], [5, 10], [15, 20]]);
+    expect(state?.ownBoard[0]).toBe("ship");
+    expect(state?.ownBoard[10]).toBe("ship");
+  });
+
   it("returns authoritative ship groups for the current player and only reveals the opponent after finish", async () => {
     mocks.prisma.battleshipGame.findUnique
       .mockResolvedValueOnce({

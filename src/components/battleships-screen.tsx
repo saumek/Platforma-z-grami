@@ -71,6 +71,11 @@ type BattleshipsScreenProps = {
 
 type Placement = number[] | null;
 
+type SetupDisplayData = {
+  board: BattleshipCellState[];
+  placements: Placement[];
+};
+
 function getShipCells(startIndex: number, length: number, orientation: "horizontal" | "vertical") {
   const row = Math.floor(startIndex / BATTLESHIP_BOARD_SIZE);
   const column = startIndex % BATTLESHIP_BOARD_SIZE;
@@ -108,6 +113,44 @@ function getPlacementOrientation(ship: Placement): BattleshipShipOrientation {
   }
 
   return ship[1]! - ship[0]! === 1 ? "horizontal" : "vertical";
+}
+
+export function getSetupDisplayData(options: {
+  isSetupLocked: boolean;
+  localPlacements: Placement[];
+  ownBoard: BattleshipCellState[];
+  ownShips: number[][];
+  shipLengths: number[];
+}) {
+  const { isSetupLocked, localPlacements, ownBoard, ownShips, shipLengths } = options;
+
+  if (!isSetupLocked) {
+    return {
+      board: Array.from({ length: BATTLESHIP_BOARD_SIZE * BATTLESHIP_BOARD_SIZE }, (_, index) =>
+        localPlacements.some((ship) => ship?.includes(index)) ? "ship" : "empty",
+      ) as BattleshipCellState[],
+      placements: localPlacements,
+    } satisfies SetupDisplayData;
+  }
+
+  const nextPlacements: Placement[] = shipLengths.map(() => null);
+  const remainingShips = ownShips.map((ship) => [...ship]);
+
+  shipLengths.forEach((length, index) => {
+    const shipIndex = remainingShips.findIndex((ship) => ship.length === length);
+
+    if (shipIndex < 0) {
+      return;
+    }
+
+    nextPlacements[index] = remainingShips[shipIndex]!;
+    remainingShips.splice(shipIndex, 1);
+  });
+
+  return {
+    board: ownBoard,
+    placements: nextPlacements,
+  } satisfies SetupDisplayData;
 }
 
 function ShipArtSprite({
@@ -381,16 +424,24 @@ export function BattleshipsScreen({
   const [isShooting, setIsShooting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
 
-  const placedCells = useMemo(
-    () => new Set(placements.flatMap((ship) => ship ?? [])),
-    [placements],
+  const isSetupLocked = Boolean(state?.currentPlayer?.ready);
+  const setupDisplayData = useMemo(
+    () =>
+      getSetupDisplayData({
+        isSetupLocked,
+        localPlacements: placements,
+        ownBoard: state?.ownBoard ?? [],
+        ownShips: state?.ownShips ?? [],
+        shipLengths: state?.shipLengths ?? [...BATTLESHIP_SHIP_LENGTHS],
+      }),
+    [isSetupLocked, placements, state],
   );
   const setupShipCellArtMap = useMemo(
     () =>
       getBattleshipShipCellArtMapFromShips(
-        placements.filter((ship): ship is number[] => Array.isArray(ship)),
+        setupDisplayData.placements.filter((ship): ship is number[] => Array.isArray(ship)),
       ),
-    [placements],
+    [setupDisplayData],
   );
   const ownBoardShipCellArtMap = useMemo(
     () => (state ? getBattleshipShipCellArtMapFromShips(state.ownShips) : {}),
@@ -565,9 +616,7 @@ export function BattleshipsScreen({
     }
   }
 
-  const boardCells = Array.from({ length: BATTLESHIP_BOARD_SIZE * BATTLESHIP_BOARD_SIZE }, (_, index) => index);
-  const setupBoard = boardCells.map((cell) => (placedCells.has(cell) ? "ship" : "empty")) as BattleshipCellState[];
-  const isSetupLocked = Boolean(state?.currentPlayer?.ready);
+  const setupBoard = setupDisplayData.board;
   const statusLabel =
     state?.status === "waiting"
       ? "Czekamy na drugiego użytkownika"
@@ -696,9 +745,9 @@ export function BattleshipsScreen({
 
               <div className="grid grid-cols-3 gap-3">
                 {BATTLESHIP_SHIP_LENGTHS.map((shipLength, index) => {
-                  const isPlaced = placements[index] !== null;
+                  const isPlaced = setupDisplayData.placements[index] !== null;
                   const previewOrientation = isPlaced
-                    ? getPlacementOrientation(placements[index])
+                    ? getPlacementOrientation(setupDisplayData.placements[index])
                     : orientation;
 
                   return (
