@@ -33,7 +33,9 @@ export type BattleshipState = {
   boardSize: number;
   shipLengths: number[];
   ownBoard: BattleshipCellState[];
+  ownShips: number[][];
   opponentBoard: BattleshipCellState[];
+  revealedOpponentShips: number[][];
   isCurrentUserTurn: boolean;
   winnerId: string | null;
   isPaused: boolean;
@@ -389,7 +391,9 @@ export async function getBattleshipState(
     boardSize: BATTLESHIP_BOARD_SIZE,
     shipLengths: [...BATTLESHIP_SHIP_LENGTHS],
     ownBoard: buildOwnBoard(ownBoardData, opponentShots),
+    ownShips: normalizeBoard(ownBoardData),
     opponentBoard: buildOpponentBoard(opponentBoardData, ownShots, isTurn, game.status === "finished"),
+    revealedOpponentShips: game.status === "finished" ? normalizeBoard(opponentBoardData) : [],
     isCurrentUserTurn: isTurn,
     winnerId: game.winnerId,
     isPaused: game.isPaused,

@@ -44,7 +44,7 @@ vi.mock("@/lib/room-cleanup", () => ({
   pruneInactiveUsersFromRoom: mocks.pruneInactiveUsersFromRoom,
 }));
 
-import { shootBattleship, validatePlacement } from "@/lib/battleships";
+import { getBattleshipState, shootBattleship, validatePlacement } from "@/lib/battleships";
 
 describe("validatePlacement", () => {
   it("rejects invalid ship layouts", () => {
@@ -106,5 +106,115 @@ describe("shootBattleship", () => {
         version: { increment: 1 },
       },
     });
+  });
+});
+
+describe("getBattleshipState", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("returns authoritative ship groups for the current player and only reveals the opponent after finish", async () => {
+    mocks.prisma.battleshipGame.findUnique
+      .mockResolvedValueOnce({
+        roomCode: "ROOM-1",
+      })
+      .mockResolvedValueOnce({
+        roomCode: "ROOM-1",
+        status: "playing",
+        playerOneId: "user-1",
+        playerTwoId: "user-2",
+        playerOneReady: true,
+        playerTwoReady: true,
+        playerOneScore: 0,
+        playerTwoScore: 0,
+        playerOneWins: 0,
+        playerTwoWins: 0,
+        playerOneShots: JSON.stringify([0, 5, 10]),
+        playerTwoShots: JSON.stringify([1, 6]),
+        playerOneBoard: JSON.stringify([[0, 5, 10], [1, 6], [15, 20]]),
+        playerTwoBoard: JSON.stringify([[2, 3, 4], [7, 12], [18, 23]]),
+        currentTurnUserId: "user-1",
+        winnerId: null,
+        isPaused: false,
+        pauseRequestedById: null,
+        exitRequestedById: null,
+        terminationReason: null,
+        playerOne: {
+          id: "user-1",
+          email: "one@example.com",
+          displayName: "One",
+          avatarPath: null,
+        },
+        playerTwo: {
+          id: "user-2",
+          email: "two@example.com",
+          displayName: "Two",
+          avatarPath: null,
+        },
+      })
+      .mockResolvedValueOnce({
+        roomCode: "ROOM-1",
+      })
+      .mockResolvedValueOnce({
+        roomCode: "ROOM-1",
+        status: "finished",
+        playerOneId: "user-1",
+        playerTwoId: "user-2",
+        playerOneReady: true,
+        playerTwoReady: true,
+        playerOneScore: 3,
+        playerTwoScore: 0,
+        playerOneWins: 1,
+        playerTwoWins: 0,
+        playerOneShots: JSON.stringify([2, 3, 4, 7, 12, 18, 23]),
+        playerTwoShots: JSON.stringify([0, 5, 10, 1, 6, 15, 20]),
+        playerOneBoard: JSON.stringify([[0, 5, 10], [1, 6], [15, 20]]),
+        playerTwoBoard: JSON.stringify([[2, 3, 4], [7, 12], [18, 23]]),
+        currentTurnUserId: null,
+        winnerId: "user-1",
+        isPaused: false,
+        pauseRequestedById: null,
+        exitRequestedById: null,
+        terminationReason: null,
+        playerOne: {
+          id: "user-1",
+          email: "one@example.com",
+          displayName: "One",
+          avatarPath: null,
+        },
+        playerTwo: {
+          id: "user-2",
+          email: "two@example.com",
+          displayName: "Two",
+          avatarPath: null,
+        },
+      });
+
+    mocks.prisma.user.findMany.mockResolvedValue([
+      {
+        id: "user-1",
+        email: "one@example.com",
+        displayName: "One",
+        avatarPath: null,
+        createdAt: new Date("2025-01-01"),
+        currentRoomCode: "ROOM-1",
+      },
+      {
+        id: "user-2",
+        email: "two@example.com",
+        displayName: "Two",
+        avatarPath: null,
+        createdAt: new Date("2025-01-02"),
+        currentRoomCode: "ROOM-1",
+      },
+    ]);
+
+    const playingState = await getBattleshipState("ROOM-1", "user-1");
+    const finishedState = await getBattleshipState("ROOM-1", "user-1");
+
+    expect(playingState?.ownShips).toEqual([[0, 5, 10], [1, 6], [15, 20]]);
+    expect(playingState?.revealedOpponentShips).toEqual([]);
+    expect(finishedState?.revealedOpponentShips).toEqual([[2, 3, 4], [7, 12], [18, 23]]);
   });
 });
