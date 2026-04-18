@@ -10,6 +10,10 @@ import { SESSION_DURATION_MS, shouldRefreshSession } from "@/lib/session-refresh
 
 const SESSION_COOKIE = "gamely_session";
 
+type SessionReadOptions = {
+  mutateCookie?: boolean;
+};
+
 export async function hashPassword(password: string) {
   return bcrypt.hash(password, 12);
 }
@@ -88,7 +92,8 @@ export async function getSessionId() {
   return cookieStore.get(SESSION_COOKIE)?.value;
 }
 
-export async function getCurrentSession() {
+export async function getCurrentSession(options: SessionReadOptions = {}) {
+  const { mutateCookie = false } = options;
   const sessionId = await getSessionId();
 
   if (!sessionId) {
@@ -109,17 +114,25 @@ export async function getCurrentSession() {
   });
 
   if (!session) {
-    await clearSessionCookie();
+    if (mutateCookie) {
+      await clearSessionCookie();
+    }
     return null;
   }
 
   if (session.expiresAt <= new Date()) {
     await removeUserFromRoom(session.user.id);
-    await invalidateSession(session.id);
+    if (mutateCookie) {
+      await invalidateSession(session.id);
+    } else {
+      await prisma.session.deleteMany({
+        where: { id: session.id },
+      });
+    }
     return null;
   }
 
-  if (shouldRefreshSession(session.expiresAt)) {
+  if (mutateCookie && shouldRefreshSession(session.expiresAt)) {
     const nextExpiresAt = new Date(Date.now() + SESSION_DURATION_MS);
     await refreshSession(session.id, nextExpiresAt);
     session.expiresAt = nextExpiresAt;
@@ -128,8 +141,8 @@ export async function getCurrentSession() {
   return session;
 }
 
-export async function requireUserSession() {
-  const session = await getCurrentSession();
+export async function requireUserSession(options: SessionReadOptions = {}) {
+  const session = await getCurrentSession(options);
 
   if (!session) {
     redirect("/");

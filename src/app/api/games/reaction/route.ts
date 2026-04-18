@@ -8,7 +8,7 @@ import type { AuthResponse } from "@/types/auth";
 
 export async function POST(request: Request) {
   try {
-    const session = await getCurrentSession();
+    const session = await getCurrentSession({ mutateCookie: true });
 
     if (!session) {
       return NextResponse.json<AuthResponse>(

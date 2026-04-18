@@ -34,7 +34,7 @@ export async function runGameCommandRoute<TBody = undefined, TState = undefined>
   errorMessage,
 }: RunGameCommandOptions<TBody, TState>) {
   try {
-    const session = await getCurrentSession();
+    const session = await getCurrentSession({ mutateCookie: true });
 
     if (!session) {
       return NextResponse.json<AuthResponse>(

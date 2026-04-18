@@ -25,7 +25,7 @@ type RoomStateResponse =
 
 export async function GET() {
   try {
-    const session = await getCurrentSession();
+    const session = await getCurrentSession({ mutateCookie: true });
 
     if (!session) {
       return NextResponse.json<RoomStateResponse>(

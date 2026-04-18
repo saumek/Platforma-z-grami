@@ -92,17 +92,14 @@ export function GamesScreen({
 
   return (
     <div className="app-screen-root relative overflow-hidden bg-background text-on-background font-body">
-      <div className="pointer-events-none absolute inset-0">
-        <Image
-          alt=""
-          className="object-cover opacity-[0.18] saturate-[0.8] brightness-[0.42]"
-          src="/images/games-ambient-bg.png"
-          fill
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,9,11,0.78)_0%,rgba(9,9,11,0.52)_26%,rgba(9,9,11,0.62)_58%,rgba(9,9,11,0.88)_100%)]" />
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-top bg-repeat-y opacity-[1] saturate-[0.82] brightness-[0.99] contrast-[1.02]"
+        style={{
+          backgroundImage: "url('/images/games-ambient-bg.png')",
+          backgroundSize: "100% auto",
+        }}
+      />
 
       <div className="relative z-10">
       <AppSectionHeader
@@ -276,7 +273,7 @@ export function GamesScreen({
                 <Image
                   alt=""
                   className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL1MatwHeEOX7F1Ng-KbU3PQNDJ9blXcP69tqUgyrgk-R8pdVX8pMUOLWd7ATq-mMqZMZbqSX9Pc38p2dav1oLG8REYzvxbn7amesPCvzINflTAE8X5Cj6olqLF0cnfZGrGXEVLhxhg2V_kfWiZQMq49LCMSCZ1xlce-7ZnGqL1SCCVW54nULzkDMcJ1sZS_73F4hhCJQW2Um-SkSkGsAjfdO-5_I2IhJ7NcryVKc3ldQgjYBcPR5pSyBCRQ7GVwcyT1LMkbM3Iw"
+                  src="/images/game-ludo-generated.png"
                   fill
                   sizes="(max-width: 768px) 100vw, 768px"
                 />

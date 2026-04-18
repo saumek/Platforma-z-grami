@@ -13,7 +13,7 @@ import type { AuthResponse } from "@/types/auth";
 export async function POST() {
   try {
     const sessionId = await getSessionId();
-    const session = await getCurrentSession();
+    const session = await getCurrentSession({ mutateCookie: true });
 
     if (session) {
       const currentUser = await prisma.user.findUnique({

@@ -5,13 +5,6 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
 import { AppBottomNav } from "@/components/app-bottom-nav";
-import {
-  getBattleshipCellTone,
-  getBattleshipRenderableShipsFromShips,
-  getBattleshipShipRenderLayout,
-  type BattleshipRenderableShip,
-  type BattleshipShipOrientation,
-} from "@/components/battleships-board-art";
 import { GameHeaderShell } from "@/components/game-header-shell";
 import { GameReactionDrawer } from "@/components/game-reaction-drawer";
 import { useGameStateSync } from "@/components/use-game-state-sync";
@@ -107,14 +100,6 @@ function Avatar({ src, alt }: { src: string | null; alt: string }) {
   );
 }
 
-function getPlacementOrientation(ship: Placement): BattleshipShipOrientation {
-  if (!ship || ship.length <= 1) {
-    return "horizontal";
-  }
-
-  return ship[1]! - ship[0]! === 1 ? "horizontal" : "vertical";
-}
-
 export function getSetupDisplayData(options: {
   isSetupLocked: boolean;
   localPlacements: Placement[];
@@ -153,69 +138,6 @@ export function getSetupDisplayData(options: {
   } satisfies SetupDisplayData;
 }
 
-function ShipArtSprite({
-  length,
-  orientation,
-  className = "",
-}: {
-  length: number;
-  orientation: BattleshipShipOrientation;
-  className?: string;
-}) {
-  const layout = getBattleshipShipRenderLayout(length, orientation);
-  const imageStyle =
-    orientation === "vertical"
-      ? {
-          width: `${layout.imageWidthPercent}%`,
-          height: `${layout.imageHeightPercent}%`,
-          left: "50%",
-          top: "50%",
-          transform: `translate(-50%, -50%) rotate(${layout.rotationDegrees}deg)`,
-        }
-      : {
-          width: `${layout.imageWidthPercent}%`,
-          height: `${layout.imageHeightPercent}%`,
-          left: "0%",
-          top: "0%",
-          transform: "none",
-        };
-
-  return (
-    <div className={`absolute overflow-hidden ${className}`}>
-      <Image
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute max-w-none object-fill select-none"
-        src={layout.src}
-        unoptimized
-        width={layout.width}
-        height={layout.height}
-        style={imageStyle}
-      />
-    </div>
-  );
-}
-
-function ShipPreview({
-  length,
-  orientation,
-}: {
-  length: number;
-  orientation: BattleshipShipOrientation;
-}) {
-  return (
-    <div
-      className={`relative ${
-        orientation === "vertical" ? "h-24 w-11" : length === 3 ? "h-11 w-24" : "h-11 w-20"
-      }`}
-    >
-      <div className="absolute inset-0 rounded-[14px] border border-white/12 bg-[#102b43]/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(149,226,255,0.12),transparent_62%)]" />
-      <ShipArtSprite length={length} orientation={orientation} className="inset-[8%] rounded-[10px]" />
-    </div>
-  );
-}
-
 function BoardCell({
   state,
   onClick,
@@ -225,42 +147,31 @@ function BoardCell({
   onClick?: () => void;
   disabled?: boolean;
 }) {
-  const tone = getBattleshipCellTone(state);
   const toneClassName =
-    tone === "ship"
-      ? "border-white/16 bg-[#153552]/94"
-      : tone === "hit"
-        ? "border-error/45 bg-[#2c2630]/95"
-        : tone === "miss"
-          ? "border-sky-100/12 bg-[#14344e]/92"
-          : tone === "available"
-            ? "border-[#86dfff]/24 bg-[#15344f]/88 hover:border-secondary/55 hover:bg-[#1a4263]"
-            : tone === "blocked"
-              ? "border-white/8 bg-[#0f2a42]/72 text-white/35"
-              : "border-white/10 bg-[#112f49]/86";
+    state === "ship"
+      ? "bg-primary/12 border border-primary/50"
+      : state === "hit"
+        ? "bg-error/15 border border-error/50 text-error"
+        : state === "miss"
+          ? "bg-surface-container-high border border-outline-variant/20 text-outline"
+          : state === "available"
+            ? "bg-surface-container-high border border-outline-variant/10 text-on-surface-variant hover:border-secondary/40 hover:text-secondary"
+            : "bg-surface-container-high border border-outline-variant/10 text-on-surface-variant/40";
 
   return (
     <button
-      className={`relative aspect-square w-full min-w-0 overflow-hidden rounded-[14px] border shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-all active:scale-95 ${toneClassName}`}
+      className={`relative aspect-square w-full min-w-0 rounded-md flex items-center justify-center transition-all active:scale-95 ${toneClassName}`}
       type="button"
       onClick={onClick}
       disabled={disabled}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(149,226,255,0.16),transparent_58%)]" />
-      <div className="absolute inset-[8%] rounded-[10px] border border-white/8" />
       {state === "hit" ? (
-        <>
-          <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,122,122,0.28),transparent_68%)]" />
-          <div className="absolute inset-0 bg-error/12" />
-          <span className="absolute inset-0 z-20 grid place-items-center text-[24px] font-black leading-none text-error">
-            ×
-          </span>
-        </>
+        <span className="absolute inset-0 z-10 grid place-items-center text-[20px] font-black leading-none text-error">
+          ×
+        </span>
       ) : null}
       {state === "miss" ? (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="block h-2.5 w-2.5 rounded-full border border-sky-100/55 bg-sky-100/25 shadow-[0_0_10px_rgba(232,248,255,0.28)]" />
-        </div>
+        <span className="block h-2.5 w-2.5 rounded-full bg-outline/80" />
       ) : null}
     </button>
   );
@@ -269,7 +180,6 @@ function BoardCell({
 function BoardSection({
   title,
   cells,
-  ships,
   onCellClick,
   disabled = false,
   clickableStates,
@@ -277,7 +187,6 @@ function BoardSection({
 }: {
   title: string;
   cells: BattleshipCellState[];
-  ships?: BattleshipRenderableShip[];
   onCellClick?: (index: number) => void;
   disabled?: boolean;
   clickableStates?: BattleshipCellState[];
@@ -286,50 +195,26 @@ function BoardSection({
   return (
     <section className={compact ? "space-y-2" : "space-y-3"}>
       <h2 className={`font-headline font-extrabold tracking-tight ${compact ? "text-lg" : "text-xl"}`}>{title}</h2>
-      <div
-        className={`relative aspect-square w-full overflow-hidden rounded-[28px] border border-[#91dbff]/14 bg-[#081c2d] shadow-[0_24px_60px_rgba(4,12,24,0.55)] ${compact ? "p-2.5" : "p-4"}`}
-      >
-        <Image
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-          fill
-          src="/images/battleships/board-ocean-texture.svg"
+      <div className={`aspect-square w-full bg-surface-container rounded-xl grid grid-cols-5 relative shadow-2xl ${compact ? "p-2.5 gap-1.5" : "p-4 gap-3"}`}>
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none rounded-xl"
+          style={{
+            backgroundImage: "radial-gradient(circle at 2px 2px, #484847 1px, transparent 0)",
+            backgroundSize: compact ? "18px 18px" : "24px 24px",
+          }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(148,226,255,0.16),transparent_22%,rgba(5,14,26,0.22)_100%)]" />
-        <div className="absolute inset-[10px] rounded-[22px] border border-white/8" />
-        <div className={`relative z-0 grid h-full grid-cols-5 ${compact ? "gap-1.5" : "gap-3"}`}>
-          {cells.map((cell, index) => (
-            <BoardCell
-              key={`${title}-${index}`}
-              state={cell}
-              onClick={onCellClick ? () => onCellClick(index) : undefined}
-              disabled={disabled || !onCellClick || !(clickableStates ?? ["available"]).includes(cell)}
-            />
-          ))}
-        </div>
-        {ships?.length ? (
-          <div
-            className={`pointer-events-none absolute z-10 grid grid-cols-5 ${compact ? "inset-2.5 gap-1.5" : "inset-4 gap-3"}`}
-          >
-            {ships.map((ship) => (
-              <div
-                key={`${title}-${ship.cells.join("-")}`}
-                className="relative"
-                style={{
-                  gridColumn: `${ship.startColumn} / span ${ship.columnSpan}`,
-                  gridRow: `${ship.startRow} / span ${ship.rowSpan}`,
-                }}
-              >
-                <ShipArtSprite
-                  length={ship.length}
-                  orientation={ship.orientation}
-                  className="inset-[10%]"
-                />
-              </div>
-            ))}
-          </div>
-        ) : null}
+        {cells.map((cell, index) => (
+          <BoardCell
+            key={`${title}-${index}`}
+            state={cell}
+            onClick={onCellClick ? () => onCellClick(index) : undefined}
+            disabled={
+              disabled ||
+              !onCellClick ||
+              !(clickableStates ?? ["available"]).includes(cell)
+            }
+          />
+        ))}
       </div>
     </section>
   );
@@ -447,6 +332,10 @@ export function BattleshipsScreen({
   const [isShooting, setIsShooting] = useState(false);
   const [isRestarting, setIsRestarting] = useState(false);
 
+  const placedCells = useMemo(
+    () => new Set(placements.flatMap((ship) => ship ?? [])),
+    [placements],
+  );
   const isSetupLocked = Boolean(state?.currentPlayer?.ready);
   const setupDisplayData = useMemo(
     () =>
@@ -458,21 +347,6 @@ export function BattleshipsScreen({
         shipLengths: state?.shipLengths ?? [...BATTLESHIP_SHIP_LENGTHS],
       }),
     [isSetupLocked, placements, state],
-  );
-  const setupRenderableShips = useMemo(
-    () =>
-      getBattleshipRenderableShipsFromShips(
-        setupDisplayData.placements.filter((ship): ship is number[] => Array.isArray(ship)),
-      ),
-    [setupDisplayData],
-  );
-  const ownBoardRenderableShips = useMemo(
-    () => (state ? getBattleshipRenderableShipsFromShips(state.ownShips) : []),
-    [state],
-  );
-  const opponentBoardRenderableShips = useMemo(
-    () => (state ? getBattleshipRenderableShipsFromShips(state.revealedOpponentShips) : []),
-    [state],
   );
   const gameSessionControls = useGameSessionControls({
     gamePath: "battleships",
@@ -639,7 +513,11 @@ export function BattleshipsScreen({
     }
   }
 
-  const setupBoard = setupDisplayData.board;
+  const setupBoard = isSetupLocked
+    ? setupDisplayData.board
+    : Array.from({ length: BATTLESHIP_BOARD_SIZE * BATTLESHIP_BOARD_SIZE }, (_, index) =>
+        placedCells.has(index) ? "ship" : "empty",
+      ) as BattleshipCellState[];
   const statusLabel =
     state?.status === "waiting"
       ? "Czekamy na drugiego użytkownika"
@@ -769,19 +647,16 @@ export function BattleshipsScreen({
               <div className="grid grid-cols-3 gap-3">
                 {BATTLESHIP_SHIP_LENGTHS.map((shipLength, index) => {
                   const isPlaced = setupDisplayData.placements[index] !== null;
-                  const previewOrientation = isPlaced
-                    ? getPlacementOrientation(setupDisplayData.placements[index])
-                    : orientation;
 
                   return (
                     <button
                       key={`ship-${shipLength}-${index}`}
-                      className={`rounded-[20px] border px-3 py-3 text-left transition-all ${
+                      className={`rounded-xl px-3 py-2.5 text-left transition-colors ${
                         selectedShipIndex === index
-                          ? "border-primary/40 bg-primary/15 text-primary shadow-[0_12px_28px_rgba(182,160,255,0.18)]"
+                          ? "bg-primary/15 text-primary"
                           : isPlaced
-                            ? "border-secondary/25 bg-[#10253b] text-secondary"
-                            : "border-white/8 bg-surface-container-high text-on-surface"
+                            ? "bg-surface-container-high text-secondary"
+                            : "bg-surface-container-high text-on-surface"
                       }`}
                       type="button"
                       onClick={() => setSelectedShipIndex(index)}
@@ -790,15 +665,7 @@ export function BattleshipsScreen({
                       <span className="block text-[10px] font-bold uppercase tracking-[0.18em] opacity-80">
                         Statek
                       </span>
-                      <div className="mt-2 flex items-center justify-between gap-2">
-                        <span className="font-headline text-xl font-extrabold">{shipLength}</span>
-                        <span className="text-[9px] font-bold uppercase tracking-[0.16em] opacity-70">
-                          {isPlaced ? "Ustawiony" : selectedShipIndex === index ? "Wybrany" : "Czeka"}
-                        </span>
-                      </div>
-                      <div className="mt-3 flex min-h-10 items-center justify-center">
-                        <ShipPreview length={shipLength} orientation={previewOrientation} />
-                      </div>
+                      <span className="font-headline text-xl font-extrabold">{shipLength}</span>
                     </button>
                   );
                 })}
@@ -808,7 +675,6 @@ export function BattleshipsScreen({
             <BoardSection
               title="Twoja plansza"
               cells={setupBoard}
-              ships={setupRenderableShips}
               onCellClick={handleCellClick}
               clickableStates={["empty", "ship"]}
               disabled={isSetupLocked || state?.status === "waiting"}
@@ -843,13 +709,12 @@ export function BattleshipsScreen({
             <BoardSection
               title={state?.opponent?.name ?? "Przeciwnik"}
               cells={state?.opponentBoard ?? []}
-              ships={opponentBoardRenderableShips}
               onCellClick={state?.status === "playing" ? handleShoot : undefined}
               disabled={isShooting || !state?.isCurrentUserTurn}
               compact
             />
 
-            <BoardSection title="Twoja plansza" cells={state?.ownBoard ?? []} ships={ownBoardRenderableShips} compact />
+            <BoardSection title="Twoja plansza" cells={state?.ownBoard ?? []} compact />
 
             {statusMessage ? <p className="shrink-0 text-sm text-secondary">{statusMessage}</p> : null}
             </div>

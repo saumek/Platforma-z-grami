@@ -7,7 +7,7 @@ function encodeSseChunk(event: string, data: unknown) {
 }
 
 export async function GET(request: Request) {
-  const session = await getCurrentSession();
+  const session = await getCurrentSession({ mutateCookie: true });
 
   if (!session) {
     return new Response("Unauthorized", { status: 401 });
