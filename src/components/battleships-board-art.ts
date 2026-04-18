@@ -10,41 +10,70 @@ export type BattleshipCellTone =
 
 export type BattleshipShipOrientation = "horizontal" | "vertical";
 
-export type BattleshipShipCellArt = {
+export type BattleshipShipRenderLayout = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  imageWidthPercent: number;
+  imageHeightPercent: number;
+  rotationDegrees: number;
+};
+
+export type BattleshipRenderableShip = {
+  cells: number[];
   length: number;
   orientation: BattleshipShipOrientation;
-  segmentIndex: number;
+  startRow: number;
+  startColumn: number;
+  rowSpan: number;
+  columnSpan: number;
+};
+
+type BattleshipArtAsset = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
 };
 
 function assertNever(value: never): never {
   throw new Error(`Unhandled battleship cell state: ${String(value)}`);
 }
 
-export function getBattleshipArtForLength(length: number) {
+export function getBattleshipArtForLength(length: number): BattleshipArtAsset {
   if (length === 3) {
     return {
-      src: "/images/battleships/ship-3.svg",
+      src: "/images/battleships/ship-3-generated.svg",
       alt: "Statek długości 3",
+      width: 284,
+      height: 96,
     };
   }
 
   if (length === 2) {
     return {
-      src: "/images/battleships/ship-2.svg",
+      src: "/images/battleships/ship-2-generated.svg",
       alt: "Statek długości 2",
+      width: 240,
+      height: 96,
     };
   }
 
   throw new Error(`Unsupported battleship length: ${length}`);
 }
 
-export function getBattleshipShipCellArtLayout(cellArt: BattleshipShipCellArt) {
+export function getBattleshipShipRenderLayout(
+  length: number,
+  orientation: BattleshipShipOrientation,
+): BattleshipShipRenderLayout {
+  const asset = getBattleshipArtForLength(length);
+
   return {
-    ...getBattleshipArtForLength(cellArt.length),
-    imageWidthPercent: cellArt.length * 100,
-    imageOffsetPercent: cellArt.segmentIndex * 100,
-    rotationDeg: cellArt.orientation === "vertical" ? 90 : 0,
-    scale: cellArt.orientation === "vertical" ? 1.18 : 1,
+    ...asset,
+    imageWidthPercent: orientation === "vertical" ? length * 100 : 100,
+    imageHeightPercent: 100,
+    rotationDegrees: orientation === "vertical" ? 90 : 0,
   };
 }
 
@@ -78,8 +107,8 @@ function getRenderableShipOrientation(cells: number[]) {
   return sameRow ? "horizontal" : "vertical";
 }
 
-export function getBattleshipShipCellArtMapFromShips(ships: number[][]) {
-  const shipCellArtMap: Record<number, BattleshipShipCellArt> = {};
+export function getBattleshipRenderableShipsFromShips(ships: number[][]) {
+  const renderableShips: BattleshipRenderableShip[] = [];
 
   ships.forEach((ship) => {
     const cells = normalizeShipCells(ship);
@@ -95,16 +124,20 @@ export function getBattleshipShipCellArtMapFromShips(ships: number[][]) {
       return;
     }
 
-    cells.forEach((cell, segmentIndex) => {
-      shipCellArtMap[cell] = {
-        length: cells.length,
-        orientation,
-        segmentIndex,
-      };
+    const startCell = cells[0]!;
+
+    renderableShips.push({
+      cells,
+      length: cells.length,
+      orientation,
+      startRow: Math.floor(startCell / BATTLESHIP_BOARD_SIZE) + 1,
+      startColumn: (startCell % BATTLESHIP_BOARD_SIZE) + 1,
+      rowSpan: orientation === "vertical" ? cells.length : 1,
+      columnSpan: orientation === "horizontal" ? cells.length : 1,
     });
   });
 
-  return shipCellArtMap;
+  return renderableShips;
 }
 
 export function getBattleshipCellTone(state: BattleshipCellState): BattleshipCellTone {

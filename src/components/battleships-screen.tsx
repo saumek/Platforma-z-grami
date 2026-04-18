@@ -7,9 +7,9 @@ import { useMemo, useState } from "react";
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import {
   getBattleshipCellTone,
-  getBattleshipShipCellArtLayout,
-  getBattleshipShipCellArtMapFromShips,
-  type BattleshipShipCellArt,
+  getBattleshipRenderableShipsFromShips,
+  getBattleshipShipRenderLayout,
+  type BattleshipRenderableShip,
   type BattleshipShipOrientation,
 } from "@/components/battleships-board-art";
 import { GameHeaderShell } from "@/components/game-header-shell";
@@ -154,30 +154,43 @@ export function getSetupDisplayData(options: {
 }
 
 function ShipArtSprite({
-  cellArt,
+  length,
+  orientation,
   className = "",
 }: {
-  cellArt: BattleshipShipCellArt;
+  length: number;
+  orientation: BattleshipShipOrientation;
   className?: string;
 }) {
-  const layout = getBattleshipShipCellArtLayout(cellArt);
-  const imageWidth = cellArt.length === 3 ? 220 : 184;
+  const layout = getBattleshipShipRenderLayout(length, orientation);
+  const imageStyle =
+    orientation === "vertical"
+      ? {
+          width: `${layout.imageWidthPercent}%`,
+          height: `${layout.imageHeightPercent}%`,
+          left: "50%",
+          top: "50%",
+          transform: `translate(-50%, -50%) rotate(${layout.rotationDegrees}deg)`,
+        }
+      : {
+          width: `${layout.imageWidthPercent}%`,
+          height: `${layout.imageHeightPercent}%`,
+          left: "0%",
+          top: "0%",
+          transform: "none",
+        };
 
   return (
     <div className={`absolute overflow-hidden ${className}`}>
       <Image
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 h-full max-w-none object-fill select-none"
+        className="pointer-events-none absolute max-w-none object-fill select-none"
         src={layout.src}
         unoptimized
-        width={imageWidth}
-        height={84}
-        style={{
-          width: `${layout.imageWidthPercent}%`,
-          left: `-${layout.imageOffsetPercent}%`,
-          transform: `rotate(${layout.rotationDeg}deg) scale(${layout.scale})`,
-        }}
+        width={layout.width}
+        height={layout.height}
+        style={imageStyle}
       />
     </div>
   );
@@ -191,31 +204,24 @@ function ShipPreview({
   orientation: BattleshipShipOrientation;
 }) {
   return (
-    <div className={`flex items-center justify-center gap-1 ${orientation === "vertical" ? "flex-col" : "flex-row"}`}>
-      {Array.from({ length }, (_, segmentIndex) => (
-        <div
-          key={`${orientation}-${length}-${segmentIndex}`}
-          className="relative h-7 w-7 overflow-hidden rounded-[10px] border border-white/14 bg-[#102b43]/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(149,226,255,0.12),transparent_62%)]" />
-          <ShipArtSprite
-            cellArt={{ length, orientation, segmentIndex }}
-            className="inset-[10%] rounded-[8px]"
-          />
-        </div>
-      ))}
+    <div
+      className={`relative ${
+        orientation === "vertical" ? "h-24 w-11" : length === 3 ? "h-11 w-24" : "h-11 w-20"
+      }`}
+    >
+      <div className="absolute inset-0 rounded-[14px] border border-white/12 bg-[#102b43]/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(149,226,255,0.12),transparent_62%)]" />
+      <ShipArtSprite length={length} orientation={orientation} className="inset-[8%] rounded-[10px]" />
     </div>
   );
 }
 
 function BoardCell({
   state,
-  shipCellArt,
   onClick,
   disabled = false,
 }: {
   state: BattleshipCellState;
-  shipCellArt?: BattleshipShipCellArt;
   onClick?: () => void;
   disabled?: boolean;
 }) {
@@ -242,16 +248,12 @@ function BoardCell({
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(149,226,255,0.16),transparent_58%)]" />
       <div className="absolute inset-[8%] rounded-[10px] border border-white/8" />
-      {shipCellArt ? <ShipArtSprite cellArt={shipCellArt} className="inset-[8%] rounded-[10px]" /> : null}
       {state === "hit" ? (
         <>
           <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,122,122,0.28),transparent_68%)]" />
           <div className="absolute inset-0 bg-error/12" />
-          <span
-            className="material-symbols-outlined absolute inset-0 flex items-center justify-center text-[19px] text-error"
-            style={{ fontVariationSettings: '"FILL" 1' }}
-          >
-            close
+          <span className="absolute inset-0 z-20 grid place-items-center text-[24px] font-black leading-none text-error">
+            ×
           </span>
         </>
       ) : null}
@@ -267,7 +269,7 @@ function BoardCell({
 function BoardSection({
   title,
   cells,
-  shipCellArtMap,
+  ships,
   onCellClick,
   disabled = false,
   clickableStates,
@@ -275,7 +277,7 @@ function BoardSection({
 }: {
   title: string;
   cells: BattleshipCellState[];
-  shipCellArtMap?: Record<number, BattleshipShipCellArt>;
+  ships?: BattleshipRenderableShip[];
   onCellClick?: (index: number) => void;
   disabled?: boolean;
   clickableStates?: BattleshipCellState[];
@@ -296,17 +298,38 @@ function BoardSection({
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(148,226,255,0.16),transparent_22%,rgba(5,14,26,0.22)_100%)]" />
         <div className="absolute inset-[10px] rounded-[22px] border border-white/8" />
-        <div className={`relative z-10 grid h-full grid-cols-5 ${compact ? "gap-1.5" : "gap-3"}`}>
+        <div className={`relative z-0 grid h-full grid-cols-5 ${compact ? "gap-1.5" : "gap-3"}`}>
           {cells.map((cell, index) => (
             <BoardCell
               key={`${title}-${index}`}
               state={cell}
-              shipCellArt={shipCellArtMap?.[index]}
               onClick={onCellClick ? () => onCellClick(index) : undefined}
               disabled={disabled || !onCellClick || !(clickableStates ?? ["available"]).includes(cell)}
             />
           ))}
         </div>
+        {ships?.length ? (
+          <div
+            className={`pointer-events-none absolute z-10 grid grid-cols-5 ${compact ? "inset-2.5 gap-1.5" : "inset-4 gap-3"}`}
+          >
+            {ships.map((ship) => (
+              <div
+                key={`${title}-${ship.cells.join("-")}`}
+                className="relative"
+                style={{
+                  gridColumn: `${ship.startColumn} / span ${ship.columnSpan}`,
+                  gridRow: `${ship.startRow} / span ${ship.rowSpan}`,
+                }}
+              >
+                <ShipArtSprite
+                  length={ship.length}
+                  orientation={ship.orientation}
+                  className="inset-[10%]"
+                />
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     </section>
   );
@@ -436,19 +459,19 @@ export function BattleshipsScreen({
       }),
     [isSetupLocked, placements, state],
   );
-  const setupShipCellArtMap = useMemo(
+  const setupRenderableShips = useMemo(
     () =>
-      getBattleshipShipCellArtMapFromShips(
+      getBattleshipRenderableShipsFromShips(
         setupDisplayData.placements.filter((ship): ship is number[] => Array.isArray(ship)),
       ),
     [setupDisplayData],
   );
-  const ownBoardShipCellArtMap = useMemo(
-    () => (state ? getBattleshipShipCellArtMapFromShips(state.ownShips) : {}),
+  const ownBoardRenderableShips = useMemo(
+    () => (state ? getBattleshipRenderableShipsFromShips(state.ownShips) : []),
     [state],
   );
-  const opponentBoardShipCellArtMap = useMemo(
-    () => (state ? getBattleshipShipCellArtMapFromShips(state.revealedOpponentShips) : {}),
+  const opponentBoardRenderableShips = useMemo(
+    () => (state ? getBattleshipRenderableShipsFromShips(state.revealedOpponentShips) : []),
     [state],
   );
   const gameSessionControls = useGameSessionControls({
@@ -785,7 +808,7 @@ export function BattleshipsScreen({
             <BoardSection
               title="Twoja plansza"
               cells={setupBoard}
-              shipCellArtMap={setupShipCellArtMap}
+              ships={setupRenderableShips}
               onCellClick={handleCellClick}
               clickableStates={["empty", "ship"]}
               disabled={isSetupLocked || state?.status === "waiting"}
@@ -820,13 +843,13 @@ export function BattleshipsScreen({
             <BoardSection
               title={state?.opponent?.name ?? "Przeciwnik"}
               cells={state?.opponentBoard ?? []}
-              shipCellArtMap={opponentBoardShipCellArtMap}
+              ships={opponentBoardRenderableShips}
               onCellClick={state?.status === "playing" ? handleShoot : undefined}
               disabled={isShooting || !state?.isCurrentUserTurn}
               compact
             />
 
-            <BoardSection title="Twoja plansza" cells={state?.ownBoard ?? []} shipCellArtMap={ownBoardShipCellArtMap} compact />
+            <BoardSection title="Twoja plansza" cells={state?.ownBoard ?? []} ships={ownBoardRenderableShips} compact />
 
             {statusMessage ? <p className="shrink-0 text-sm text-secondary">{statusMessage}</p> : null}
             </div>
