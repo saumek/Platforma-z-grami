@@ -160,15 +160,16 @@ export function GamesScreen({
             </span>
           </h2>
 
-          <div className="grid gap-6">
+          <div className="grid gap-5">
             <div className="group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10 hover:border-primary/30 transition-all duration-300">
-              <div className="aspect-[21/9] w-full relative">
+              <div className="aspect-[21/8] w-full relative">
                 <Image
                   alt=""
                   className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZQfVVISZKTHt0bcHEpt4tz5s6ZT7tLWIdZNL8NoJ0UZJo0_NgvK441ePM2kLDK9G8pujtL2BHwxLVKHlgnk9cp2X4tGI3PdGKiSH4NVhqMQoVgCnnQKugmwBiJOEv9VIrVIc32PXnfBwnDsWnAPLWFSnCTpWKUnbyfkSdr_iK879J6LLbu3fBlGsnqE-CtFRVbv4-ePAZuAxXD5NsGVw8fkOMcsIaPG6L25uuhgg-AvWTZOkcSUSCvEWpwJSHktSwghtvHmKsjw"
                   fill
                   sizes="(max-width: 768px) 100vw, 768px"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-transparent" />
               </div>
@@ -176,7 +177,7 @@ export function GamesScreen({
                 <div>
                   <h3 className="font-headline text-xl font-bold text-on-surface">Statki 5x5</h3>
                   <p className="text-sm text-on-surface-variant">
-                    Classic strategic grid warfare
+                    Klasyczna bitwa strategiczna na siatce
                   </p>
                 </div>
                 <button
@@ -190,7 +191,7 @@ export function GamesScreen({
             </div>
 
             <div className="group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10 hover:border-error/30 transition-all duration-300">
-              <div className="aspect-[21/9] w-full relative">
+              <div className="aspect-[21/8] w-full relative">
                 <Image
                   alt=""
                   className="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-500"
@@ -206,7 +207,7 @@ export function GamesScreen({
                     Pytania dla par
                   </h3>
                   <p className="text-sm text-on-surface-variant">
-                    Romantic &amp; fun trivia for two
+                    Romantyczne i zabawne pytania dla dwojga
                   </p>
                 </div>
                 <button
@@ -220,7 +221,7 @@ export function GamesScreen({
             </div>
 
             <div className="group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10 hover:border-tertiary/30 transition-all duration-300">
-              <div className="aspect-[21/9] w-full relative">
+              <div className="aspect-[21/8] w-full relative">
                 <Image
                   alt=""
                   className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-500"
@@ -237,7 +238,7 @@ export function GamesScreen({
                       Quiz naukowy
                     </h3>
                     <p className="text-sm text-on-surface-variant">
-                      Test your knowledge of the universe
+                      Sprawdź swoją wiedzę o świecie
                     </p>
                   </div>
                   <button
@@ -269,7 +270,7 @@ export function GamesScreen({
             </div>
 
             <div className="group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10 hover:border-primary/30 transition-all duration-300">
-              <div className="aspect-[21/9] w-full relative">
+              <div className="aspect-[21/8] w-full relative">
                 <Image
                   alt=""
                   className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
@@ -282,7 +283,7 @@ export function GamesScreen({
               <div className="p-5 flex justify-between items-end">
                 <div>
                   <h3 className="font-headline text-xl font-bold text-on-surface">Chińczyk</h3>
-                  <p className="text-sm text-on-surface-variant">Classic ludo game for two</p>
+                  <p className="text-sm text-on-surface-variant">Klasyczny Chińczyk dla kilku graczy</p>
                 </div>
                 <button
                   aria-label="Chińczyk"
@@ -297,7 +298,7 @@ export function GamesScreen({
             </div>
 
             <div className="group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10 hover:border-secondary/30 transition-all duration-300">
-              <div className="aspect-[21/9] w-full relative">
+              <div className="aspect-[21/8] w-full relative">
                 <Image
                   alt=""
                   className="w-full h-full object-cover opacity-55 group-hover:scale-105 transition-transform duration-500"

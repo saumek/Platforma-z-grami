@@ -205,7 +205,7 @@ export function ProfileScreen({
         }
       />
 
-      <main className="app-main-with-nav max-w-md mx-auto min-h-screen space-y-8 px-6 pt-8">
+      <main className="app-main-with-nav max-w-md mx-auto min-h-screen space-y-6 px-6 pt-6">
         {isNotificationsOpen ? (
           <section className="rounded-[2rem] border border-outline-variant/15 bg-surface-container-low px-4 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.24)]">
             <div className="mb-4 flex items-center justify-between">
@@ -304,10 +304,10 @@ export function ProfileScreen({
               <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-primary/70">
                 Twoje konto
               </p>
-              <h2 className="mt-3 max-w-[8ch] font-headline text-[2.75rem] leading-[0.95] font-black tracking-[-0.06em] text-on-background">
+              <h2 className="mt-2 max-w-[8ch] font-headline text-[2.6rem] leading-[0.95] font-black tracking-[-0.04em] text-on-background">
                 {displayName}
               </h2>
-              <div className="mt-5 flex flex-wrap items-center gap-3">
+              <div className="mt-4 flex flex-wrap items-center gap-3">
                 <div className="inline-flex items-center gap-2 rounded-full bg-surface-container-low px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant">
                   <span className={`h-2.5 w-2.5 rounded-full ${hasJoinedRoom ? "bg-secondary shadow-[0_0_10px_rgba(0,227,253,0.55)]" : "bg-outline-variant"}`} />
                   {hasJoinedRoom
@@ -317,7 +317,7 @@ export function ProfileScreen({
               </div>
 
               <button
-                className="mt-6 inline-flex items-center gap-2 rounded-full px-1 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant transition-colors hover:text-primary active:scale-95"
+                className="mt-5 inline-flex items-center gap-2 rounded-full px-1 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-on-surface-variant transition-colors hover:text-primary active:scale-95"
                 type="button"
                 onClick={() => router.push("/profile/edit")}
               >
@@ -328,14 +328,15 @@ export function ProfileScreen({
 
             <div className="relative shrink-0">
               <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-primary/35 via-secondary/25 to-primary/35 blur-lg" />
-              <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-outline-variant/20 bg-surface-container-low">
+              <div className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-outline-variant/20 bg-surface-container-low">
                 {avatarPath ? (
                   <Image
                     alt="Avatar użytkownika"
                     className="h-full w-full object-cover"
                     src={avatarPath}
-                    width={112}
-                    height={112}
+                    width={96}
+                    height={96}
+                    priority
                   />
                 ) : (
                   <span

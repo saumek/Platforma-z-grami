@@ -11,10 +11,10 @@ type AppBottomNavProps = {
 export function AppBottomNav({ active, hasJoinedRoom }: AppBottomNavProps) {
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 w-full rounded-t-[2.35rem] border-t border-white/[0.08] bg-[linear-gradient(180deg,rgba(29,29,34,0.74)_0%,rgba(12,12,15,0.68)_100%)] backdrop-blur-[26px] shadow-[0_-14px_42px_-18px_rgba(182,160,255,0.24),0_-2px_0_rgba(255,255,255,0.04)]"
+      className="fixed bottom-0 left-0 right-0 z-50 w-full rounded-t-[1.65rem] border-t border-white/[0.08] bg-[linear-gradient(180deg,rgba(29,29,34,0.82)_0%,rgba(12,12,15,0.76)_100%)] backdrop-blur-[26px] shadow-[0_-12px_34px_-20px_rgba(182,160,255,0.24),0_-2px_0_rgba(255,255,255,0.04)]"
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) * 0.55)" }}
     >
-      <div className="mx-auto flex h-[4.2rem] w-full max-w-md items-center justify-around px-7 pb-1">
+      <div className="mx-auto flex h-[3.45rem] w-full max-w-md items-center justify-around px-7 pb-0.5">
         {hasJoinedRoom ? (
           <Link
             className={`flex flex-col items-center justify-center transition-colors duration-200 active:scale-90 ${

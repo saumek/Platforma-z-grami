@@ -613,24 +613,28 @@ function ColorSelectionScreen({
   onSelectColor: (color: LudoColor) => void;
   isSubmitting: boolean;
 }) {
+  const canChooseColor = state.joinedCount >= state.minPlayers;
+
   return (
-    <main className="app-main-with-nav mx-auto flex w-full max-w-2xl flex-1 flex-col px-6 pt-10">
+    <main className="app-main-with-nav mx-auto flex w-full max-w-2xl flex-1 flex-col px-6 pb-20 pt-10">
       <section className="rounded-[2.25rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">
           Chińczyk
         </p>
         <h1 className="mt-3 font-headline text-4xl font-black tracking-tight text-on-surface">
-          Wybierz swój kolor
+          {canChooseColor ? "Wybierz swój kolor" : "Czekamy na graczy"}
         </h1>
         <p className="mt-3 max-w-md text-sm leading-6 text-on-surface-variant">
-          Do tej gry mogą wejść od {state.minPlayers} do {state.maxPlayers} osób. Każda osoba wybiera inny kolor, a plansza rusza dopiero wtedy, gdy każdy uczestnik gry ma już swój kolor.
+          {canChooseColor
+            ? `Każda osoba wybiera inny kolor, a plansza rusza dopiero wtedy, gdy każdy uczestnik gry ma już swój kolor.`
+            : `Do tej gry mogą wejść od ${state.minPlayers} do ${state.maxPlayers} osób. Wybór kolorów odblokuje się, gdy w grze będą przynajmniej ${state.minPlayers} osoby.`}
         </p>
       </section>
 
       <section className="mt-6 grid gap-4 sm:grid-cols-2">
         {state.availableColors.map((option) => {
           const palette = LUDO_COLOR_STYLES[option.color];
-          const disabled = isSubmitting || (option.isTaken && !option.isSelected);
+          const disabled = !canChooseColor || isSubmitting || (option.isTaken && !option.isSelected);
 
           return (
             <button
@@ -664,13 +668,15 @@ function ColorSelectionScreen({
                         ? "To Twój aktualny kolor"
                         : option.isTaken
                           ? "Ten kolor został już zajęty"
+                          : !canChooseColor
+                            ? `Dostępny od ${state.minPlayers} graczy`
                           : "Kliknij, aby grać tym kolorem"}
                     </p>
                   </div>
                 </div>
 
                 <span className="material-symbols-outlined text-on-surface-variant">
-                  {option.isSelected ? "check_circle" : option.isTaken ? "lock" : "chevron_right"}
+                  {option.isSelected ? "check_circle" : disabled ? "lock" : "chevron_right"}
                 </span>
               </div>
             </button>

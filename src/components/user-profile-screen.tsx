@@ -55,6 +55,7 @@ export function UserProfileScreen({
                     src={avatarPath}
                     width={128}
                     height={128}
+                    priority
                   />
                 ) : (
                   <span

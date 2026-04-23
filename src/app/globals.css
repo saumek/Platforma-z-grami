@@ -305,11 +305,11 @@ button {
 }
 
 .app-main-with-nav {
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 6.9rem);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 9rem);
 }
 
 .app-main-with-nav-compact {
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 5.8rem);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 8rem);
 }
 
 .app-auth-header {
@@ -335,15 +335,17 @@ button {
 .game-main-viewport {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4.5rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 8rem);
 }
 
 .game-main-viewport-compact {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 7.5rem);
 }
 
 input:-webkit-autofill,

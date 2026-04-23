@@ -95,6 +95,58 @@ describe("dopowiedzenia flow", () => {
     });
   });
 
+  it("adds the current room user to the game state when they open Dopowiedzenia", async () => {
+    mocks.prisma.user.findMany.mockResolvedValue([createUser("user-1", 0)]);
+
+    const emptyGame = {
+      id: "dop-open-1",
+      roomCode: "ROOM-OPEN",
+      version: 2,
+      status: "waiting",
+      joinedPlayerIds: JSON.stringify([]),
+      playerOrder: JSON.stringify([]),
+      stories: JSON.stringify({}),
+      submissions: JSON.stringify({}),
+      roundIndex: 0,
+      roundResolvedAt: null,
+      isPaused: false,
+      pausedAt: null,
+      pauseRequestedById: null,
+      exitRequestedById: null,
+      terminatedAt: null,
+      terminationReason: null,
+    };
+    const joinedGame = {
+      ...emptyGame,
+      version: 3,
+      joinedPlayerIds: JSON.stringify(["user-1"]),
+      playerOrder: JSON.stringify(["user-1"]),
+    };
+
+    mocks.prisma.dopowiedzeniaGame.findUnique
+      .mockResolvedValueOnce(emptyGame)
+      .mockResolvedValueOnce(emptyGame)
+      .mockResolvedValueOnce(emptyGame)
+      .mockResolvedValueOnce(joinedGame);
+    mocks.prisma.dopowiedzeniaGame.updateMany.mockResolvedValueOnce({ count: 1 });
+
+    const state = await getDopowiedzeniaState("ROOM-OPEN", "user-1");
+
+    expect(state?.joinedCount).toBe(1);
+    expect(state?.currentPlayer?.id).toBe("user-1");
+    expect(mocks.prisma.dopowiedzeniaGame.updateMany).toHaveBeenCalledWith({
+      where: {
+        id: "dop-open-1",
+        version: 2,
+      },
+      data: expect.objectContaining({
+        joinedPlayerIds: JSON.stringify(["user-1"]),
+        playerOrder: JSON.stringify(["user-1"]),
+        status: "waiting",
+      }),
+    });
+  });
+
   it("passes continuations in a circle for four players", async () => {
     mocks.prisma.user.findMany.mockResolvedValue([
       createUser("user-1", 0),

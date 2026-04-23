@@ -58,7 +58,7 @@ describe("getCurrentSession", () => {
       },
     });
 
-    const session = await getCurrentSession();
+    const session = await getCurrentSession({ mutateCookie: true });
 
     expect(session?.id).toBe("session-1");
     expect(session?.expiresAt).toEqual(expiresAt);
@@ -80,7 +80,7 @@ describe("getCurrentSession", () => {
       },
     });
 
-    const session = await getCurrentSession();
+    const session = await getCurrentSession({ mutateCookie: true });
 
     expect(session?.id).toBe("session-2");
     expect(mocks.prisma.session.update).toHaveBeenCalledTimes(1);
@@ -113,7 +113,7 @@ describe("getCurrentSession", () => {
       },
     });
 
-    const session = await getCurrentSession();
+    const session = await getCurrentSession({ mutateCookie: true });
 
     expect(session).toBeNull();
     expect(mocks.removeUserFromRoom).toHaveBeenCalledWith("user-3");

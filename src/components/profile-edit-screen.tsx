@@ -117,6 +117,7 @@ export function ProfileEditScreen({
                       width={128}
                       height={128}
                       unoptimized={previewUrl.startsWith("blob:")}
+                      priority={!previewUrl.startsWith("blob:")}
                     />
                   ) : (
                     <span

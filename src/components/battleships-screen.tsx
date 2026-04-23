@@ -574,7 +574,7 @@ export function BattleshipsScreen({
       </GameHeaderShell>
 
       <main className="game-main-viewport-compact max-w-md mx-auto w-full min-h-0 px-3 pt-3 sm:px-6 sm:pt-5">
-        <div className={`flex h-full min-h-0 flex-col ${state?.status === "playing" ? "gap-3" : "gap-5"}`}>
+        <div className={`flex h-full min-h-0 flex-col pb-20 ${state?.status === "playing" ? "gap-3" : "gap-5"}`}>
         <section className="flex shrink-0 items-center justify-between gap-3">
           <div className="flex-1 bg-surface-container-low p-3 rounded-lg flex flex-col items-center gap-0.5 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-primary" />

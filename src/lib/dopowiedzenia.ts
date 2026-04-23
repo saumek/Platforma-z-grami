@@ -281,6 +281,68 @@ async function advanceRevealRound(roomCode: string) {
   });
 }
 
+async function joinDopowiedzeniaParticipant(
+  roomCode: string,
+  currentUserId: string,
+  options?: {
+    resetTerminated?: boolean;
+  },
+) {
+  await ensureDopowiedzeniaGame(roomCode, options);
+
+  return runGameCommand({
+    roomCode,
+    loadGame: (normalizedRoomCode) =>
+      prisma.dopowiedzeniaGame.findUnique({
+        where: { roomCode: normalizedRoomCode },
+      }),
+    missingMessage: "Nie znaleziono gry.",
+    execute: async ({ game, staleResult }) => {
+      const roomUsers = await getRoomUsers(roomCode);
+
+      if (!roomUsers.some((user) => user.id === currentUserId)) {
+        return { success: false as const, message: "Najpierw dołącz do pokoju." };
+      }
+
+      const participantIds = sanitizeParticipantIds(parseStringArray(game.joinedPlayerIds), roomUsers);
+
+      if (participantIds.includes(currentUserId)) {
+        return {
+          success: true as const,
+          message:
+            participantIds.length >= MIN_PLAYERS
+              ? "Można zaczynać kolejną rundę historii."
+              : "Czekamy na kolejne osoby.",
+        };
+      }
+
+      if (participantIds.length >= MAX_PLAYERS) {
+        return { success: false as const, message: "Do tej gry może wejść maksymalnie 4 osoby." };
+      }
+
+      const nextParticipantIds = [...participantIds, currentUserId];
+      const updated = await applyVersionedGameUpdate(
+        prisma.dopowiedzeniaGame,
+        game,
+        {},
+        getResetRoundState(nextParticipantIds),
+      );
+
+      if (!updated) {
+        return staleResult();
+      }
+
+      return {
+        success: true as const,
+        message:
+          nextParticipantIds.length >= MIN_PLAYERS
+            ? "Można zaczynać historię."
+            : "Do gry dołączyła pierwsza osoba.",
+      };
+    },
+  });
+}
+
 export async function ensureDopowiedzeniaGame(
   roomCode: string,
   options?: {
@@ -340,7 +402,7 @@ export async function getDopowiedzeniaState(
     resetTerminated?: boolean;
   },
 ) {
-  await ensureDopowiedzeniaGame(roomCode, options);
+  await joinDopowiedzeniaParticipant(roomCode, currentUserId, options);
 
   const [game, roomUsers] = await Promise.all([
     prisma.dopowiedzeniaGame.findUnique({
@@ -430,59 +492,7 @@ export async function getDopowiedzeniaState(
 }
 
 export async function startDopowiedzeniaGame(roomCode: string, currentUserId: string) {
-  await ensureDopowiedzeniaGame(roomCode, { resetTerminated: true });
-
-  return runGameCommand({
-    roomCode,
-    loadGame: (normalizedRoomCode) =>
-      prisma.dopowiedzeniaGame.findUnique({
-        where: { roomCode: normalizedRoomCode },
-      }),
-    missingMessage: "Nie znaleziono gry.",
-    execute: async ({ game, staleResult }) => {
-      const roomUsers = await getRoomUsers(roomCode);
-
-      if (!roomUsers.some((user) => user.id === currentUserId)) {
-        return { success: false as const, message: "Najpierw dołącz do pokoju." };
-      }
-
-      const participantIds = sanitizeParticipantIds(parseStringArray(game.joinedPlayerIds), roomUsers);
-
-      if (participantIds.includes(currentUserId)) {
-        return {
-          success: true as const,
-          message:
-            participantIds.length >= MIN_PLAYERS
-              ? "Można zaczynać kolejną rundę historii."
-              : "Czekamy na kolejne osoby.",
-        };
-      }
-
-      if (participantIds.length >= MAX_PLAYERS) {
-        return { success: false as const, message: "Do tej gry może wejść maksymalnie 4 osoby." };
-      }
-
-      const nextParticipantIds = [...participantIds, currentUserId];
-      const updated = await applyVersionedGameUpdate(
-        prisma.dopowiedzeniaGame,
-        game,
-        {},
-        getResetRoundState(nextParticipantIds),
-      );
-
-      if (!updated) {
-        return staleResult();
-      }
-
-      return {
-        success: true as const,
-        message:
-          nextParticipantIds.length >= MIN_PLAYERS
-            ? "Można zaczynać historię."
-            : "Do gry dołączyła pierwsza osoba.",
-      };
-    },
-  });
+  return joinDopowiedzeniaParticipant(roomCode, currentUserId, { resetTerminated: true });
 }
 
 export async function submitDopowiedzeniaText(
